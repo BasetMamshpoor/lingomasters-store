@@ -1,0 +1,337 @@
+@tailwind base;
+
+@layer base {
+  html {
+    @apply font-iransansNum;
+  }
+  @font-face {
+    font-family: "IranSans";
+    src: url("/fonts/iransansX-woff2/IRANSansX-Thin.woff2") format("woff2"),
+      url("/fonts/iransansX-woff/IRANSansX-Thin.woff") format("woff"),
+      url("/fonts/iransansX-eot/IRANSansX-Thin.eot") format("eot"),
+      url("/fonts/iransansX-ttf/IRANSansX-Thin.ttf") format("truetype"),
+      url("/fonts/iransansX-otf/IRANSansX-Thin.otf") format("opentype");
+    font-style: normal;
+    font-weight: 100;
+  }
+  @font-face {
+    font-family: "IranSans";
+    src: url("/fonts/iransansX-woff2/IRANSansX-UltraLight.woff2")
+        format("woff2"),
+      url("/fonts/iransansX-woff/IRANSansX-UltraLight.woff") format("woff"),
+      url("/fonts/iransansX-eot/IRANSansX-UltraLight.eot") format("eot"),
+      url("/fonts/iransansX-ttf/IRANSansX-UltraLight.ttf") format("truetype"),
+      url("/fonts/iransansX-otf/IRANSansX-UltraLight.otf") format("opentype");
+    font-style: normal;
+    font-weight: 200;
+  }
+  @font-face {
+    font-family: "IranSans";
+    src: url("/fonts/iransansX-woff2/IRANSansX-Light.woff2") format("woff2"),
+      url("/fonts/iransansX-woff/IRANSansX-Light.woff") format("woff"),
+      url("/fonts/iransansX-eot/IRANSansX-Light.eot") format("eot"),
+      url("/fonts/iransansX-ttf/IRANSansX-Light.ttf") format("truetype"),
+      url("/fonts/iransansX-otf/IRANSansX-Light.otf") format("opentype");
+    font-style: normal;
+    font-weight: 300;
+  }
+  @font-face {
+    font-family: "IranSans";
+    src: url("/fonts/iransansX-woff2/IRANSansX-Regular.woff2") format("woff2"),
+      url("/fonts/iransansX-woff/IRANSansX-Regular.woff") format("woff"),
+      url("/fonts/iransansX-eot/IRANSansX-Regular.eot") format("eot"),
+      url("/fonts/iransansX-ttf/IRANSansX-Regular.ttf") format("truetype"),
+      url("/fonts/iransansX-otf/IRANSansX-Regular.otf") format("opentype");
+    font-style: normal;
+    font-weight: 400;
+  }
+  @font-face {
+    font-family: "IranSans";
+    src: url("/fonts/iransansX-woff2/IRANSansX-Medium.woff2") format("woff2"),
+      url("/fonts/iransansX-woff/IRANSansX-Medium.woff") format("woff"),
+      url("/fonts/iransansX-eot/IRANSansX-Medium.eot") format("eot"),
+      url("/fonts/iransansX-ttf/IRANSansX-Medium.ttf") format("truetype"),
+      url("/fonts/iransansX-otf/IRANSansX-Medium.otf") format("opentype");
+    font-style: normal;
+    font-weight: 500;
+  }
+  @font-face {
+    font-family: "IranSans";
+    src: url("/fonts/iransansX-woff2/IRANSansX-DemiBold.woff2") format("woff2"),
+      url("/fonts/iransansX-woff/IRANSansX-DemiBold.woff") format("woff"),
+      url("/fonts/iransansX-eot/IRANSansX-DemiBold.eot") format("eot"),
+      url("/fonts/iransansX-ttf/IRANSansX-DemiBold.ttf") format("truetype"),
+      url("/fonts/iransansX-otf/IRANSansX-DemiBold.otf") format("opentype");
+    font-style: normal;
+    font-weight: 600;
+  }
+  @font-face {
+    font-family: "IranSans";
+    src: url("/fonts/iransansX-woff2/IRANSansX-Bold.woff2") format("woff2"),
+      url("/fonts/iransansX-woff/IRANSansX-Bold.woff") format("woff"),
+      url("/fonts/iransansX-eot/IRANSansX-Bold.eot") format("eot"),
+      url("/fonts/iransansX-ttf/IRANSansX-Bold.ttf") format("truetype"),
+      url("/fonts/iransansX-otf/IRANSansX-Bold.otf") format("opentype");
+    font-style: normal;
+    font-weight: bold;
+  }
+  @font-face {
+    font-family: "IranSans";
+    src: url("/fonts/iransansX-woff2/IRANSansX-ExtraBold.woff2") format("woff2"),
+      url("/fonts/iransansX-woff/IRANSansX-ExtraBold.woff") format("woff"),
+      url("/fonts/iransansX-eot/IRANSansX-ExtraBold.eot") format("eot"),
+      url("/fonts/iransansX-ttf/IRANSansX-ExtraBold.ttf") format("truetype"),
+      url("/fonts/iransansX-otf/IRANSansX-ExtraBold.otf") format("opentype");
+    font-style: normal;
+    font-weight: 800;
+  }
+  @font-face {
+    font-family: "IranSans";
+    src: url("/fonts/iransansX-woff2/IRANSansX-Black.woff2") format("woff2"),
+      url("/fonts/iransansX-woff/IRANSansX-Black.woff") format("woff"),
+      url("/fonts/iransansX-eot/IRANSansX-Black.eot") format("eot"),
+      url("/fonts/iransansX-ttf/IRANSansX-Black.ttf") format("truetype"),
+      url("/fonts/iransansX-otf/IRANSansX-Black.otf") format("opentype");
+    font-style: normal;
+    font-weight: 900;
+  }
+  @font-face {
+    font-family: "IranSans";
+    src: url("/fonts/iransansX-woff2/IRANSansX-ExtraBlack.woff2")
+        format("woff2"),
+      url("/fonts/iransansX-woff/IRANSansX-ExtraBlack.woff") format("woff"),
+      url("/fonts/iransansX-eot/IRANSansX-ExtraBlack.eot") format("eot"),
+      url("/fonts/iransansX-ttf/IRANSansX-ExtraBlack.ttf") format("truetype"),
+      url("/fonts/iransansX-otf/IRANSansX-ExtraBlack.otf") format("opentype");
+    font-style: normal;
+    font-weight: 950;
+  }
+  @font-face {
+    font-family: "IranSans";
+    src: url("/fonts/iransansX-woff2/IRANSansX-Heavy.woff2") format("woff2"),
+      url("/fonts/iransansX-woff/IRANSansX-Heavy.woff") format("woff"),
+      url("/fonts/iransansX-eot/IRANSansX-Heavy.eot") format("eot"),
+      url("/fonts/iransansX-ttf/IRANSansX-Heavy.ttf") format("truetype"),
+      url("/fonts/iransansX-otf/IRANSansX-Heavy.otf") format("opentype");
+    font-style: normal;
+    font-weight: 1000;
+  }
+
+  /*Font Farsi Funum*/
+
+  @font-face {
+    font-family: "IRANSansXFaNum";
+    src: url("/fonts/iransans-funum-woff2/IRANSansXFaNum-Regular.woff2")
+        format("woff2"),
+      url("/fonts/iransans-funum-woff/IRANSansXFaNum-Regular.woff")
+        format("woff");
+    font-style: normal;
+    font-weight: 400;
+  }
+  @font-face {
+    font-family: "IRANSansFaNum";
+    src: url("/fonts/iransans-funum-woff2/IRANSansXFaNum-Medium.woff2")
+        format("woff2"),
+      url("/fonts/iransans-funum-woff/IRANSansXFaNum-Medium.woff")
+        format("woff");
+    font-style: normal;
+    font-weight: 500;
+  }
+  @font-face {
+    font-family: "IRANSansXFaNum";
+    src: url("/fonts/iransans-funum-woff2/IRANSansXFaNum-DemiBold.woff2")
+        format("woff2"),
+      url("/fonts/iransans-funum-woff/IRANSansXFaNum-DemiBold.woff")
+        format("woff");
+    font-style: normal;
+    font-weight: 600;
+  }
+  @font-face {
+    font-family: "IRANSansXFaNum";
+    src: url("/fonts/iransans-funum-woff/IRANSansXFaNum-Bold.woff")
+        format("woff"),
+      url("/fonts/iransans-funum-woff2/IRANSansXFaNum-Bold.woff2")
+        format("woff2");
+    font-style: normal;
+    font-weight: 700;
+  }
+  @font-face {
+    font-family: "IRANSansXFaNum";
+    src: url("/fonts/iransans-funum-woff/IRANSansXFaNum-ExtraBlack.woff")
+        format("woff"),
+      url("/fonts/iransans-funum-woff2/IRANSansXFaNum-ExtraBlack.woff2")
+        format("woff2");
+    font-style: normal;
+    font-weight: 800;
+  }
+  @font-face {
+    font-family: "IRANSansXFaNum";
+    src: url("/fonts/iransans-funum-woff/IRANSansXFaNum-Black.woff")
+        format("woff"),
+      url("/fonts/iransans-funum-woff2/IRANSansXFaNum-Black.woff2")
+        format("woff2");
+    font-style: normal;
+    font-weight: 900;
+  }
+  @font-face {
+    font-family: "IRANSansXFaNum";
+    src: url("/fonts/iransans-funum-woff/IRANSansXFaNum-ExtraBlack.woff")
+        format("woff"),
+      url("/fonts/iransans-funum-woff2/IRANSansXFaNum-ExtraBlack.woff2")
+        format("woff2");
+    font-style: normal;
+    font-weight: 950;
+  }
+  @font-face {
+    font-family: "IRANSansXFaNum";
+    src: url("/fonts/iransans-funum-woff/IRANSansXFaNum-Heavy.woff")
+        format("woff"),
+      url("/fonts/iransans-funum-woff2/IRANSansXFaNum-Heavy.woff2")
+        format("woff2");
+    font-style: normal;
+    font-weight: 1000;
+  }
+
+  /* font farsi secondary */
+
+  @font-face {
+    font-family: "morabba";
+    src: url("/fonts/Morabba-woff2/Morabba-UltraLight.woff2") format("woff2"),
+      url("/fonts/Morabba-woff/Morabba-UltraLight.woff") format("woff"),
+      url("/fonts/Morabba-eot/Morabba-UltraLight.eot") format("eot"),
+      url("/fonts/Morabba-ttf/Morabba-UltraLight.ttf") format("truetype"),
+      url("/fonts/Morabba-otf/Morabba-UltraLight.otf") format("opentype");
+    font-weight: 200;
+    font-style: normal;
+  }
+  @font-face {
+    font-family: "morabba";
+    src: url("/fonts/Morabba-woff2/Morabba-Light.woff2") format("woff2"),
+      url("/fonts/Morabba-woff/Morabba-Light.woff") format("woff"),
+      url("/fonts/Morabba-eot/Morabba-Light.eot") format("eot"),
+      url("/fonts/Morabba-ttf/Morabba-Light.ttf") format("truetype"),
+      url("/fonts/Morabba-otf/Morabba-Light.otf") format("opentype");
+    font-weight: 300;
+    font-style: normal;
+  }
+  @font-face {
+    font-family: "morabba";
+    src: url("/fonts/Morabba-woff2/Morabba-Regular.woff2") format("woff2"),
+      url("/fonts/Morabba-woff/Morabba-Regular.woff") format("woff"),
+      url("/fonts/Morabba-eot/Morabba-Regular.eot") format("eot"),
+      url("/fonts/Morabba-ttf/Morabba-Regular.ttf") format("truetype"),
+      url("/fonts/Morabba-otf/Morabba-Regular.otf") format("opentype");
+    font-weight: 400;
+    font-style: normal;
+  }
+  @font-face {
+    font-family: "morabba";
+    src: url("/fonts/Morabba-woff2/Morabba-Medium.woff2") format("woff2"),
+      url("/fonts/Morabba-woff/Morabba-Medium.woff") format("woff"),
+      url("/fonts/Morabba-eot/Morabba-Medium.eot") format("eot"),
+      url("/fonts/Morabba-ttf/Morabba-Medium.ttf") format("truetype"),
+      url("/fonts/Morabba-otf/Morabba-Medium.otf") format("opentype");
+    font-weight: 500;
+    font-style: normal;
+  }
+  @font-face {
+    font-family: "morabba";
+    src: url("/fonts/Morabba-woff2/Morabba-SemiBold.woff2") format("woff2"),
+      url("/fonts/Morabba-woff/Morabba-SemiBold.woff") format("woff"),
+      url("/fonts/Morabba-eot/Morabba-SemiBold.eot") format("eot"),
+      url("/fonts/Morabba-ttf/Morabba-SemiBold.ttf") format("truetype"),
+      url("/fonts/Morabba-otf/Morabba-SemiBold.otf") format("opentype");
+    font-weight: 600;
+    font-style: normal;
+  }
+  @font-face {
+    font-family: "morabba";
+    src: url("/fonts/Morabba-woff2/Morabba-Bold.woff2") format("woff2"),
+      url("/fonts/Morabba-woff/Morabba-Bold.woff") format("woff"),
+      url("/fonts/Morabba-eot/Morabba-Bold.eot") format("eot"),
+      url("/fonts/Morabba-ttf/Morabba-Bold.ttf") format("truetype"),
+      url("/fonts/Morabba-otf/Morabba-Bold.otf") format("opentype");
+    font-weight: 700;
+    font-style: normal;
+  }
+  @font-face {
+    font-family: "morabba";
+    src: url("/fonts/Morabba-woff2/Morabba-ExtraBold.woff2") format("woff2"),
+      url("/fonts/Morabba-woff/Morabba-ExtraBold.woff") format("woff"),
+      url("/fonts/Morabba-eot/Morabba-ExtraBold.eot") format("eot"),
+      url("/fonts/Morabba-ttf/Morabba-ExtraBold.ttf") format("truetype"),
+      url("/fonts/Morabba-otf/Morabba-ExtraBold.otf") format("opentype");
+    font-weight: 800;
+    font-style: normal;
+  }
+  @font-face {
+    font-family: "morabba";
+    src: url("/fonts/Morabba-woff2/Morabba-Black.woff2") format("woff2"),
+      url("/fonts/Morabba-woff/Morabba-Black.woff") format("woff"),
+      url("/fonts/Morabba-eot/Morabba-Black.eot") format("eot"),
+      url("/fonts/Morabba-ttf/Morabba-Black.ttf") format("truetype"),
+      url("/fonts/Morabba-otf/Morabba-Black.otf") format("opentype");
+    font-weight: 900;
+    font-style: normal;
+  }
+  @font-face {
+    font-family: "morabba";
+    src: url("/fonts/Morabba-woff2/Morabba-Heavy.woff2") format("woff2"),
+      url("/fonts/Morabba-woff/Morabba-Heavy.woff") format("woff"),
+      url("/fonts/Morabba-eot/Morabba-Heavy.eot") format("eot"),
+      url("/fonts/Morabba-ttf/Morabba-Heavy.ttf") format("truetype"),
+      url("/fonts/Morabba-otf/Morabba-Heavy.otf") format("opentype");
+    font-weight: 950;
+    font-style: normal;
+  }
+
+  /*English Font*/
+
+  @font-face {
+    font-family: "Inner";
+    src: url("/fonts/Inner-eot/Inter-Bold.eot") format("eot"),
+      url("/fonts/Inner-woff/Inter-Bold.woff") format("woff"),
+      url("/fonts/Inner-woff2/Inter-ExtraBold.woff2") format("woff2");
+    font-style: normal;
+    font-weight: 700;
+  }
+  @font-face {
+    font-family: "Inner";
+    src: url("/fonts/Inner-eot/Inter-ExtraBold.eot") format("eot"),
+      url("/fonts/Inner-woff/Inter-ExtraBold.woff") format("woff"),
+      url("/fonts/Inner-woff2/Inter-ExtraBold.woff2") format("woff2");
+    font-style: normal;
+    font-weight: 800;
+  }
+  @font-face {
+    font-family: "Inner";
+    src: url("/fonts/Inner-eot/Inter-Medium.eot") format("eot"),
+      url("/fonts/Inner-woff/Inter-Medium.woff") format("woff"),
+      url("/fonts/Inner-woff2/Inter-Medium.woff2") format("woff2");
+    font-style: normal;
+    font-weight: 500;
+  }
+  @font-face {
+    font-family: "Inner";
+    src: url("/fonts/Inner-eot/Inter-SemiBold.eot") format("eot"),
+      url("/fonts/Inner-woff/Inter-SemiBold.woff") format("woff"),
+      url("/fonts/Inner-woff2/Inter-SemiBold.woff2") format("woff2");
+    font-style: normal;
+    font-weight: 600;
+  }
+
+  @font-face {
+    font-family: "josefin";
+    src: url("/fonts/josefin/JosefinSans-SemiBold.woff") format("woff"),
+      url("/fonts/josefin/JosefinSans-SemiBold.woff2") format("woff2");
+    font-style: normal;
+    font-weight: 600;
+  }
+
+  @font-face {
+    font-family: "Metal";
+    src: url("/fonts/metal-mania/MetalMania-Regular.ttf") format("truetype");
+    font-style: normal;
+    font-weight: 400;
+  }
+}

@@ -3,6 +3,7 @@ module.exports = {
   content: [
     "./pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
+    "./node_modules/@nextui-org/theme/dist/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
     extend: {
@@ -49,7 +50,21 @@ module.exports = {
           950: '#2F3237',
         },
       },
+      fontFamily: {
+        'iransansNum': ['IRANSansXFaNum', 'sans-serif'],
+        'iransans': ['IranSans', 'sans-serif'],
+        'morabba': ['morabba', 'sans-serif'],
+        'Inner': ['Inner', 'sans-serif'],
+        'Metal': ['Metal', 'sans-serif'],
+        'josefin': ['josefin', 'sans-serif'],
+        sans: [
+          {
+            fontFeatureSettings: '"cv11", "ss01"',
+            fontVariationSettings: '"opsz" 32'
+          },
+        ],
+      },
     },
   },
-  plugins: [],
+  plugins: [require('daisyui'), require("@nextui-org/react")],
 };

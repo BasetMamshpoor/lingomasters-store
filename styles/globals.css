@@ -10,11 +10,34 @@
 body {
   color: var(--foreground);
   background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
 }
 
 @layer utilities {
   .text-balance {
     text-wrap: balance;
   }
+}
+@layer base {
+  input[type="number"]::-webkit-inner-spin-button,
+  input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+}
+.disable {
+  opacity: 0.7;
+  pointer-events: none;
+}
+.centerOfParent {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+svg {
+  width: 24px;
+  height: 24px;
+}
+input:focus,
+input:focus-within {
+  outline: none;
 }
