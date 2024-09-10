@@ -1,0 +1,47 @@
+import { Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, Button, useDisclosure } from "@nextui-org/react";
+import Image from "next/image";
+
+export default function Card() {
+    const { isOpen, onOpen, onOpenChange } = useDisclosure();
+
+    return (
+        <>
+            <div onClick={onOpen} className='centerOfParent relative cursor-pointer'>
+                <Image src='/images/video/1.jpg' width='0' height='0' sizes='100vw' className='w-full h-full object-contain' />
+            </div>
+            <Modal
+                backdrop="opaque"
+                size="5xl"
+                isOpen={isOpen}
+                onOpenChange={onOpenChange}
+                classNames={{
+                    backdrop: "bg-gradient-to-t from-zinc-900 to-zinc-900/10 backdrop-opacity-20"
+                }}
+            >
+                <ModalContent className='bg-white rounded-lg'>
+                    {(onClose) => (
+                        <>
+                            <ModalHeader />
+                            <ModalBody>
+                                <div className="w-full mx-auto mt-8">
+                                    <video
+                                        className="w-full h-auto rounded-lg shadow-lg"
+                                        controls
+                                        poster="/images/video/1.jpg">
+                                        <source src="/videos/sample-video.mp4" type="video/mp4" />
+                                        مرورگر شما از پخش این فیلم پشتیبانی نمیکند
+                                    </video>
+                                </div>
+                            </ModalBody>
+                            <ModalFooter dir='rtl'>
+                                <Button color="danger" variant="solid" onPress={onClose}>
+                                    بستن
+                                </Button>
+                            </ModalFooter>
+                        </>
+                    )}
+                </ModalContent>
+            </Modal>
+        </>
+    );
+}

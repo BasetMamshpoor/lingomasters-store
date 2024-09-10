@@ -6,6 +6,9 @@ module.exports = {
     "./node_modules/@nextui-org/theme/dist/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
+    container: {
+      center: true,
+    },
     extend: {
       colors: {
         background: "var(--background)",
@@ -66,5 +69,5 @@ module.exports = {
       },
     },
   },
-  plugins: [require('daisyui'), require("@nextui-org/react")],
+  plugins: [require("@nextui-org/react")],
 };

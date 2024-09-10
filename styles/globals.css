@@ -24,6 +24,16 @@ body {
     margin: 0;
   }
 }
+@media (prefers-color-scheme: dark) {
+  :root {
+    color-scheme: light !important;
+  }
+}
+@media (min-width: 1280px) {
+  .container {
+    max-width: 1280px !important;
+  }
+}
 .disable {
   opacity: 0.7;
   pointer-events: none;
@@ -40,4 +50,51 @@ svg {
 input:focus,
 input:focus-within {
   outline: none;
+}
+
+.custom-bullet {
+  width: 16px;
+  height: 16px;
+  background-color: #f8d98f;
+  border-radius: 50%;
+  margin: 0 8px;
+  transition: all 0.3s ease;
+}
+
+.custom-bullet-active {
+  background-color: #ea8616;
+  width: 52px;
+  border-radius: 10px;
+}
+
+.slider .swiper-button-next.swiper-button-disabled,
+.slider .swiper-button-prev.swiper-button-disabled {
+  display: none;
+}
+.slider .swiper-button-next,
+.slider .swiper-button-prev {
+  position: absolute;
+  top: 50%;
+  width: 50px;
+  height: 50px;
+  z-index: 20;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #DEEBFB;
+  border: 1px solid #6DA9ED;
+  border-radius: 50%;
+  transform: translateY(-50%);
+}
+.slider .swiper-button-next:after,
+.slider .swiper-button-prev:after {
+  font-size: 15px;
+  color: #6DA9ED;
+}
+@media (max-width: 1023.98px) {
+  .slider .swiper .swiper-button-next,
+  .slider .swiper .swiper-button-prev {
+    display: none;
+  }
 }
