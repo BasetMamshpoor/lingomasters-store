@@ -1,0 +1,285 @@
+{
+    "color": {
+        "title": "رنگ غالب",
+        "filter": [
+            {
+                "id": 50,
+                "title": "سفید"
+            },
+            {
+                "id": 51,
+                "title": "مشکی"
+            },
+            {
+                "id": 52,
+                "title": "سبز"
+            },
+            {
+                "id": 60,
+                "title": "قهوه ای"
+            },
+            {
+                "id": 64,
+                "title": "آبی"
+            },
+            {
+                "id": 65,
+                "title": "خاکستری"
+            },
+            {
+                "id": 70,
+                "title": "زرد"
+            },
+            {
+                "id": 71,
+                "title": "نارنجی"
+            },
+            {
+                "id": 89,
+                "title": "بنفش"
+            },
+            {
+                "id": 90,
+                "title": "قرمز"
+            },
+            {
+                "id": 161,
+                "title": "صورتی"
+            },
+            {
+                "id": 189,
+                "title": "چند رنگ"
+            },
+            {
+                "id": 208,
+                "title": "کرمی"
+            },
+            {
+                "id": 232,
+                "title": "عنابی"
+            },
+            {
+                "id": 275,
+                "title": "رنگ شرد"
+            },
+            {
+                "id": 276,
+                "title": "رنگ شولتی"
+            },
+            {
+                "id": 284,
+                "title": "ابی"
+            },
+            {
+                "id": 288,
+                "title": "چندرنگ"
+            },
+            {
+                "id": 301,
+                "title": "طلایی"
+            },
+            {
+                "id": 520,
+                "title": "حاکستری"
+            }
+        ]
+    },
+    "style": {
+        "title": "سبکها و جنبشها",
+        "filter": [
+            {
+                "id": 59,
+                "title": "لند آرت / Land Art"
+            },
+            {
+                "id": 69,
+                "title": "رودخانه هادسون / Hudson River"
+            },
+            {
+                "id": 88,
+                "title": "رنسانس متعالی / High Renaissance"
+            },
+            {
+                "id": 103,
+                "title": "اکسپرسیونیسم / Expressionism"
+            },
+            {
+                "id": 106,
+                "title": "امپرسیونیسم / Impressionism"
+            },
+            {
+                "id": 111,
+                "title": "هنر بدوی / Primitive Art"
+            },
+            {
+                "id": 112,
+                "title": "هنر پاپ / Pop Art"
+            },
+            {
+                "id": 117,
+                "title": "سمبولیسم / Symbolism"
+            },
+            {
+                "id": 124,
+                "title": "آکادمی هنرهای طراحی / Accademia delle Arti del Disegno"
+            },
+            {
+                "id": 125,
+                "title": "باروک / Baroque"
+            },
+            {
+                "id": 132,
+                "title": "گرافیتی / Graffiti"
+            },
+            {
+                "id": 139,
+                "title": "رمانتیک گرایی (رُمانتیسم) / Romanticism"
+            },
+            {
+                "id": 169,
+                "title": "نئو امپرسیونیسم / Neo-Impressionism"
+            },
+            {
+                "id": 182,
+                "title": "عینیت جدید / New Objectivity"
+            },
+            {
+                "id": 184,
+                "title": "رئالیسم / Realism"
+            },
+            {
+                "id": 192,
+                "title": "رنسانس متاخر / Mannerism (Late Renaissance)"
+            },
+            {
+                "id": 194,
+                "title": "هنر نوو / Art Nouveau"
+            },
+            {
+                "id": 199,
+                "title": "رئالیسم جدید / New Realism"
+            },
+            {
+                "id": 200,
+                "title": "رئالیسم اجتماعی / Social Realism"
+            },
+            {
+                "id": 204,
+                "title": "هنر ساده لوحانه / Naïve Art (Primitivism)"
+            },
+            {
+                "id": 205,
+                "title": "سوررئالیسم / Surrealism"
+            },
+            {
+                "id": 206,
+                "title": "کوبیسم / Cubism"
+            },
+            {
+                "id": 207,
+                "title": "هنر متافیزیکی / Metaphysical art"
+            },
+            {
+                "id": 209,
+                "title": "نئو باروک / Neo-baroque"
+            },
+            {
+                "id": 212,
+                "title": "دقت گرایی / Precisionism"
+            },
+            {
+                "id": 216,
+                "title": "در حال بررسی"
+            },
+            {
+                "id": 220,
+                "title": "رنسانس شمالی / Northern Renaissance"
+            },
+            {
+                "id": 228,
+                "title": "تونالیسم / Tonalism"
+            },
+            {
+                "id": 231,
+                "title": "هنر کنشی/ Action painting"
+            },
+            {
+                "id": 233,
+                "title": "آکادمیکیسم / Academicism"
+            },
+            {
+                "id": 234,
+                "title": "نئوکلاسیک / Neoclassicism"
+            },
+            {
+                "id": 235,
+                "title": "اوریانتالیسم / Orientalism"
+            },
+            {
+                "id": 241,
+                "title": "سوپره ماتیسم / Suprematism"
+            },
+            {
+                "id": 242,
+                "title": "رنسانس هارلم / Harlem Renaissance"
+            },
+            {
+                "id": 246,
+                "title": "نقاشی میدان رنگی / Color Field Painting"
+            },
+            {
+                "id": 247,
+                "title": "کلاسیسیسم/ Classicism"
+            },
+            {
+                "id": 250,
+                "title": "پست امپرسیونیسم / Post-Impressionism"
+            },
+            {
+                "id": 256,
+                "title": "هنر انتزاعی / Abstract Art"
+            },
+            {
+                "id": 258,
+                "title": "نئو پلاستیسیسم / Neoplasticism"
+            },
+            {
+                "id": 261,
+                "title": "ناتورالیسم / Naturalism"
+            },
+            {
+                "id": 271,
+                "title": "اکسپرسیونیسم انتزاعی / Abstract Expressionism"
+            },
+            {
+                "id": 277,
+                "title": "تست سبک"
+            },
+            {
+                "id": 279,
+                "title": "سبک تستی"
+            },
+            {
+                "id": 385,
+                "title": "رُمانتیسیسم / Romanticism"
+            }
+        ]
+    },
+    "shape": {
+        "title": "شکل تابلو",
+        "filter": [
+            {
+                "id": 1,
+                "title": "مربع"
+            },
+            {
+                "id": 2,
+                "title": "مستطیل افقی"
+            },
+            {
+                "id": 3,
+                "title": "مستطیل عمودی"
+            }
+        ]
+    }
+}

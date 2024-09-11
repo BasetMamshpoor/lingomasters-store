@@ -1,4 +1,6 @@
 /** @type {import('tailwindcss').Config} */
+const { nextui } = require("@nextui-org/react");
+
 module.exports = {
   content: [
     "./pages/**/*.{js,ts,jsx,tsx,mdx}",
@@ -13,19 +15,6 @@ module.exports = {
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
-        primary: {
-          50: '#F0F6FE',
-          100: '#DEEBFB',
-          200: '#C4DDF9',
-          300: '#9CC8F4',
-          400: '#6DA9ED',
-          500: '#4B89E6',
-          600: '#366CDA',
-          700: '#2D59C8',
-          800: '#2B49A2',
-          900: '#274181',
-          950: '#243464',
-        },
         secondary: {
           50: '#FEF8EC',
           100: '#FCEDC9',
@@ -69,5 +58,5 @@ module.exports = {
       },
     },
   },
-  plugins: [require("@nextui-org/react")],
+  plugins: [nextui()],
 };
