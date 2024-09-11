@@ -15,10 +15,10 @@ const ProductsList = () => {
                         <div className='col-span-3 bg-white'>
                             {/* {router.isReady && <Filters category={slug} router={router} />} */}
                         </div>
-                        <div className='flex flex-col col-span-9'>
-                            <div className='flex items-center'>
-                                <SortBy router={router} sort={router.query.sort} />
-                                <div className=""></div>
+                        <div className='flex flex-col col-span-9 gap-4'>
+                            <div className='flex items-center justify-between'>
+                                <div className=""> </div>
+                                <SortBy router={router} />
                             </div>
                             <Products category={slug} />
                         </div>

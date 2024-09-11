@@ -22,7 +22,7 @@ export default function RangeSlider({ filters, handleFilter }) {
             handleFilter('min', [{ name: min.toString() }])
             handleFilter('max', [{ name: max.toString() }])
 
-        }            
+        }
     }, [min, max]);
 
     const formatCurrency = (value) => {
@@ -68,11 +68,16 @@ export default function RangeSlider({ filters, handleFilter }) {
                     maxValue={maxSliderValue}
                     value={values}
                     onChange={setValues}
-                    className="max-w-md [&>.relative.flex.gap-2.items-center>div]:h-1"
-                    style={{
-                        "--nextui-primary": "196 94% 25%",
-                        "--background": "#035477",
+                    classNames={{
+                        base: "max-w-md",
+                        track: "h-1",
+                        filler: "bg-[#035477]"
                     }}
+                    renderThumb={({ index, ...props }) => (
+                        <div {...props} className="p-0.5 top-1/2 bg-[#035477] rounded-full cursor-grab" >
+                            <span className='block rounded-full w-2 h-2' />
+                        </div>
+                    )}
                 />
                 <div className="flex items-center gap-2 px-1">
                     <div className="flex items-center gap-2">
