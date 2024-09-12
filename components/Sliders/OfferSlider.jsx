@@ -31,7 +31,7 @@ const Slider = () => {
                             <Swiper
                                 modules={[Navigation, Pagination, A11y]}
                                 navigation
-                                spaceBetween={0}
+                                spaceBetween={10}
                                 centeredSlides={false}
                                 breakpoints={{
                                     0: {

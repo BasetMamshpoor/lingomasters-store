@@ -1,23 +1,33 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { Dropdown, DropdownTrigger, DropdownMenu, DropdownItem } from "@nextui-org/react";
+import sortBy from './sort.json'
 
 import Sort from '@icons/sort.svg'
 import Down from '@icons/solid-arrow-down.svg'
+import { useRouter } from 'next/router';
 
-const SortBy = ({ router, }) => {
-    const { slug, ...Query } = router.query
+const SortBy = () => {
+    const router = useRouter()
+    const { slug, sort, ...Query } = router.query
 
     const [isOpen, setIsOpen] = useState(false)
     const [selectedKeys, setSelectedKeys] = useState('جدیدترین');
+
+    useEffect(() => {
+        if (sort) {
+            const query = sortBy.sort.find(s => s.key === sort)?.title
+            setSelectedKeys(query)
+        }
+    }, [sort])
 
 
     return (
         <>
             <Dropdown onOpenChange={setIsOpen} dir='rtl'>
                 <DropdownTrigger className='cursor-pointer'>
-                    <div className='flex items-center text-primary-950'>
-                        <span className='centerOfParent'><Sort /></span>
+                    <div className='flex items-center text-primary-950 gap-1 whitespace-nowrap'>
+                        <span className='centerOfParent ml-1'><Sort /></span>
                         ترتیب : {selectedKeys}
                         <span className={`centerOfParent duration-300 ${isOpen ? 'rotate-180' : ''}`}><Down /></span>
                     </div>
@@ -29,50 +39,19 @@ const SortBy = ({ router, }) => {
                     onAction={setSelectedKeys}
                     className='[&>ul>li>.text-inherit>svg]:w-4 [&>ul>li>.text-inherit>svg]:h-4'
                 >
-                    <DropdownItem key="جدیدترین">
-                        <div className="">
-                            <Link href={{
-                                pathname: router.asPath.split('?')[0],
-                                query: { ...Query, sort: 'newest' },
-                            }}
-                                passHref
-                                shallow
-                                replace>جدیدترین</Link>
-                        </div>
-                    </DropdownItem>
-                    <DropdownItem key="پرفروش">
-                        <div className="">
-                            <Link href={{
-                                pathname: router.asPath.split('?')[0],
-                                query: { ...Query, sort: 'bestselling' },
-                            }}
-                                passHref
-                                shallow
-                                replace>پرفروش‌ترین‌</Link>
-                        </div>
-                    </DropdownItem>
-                    <DropdownItem key="گرانترین">
-                        <div className="">
-                            <Link href={{
-                                pathname: router.asPath.split('?')[0],
-                                query: { ...Query, sort: 'max' },
-                            }}
-                                passHref
-                                shallow
-                                replace>گرانترین</Link>
-                        </div>
-                    </DropdownItem>
-                    <DropdownItem key="ارزانترین">
-                        <div className="">
-                            <Link href={{
-                                pathname: router.asPath.split('?')[0],
-                                query: { ...Query, sort: 'min' },
-                            }}
-                                passHref
-                                shallow
-                                replace>ارزانترین</Link>
-                        </div>
-                    </DropdownItem>
+                    {sortBy.sort.map(s => {
+                        return (
+                            <DropdownItem key={s.title} textValue={s.title}>
+                                <Link href={{
+                                    pathname: router.asPath.split('?')[0],
+                                    query: { ...Query, sort: s.key },
+                                }} className='w-full block'
+                                    passHref
+                                    shallow
+                                    replace>{s.title}</Link>
+                            </DropdownItem>
+                        )
+                    })}
                 </DropdownMenu>
             </Dropdown >
         </>

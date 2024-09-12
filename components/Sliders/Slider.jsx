@@ -21,7 +21,7 @@ const Slider = ({ title, icon}) => {
                     <div className="w-full relative slider">
                         <Swiper
                             modules={[Navigation]}
-                            spaceBetween={0}
+                            spaceBetween={10}
                             slidesPerView={1.2} // Start with 1.5 slides for mobile
                             centeredSlides={false}
                             loop={true}

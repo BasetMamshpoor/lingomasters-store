@@ -2,13 +2,17 @@ import Dropdown from 'components/Dropdown/DropDown';
 import useGetRequest from 'hooks/useGetRequest';
 import React, { useEffect, useState, useCallback } from 'react';
 import filterData from './filter.json'
+import RangeSlider from './Range';
+import { Checkbox, CheckboxGroup, Radio, RadioGroup } from '@nextui-org/react';
+import { useRouter } from "next/router";
 
 import FilterIcon from '@icons/filter.svg';
 import Search from '@icons/search.svg';
-import RangeSlider from './Range';
 
 
-const Filters = ({ category, router }) => {
+const Filters = () => {
+    const router = useRouter()
+    const { slug: category, sort } = router.query
 
     const readUrl = () => {
         let object = {};
@@ -97,14 +101,32 @@ const Filters = ({ category, router }) => {
     return (
         <>
             {!!data ?
-                <div className='flex flex-col gap-3 border border-natural_gray-100 rounded-xl bg-white py-6 px-4'>
-                    <div className='flex items-center gap-4 py-3'>
+                <div className='flex flex-col gap-3 lg:border border-natural_gray-100 rounded-xl bg-white lg:py-6 pb-6 lg:px-4' dir='rtl'>
+                    <div className='lg:flex hidden items-center gap-4 py-3'>
                         <div className="centerOfParent"><FilterIcon /></div>
                         <p className='text-lg font-semibold'>فیلتر ها</p>
                     </div>
                     <div className="relative px-3 py-2 pr-10 border border-r-natural_gray-300 rounded-md">
                         <input type="text" className='w-full' placeholder='جستوجو' />
                         <div className="absolute top-1/2 -translate-y-1/2 right-2 bg-white centerOfParent"><Search /></div>
+                    </div>
+                    <div className="flex flex-col gap-3">
+                        <label className='font-semibold'>دسته بندی</label>
+                        <CheckboxGroup
+                            aria-label=" "
+                            orientation="horizontal"
+                            defaultValue={["buenos-aires"]}
+                            style={{
+                                "--nextui-primary": "196 94% 25%",
+                            }}
+                        >
+                            <Checkbox name='category' value="buenos-aires">چاپی</Checkbox>
+                            <Checkbox name='category' value="sydney">صوتی</Checkbox>
+                            <Checkbox name='category' value="san-francisco">ویدیویی</Checkbox>
+                            <Checkbox name='category' value="buenos-aires">چاپی</Checkbox>
+                            <Checkbox name='category' value="sydney">صوتی</Checkbox>
+                            <Checkbox name='category' value="san-francisco">ویدیویی</Checkbox>
+                        </CheckboxGroup>
                     </div>
                     <div className="flex flex-col gap-4">
                         {Filtering(data).map(f => {
@@ -115,6 +137,21 @@ const Filters = ({ category, router }) => {
                                     className='!px-3 !py-2 border border-gray-400 rounded-lg bg-white' />
                             )
                         })}
+                    </div>
+                    <div className="flex flex-col gap-3">
+                        <label className='font-semibold'>گروه سنی</label>
+                        <RadioGroup
+                            aria-label=" "
+                            orientation="horizontal"
+                            defaultValue="child"
+                            style={{
+                                "--nextui-primary": "196 94% 25%",
+                            }}
+                        >
+                            <Radio value="child">کودک</Radio>
+                            <Radio value="teen">نوجوان</Radio>
+                            <Radio value="adult">بزرگسال</Radio>
+                        </RadioGroup>
                     </div>
                     <div className='px-3 py-5'>
                         <div className='flex items-center justify-between'>

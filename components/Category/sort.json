@@ -1,0 +1,24 @@
+{
+    "sort": [
+        {
+            "id": 1,
+            "title": "جدیدترین",
+            "key": "newest"
+        },
+        {
+            "id": 2,
+            "title": "پرفروش‌ترین",
+            "key": "bestselling"
+        },
+        {
+            "id": 3,
+            "title": "گرانترین",
+            "key": "expensive"
+        },
+        {
+            "id": 3,
+            "title": "ارزانترین",
+            "key": "cheapest"
+        }
+    ]
+}
