@@ -1,6 +1,10 @@
-<svg width="33" height="32" viewBox="0 0 33 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M29.8327 22.3189V6.22562C29.8327 4.62562 28.526 3.43895 26.9393 3.57228H26.8593C24.0593 3.81228 19.806 5.23895 17.4327 6.73228L17.206 6.87895C16.8193 7.11895 16.1793 7.11895 15.7927 6.87895L15.4593 6.67895C13.086 5.19895 8.84601 3.78562 6.04602 3.55895C4.45935 3.42562 3.16602 4.62562 3.16602 6.21228V22.3189C3.16602 23.5989 4.20602 24.7989 5.48602 24.9589L5.87268 25.0123C8.76602 25.3989 13.2327 26.8656 15.7927 28.2656L15.846 28.2923C16.206 28.4923 16.7793 28.4923 17.126 28.2923C19.686 26.8789 24.166 25.3989 27.0727 25.0123L27.5127 24.9589C28.7927 24.7989 29.8327 23.5989 29.8327 22.3189Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M16.5 7.32031V27.3203" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M10.834 11.3203H7.83398" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M11.834 15.3203H7.83398" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+	<g id="vuesax/linear/book">
+		<g id="book">
+			<path id="Vector" d="M18.3337 13.9501V3.89174C18.3337 2.89174 17.517 2.15008 16.5253 2.23341H16.4753C14.7253 2.38341 12.067 3.27508 10.5837 4.20841L10.442 4.30008C10.2003 4.45008 9.80033 4.45008 9.55866 4.30008L9.35033 4.17508C7.86699 3.25008 5.21699 2.36674 3.46699 2.22508C2.47533 2.14174 1.66699 2.89174 1.66699 3.88341V13.9501C1.66699 14.7501 2.31699 15.5001 3.11699 15.6001L3.35866 15.6334C5.16699 15.8751 7.95866 16.7917 9.55866 17.6667L9.59199 17.6834C9.81699 17.8084 10.1753 17.8084 10.392 17.6834C11.992 16.8001 14.792 15.8751 16.6087 15.6334L16.8837 15.6001C17.6837 15.5001 18.3337 14.7501 18.3337 13.9501Z" stroke="#243464" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+			<path id="Vector_2" d="M10 4.57422V17.0742" stroke="#243464" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+			<path id="Vector_3" d="M6.45801 7.07422H4.58301" stroke="#243464" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+			<path id="Vector_4" d="M7.08301 9.57422H4.58301" stroke="#243464" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+		</g>
+	</g>
 </svg>

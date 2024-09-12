@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { Slider } from "@nextui-org/react";
 import { useDebounce } from "@/hooks/useDebounce";
+import formatCurrency from "@/helpers/formatCurrency";
 
 export default function RangeSlider({ filters, handleFilter }) {
 
@@ -24,14 +25,6 @@ export default function RangeSlider({ filters, handleFilter }) {
 
         }
     }, [min, max]);
-
-    const formatCurrency = (value) => {
-        return new Intl.NumberFormat('en-US', {
-            style: 'currency',
-            currency: 'IRR',
-            maximumFractionDigits: 0,
-        }).format(value).replace("IRR", "");
-    };
 
     // Handle input change for min value
     const handleMinChange = (e) => {
@@ -86,7 +79,7 @@ export default function RangeSlider({ filters, handleFilter }) {
                             type="text"
                             value={formatCurrency(values[0])}
                             onChange={handleMinChange}
-                            className="border rounded-md text-center w-28"
+                            className="border rounded-md text-center w-full"
                         />
                     </div>
 
@@ -96,7 +89,7 @@ export default function RangeSlider({ filters, handleFilter }) {
                             type="text"
                             value={formatCurrency(values[1])}
                             onChange={handleMaxChange}
-                            className="border rounded-md text-center w-28"
+                            className="border rounded-md text-center w-full"
                         />
                     </div>
                 </div>

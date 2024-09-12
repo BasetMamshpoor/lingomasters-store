@@ -4,7 +4,6 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css/navigation'
 import 'swiper/css';
 import Link from 'next/link';
-import addComma from '@/helpers/addComma';
 import Image from 'next/image';
 import Card from '../Card';
 
@@ -23,7 +22,7 @@ const Slider = () => {
                             </div>
                             <div className="w-full sm:px-8 px-4 flex items-center sm:py-4 pt-5 justify-between lg:flex-col gap-1 text-white lg:h-48">
                                 <p className='sm:text-2xl text-sm'>پیشنهاد لینگومسترز</p>
-                                <Link href={`/`} className='flex items-center gap-2 sm:text-xl text-sm'>مشاهده همه <span><Left className='sm:w-6 sm:h-6 w-4 h-4' /></span></Link>
+                                <Link href={`/`} className='flex items-center gap-2 sm:text-xl text-sm'>مشاهده همه <span><Left className='sm:w-6 sm:h-6 w-4 h-4 fill-white' /></span></Link>
                             </div>
                         </div>
 

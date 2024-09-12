@@ -1,5 +1,5 @@
 import Icon from '@icons/category.svg';
-import Book from '@icons/book.svg';
+import Book from '@icons/book-white.svg';
 import Link from 'next/link';
 
 const Categories = () => {

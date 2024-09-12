@@ -6,8 +6,8 @@ import Cart from '@icons/cart.svg';
 import English from '@icons/Flags/Country=United Kingdom, Style=Flag, Radius=On.svg';
 
 
-import addComma from "@/helpers/addComma";
 import Link from "next/link";
+import formatCurrency from "@/helpers/formatCurrency";
 
 const Card = ({ withLabel = true, solid = false, offRed = false }) => {
     return (
@@ -32,10 +32,10 @@ const Card = ({ withLabel = true, solid = false, offRed = false }) => {
                     <div className="self-start" dir='rtl'>
                         <div className="flex items-center gap-4">
                             <span className='py-[2px] px-3 rounded-lg bg-red-50 text-red-600 sm:text-lg text-xs inline-block'>20%</span>
-                            <del className={`${offRed ? 'text-red-300' : 'text-natural_gray-400 '} sm:text-base text-xs`}>{addComma(250000)} <span className='text-sm'>تومان</span></del>
+                            <del className={`${offRed ? 'text-red-300' : 'text-natural_gray-400 '} sm:text-base text-xs`}>{formatCurrency(250000)} <span className='text-sm'>تومان</span></del>
                         </div>
                         <div className="text-left">
-                            <p className='text-primary-700 sm:text-2xl text-xs'>{addComma(250000)} <span className='text-sm'>تومان</span></p>
+                            <p className='text-primary-700 sm:text-2xl text-xs'>{formatCurrency(250000)} <span className='text-sm'>تومان</span></p>
                         </div>
                     </div>
                     <div className="flex items-center sm:gap-6 gap-4 sm:max-w-64 max-w-52 w-full">
