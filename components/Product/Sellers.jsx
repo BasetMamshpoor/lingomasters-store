@@ -11,7 +11,7 @@ const Sellers = () => {
             <div className="p-6 flex flex-col gap-6 bg-white rounded-lg border-natural_gray-100 border scroll-m-2" id='seller'>
                 <div className="centerOfParent gap-2 w-fit">
                     <div className="centerOfParent"><SellerIcon className='w-5 h-5'/></div>
-                    <span>فروشندگان</span>
+                    <span className='text-primary-950'>فروشندگان</span>
                 </div>
                 <ul className="flex flex-col gap-8">
                     {[...Array(8)].map((_, i) => {

@@ -1,7 +1,11 @@
 import AboutBook from "@/components/Product/AboutBook";
+import Comments from "@/components/Product/Comments";
+import Description from "@/components/Product/Description";
+import Examples from "@/components/Product/Examples";
 import Hero from "@/components/Product/Hero";
 import Sellers from "@/components/Product/Sellers";
 import Tabs from "@/components/Product/Tabs";
+import Video from "@/components/Product/Video";
 
 const Product = () => {
     return (
@@ -14,6 +18,10 @@ const Product = () => {
                         <Tabs />
                         <Sellers />
                         <AboutBook />
+                        <Description />
+                        <Examples />
+                        <Video />
+                        <Comments />
                     </div>
                 </div>
             </main>

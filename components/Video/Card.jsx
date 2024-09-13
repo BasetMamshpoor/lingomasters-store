@@ -1,13 +1,13 @@
 import { Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, Button, useDisclosure } from "@nextui-org/react";
 import Image from "next/image";
 
-export default function Card() {
+export default function Card({ bgSrc, className }) {
     const { isOpen, onOpen, onOpenChange } = useDisclosure();
 
     return (
         <>
-            <div onClick={onOpen} className='centerOfParent relative cursor-pointer'>
-                <Image src='/images/video/1.jpg' width='0' height='0' sizes='100vw' className='w-full h-full object-contain' />
+            <div onClick={onOpen} className={`centerOfParent relative cursor-pointer ${className}`}>
+                <Image src={bgSrc} width='0' height='0' sizes='100vw' className='w-full h-full object-contain' />
             </div>
             <Modal
                 backdrop="opaque"
@@ -27,7 +27,7 @@ export default function Card() {
                                     <video
                                         className="w-full h-auto rounded-lg shadow-lg"
                                         controls
-                                        poster="/images/video/1.jpg">
+                                        poster={bgSrc}>
                                         <source src="/videos/sample-video.mp4" type="video/mp4" />
                                         مرورگر شما از پخش این فیلم پشتیبانی نمیکند
                                     </video>

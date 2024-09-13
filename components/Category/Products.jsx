@@ -1,6 +1,6 @@
 import Card from '../Card';
-import Pagination from '../Pagination/Pagination';
 import { useRouter } from "next/router";
+import PaginationApp from '../Pagination';
 
 const Products = () => {
     const router = useRouter()
@@ -11,7 +11,7 @@ const Products = () => {
                 {[...Array(30)].map((_, i) => <Card key={i} />)}
             </div>
             <div className="centerOfParent">
-                <Pagination />
+                <PaginationApp />
             </div>
         </>
     );

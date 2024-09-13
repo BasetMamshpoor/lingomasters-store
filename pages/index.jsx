@@ -18,8 +18,8 @@ export default function Page() {
         <OfferSlider />
         <Slider title='پکیج های آموزشی' icon={<Book className='sm:w-10 sm:h-10' />} />
         <div className="container grid sm:grid-cols-2 gap-6 my-12">
-          <Card />
-          <Card />
+          <Card bgSrc='/images/video/1.jpg' />
+          <Card bgSrc='/images/video/1.jpg' />
         </div>
         <Slider title="جدید ترین ها" icon={<New className='sm:w-10 sm:h-10' />} />
         <div className="max-w-[1280px] w-full mx-auto grid sm:grid-cols-2 items-center gap-6 my-12">

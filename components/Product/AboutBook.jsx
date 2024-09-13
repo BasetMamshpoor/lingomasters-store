@@ -12,7 +12,7 @@ const AboutBook = () => {
             <div className="p-6 flex flex-col gap-6 bg-white rounded-lg border-natural_gray-100 border scroll-m-2" id='about'>
                 <div className="centerOfParent gap-2 w-fit">
                     <div className="centerOfParent"><Book className='w-5 h-5' /></div>
-                    <span>درباره کتاب</span>
+                    <span className='text-primary-950'>درباره کتاب</span>
                 </div>
                 <div className="flex justify-between">
                     <ul className="flex flex-col gap-4">
