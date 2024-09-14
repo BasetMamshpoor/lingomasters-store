@@ -1,4 +1,5 @@
 import AboutBook from "@/components/Product/AboutBook";
+import Banner from "@/components/Product/Banner";
 import Comments from "@/components/Product/Comments";
 import Description from "@/components/Product/Description";
 import Examples from "@/components/Product/Examples";
@@ -12,9 +13,11 @@ const Product = () => {
         <>
             <main dir='rtl'>
                 <Hero />
-                <div className="container px-10 grid lg:grid-cols-4 grid-cols-1 gap-6">
-                    <div className="lg:col-span-1"></div>
-                    <div className="flex flex-col gap-10 lg:col-span-3">
+                <div className="container px-10 grid lg:grid-cols-6 grid-cols-1 gap-6">
+                    <div className="lg:col-span-2">
+                        <Banner />
+                    </div>
+                    <div className="flex flex-col gap-10 lg:col-span-4">
                         <Tabs />
                         <Sellers />
                         <AboutBook />

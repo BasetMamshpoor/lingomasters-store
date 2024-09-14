@@ -22,18 +22,18 @@ const Sellers = () => {
                             <div className="flex-[176px_0_0]">
                                 {(i < 2 ?
                                     <div className='flex items-center gap-2 h-10 mx-auto py-1 px-2 border border-natural_gray-300 rounded justify-between w-fit'>
-                                        <button className="centerOfParent bg-none border-0" onClick={() => dispatch({ type: 'INCREASE', payload: paint })}>
+                                        <button type='button' className="centerOfParent bg-none border-0" onClick={() => dispatch({ type: 'INCREASE', payload: paint })}>
                                             <Plus className="cursor-pointer w-4 h-4" />
                                         </button>
                                         <span className='centerOfParent text-natural_gray-800'>{1}</span>
-                                        <button className='centerOfParent bg-none border-0'>
+                                        <button type='button' className='centerOfParent bg-none border-0'>
                                             {1 < 2 ?
                                                 <Minus className="cursor-pointer w-4 h-4" onClick={() => dispatch({ type: "REMOVE_ITEM", payload: paint })} /> :
                                                 <Minus className="cursor-pointer w-4 h-4" onClick={() => dispatch({ type: "DECREASE", payload: paint })} />
                                             }
                                         </button>
                                     </div>
-                                    : <button onClick={() => dispatch({ type: "ADD_ITEM", payload: paint })} disabled={false}
+                                    : <button type='button' onClick={() => dispatch({ type: "ADD_ITEM", payload: paint })} disabled={false}
                                         className="disabled:opacity-50 bg-primary-600 p-2 text-sm text-white rounded centerOfParent gap-2">
                                         <Cart />
                                         <span>افزودن به سبد خرید</span>
