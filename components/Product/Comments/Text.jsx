@@ -16,29 +16,29 @@ const Text = () => {
         <>
             <div className="flex flex-col gap-10">
                 <div className="flex flex-col gap-6">
-                    <p className="text-primary-950 font-semibold text-sm self-start">نظرات خود را ثبت کنید.</p>
+                    <p className="text-primary-950 font-semibold sm:text-sm text-xs self-start">نظرات خود را ثبت کنید.</p>
                     <form className="flex flex-col gap-8">
                         <div className="flex flex-col gap-4 items-stretch">
-                            <div className="flex items-center gap-4 *:flex-[1_0_0]">
+                            <div className="flex sm:flex-row flex-col sm:items-center items-stretch gap-4 *:flex-[1_0_0]">
                                 <div className="flex flex-col items-start gap-2">
-                                    <label className="text-sm text-natural_gray-950 mr-2" htmlFor="">نام<span className="text-red-500 mr-1">*</span></label>
+                                    <label className="sm:text-sm text-xs text-natural_gray-950 mr-2" htmlFor="">نام<span className="text-red-500 mr-1">*</span></label>
                                     <Input isRequired radius="sm" variant="bordered" name="name" placeholder="نام" className="self-stretch" />
                                 </div>
                                 <div className="flex flex-col items-start gap-2">
-                                    <label className="text-sm text-natural_gray-950 mr-2" htmlFor="">ایمیل<span className="text-red-500 mr-1">*</span></label>
+                                    <label className="sm:text-sm text-xs text-natural_gray-950 mr-2" htmlFor="">ایمیل<span className="text-red-500 mr-1">*</span></label>
                                     <Input isRequired radius="sm" variant="bordered" type="email" name="email" placeholder="ایمیل" className="self-stretch" />
                                 </div>
                             </div>
                             <div className="flex flex-col items-start gap-2">
-                                <label className="text-sm text-natural_gray-950 mr-2" htmlFor="">توضیحات<span className="text-red-500 mr-1">*</span></label>
+                                <label className="sm:text-sm text-xs text-natural_gray-950 mr-2" htmlFor="">توضیحات<span className="text-red-500 mr-1">*</span></label>
                                 <Textarea minRows={5} radius="sm" maxRows={10} variant="bordered" className="self-stretch" placeholder="توضیحات">توضیحات</Textarea>
                             </div>
                         </div>
-                        <button className="py-4 px-6 rounded text-white bg-primary-600 w-[140px] self-end">ارسال</button>
+                        <button className="sm:py-4 py-2 sm:px-6 px-4 sm:text-base text-xs rounded text-white bg-primary-600 sm:w-[140px] sm:h-fit h-9 w-full self-end">ارسال</button>
                     </form>
                 </div>
                 <div className="flex flex-col gap-6">
-                    <p className="text-primary-950 font-semibold text-sm self-start">نظرات کاربران</p>
+                    <p className="text-primary-950 font-semibold sm:text-sm text-xs self-start">نظرات کاربران</p>
                     <div className="flex flex-col gap-6">
                         <ul className="flex flex-col gap-4 items-stretch">
                             {[...Array(10)].map((_, i) => {
@@ -46,18 +46,18 @@ const Text = () => {
                                     <div className="flex items-center gap-3">
                                         <div className="centerOfParent rounded-full w-10 h-10"><Image src='/images/avatar.jpg' width='0' height='0' sizes="100vw" className="w-full h-full object-cover" /></div>
                                         <div className="flex flex-col items-start gap-3">
-                                            <p className="text-xs text-primary-950">علی اسدی</p>
-                                            <p className="text-xs text-primary-950">استادی بسیار عالی و ارزشمند</p>
+                                            <p className="sm:text-xs text-[10px] text-primary-950">علی اسدی</p>
+                                            <p className="sm:text-xs text-[8px] text-primary-950">استادی بسیار عالی و ارزشمند</p>
                                         </div>
                                     </div>
                                     <div className="flex items-center gap-4">
                                         <div className="flex items-center gap-1">
                                             <span className="text-primary-950 text-[8px]">24</span>
-                                            <div className="centerOfParent"><Dislike /></div>
+                                            <div className="centerOfParent"><Dislike className='sm:w-6 sm:h-6 w-4 h-4' /></div>
                                         </div>
                                         <div className="flex items-center gap-1">
                                             <span className="text-primary-950 text-[8px]">24</span>
-                                            <div className="centerOfParent"><Like /></div>
+                                            <div className="centerOfParent"><Like className='sm:w-6 sm:h-6 w-4 h-4' /></div>
                                         </div>
                                     </div>
                                 </li>

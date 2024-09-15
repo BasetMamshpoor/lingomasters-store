@@ -13,7 +13,7 @@ const Product = () => {
         <>
             <main dir='rtl'>
                 <Hero />
-                <div className="container px-10 grid lg:grid-cols-6 grid-cols-1 gap-6">
+                <div className="container sm:px-10 grid lg:grid-cols-6 grid-cols-1 gap-6">
                     <div className="lg:col-span-2">
                         <Banner />
                     </div>

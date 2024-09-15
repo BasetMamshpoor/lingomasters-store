@@ -15,7 +15,7 @@ export default function PaginationApp() {
         if (value === PaginationItemType.NEXT) {
             return (
                 <button key={key} className={`sm:!w-8 !w-6 sm:!h-8 !h-6 ${className}`} onClick={onNext}>
-                    <ChevronIcon />
+                    <ChevronIcon className='fill-[#EA8616]' />
                 </button>
             );
         }
@@ -23,7 +23,7 @@ export default function PaginationApp() {
         if (value === PaginationItemType.PREV) {
             return (
                 <button key={key} className={`sm:!w-8 !w-6 sm:!h-8 !h-6 ${className}`} onClick={onPrevious}>
-                    <ChevronIcon className="rotate-180" />
+                    <ChevronIcon className="fill-[#EA8616] rotate-180" />
                 </button>
             );
         }

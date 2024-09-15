@@ -6,19 +6,39 @@ import Plus from '@icons/plus.svg';
 import Share from '@icons/share.svg'
 import Heart from '@icons/heart.svg'
 import Star from '@icons/magic-star.svg'
+import Right from '@icons/chevron-right.svg'
 import FillHeart from '@icons/fill-heart.svg'
 import Flag from '@icons/Flags/Country=United States of America, Style=Flag, Radius=On.svg'
 
 import Image from 'next/image';
 import Link from 'next/link';
+import { BreadcrumbItem, Breadcrumbs } from '@nextui-org/react';
 
 
 
 const Banner = () => {
     return (
         <>
+            <div className="lg:hidden flex flex-col">
+                <div className="py-3">
+                    <Breadcrumbs
+                        separator='/'
+                        classNames={{ list: 'last:[&>li>span]:text-primary-950 [&>li]:text-natural_gray-600' }}
+                        itemClasses={{
+                            separator: "px-2 text-natural_gray-600"
+                        }}>
+                        <BreadcrumbItem className='[&>span]:sm:text-base [&>span]:text-xs [&>a]:sm:text-base [&>a]:text-xs' href="/">صفحه اصلی</BreadcrumbItem>
+                        <BreadcrumbItem className='[&>span]:sm:text-base [&>span]:text-xs [&>a]:sm:text-base [&>a]:text-xs' href="/category/printed">کتاب های چاپی</BreadcrumbItem>
+                        <BreadcrumbItem className='[&>span]:sm:text-base [&>span]:text-xs [&>a]:sm:text-base [&>a]:text-xs'>کتاب طلسم مکالمه</BreadcrumbItem>
+                    </Breadcrumbs>
+                </div>
+                <div className="py-3 flex items-center gap-2 cursor-pointer">
+                    <div className="centerOfParent"><Right className='fill-primary-600' /></div>
+                    <span className='sm:text-base text-sm font-semibold'>بازگشت</span>
+                </div>
+            </div>
             <div className="flex flex-col items-stretch gap-9">
-                <div className="flex flex-col gap-10 p-4 bg-white border border-neutral-100 rounded-lg">
+                <div className="flex flex-col gap-10 sm:p-4 px-3 py-4 bg-white border border-neutral-100 rounded-lg">
                     <div className="flex flex-col gap-2">
                         <div className="flex items-center lg:justify-end justify-between">
                             <div className="lg:hidden flex items-center gap-6">
@@ -26,7 +46,7 @@ const Banner = () => {
                                 <Share />
                             </div>
                             <Link href='' className="flex items-center gap-1 self-end">
-                                <span className='text-primary-700'>۵ فروشنده دیگر</span>
+                                <span className='sm:text-base text-sm text-primary-700'>۵ فروشنده دیگر</span>
                                 <div className="centerOfParent"><Left className='w-4 h-4 fill-primary-700' /></div>
                             </Link>
                         </div>
@@ -40,7 +60,7 @@ const Banner = () => {
                                     className='w-full h-full object-contain' />
                             </div>
                             <div className="centerOfParent flex-col gap-1 w-full">
-                                <h1 className='text-xl font-semibold'>کتاب طلسم مکالمه</h1>
+                                <h1 className='sm:text-xl text-base font-semibold'>کتاب طلسم مکالمه</h1>
                                 <p className='text-natural_gray-600 text-xs'>(کد کتاب: 587848)</p>
                                 <div className="centerOfParent"><Flag /></div>
                                 <div className="flex items-center gap-1">
@@ -52,17 +72,17 @@ const Banner = () => {
                                 </div>
                             </div>
                             <div className="flex flex-col items-stretch gap-3">
-                                <div className="h-[30px] flex items-center justify-between bg-natural_gray-50 px-3">
-                                    <span className=' text-natural_gray-900 text-xs'>تعداد جلد</span>
-                                    <span className='text-sm'>پکیج ۵ تایی</span>
+                                <div className="h-8 flex items-center justify-between bg-natural_gray-50 px-3">
+                                    <span className='text-natural_gray-900 sm:text-xs text-[10px]'>تعداد جلد</span>
+                                    <span className='sm:text-sm text-xs'>پکیج ۵ تایی</span>
                                 </div>
-                                <div className="h-[30px] flex items-center justify-between bg-natural_gray-50 px-3">
-                                    <span className='text-natural_gray-900 text-xs'>تخفیف</span>
-                                    <span className='text-red-500 text-sm'>۵۰٪ تخفیف</span>
+                                <div className="h-8 flex items-center justify-between bg-natural_gray-50 px-3">
+                                    <span className='text-natural_gray-900 sm:text-xs text-[10px]'>تخفیف</span>
+                                    <span className='text-red-500 sm:text-sm text-xs'>۵۰٪ تخفیف</span>
                                 </div>
-                                <div className="h-[60px] flex items-center justify-between bg-natural_gray-50 px-3">
-                                    <span className='text-natural_gray-900 text-xs'>خرید از سعید اسدی</span>
-                                    <span className='text-green-500 text-sm'>۲۰۰.۰۰۰ تومان</span>
+                                <div className="sm:h-[60px] h-8 flex items-center justify-between bg-natural_gray-50 px-3">
+                                    <span className='text-natural_gray-900 sm:text-xs text-[10px]'>خرید از سعید اسدی</span>
+                                    <span className='text-green-500 sm:text-sm text-xs'>۲۰۰.۰۰۰ تومان</span>
                                 </div>
                             </div>
                         </div>
@@ -73,7 +93,7 @@ const Banner = () => {
                                 <button type='button' className="centerOfParent bg-none border-0" onClick={() => dispatch({ type: 'INCREASE', payload: paint })}>
                                     <Plus className="cursor-pointer w-4 h-4" />
                                 </button>
-                                <span className='centerOfParent text-natural_gray-800'>{1}</span>
+                                <span className='sm:text-base text-sm centerOfParent text-natural_gray-800'>{1}</span>
                                 <button type='button' className='centerOfParent bg-none border-0'>
                                     {1 < 2 ?
                                         <Minus className="cursor-pointer w-4 h-4" onClick={() => dispatch({ type: "REMOVE_ITEM", payload: paint })} /> :
@@ -83,20 +103,20 @@ const Banner = () => {
                             </div>
                             : <button type='button' onClick={() => dispatch({ type: "ADD_ITEM", payload: paint })} disabled={false}
                                 className="disabled:opacity-50 bg-primary-600 p-2 text-sm text-white rounded centerOfParent gap-2 ">
-                                <Cart />
-                                <span>افزودن به سبد خرید</span>
+                                <Cart className='sm:w-6 sm:h-6 w-4 h-4' />
+                                <span className='sm:text-base text-xs'>افزودن به سبد خرید</span>
                             </button>)
                         }
                     </div>
                 </div>
                 <div className="centerOfParent gap-20 p-4 bg-white border border-neutral-100 rounded-lg">
                     <div className="flex flex-col gap-4">
-                        <span className="text-natural_gray-950 text-sm">ارزان‌ترین قیمت</span>
-                        <span className="text-green-600 text-sm">23.000.000 تومان</span>
+                        <span className="text-natural_gray-950 sm:text-sm text-xs">ارزان‌ترین قیمت</span>
+                        <span className="text-green-600 sm:text-sm text-xs">23.000.000 تومان</span>
                     </div>
                     <div className="flex flex-col gap-4">
-                        <span className="text-natural_gray-950 text-sm">گران‌ترین قیمت</span>
-                        <span className="text-red-600 text-sm">23.000.000 تومان</span>
+                        <span className="text-natural_gray-950 sm:text-sm text-xs">گران‌ترین قیمت</span>
+                        <span className="text-red-600 sm:text-sm text-xs">23.000.000 تومان</span>
                     </div>
                 </div>
             </div>

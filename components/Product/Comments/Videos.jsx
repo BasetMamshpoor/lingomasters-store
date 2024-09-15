@@ -1,5 +1,4 @@
 import { useState } from "react";
-import Image from "next/image";
 import Pagination from "@/components/Pagination";
 import dynamic from "next/dynamic";
 const VideoRecorder = dynamic(() => import('./VideoRecorder'), { ssr: false });
@@ -19,13 +18,13 @@ const Videos = () => {
         <>
             <div className="flex flex-col gap-10">
                 <div className="flex flex-col gap-6">
-                    <p className="text-primary-950 font-semibold text-sm self-start">ویدیو خود را آپلود کنید.</p>
-                    <p className="text-warning text-sm self-start">نکته: لطفا به هنگام ضبط ویدیو، گوشی خود را به صورتی افقی روی پایه ثابتبگذارید و همچنین نور کافی و پس زمینه مناسب باشد.</p>
+                    <p className="text-primary-950 font-semibold sm:text-sm text-xs self-start">ویدیو خود را آپلود کنید.</p>
+                    <p className="text-warning sm:text-sm text-xs text-right">نکته: لطفا به هنگام ضبط ویدیو، گوشی خود را به صورتی افقی روی پایه ثابتبگذارید و همچنین نور کافی و پس زمینه مناسب باشد.</p>
                     <form className="flex flex-col gap-8">
                         <div className="flex items-center gap-6">
                             <VideoRecorder />
                         </div>
-                        <button className="py-4 px-6 rounded text-white bg-primary-600 w-[140px] self-end">ارسال</button>
+                        <button className="sm:py-4 py-2 sm:px-6 px-4 sm:text-base text-xs rounded text-white bg-primary-600 sm:w-[140px] sm:h-fit h-9 w-full self-end">ارسال</button>
                     </form>
                 </div>
                 <div className="flex flex-col gap-6">
@@ -36,16 +35,16 @@ const Videos = () => {
                                 if (i < (showMore ? 10 : 5)) return <li className="flex items-center justify-between gap-3" key={i}>
                                     <div className="flex items-center gap-3">
                                         <div className="centerOfParent rounded-full w-40 h-auto"><Card bgSrc={'/images/video/bg.jfif'} /></div>
-                                        <p className="text-xs text-primary-950">علی اسدی</p>
+                                        <p className="sm:text-xs text-[10px] text-primary-950">علی اسدی</p>
                                     </div>
                                     <div className="flex items-center gap-4">
                                         <div className="flex items-center gap-1">
                                             <span className="text-primary-950 text-[8px]">24</span>
-                                            <div className="centerOfParent"><Dislike /></div>
+                                            <div className="centerOfParent"><Dislike className='sm:w-6 sm:h-6 w-4 h-4' /></div>
                                         </div>
                                         <div className="flex items-center gap-1">
                                             <span className="text-primary-950 text-[8px]">24</span>
-                                            <div className="centerOfParent"><Like /></div>
+                                            <div className="centerOfParent"><Like className='sm:w-6 sm:h-6 w-4 h-4' /></div>
                                         </div>
                                     </div>
                                 </li>

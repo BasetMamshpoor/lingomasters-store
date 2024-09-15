@@ -12,10 +12,10 @@ import Videos from './Videos';
 const Comments = () => {
     return (
         <>
-            <div className="p-6 flex flex-col gap-6 bg-white rounded-lg border-natural_gray-100 border scroll-m-2" id='comments'>
+            <div className="sm:p-6 px-3 py-4 flex flex-col gap-6 bg-white rounded-lg border-natural_gray-100 border scroll-m-2" id='comments'>
                 <div className="centerOfParent gap-2 w-fit">
                     <div className="centerOfParent"><Chats className='w-5 h-5' /></div>
-                    <span className='text-primary-950'>نظرات</span>
+                    <span className='sm:text-base text-sm text-primary-950'>نظرات</span>
                 </div>
                 <div className="flex flex-col gap-3">
                     <Tabs aria-label="Options"
@@ -29,8 +29,8 @@ const Comments = () => {
                         <Tab key="text"
                             title={
                                 <div className="flex items-center gap-2">
-                                    <User className='fill-natural_gray-400' />
-                                    <span className='text-natural_gray-900'>متنی</span>
+                                    <User className='sm:w-6 sm:h-6 w-5 h-5 fill-natural_gray-400' />
+                                    <span className='sm:text-base text-sm text-natural_gray-900'>متنی</span>
                                 </div>
                             }>
                             <Card className='shadow-none'>
@@ -40,8 +40,8 @@ const Comments = () => {
                         <Tab key="audio"
                             title={
                                 <div className="flex items-center gap-2">
-                                    <Mic className='fill-natural_gray-400' />
-                                    <span className='text-natural_gray-900'>صوتی</span>
+                                    <Mic className='sm:w-6 sm:h-6 w-5 h-5 fill-natural_gray-400' />
+                                    <span className='sm:text-base text-sm text-natural_gray-900'>صوتی</span>
                                 </div>
                             }>
                             <Card className='shadow-none'>
@@ -51,8 +51,8 @@ const Comments = () => {
                         <Tab key="video"
                             title={
                                 <div className="flex items-center gap-2">
-                                    <Video className='fill-natural_gray-400' />
-                                    <span className='text-natural_gray-900'>ویدیویی</span>
+                                    <Video className='sm:w-6 sm:h-6 w-5 h-5 fill-natural_gray-400' />
+                                    <span className='sm:text-base text-sm text-natural_gray-900'>ویدیویی</span>
                                 </div>
                             }>
                             <Card className='shadow-none'>
