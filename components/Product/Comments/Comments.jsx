@@ -21,9 +21,9 @@ const Comments = () => {
                     <Tabs aria-label="Options"
                         variant='underlined'
                         classNames={{
-                            tabList: "gap-6 relative",
+                            tabList: "sm:gap-6 relative",
                             cursor: "w-full bg-natural_gray-950 h-px",
-                            tab: "max-w-fit px-4 h-12",
+                            tab: "max-w-fit sm:px-4 h-12",
                             tabContent: "group-data-[selected=true]:[&>div>span]:text-natural_gray-950 group-data-[selected=true]:[&>div>svg]:fill-natural_gray-950"
                         }}>
                         <Tab key="text"

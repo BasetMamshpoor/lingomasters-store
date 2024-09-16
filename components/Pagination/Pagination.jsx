@@ -29,7 +29,7 @@ export default function PaginationApp() {
         }
 
         if (value === PaginationItemType.DOTS) {
-            return <button key={key} className={className}>...</button>;
+            return <button key={key} className={`sm:!w-8 !w-6 sm:!h-8 !h-6`}>...</button>;
         }
 
         // cursor is the default item
@@ -51,7 +51,7 @@ export default function PaginationApp() {
             showControls
             total={10}
             initialPage={1}
-            className="[&>ul]:gap-3 [&>ul]:flex-row-reverse"
+            className="sm:[&>ul]:gap-3 [&>ul]:flex-row-reverse"
             radius="full"
             renderItem={renderItem}
             variant="light"
