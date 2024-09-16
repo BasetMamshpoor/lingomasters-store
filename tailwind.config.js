@@ -1,5 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 const { nextui } = require("@nextui-org/react");
+const defaultTheme = require('tailwindcss/defaultTheme')
 
 module.exports = {
   content: [
@@ -68,6 +69,10 @@ module.exports = {
             fontVariationSettings: '"opsz" 32'
           },
         ],
+      },
+      screens: {
+        'xs': '475px',
+        ...defaultTheme.screens,
       },
     },
   },
