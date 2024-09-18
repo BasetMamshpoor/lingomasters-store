@@ -51,8 +51,8 @@ export default function RangeSlider({ filters, handleFilter }) {
             <label className='font-semibold'>مبلغ</label>
             <div className="flex flex-col items-center justify-center gap-4">
                 <div className="flex items-center justify-between w-full">
-                    <span>{formatCurrency(maxSliderValue)} <span className='text-xs'>تومان</span></span>
-                    <span>{formatCurrency(minSliderValue)} <span className='text-xs'>تومان</span></span>
+                    <span className="hasToman">{formatCurrency(maxSliderValue)}</span>
+                    <span className="hasToman">{formatCurrency(minSliderValue)}</span>
                 </div>
                 <Slider
                     aria-label=' '

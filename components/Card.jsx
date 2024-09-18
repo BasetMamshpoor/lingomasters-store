@@ -29,14 +29,12 @@ const Card = ({ withLabel = true, solid = false, offRed = false }) => {
                     <div className="flex items-center self-end">
                         <span className="sm:px-3 px-2.5 sm:py-1 py-0 sm:text-base text-[10px] centerOfParent h-8 rounded-[20px] bg-primary-100 text-primary-950 font-semibold">چاپی</span>
                     </div>
-                    <div className="self-start" dir='rtl'>
+                    <div className="w-full flex flex-col items-end" dir='rtl'>
                         <div className="flex items-center gap-4">
                             <span className='py-[2px] px-3 rounded-lg bg-red-50 text-red-600 sm:text-lg text-xs inline-block'>20%</span>
-                            <del className={`${offRed ? 'text-red-300' : 'text-natural_gray-400 '} sm:text-base text-xs`}>{formatCurrency(250000)} <span className='text-sm'>تومان</span></del>
+                            <del className={`${offRed ? 'text-red-300' : 'text-natural_gray-400 '} sm:text-base text-xs hasToman`}>{formatCurrency(250000)}</del>
                         </div>
-                        <div className="text-left">
-                            <p className='text-primary-700 sm:text-2xl text-xs'>{formatCurrency(250000)} <span className='text-sm'>تومان</span></p>
-                        </div>
+                        <p className='text-primary-700 sm:text-2xl text-xs hasToman'>{formatCurrency(250000)}</p>
                     </div>
                     <div className="flex items-center sm:gap-6 gap-4 sm:max-w-64 max-w-52 w-full">
                         <button className="centerOfParent bg-primary-500 p-4 sm:w-[60px] w-11 sm:h-12 h-8 rounded-md"><Cart /></button>

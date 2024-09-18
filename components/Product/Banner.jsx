@@ -13,6 +13,7 @@ import Flag from '@icons/Flags/Country=United States of America, Style=Flag, Rad
 import Image from 'next/image';
 import Link from 'next/link';
 import { BreadcrumbItem, Breadcrumbs } from '@nextui-org/react';
+import formatCurrency from '@/helpers/formatCurrency';
 
 
 
@@ -82,7 +83,7 @@ const Banner = () => {
                                 </div>
                                 <div className="sm:h-[60px] h-8 flex items-center justify-between bg-natural_gray-50 px-3">
                                     <span className='text-natural_gray-900 sm:text-xs text-[10px]'>خرید از سعید اسدی</span>
-                                    <span className='text-green-500 sm:text-sm text-xs'>۲۰۰.۰۰۰ تومان</span>
+                                    <span className='text-green-500 sm:text-sm text-xs hasToman'>{formatCurrency(250000)}</span>
                                 </div>
                             </div>
                         </div>
@@ -112,11 +113,11 @@ const Banner = () => {
                 <div className="centerOfParent gap-20 p-4 bg-white border border-neutral-100 rounded-lg">
                     <div className="flex flex-col gap-4">
                         <span className="text-natural_gray-950 sm:text-sm text-xs">ارزان‌ترین قیمت</span>
-                        <span className="text-green-600 sm:text-sm text-xs">23.000.000 تومان</span>
+                        <span className="text-green-600 sm:text-sm text-xs hasToman">{formatCurrency(23054032)}</span>
                     </div>
                     <div className="flex flex-col gap-4">
                         <span className="text-natural_gray-950 sm:text-sm text-xs">گران‌ترین قیمت</span>
-                        <span className="text-red-600 sm:text-sm text-xs">23.000.000 تومان</span>
+                        <span className="text-red-600 sm:text-sm text-xs hasToman">{formatCurrency(23054032)}</span>
                     </div>
                 </div>
             </div>

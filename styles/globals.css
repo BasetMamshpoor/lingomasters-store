@@ -82,19 +82,30 @@ input:focus-within {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: #DEEBFB;
-  border: 1px solid #6DA9ED;
+  background: #deebfb;
+  border: 1px solid #6da9ed;
   border-radius: 50%;
   transform: translateY(-50%);
 }
 .slider .swiper-button-next:after,
 .slider .swiper-button-prev:after {
   font-size: 15px;
-  color: #6DA9ED;
+  color: #6da9ed;
 }
 @media (max-width: 1023.98px) {
   .slider .swiper .swiper-button-next,
   .slider .swiper .swiper-button-prev {
     display: none;
   }
+}
+
+.hasToman {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+.hasToman::after {
+  content: "تومان";
+  font-size: 10px;
+  font-weight: 700;
 }

@@ -13,7 +13,7 @@ const Banner = ({ withTag = true }) => {
                         {withTag && <span className="lg:px-3 px-2.5 lg:py-1 py-0 lg:text-base text-[10px] centerOfParent h-8 rounded-[20px] bg-natural_gray-200 text-natural_gray-950 font-semibold">صوتی</span>}
                     </div>
                     <div className="text-center grow">
-                        <p className='text-green-600 lg:text-2xl text-xs'>{formatCurrency(250000)} <span className='text-sm'>تومان</span></p>
+                        <p className='text-green-600 lg:text-2xl text-xs hasToman'>{formatCurrency(250000)}</p>
                     </div>
                     <button className='lg:h-12 h-8 w-full bg-primary-600 rounded lg:text-base text-xs centerOfParent gap-1 text-white lg:p-4 p-2 pr-3'><Cart /> افزودن به سبد خرید</button>
                 </div>

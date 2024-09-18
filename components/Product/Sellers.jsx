@@ -18,7 +18,7 @@ const Sellers = () => {
                         return <li className='flex items-center justify-between gap-1' key={i}>
                             <span className='sm:text-base text-[10px] text-primary-950 line-clamp-1'>سعید اسدی</span>
                             <span className='sm:text-base text-[10px] text-natural_gray-950'>ارسال امروز</span>
-                            <span className='sm:text-base text-[10px] text-green-600'>{formatCurrency(2000000)} تومان</span>
+                            <span className='sm:text-base text-[10px] text-green-600 hasToman'>{formatCurrency(2000000)}</span>
                             <div className="sm:flex-[176px_0_0] flex-[0_0_80px]">
                                 {(i < 2 ?
                                     <div className='flex items-center gap-2 h-10 mx-auto py-1 px-2 border border-natural_gray-300 rounded justify-between w-fit'>
