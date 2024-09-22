@@ -2,6 +2,7 @@ import Spin from "@icons/loader.svg";
 import Header from "@/components/Checkout/Header";
 import formatCurrency from "@/helpers/formatCurrency";
 import Address from "@/components/Checkout/Address";
+import SendDownloadLink from "@/components/Checkout/SendDownloadLink";
 
 
 const Shipping = () => {
@@ -12,8 +13,9 @@ const Shipping = () => {
                 <div className="container flex flex-col gap-20">
                     <Header page='سبد خرید' active={2} />
                     <div className="grid lg:grid-cols-8 grid-cols-1 lg:gap-6 gap-y-4">
-                        <div className="col-span-6 p-6 border border-natural_gray-100 rounded-lg bg-white">
+                        <div className="col-span-6 flex flex-col gap-8 p-6 border border-natural_gray-100 rounded-lg bg-white">
                             <Address />
+                            <SendDownloadLink />
                         </div>
                         <div className="col-span-2">
                             <div className="flex flex-col gap-10 p-4 h-fit border border-natural_gray-100 rounded-lg bg-white">

@@ -10,7 +10,7 @@ import Image from "next/image";
 import Link from "next/link";
 import formatCurrency from "@/helpers/formatCurrency";
 
-const Products = ({ items = [1, 2, 3, 5, 4, 5, 6, 7, 8] }) => {
+const Products = ({ items = [1, 2, 3,] }) => {
     return (
         <>
             {items.length ? items.map((p, i) => {

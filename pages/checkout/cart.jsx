@@ -20,6 +20,11 @@ const Cart = () => {
                             <div className="flex flex-col gap-6 items-stretch">
                                 <Products />
                             </div>
+                            <div className="flex flex-col gap-4">
+                                <p className="font-semibold">دانلودی ها</p>
+                                <hr className="border-2" />
+                                <div className="flex flex-col gap-6 items-stretch"><Products /></div>
+                            </div>
                         </div>
                         <div className="col-span-2">
                             <div className="flex flex-col gap-10 p-4 h-fit border border-natural_gray-100 rounded-lg bg-white">
