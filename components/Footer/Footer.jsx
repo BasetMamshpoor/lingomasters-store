@@ -2,12 +2,21 @@ import Reurn from '@icons/return.svg'
 import Protection from '@icons/protection.svg'
 import OnlineShopping from '@icons/online-shopping.svg'
 import Delivery from '@icons/delivery.svg'
+import X from '@icons/x.svg'
+import Telegram from '@icons/telegram.svg'
+import Instagram from '@icons/instagram.svg'
+import Youtube from '@icons/youtube.svg'
+import Aparat from '@icons/aparat.svg'
+import Tiktok from '@icons/tik_tok.svg'
+import Whatsapp from '@icons/whatsapp.svg'
+import Pinterest from '@icons/pinterest.svg'
+import Facebook from '@icons/facebook.svg'
 
 const Footer = () => {
     return (
         <>
-            <div className="relative">
-                <div className="container">
+            <div className="relative mt-40" dir='rtl'>
+                <div className="container absolute left-1/2 lg:bottom-[85%] sm:bottom-[82%] bottom-[91%] -translate-x-1/2">
                     <div className="grid lg:grid-cols-4 grid-cols-2 sm:gap-10 gap-2 sm:p-6 p-3 rounded-lg bg-primary-100" dir='rtl'>
                         <div className="py-3 px-4 flex items-center gap-4 bg-white rounded-2xl">
                             <div className="centerOfParent"><Delivery /></div>
@@ -40,6 +49,60 @@ const Footer = () => {
                             </div>
                         </div>
 
+                    </div>
+                </div>
+                <div className="">
+                    <div className="flex flex-col items-center gap-20 lg:pt-[120px] sm:pt-[140px] pt-[120px] pb-10 bg-[linear-gradient(90deg,_#B5C7DF_0%,_#E8EFF8_100%)]">
+                        <div className="container px-2">
+                            <div className="flex flex-col items-center sm:gap-20 gap-4">
+                                <div className="flex lg:flex-row flex-col items-center sm:gap-10 gap-4 w-full">
+                                    <div className="flex flex-col gap-6 lg:max-w-[411px] w-full">
+                                        <p className="font-Metal sm:text-3xl">LINGOMASTERS</p>
+                                        <p className="text-natural_gray-950 sm:text-sm text-xs">
+                                            در قسمت فروشگاهی لینگومسترز ما کتاب های زبان می فروشیم و به یادگیری شما در زبان های مختلف کمک می کنیم .<br />
+                                            همچنین شما می توانید در این قسمت کتاب های زبان خود را بفروش برسانید</p>
+                                    </div>
+                                    <div className="grow flex sm:flex-row flex-col w-full justify-between sm:items-center sm:gap-1 sm:text-sm text-xs text-natural_gray-900">
+                                        <div className="flex flex-col sm:gap-6 gap-2">
+                                            <a href="">صفحه اصلی</a>
+                                            <a href="">پشتیبانی</a>
+                                            <a href="">درباره ما</a>
+                                            <a href="">تماس با ما</a>
+                                        </div>
+                                        <div className="flex flex-col sm:gap-6 gap-2">
+                                            <a href="">قوانین و مقررات</a>
+                                            <a href="">اخبار و اطلاعیه ها</a>
+                                            <a href="">سوالات متداول خریداران</a>
+                                            <a href="">سوالات متداول فروشندگان</a>
+                                        </div>
+                                        <div className="flex flex-col sm:gap-6 gap-2">
+                                            <a href="">سبد خرید</a>
+                                            <a href="">پیگیری سفارش</a>
+                                            <a href="">فروشنده شوید</a>
+                                            <a href="">ورود و ثبت نام</a>
+                                        </div>
+                                        <div className="flex items-center justify-between sm:gap-6 gap-2 sm:mt-0 mt-10">
+                                            <a href=""><img src="/images/image 9.png" className='mix-blend-multiply' alt="" /></a>
+                                            <a href="" className='sm:hidden'><img src="/images/etehadie.png" className='mix-blend-multiply' alt="" /></a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="centerOfParent sm:gap-4 gap-2">
+                                    <a href="" ><X /></a>
+                                    <a href="" ><Telegram /></a>
+                                    <a href="" ><Instagram /></a>
+                                    <a href="" ><Youtube /></a>
+                                    <a href="" ><Aparat /></a>
+                                    <a href="" ><Tiktok /></a>
+                                    <a href="" ><Whatsapp /></a>
+                                    <a href="" ><Pinterest /></a>
+                                    <a href="" ><Facebook /></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="flex items-center justify-center py-5 bg-[linear-gradient(90deg,_#366CDA_0%,_rgba(106,_135,_193,_0.80)_100%)]">
+                        <p className='text-white sm:text-base text-xs'>تمامی حقوق این وبسایت متعلق به لینگومسترز می باشد.</p>
                     </div>
                 </div>
             </div>
