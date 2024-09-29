@@ -57,7 +57,7 @@ const Footer = () => {
                             <div className="flex flex-col items-center sm:gap-20 gap-4">
                                 <div className="flex lg:flex-row flex-col items-center sm:gap-10 gap-4 w-full">
                                     <div className="flex flex-col gap-6 lg:max-w-[411px] w-full">
-                                        <p className="font-Metal sm:text-3xl">LINGOMASTERS</p>
+                                        <p className="font-Metal sm:text-3xl">{process.env.NEXT_PUBLIC_LOGO}</p>
                                         <p className="text-natural_gray-950 sm:text-sm text-xs">
                                             در قسمت فروشگاهی لینگومسترز ما کتاب های زبان می فروشیم و به یادگیری شما در زبان های مختلف کمک می کنیم .<br />
                                             همچنین شما می توانید در این قسمت کتاب های زبان خود را بفروش برسانید</p>

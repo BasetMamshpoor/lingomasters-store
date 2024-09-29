@@ -108,7 +108,7 @@ const Filters = () => {
                     </div>
                     <div className="relative px-3 py-2 pr-10 border border-r-natural_gray-300 rounded-md">
                         <input type="text" className='w-full' placeholder='جستوجو' />
-                        <div className="absolute top-1/2 -translate-y-1/2 right-2 bg-white centerOfParent"><Search /></div>
+                        <div className="absolute top-1/2 -translate-y-1/2 right-2 bg-white centerOfParent"><Search className='fill-natural_gray-600' /></div>
                     </div>
                     <div className="flex flex-col gap-3">
                         <label className='font-semibold'>دسته بندی</label>

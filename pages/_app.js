@@ -12,7 +12,7 @@ export default function App({ Component, pageProps }) {
     <>
       <NextUIProvider>
         <div style={{ maxWidth: '1440px', margin: '0 auto' }}>
-          {/* <Header /> */}
+          <Header />
           <Component {...pageProps} />
           <Footer />
         </div>

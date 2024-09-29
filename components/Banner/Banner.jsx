@@ -15,7 +15,7 @@ const Banner = ({ withTag = true }) => {
                     <div className="text-center grow">
                         <p className='text-green-600 lg:text-2xl text-xs hasToman'>{formatCurrency(250000)}</p>
                     </div>
-                    <button className='lg:h-12 h-8 w-full bg-primary-600 rounded lg:text-base text-xs centerOfParent gap-1 text-white lg:p-4 p-2 pr-3'><Cart /> افزودن به سبد خرید</button>
+                    <button className='lg:h-12 h-8 w-full bg-primary-600 rounded lg:text-base text-xs centerOfParent gap-1 text-white lg:p-4 p-2 pr-3'><Cart className='fill-white'/> افزودن به سبد خرید</button>
                 </div>
                 <div className="centerOfParent sm:grow flex-shrink-0 lg:w-[302px] lg:h-[300px] sm:w-[165px] w-[156] h-[168px]">
                     <img src='/images/banner.jpg' className='flex-shrink-0 w-full h-full object-contain' />

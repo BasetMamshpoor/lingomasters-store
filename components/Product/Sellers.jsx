@@ -35,7 +35,7 @@ const Sellers = () => {
                                     </div>
                                     : <button type='button' onClick={() => dispatch({ type: "ADD_ITEM", payload: paint })} disabled={false}
                                         className="disabled:opacity-50 bg-primary-600 p-2 text-sm text-white rounded centerOfParent gap-2 mx-auto">
-                                        <Cart />
+                                        <Cart className='fill-white' />
                                         <span className='sm:inline-block hidden'>افزودن به سبد خرید</span>
                                     </button>)
                                 }

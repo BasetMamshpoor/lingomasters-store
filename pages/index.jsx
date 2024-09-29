@@ -8,20 +8,11 @@ import Stuff from '@icons/online-learning.svg';
 import New from '@icons/new.svg';
 import MostSell from '@icons/best-seller.svg';
 import Banner from "@/components/Banner";
-import Link from "next/link";
 
 export default function Page() {
   return (
     <>
-      <div className="min-h-screen">
-        <div className="flex items-center gap-4 my-10">
-          <Link href='/category/printed'>دسته بندی</Link>
-          <Link href='/product/1'>دیتیل محصول</Link>
-          <Link href='/rules'>قوانین</Link>
-          <Link href='/faq'>سوالات</Link>
-          <Link href='/checkout/cart'>سبد خرید</Link>
-          <Link href='/checkout/shipping'>آدرس دهی</Link>
-        </div>
+      <div>
         <Carousel />
         <Categories />
         <OfferSlider />

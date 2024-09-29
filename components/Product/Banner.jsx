@@ -104,7 +104,7 @@ const Banner = () => {
                             </div>
                             : <button type='button' onClick={() => dispatch({ type: "ADD_ITEM", payload: paint })} disabled={false}
                                 className="disabled:opacity-50 bg-primary-600 p-2 text-sm text-white rounded centerOfParent gap-2 ">
-                                <Cart className='sm:w-6 sm:h-6 w-4 h-4' />
+                                <Cart className='sm:w-6 sm:h-6 w-4 h-4 fill-white' />
                                 <span className='sm:text-base text-xs'>افزودن به سبد خرید</span>
                             </button>)
                         }
