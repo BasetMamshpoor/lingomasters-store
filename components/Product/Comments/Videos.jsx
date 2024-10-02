@@ -8,13 +8,13 @@ import Like from '@icons/like.svg'
 import Dislike from '@icons/dislike.svg'
 import Down from '@icons/arrow-down.svg'
 import Card from "@/components/Video/Card";
+import useGetRequest from "@/hooks/useGetRequest";
 
 const Videos = () => {
     const [showMore, setShowMore] = useState(false)
+    const [comments] = useGetRequest('/video-comments')
 
     return (
-
-
         <>
             <div className="flex flex-col gap-10">
                 <div className="flex flex-col gap-6">
@@ -31,10 +31,10 @@ const Videos = () => {
                     <p className="text-primary-950 font-semibold text-sm self-start">نظرات کاربران</p>
                     <div className="flex flex-col gap-6">
                         <ul className="flex flex-col gap-4 items-stretch">
-                            {[...Array(10)].map((_, i) => {
+                            {comments?.map((v, i) => {
                                 if (i < (showMore ? 10 : 5)) return <li className="flex items-center justify-between gap-3" key={i}>
                                     <div className="flex items-center gap-3">
-                                        <div className="centerOfParent rounded-full w-40 h-auto"><Card bgSrc={'/images/video/bg.jfif'} /></div>
+                                        <div className="centerOfParent rounded-full w-40 h-auto"><Card movie={v.video_path} bgSrc={'/images/video/bg.jfif'} /></div>
                                         <p className="sm:text-xs text-[10px] text-primary-950">علی اسدی</p>
                                     </div>
                                     <div className="flex items-center gap-4">

@@ -1,7 +1,7 @@
 import { Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, Button, useDisclosure } from "@nextui-org/react";
 import Image from "next/image";
 
-export default function Card({ bgSrc, className }) {
+export default function Card({ bgSrc, className, movie }) {
     const { isOpen, onOpen, onOpenChange } = useDisclosure();
 
     return (
@@ -28,7 +28,7 @@ export default function Card({ bgSrc, className }) {
                                         className="w-full h-auto rounded-lg shadow-lg"
                                         controls
                                         poster={bgSrc}>
-                                        <source src="/videos/sample-video.mp4" type="video/mp4" />
+                                        <source src={'api.lingomasters.ir/' + movie} type="video/mp4" />
                                         مرورگر شما از پخش این فیلم پشتیبانی نمیکند
                                     </video>
                                 </div>

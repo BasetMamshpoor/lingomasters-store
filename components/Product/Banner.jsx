@@ -17,7 +17,10 @@ import formatCurrency from '@/helpers/formatCurrency';
 
 
 
-const Banner = () => {
+const Banner = ({ product = {} }) => {
+
+    const { title, rate, id, language, is_like, category, seller, subject, age_group, page_number, product_type_id, price,off_percent } = product
+
     return (
         <>
             <div className="lg:hidden flex flex-col">
@@ -30,7 +33,7 @@ const Banner = () => {
                         }}>
                         <BreadcrumbItem className='[&>span]:sm:text-base [&>span]:text-xs [&>a]:sm:text-base [&>a]:text-xs' href="/">صفحه اصلی</BreadcrumbItem>
                         <BreadcrumbItem className='[&>span]:sm:text-base [&>span]:text-xs [&>a]:sm:text-base [&>a]:text-xs' href="/category/printed">کتاب های چاپی</BreadcrumbItem>
-                        <BreadcrumbItem className='[&>span]:sm:text-base [&>span]:text-xs [&>a]:sm:text-base [&>a]:text-xs'>کتاب طلسم مکالمه</BreadcrumbItem>
+                        <BreadcrumbItem className='[&>span]:sm:text-base [&>span]:text-xs [&>a]:sm:text-base [&>a]:text-xs'>{title}</BreadcrumbItem>
                     </Breadcrumbs>
                 </div>
                 <div className="py-3 flex items-center gap-2 cursor-pointer">
@@ -61,8 +64,8 @@ const Banner = () => {
                                     className='w-full h-full object-contain' />
                             </div>
                             <div className="centerOfParent flex-col gap-1 w-full">
-                                <h1 className='sm:text-xl text-base font-semibold'>کتاب طلسم مکالمه</h1>
-                                <p className='text-natural_gray-600 text-xs'>(کد کتاب: 587848)</p>
+                                <h1 className='sm:text-xl text-base font-semibold'>{title}</h1>
+                                <p className='text-natural_gray-600 text-xs'>(کد کتاب: {id})</p>
                                 <div className="centerOfParent"><Flag /></div>
                                 <div className="flex items-center gap-1">
                                     <div className="centerOfParent"><Star className='w-5 h-5 fill-warning' /></div>
@@ -79,11 +82,11 @@ const Banner = () => {
                                 </div>
                                 <div className="h-8 flex items-center justify-between bg-natural_gray-50 px-3">
                                     <span className='text-natural_gray-900 sm:text-xs text-[10px]'>تخفیف</span>
-                                    <span className='text-red-500 sm:text-sm text-xs'>۵۰٪ تخفیف</span>
+                                    <span className='text-red-500 sm:text-sm text-xs'>{off_percent} تخفیف</span>
                                 </div>
                                 <div className="sm:h-[60px] h-8 flex items-center justify-between bg-natural_gray-50 px-3">
-                                    <span className='text-natural_gray-900 sm:text-xs text-[10px]'>خرید از سعید اسدی</span>
-                                    <span className='text-green-500 sm:text-sm text-xs hasToman'>{formatCurrency(250000)}</span>
+                                    <span className='text-natural_gray-900 sm:text-xs text-[10px]'>خرید از {seller?.name}</span>
+                                    <span className='text-green-500 sm:text-sm text-xs hasToman'>{formatCurrency(price)}</span>
                                 </div>
                             </div>
                         </div>

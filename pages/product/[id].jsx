@@ -7,15 +7,19 @@ import Hero from "@/components/Product/Hero";
 import Sellers from "@/components/Product/Sellers";
 import Tabs from "@/components/Product/Tabs";
 import Video from "@/components/Product/Video";
+import useGetRequest from "@/hooks/useGetRequest";
 
 const Product = () => {
+
+    const [product] = useGetRequest('/product/show/18')
+
     return (
         <>
             <main dir='rtl'>
-                <Hero />
+                <Hero product={product}/>
                 <div className="container sm:px-10 grid lg:grid-cols-6 grid-cols-1 gap-6">
                     <div className="lg:col-span-2">
-                        <Banner />
+                        <Banner product={product}/>
                     </div>
                     <div className="flex flex-col gap-10 lg:col-span-4">
                         <Tabs />

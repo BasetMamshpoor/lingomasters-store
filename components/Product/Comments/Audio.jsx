@@ -8,9 +8,12 @@ const AudioRecorder = dynamic(() => import('./VoiceRecorder'), { ssr: false });
 import Like from '@icons/like.svg'
 import Dislike from '@icons/dislike.svg'
 import Down from '@icons/arrow-down.svg'
+import useGetRequest from "@/hooks/useGetRequest";
 
 const Audio = () => {
     const [showMore, setShowMore] = useState(false)
+    const [comments] = useGetRequest('/audio-comments')
+
 
     return (
 
@@ -30,13 +33,13 @@ const Audio = () => {
                     <p className="text-primary-950 font-semibold text-sm self-start">نظرات کاربران</p>
                     <div className="flex flex-col gap-6">
                         <ul className="flex flex-col gap-4 items-stretch">
-                            {[...Array(10)].map((_, i) => {
+                            {comments?.map((a, i) => {
                                 if (i < (showMore ? 10 : 5)) return <li className="flex items-center justify-between gap-3" key={i}>
                                     <div className="flex items-center gap-3">
                                         <div className="centerOfParent rounded-full w-10 h-10"><Image src='/images/avatar.jpg' width='0' height='0' sizes="100vw" className="w-full h-full object-cover" /></div>
                                         <div className="flex flex-col items-start gap-3">
                                             <p className="sm:text-xs text-[10px] text-primary-950">علی اسدی</p>
-                                            
+                                            <audio controls src={'api.lingomasters.ir/' + a.audio_path}></audio>
                                         </div>
                                     </div>
                                     <div className="flex items-center gap-4">
