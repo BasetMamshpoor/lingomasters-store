@@ -19,14 +19,14 @@ const VideoPreview = ({ stream }) => {
     return <video ref={videoRef} className='w-full h-full' autoPlay />
 };
 
-
-const VideoRecorder = () => {
+const VideoRecorder = ({ setRecordedBlob }) => {
     const { isOpen, onOpen, onOpenChange } = useDisclosure();
     return (
         <div className="flex flex-col w-full">
             <div className="relative w-full flex flex-col gap-4">
                 <ReactMediaRecorder
                     video
+                    onStop={(blobUrl, blob) => setRecordedBlob(blob)}
                     render={({ startRecording, stopRecording, mediaBlobUrl, status, previewStream }) => {
                         return (
                             <>

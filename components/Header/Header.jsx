@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Dropdown, DropdownTrigger, DropdownMenu, DropdownItem, Input } from "@nextui-org/react";
 import Link from "next/link";
 import Cart from '@icons/cart.svg'
@@ -9,61 +10,127 @@ import Seller from '@icons/seller.svg'
 import About from '@icons/about.svg'
 import Contact from '@icons/vector.svg'
 import Down from '@icons/arrow-down.svg'
+import Menu from '@icons/menu.svg'
+import Close from '@icons/close.svg'
+import Iran from '@icons/Flags/Country=Iran, Style=Flag, Radius=On.svg'
 
-const Item = ({ i }) => <div className="centerOfParent gap-3">{i.icon}{i.text}<Down className='w-4 h-4' /></div>
+const Item = ({ i, isSubmenuOpen }) => <div className="flex items-center justify-between gap-3">
+    {i.icon}{i.text}<Down className={`w-4 h-4 transform transition-transform ${isSubmenuOpen ? 'rotate-180' : ''}`} />
+</div>
 
 const links = [
-    { icon: <Home />, text: 'صفحه‌اصلی', underMenu: false },
-    { icon: <Books />, text: 'دسته‌بندی‌کتاب‌ها', underMenu: true },
-    { icon: <Book />, text: 'وسایل‌کمک‌آموزشی', underMenu: false },
-    { icon: <Seller />, text: 'فروشنده‌شوید', underMenu: false },
-    { icon: <About />, text: 'درباره‌ما', underMenu: false },
-    { icon: <Contact />, text: 'ارتباطباما', underMenu: false },
+    { link: '/', icon: <Home />, text: 'صفحه‌اصلی', underMenu: false },
+    { link: '/', icon: <Books />, text: 'دسته‌بندی‌کتاب‌ها', underMenu: true },
+    { link: '/', icon: <Book />, text: 'وسایل‌کمک‌آموزشی', underMenu: false },
+    { link: '/', icon: <Seller />, text: 'فروشنده‌شوید', underMenu: false },
+    { link: '/', icon: <About />, text: 'درباره‌ما', underMenu: false },
+    { link: '/', icon: <Contact />, text: 'ارتباطباما', underMenu: false },
 ]
 
 const Header = () => {
+    const [isSidebarOpen, setSidebarOpen] = useState(false);
+    const [isSubmenuOpen, setSubmenuOpen] = useState(false);
+    const toggleSidebar = () => {
+        setSidebarOpen(!isSidebarOpen);
+    };
+
+    // Function to toggle the submenu
+    const toggleSubmenu = () => {
+        setSubmenuOpen(!isSubmenuOpen);
+    };
     return (
         <>
-            <header className="py-6" dir="rtl">
-                <div className="container flex flex-col gap-6">
+            <header className="sm:py-6 py-3 sticky top-0 bg-[#FBFCFE] z-10 border-b" dir="rtl">
+                <div className="container flex flex-col gap-6 sm:px-10">
                     <div className="flex items-center justify-between">
                         <div className="centerOfParent">
-                            <Dropdown>
-                                <DropdownTrigger>فارسی</DropdownTrigger>
-                                <DropdownMenu>
-                                    <DropdownItem key="persian">فارسی</DropdownItem>
-                                </DropdownMenu>
-                            </Dropdown>
+                            <div className="lg:flex hidden items-center justify-center">
+                                <Dropdown dir="rtl">
+                                    <DropdownTrigger className="cursor-pointer"><div className="flex items-center gap-1"><Iran /><Down className='w-4 h-4' /></div></DropdownTrigger>
+                                    <DropdownMenu>
+                                        <DropdownItem key="persian"><div className="flex items-center gap-3"><Iran /> فارسی</div></DropdownItem>
+                                    </DropdownMenu>
+                                </Dropdown>
+                            </div>
+                            <div className="lg:hidden centerOfParent cursor-pointer" onClick={toggleSidebar}>
+                                {isSidebarOpen ? <Close className='border-[1.5px] rounded border-primary-600 fill-primary-700' /> :
+                                    <Menu className='border-[1.5px] rounded border-primary-600 fill-primary-700' />}
+                            </div>
                         </div>
                         <div className="centerOfParent"><h1 className="font-Metal text-3xl">{process.env.NEXT_PUBLIC_LOGO}</h1></div>
                         <div className="centerOfParent gap-4">
+                            {/* <div className="lg:hidden centerOfParent">
+                                <Dropdown>
+                                    <DropdownTrigger>فارسی</DropdownTrigger>
+                                    <DropdownMenu>
+                                        <DropdownItem key="persian"><Iran /></DropdownItem>
+                                    </DropdownMenu>
+                                </Dropdown>
+                            </div> */}
                             <Link href='/checkout/cart' className="px-1.5 py-1 centerOfParent border-1.5 rounded border-secondary-500"><Cart className='fill-secondary-500' /></Link>
-                            <Link href='/auth/login' className="px-4 py-2 centerOfParent bg-primary-600 text-white rounded text-sm">ورود/ثبت نام</Link>
+                            <Link href='/auth/login' className="px-4 py-2 centerOfParent bg-primary-600 text-white rounded text-sm">ورود<span className="lg:inline-block hidden">/ثبت نام</span></Link>
                         </div>
                     </div>
-                    <div className="centerOfParent w-full">
+                    <div className="lg:flex items-center justify-center hidden w-full">
                         <Input radius="sm" placeholder="جستجو کتاب، نویسنده و ." isClearable variant="bordered" className="max-w-[628px] bg-white" startContent={<Search className="fill-natural_gray-600" />} />
                     </div>
-                    <div className="">
-                        <div className="">
-                            <ui className="list-none flex items-center justify-between">
-                                {links.map((i,o) => {
-                                    return (
-                                        <li key={o} className="[&>a]:flex [&>a]:items-center [&>a]:gap-3 cursor-pointer">{i.underMenu ?
-                                            <Dropdown>
-                                                <DropdownTrigger><Item i={i} /></DropdownTrigger>
-                                                <DropdownMenu>
-                                                    <DropdownItem key="rr">فارسی</DropdownItem>
-                                                </DropdownMenu>
-                                            </Dropdown>
-                                            : <Link href=''>{i.icon}{i.text}</Link>}</li>
-                                    )
-                                })}
-                            </ui>
-                        </div>
+                    <div className="lg:block hidden">
+                        <ui className="list-none flex items-center justify-between">
+                            {links.map((i, o) => {
+                                return (
+                                    <li key={o} className="[&>a]:flex [&>a]:items-center [&>a]:gap-3 cursor-pointer">{i.underMenu ?
+                                        <Dropdown dir="rtl">
+                                            <DropdownTrigger><div><Item i={i} /></div></DropdownTrigger>
+                                            <DropdownMenu>
+                                                <DropdownItem key="rr" href={i.link}><Iran /></DropdownItem>
+                                            </DropdownMenu>
+                                        </Dropdown>
+                                        : <Link href={i.link}>{i.icon}{i.text}</Link>}</li>
+                                )
+                            })}
+                        </ui>
                     </div>
                 </div>
             </header>
+            <div className={`z-[9] fixed top-0 left-0 right-0 bottom-0 duration-300 ${isSidebarOpen ? 'backdrop-blur-sm' : ''}`}>
+                <aside dir="rtl" className={`fixed lg:hidden top-0 right-0 w-64 h-screen pt-[90px] duration-300 ${isSidebarOpen ? '-right-1' : '-right-full'} sm:translate-x-0 bg-white border-l border-gray-200`}>
+                    <div className="h-full px-3 py-4 overflow-y-auto bg-white">
+                        <ul className="flex flex-col gap-2 font-medium">
+                            {links.map((i, o) => {
+                                return (
+                                    <li key={o} className="[&>a]:flex [&>a]:items-center [&>a]:gap-3 cursor-pointer">
+                                        {i.underMenu ?
+                                            <>
+                                                <button
+                                                    type="button"
+                                                    onClick={toggleSubmenu}
+                                                    className="flex items-center w-full p-2 text-base text-gray-900 transition duration-300 rounded-lg group hover:bg-gray-50"
+                                                >
+                                                    <span className="flex-1 text-left whitespace-nowrap">
+                                                        <Item i={i} isSubmenuOpen={isSubmenuOpen} />
+                                                    </span>
+                                                </button>
+                                                {isSubmenuOpen && (
+                                                    <ul className="pl-8 flex flex-col gap-6">
+                                                        <li className="group duration-300 hover:bg-gray-50 rounded-lg">
+                                                            <Link href={i.link} className="flex items-center p-2 text-gray-900">
+                                                                فارسی
+                                                            </Link>
+                                                        </li>
+                                                    </ul>
+                                                )}
+                                            </>
+                                            : <Link className="p-2 duration-300 hover:bg-gray-50" href={i.link}>
+                                                {i.icon}{i.text}
+                                            </Link>
+                                        }
+                                    </li>
+                                )
+                            })}
+                        </ul>
+                    </div>
+                </aside>
+            </div>
         </>
     );
 };

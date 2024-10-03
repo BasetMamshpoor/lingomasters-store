@@ -19,7 +19,7 @@ import formatCurrency from '@/helpers/formatCurrency';
 
 const Banner = ({ product = {} }) => {
 
-    const { title, rate, id, language, is_like, category, seller, subject, age_group, page_number, product_type_id, price,off_percent } = product
+    const { title, rate, id, language, is_like, category, seller,image, subject, age_group, page_number, product_type_id, price,off_percent } = product
 
     return (
         <>
@@ -57,7 +57,7 @@ const Banner = ({ product = {} }) => {
                         <div className="flex flex-col gap-4">
                             <div className="centerOfParent max-w-[148px] mx-auto w-full h-auto flex-shrink-0">
                                 <Image
-                                    src="/images/product.png"
+                                    src={image}
                                     alt="Responsive example"
                                     width={0}
                                     height={0} sizes='100vw'

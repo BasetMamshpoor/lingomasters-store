@@ -9,11 +9,40 @@ import Like from '@icons/like.svg'
 import Dislike from '@icons/dislike.svg'
 import Down from '@icons/arrow-down.svg'
 import useGetRequest from "@/hooks/useGetRequest";
+import axios from "axios";
+
+const generateUniqueFileName = (blob) => {
+    const timestamp = Date.now();
+    const blobSize = blob.size;
+    const randomValue = Math.floor(Math.random() * 10000);
+    return `recording_${timestamp}_${blobSize}_${randomValue}.wav`;
+};
 
 const Audio = () => {
     const [showMore, setShowMore] = useState(false)
     const [comments] = useGetRequest('/audio-comments')
+    const [audioBlob, setAudioBlob] = useState(null);
 
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+
+        if (!audioBlob) {
+            alert("Please record audio before submitting.");
+            return;
+        }
+        const formData = new FormData();
+        const name =generateUniqueFileName(audioBlob)
+        formData.append('audio', audioBlob, name);
+        await axios.post('/audio-comments/store', formData, {
+            headers: {
+                'Content-Type': 'multipart/form-data'
+            }
+        }).then((res) => {
+            alert("Audio uploaded successfully:", res.data);
+        }).catch((error) => {
+            alert("Error uploading audio:", error);
+        })
+    };
 
     return (
 
@@ -22,9 +51,9 @@ const Audio = () => {
             <div className="flex flex-col gap-10">
                 <div className="flex flex-col gap-6">
                     <p className="text-primary-950 font-semibold sm:text-sm text-xs self-start">صدا خود را آپلود کنید.</p>
-                    <form className="flex flex-col gap-8">
+                    <form className="flex flex-col gap-8" onSubmit={handleSubmit}>
                         <div className="flex items-center gap-6">
-                            <AudioRecorder />
+                            <AudioRecorder onRecordingComplete={setAudioBlob} />
                         </div>
                         <button className="sm:py-4 py-2 sm:px-6 px-4 sm:text-base text-xs rounded text-white bg-primary-600 sm:w-[140px] sm:h-fit h-9 w-full self-end">ارسال</button>
                     </form>
@@ -39,7 +68,7 @@ const Audio = () => {
                                         <div className="centerOfParent rounded-full w-10 h-10"><Image src='/images/avatar.jpg' width='0' height='0' sizes="100vw" className="w-full h-full object-cover" /></div>
                                         <div className="flex flex-col items-start gap-3">
                                             <p className="sm:text-xs text-[10px] text-primary-950">علی اسدی</p>
-                                            <audio controls src={'api.lingomasters.ir/' + a.audio_path}></audio>
+                                            <audio controls src={a.audio_path}></audio>
                                         </div>
                                     </div>
                                     <div className="flex items-center gap-4">

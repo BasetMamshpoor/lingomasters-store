@@ -28,7 +28,7 @@ export default function Card({ bgSrc, className, movie }) {
                                         className="w-full h-auto rounded-lg shadow-lg"
                                         controls
                                         poster={bgSrc}>
-                                        <source src={'api.lingomasters.ir/' + movie} type="video/mp4" />
+                                        <source src={movie} type="video/mp4" />
                                         مرورگر شما از پخش این فیلم پشتیبانی نمیکند
                                     </video>
                                 </div>

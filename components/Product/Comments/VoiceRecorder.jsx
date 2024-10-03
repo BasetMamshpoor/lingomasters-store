@@ -9,7 +9,7 @@ import Stop from '@icons/stop.svg'
 import Pause from '@icons/pause.svg'
 import Brush from '@icons/brush.svg'
 
-const RecordComponent = () => {
+const RecordComponent = ({ onRecordingComplete }) => {
     const containerRef = useRef(null)
     const [recording, setRecording] = useState(false);
     const [recordedUrl, setRecordedUrl] = useState(null);
@@ -38,11 +38,12 @@ const RecordComponent = () => {
         recordPluginInstance.on("record-end", (blob) => {
             const recordedUrl = URL.createObjectURL(blob);
             setRecordedUrl(recordedUrl);
+            onRecordingComplete(blob);
         });
         return () => {
             wavesurfer?.destroy();
         };
-    }, [wavesurfer]);
+    }, [wavesurfer, onRecordingComplete]);
 
     const handleRecordClick = useCallback(() => {
         if (recordPlugin) {
@@ -63,37 +64,25 @@ const RecordComponent = () => {
     return (
         <>
             {recording ? (
-                <button type="button"
-                    onClick={handleRecordClick}
-                    className="centerOfParent"
-                >
-                    <Stop className='w-8 h-8' />
+                <button type="button" onClick={handleRecordClick} className="centerOfParent">
+                    <Stop className="w-8 h-8" />
                 </button>
             ) : recordedUrl ? (
                 <>
-                    <button type="button"
-                        onClick={onPlayPause}
-                        className='centerOfParent'
-                    >
-                        {isPlaying ? <Pause className='w-8 h-8' /> : <Play className='w-8 h-8' />}
+                    <button type="button" onClick={onPlayPause} className="centerOfParent">
+                        {isPlaying ? <Pause className="w-8 h-8" /> : <Play className="w-8 h-8" />}
                     </button>
-                    <button type="button"
-                        onClick={() => {
-                            setRecordedUrl();
-                            onPlayPause();
-                            wavesurfer.stop();
-                        }}
-                        className='centerOfParent'
-                    >
-                        <Brush className='w-8 h-8' />
+                    <button type="button" onClick={() => {
+                        setRecordedUrl(null);
+                        onPlayPause();
+                        wavesurfer.stop();
+                    }} className="centerOfParent">
+                        <Brush className="w-8 h-8" />
                     </button>
                 </>
             ) : (
-                <button type="button"
-                    onClick={handleRecordClick}
-                    className='centerOfParent'
-                >
-                    <Mic className='w-8 h-8' />
+                <button type="button" onClick={handleRecordClick} className="centerOfParent">
+                    <Mic className="w-8 h-8" />
                 </button>
             )}
             <div className="w-full border rounded" ref={containerRef} />
