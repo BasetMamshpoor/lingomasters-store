@@ -9,7 +9,7 @@ import Text from './Text';
 import Audio from './Audio';
 import Videos from './Videos';
 
-const Comments = () => {
+const Comments = ({ id }) => {
     return (
         <>
             <div className="sm:p-6 px-3 py-4 flex flex-col gap-6 bg-white rounded-lg border-natural_gray-100 border scroll-m-2" id='comments'>
@@ -34,7 +34,7 @@ const Comments = () => {
                                 </div>
                             }>
                             <Card className='shadow-none'>
-                                <CardBody><Text /></CardBody>
+                                <CardBody><Text id={id} /></CardBody>
                             </Card>
                         </Tab>
                         <Tab key="audio"
@@ -45,7 +45,7 @@ const Comments = () => {
                                 </div>
                             }>
                             <Card className='shadow-none'>
-                                <CardBody><Audio /></CardBody>
+                                <CardBody><Audio id={id} /></CardBody>
                             </Card>
                         </Tab>
                         <Tab key="video"
@@ -56,7 +56,7 @@ const Comments = () => {
                                 </div>
                             }>
                             <Card className='shadow-none'>
-                                <CardBody><Videos /></CardBody>
+                                <CardBody><Videos id={id} /></CardBody>
                             </Card>
                         </Tab>
                     </Tabs>

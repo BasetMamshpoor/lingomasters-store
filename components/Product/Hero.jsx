@@ -7,7 +7,7 @@ import FillHeart from '@icons/fill-heart.svg'
 import Flag from '@icons/Flags/Country=United States of America, Style=Flag, Radius=On.svg'
 
 const Hero = ({ product = {} }) => {
-    const { title, rate, id, language, is_like, category, seller, subject, age_group, page_number, product_type_id } = product
+    const { title, rate, id, language, is_like, category, seller, subject, age_group, page_number, product_type, book_category } = product
 
     return (
         <>
@@ -26,7 +26,7 @@ const Hero = ({ product = {} }) => {
                                     <BreadcrumbItem href={`/category/${category?.slug}`}>{category?.title}</BreadcrumbItem>
                                     <BreadcrumbItem>{title}</BreadcrumbItem>
                                 </Breadcrumbs>
-                                <div className="centerOfParent"><Share /></div>
+                                <div className="centerOfParent cursor-pointer" onClick={() => { navigator.clipboard.writeText(location.href) }}><Share /></div>
                             </div>
                             <div className="flex items-center justify-between mb-3">
                                 <div className="flex items-center gap-3">
@@ -66,11 +66,11 @@ const Hero = ({ product = {} }) => {
                             </div>
                             <div className="centerOfParent h-12 flex-[1_0_0] gap-1 rounded-lg bg-primary-50 [box-shadow:0px_4px_6px_0px_rgba(54,_108,_218,_0.08)]">
                                 <p className='text-natural_gray-700 text-xs'>نوع کتاب</p>
-                                <h4 className='text-sm font-semibold'>{product_type_id}</h4>
+                                <h4 className='text-sm font-semibold'>{product_type}</h4>
                             </div>
                             <div className="centerOfParent h-12 flex-[1_0_0] gap-1 rounded-lg bg-primary-50 [box-shadow:0px_4px_6px_0px_rgba(54,_108,_218,_0.08)]">
                                 <p className='text-natural_gray-700 text-xs'>رده کتاب</p>
-                                <h4 className='text-sm font-semibold'>نو</h4>
+                                <h4 className='text-sm font-semibold'>{book_category}</h4>
                             </div>
                             <div className="centerOfParent h-12 flex-[1_0_0] gap-1 rounded-lg bg-primary-50 [box-shadow:0px_4px_6px_0px_rgba(54,_108,_218,_0.08)]">
                                 <p className='text-natural_gray-700 text-xs'>رده سنی</p>

@@ -37,7 +37,7 @@ const SortBy = () => {
                     selectionMode="single"
                     selectedKeys={[selectedKeys]}
                     onAction={setSelectedKeys}
-                    className='[&>ul>li>.text-inherit>svg]:w-4 [&>ul>li>.text-inherit>svg]:h-4'
+                    className='[&>ul>li>.text-inherit>svg]:w-3 [&>ul>li>.text-inherit>svg]:h-3'
                 >
                     {sortBy.sort.map(s => {
                         return (
@@ -45,7 +45,7 @@ const SortBy = () => {
                                 <Link href={{
                                     pathname: router.asPath.split('?')[0],
                                     query: { ...Query, sort: s.key },
-                                }} className='w-full block'
+                                }} className='w-full block text-sm'
                                     passHref
                                     shallow
                                     replace>{s.title}</Link>

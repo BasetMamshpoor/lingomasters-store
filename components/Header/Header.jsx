@@ -40,7 +40,7 @@ const Header = () => {
     };
     return (
         <>
-            <header className="sm:py-6 py-3 sticky top-0 bg-[#FBFCFE] z-10 border-b" dir="rtl">
+            <header className="sm:py-6 py-3 sticky top-0 bg-[#FBFCFE] z-[100] border-b" dir="rtl">
                 <div className="container flex flex-col gap-6 sm:px-10">
                     <div className="flex items-center justify-between">
                         <div className="centerOfParent">
@@ -57,7 +57,7 @@ const Header = () => {
                                     <Menu className='border-[1.5px] rounded border-primary-600 fill-primary-700' />}
                             </div>
                         </div>
-                        <div className="centerOfParent"><h1 className="font-Metal text-3xl">{process.env.NEXT_PUBLIC_LOGO}</h1></div>
+                        <Link href='/' className="centerOfParent"><h1 className="font-Metal text-3xl">{process.env.NEXT_PUBLIC_LOGO}</h1></Link>
                         <div className="centerOfParent gap-4">
                             {/* <div className="lg:hidden centerOfParent">
                                 <Dropdown>
@@ -92,8 +92,8 @@ const Header = () => {
                     </div>
                 </div>
             </header>
-            <div className={`z-[9] fixed top-0 left-0 right-0 bottom-0 duration-300 ${isSidebarOpen ? 'backdrop-blur-sm' : ''}`}>
-                <aside dir="rtl" className={`fixed lg:hidden top-0 right-0 w-64 h-screen pt-[90px] duration-300 ${isSidebarOpen ? '-right-1' : '-right-full'} sm:translate-x-0 bg-white border-l border-gray-200`}>
+            <div className={`z-[9] fixed lg:hidden top-0 left-0 right-0 bottom-0 duration-300 ${isSidebarOpen ? 'backdrop-blur-sm' : ''}`}>
+                <aside dir="rtl" className={`fixed top-0 right-0 w-64 h-screen pt-[90px] duration-300 ${isSidebarOpen ? '-right-1' : '!-right-full'} sm:translate-x-0 bg-white border-l border-gray-200`}>
                     <div className="h-full px-3 py-4 overflow-y-auto bg-white">
                         <ul className="flex flex-col gap-2 font-medium">
                             {links.map((i, o) => {

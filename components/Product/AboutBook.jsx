@@ -15,7 +15,7 @@ import Video from '@icons/media.svg';
 
 const AboutBook = ({ product = {} }) => {
 
-    const { title, rate, id, language, is_like, category, seller, subject, age_group, page_number, product_type_id } = product
+    const { title, product_type, author, book_category, language, Publication, Time_to_print, year_of_publication, subject, age_group, page_number, Volume_number, audio_file, video_file, image } = product
 
     return (
         <>
@@ -25,7 +25,7 @@ const AboutBook = ({ product = {} }) => {
                     <span className='sm:text-base text-sm text-primary-950'>درباره کتاب</span>
                 </div>
                 <div className="flex sm:flex-row flex-col-reverse sm:items-start items-stretch sm:gap-0 gap-4 justify-between">
-                    <ul className="flex flex-col gap-4">
+                    <ul className="flex flex-col gap-4 grow">
                         <li className='grid grid-cols-5 sm:text-base text-xs'>
                             <div className="col-span-2 flex items-center gap-2">
                                 <div className="centerOfParent"><Book className='sm:w-4 sm:h-4 w-3 h-3' /></div>
@@ -38,96 +38,96 @@ const AboutBook = ({ product = {} }) => {
                                 <div className="centerOfParent"><Person className='sm:w-4 sm:h-4 w-3 h-3 fill-primary-800' /></div>
                                 <span className='text-natural_gray-950'>نویسنده</span>
                             </div>
-                            <span className="col-span-3 text-right">Jesica Merry</span>
+                            <span className="col-span-3 text-right">{author}</span>
                         </li>
                         <li className='grid grid-cols-5 sm:text-base text-xs'>
                             <div className="col-span-2 flex items-center gap-2">
                                 <div className="centerOfParent"><Book2 className='sm:w-4 sm:h-4 w-3 h-3 fill-primary-800' /></div>
                                 <span className='text-natural_gray-950'>تعداد جلد</span>
                             </div>
-                            <span className="col-span-3 text-right ">پکیج ۵ تایی</span>
+                            <span className="col-span-3 text-right ">{page_number}</span>
                         </li>
                         <li className='grid grid-cols-5 sm:text-base text-xs'>
                             <div className="col-span-2 flex items-center gap-2">
                                 <div className="centerOfParent"><Copy className='sm:w-4 sm:h-4 w-3 h-3 fill-primary-800' /></div>
                                 <span className='text-natural_gray-950'>تعداد صفحه</span>
                             </div>
-                            <span className="col-span-3 text-right">How to learn English</span>
+                            <span className="col-span-3 text-right">{Volume_number}</span>
                         </li>
                         <li className='grid grid-cols-5 sm:text-base text-xs'>
                             <div className="col-span-2 flex items-center gap-2">
                                 <div className="centerOfParent"><Flag className='sm:w-4 sm:h-4 w-3 h-3 fill-primary-800' /></div>
                                 <span className='text-natural_gray-950'>زبان</span>
                             </div>
-                            <span className="col-span-3 text-right">Jesica Merry</span>
+                            <span className="col-span-3 text-right">{language}</span>
                         </li>
                         <li className='grid grid-cols-5 sm:text-base text-xs'>
                             <div className="col-span-2 flex items-center gap-2">
                                 <div className="centerOfParent"><Alt className='sm:w-4 sm:h-4 w-3 h-3 fill-primary-800' /></div>
                                 <span className='text-natural_gray-950'>انتشارات</span>
                             </div>
-                            <span className="col-span-3 text-right">پکیج ۵ تاییپکیج ۵ تاییپکیج ۵ تاییپکیج ۵ تایی</span>
+                            <span className="col-span-3 text-right">{Publication}</span>
                         </li>
                         <li className='grid grid-cols-5 sm:text-base text-xs'>
                             <div className="col-span-2 flex items-center gap-2">
                                 <div className="centerOfParent"><Age className='sm:w-4 sm:h-4 w-3 h-3 fill-primary-800' /></div>
                                 <span className='text-natural_gray-950'>رده سنی</span>
                             </div>
-                            <span className="col-span-3 text-right">How to learn English</span>
+                            <span className="col-span-3 text-right">{age_group}</span>
                         </li>
                         <li className='grid grid-cols-5 sm:text-base text-xs'>
                             <div className="col-span-2 flex items-center gap-2">
                                 <div className="centerOfParent"><File className='sm:w-4 sm:h-4 w-3 h-3 fill-primary-800' /></div>
                                 <span className='text-natural_gray-950'>موضوع کتاب</span>
                             </div>
-                            <span className="col-span-3 text-right">Jesica Merry</span>
+                            <span className="col-span-3 text-right">{subject}</span>
                         </li>
                         <li className='grid grid-cols-5 sm:text-base text-xs'>
                             <div className="col-span-2 flex items-center gap-2">
                                 <div className="centerOfParent"><Alt className='sm:w-4 sm:h-4 w-3 h-3 fill-primary-800' /></div>
                                 <span className='text-natural_gray-950'>سال انتشار</span>
                             </div>
-                            <span className="col-span-3 text-right ">پکیج ۵ تایی</span>
+                            <span className="col-span-3 text-right ">{year_of_publication}</span>
                         </li>
                         <li className='grid grid-cols-5 sm:text-base text-xs'>
                             <div className="col-span-2 flex items-center gap-2">
                                 <div className="centerOfParent"><Book className='sm:w-4 sm:h-4 w-3 h-3' /></div>
                                 <span className='text-natural_gray-950'>نوع کتاب</span>
                             </div>
-                            <span className="col-span-3 text-right">How to learn English</span>
+                            <span className="col-span-3 text-right">{product_type}</span>
                         </li>
                         <li className='grid grid-cols-5 sm:text-base text-xs'>
                             <div className="col-span-2 flex items-center gap-2">
                                 <div className="centerOfParent"><Copy className='sm:w-4 sm:h-4 w-3 h-3 fill-primary-800' /></div>
                                 <span className='text-natural_gray-950'>نوبت چاپ</span>
                             </div>
-                            <span className="col-span-3 text-right">Jesica Merry</span>
+                            <span className="col-span-3 text-right">{Time_to_print}</span>
                         </li>
                         <li className='grid grid-cols-5 sm:text-base text-xs'>
                             <div className="col-span-2 flex items-center gap-2">
                                 <div className="centerOfParent"><Book className='sm:w-4 sm:h-4 w-3 h-3' /></div>
                                 <span className='text-natural_gray-950'>رده کتاب</span>
                             </div>
-                            <span className="col-span-3 text-right ">پکیج ۵ تایی</span>
+                            <span className="col-span-3 text-right ">{book_category}</span>
                         </li>
                         <li className='grid grid-cols-5 sm:text-base text-xs'>
                             <div className="col-span-2 flex items-center gap-2">
                                 <div className="centerOfParent"><Voice className='sm:w-4 sm:h-4 w-3 h-3 fill-primary-800' /></div>
                                 <span className='text-natural_gray-950'>فایل صوتی</span>
                             </div>
-                            <span className="col-span-3 text-right">How to learn English</span>
+                            <span className="col-span-3 text-right">{audio_file}</span>
                         </li>
                         <li className='grid grid-cols-5 sm:text-base text-xs'>
                             <div className="col-span-2 flex items-center gap-2">
                                 <div className="centerOfParent"><Video className='sm:w-4 sm:h-4 w-3 h-3 fill-primary-800' /></div>
                                 <span className='text-natural_gray-950'>فایل ویدیویی</span>
                             </div>
-                            <span className="col-span-3 text-right">Jesica Merry</span>
+                            <span className="col-span-3 text-right">{video_file}</span>
                         </li>
                     </ul>
-                    <div className="centerOfParent sm:max-w-[220px] max-w-[156px] w-full h-auto flex-shrink-0 mx-auto">
+                    <div className="centerOfParent sm:max-w-[280px] max-w-[156px] w-full h-auto flex-shrink-0 mx-auto">
                         <Image
-                            src="/images/product.png"
+                            src={image}
                             alt="Responsive example"
                             width={0}
                             height={0} sizes='100vw'

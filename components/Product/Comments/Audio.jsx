@@ -20,7 +20,9 @@ const generateUniqueFileName = (blob) => {
 
 const Audio = () => {
     const [showMore, setShowMore] = useState(false)
+
     const [comments] = useGetRequest('/audio-comments')
+    
     const [audioBlob, setAudioBlob] = useState(null);
 
     const handleSubmit = async (e) => {

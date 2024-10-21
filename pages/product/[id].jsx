@@ -12,7 +12,11 @@ import { useRouter } from "next/router";
 
 const Product = () => {
     const { query } = useRouter()
-    const [product] = useGetRequest(`/product/show/${query.id}`)
+    const { id } = query
+    if(!id) 
+        return
+    
+    const [product] = useGetRequest(`/product/show/${id}`)
 
     return (
         <>
@@ -25,11 +29,11 @@ const Product = () => {
                     <div className="flex flex-col gap-10 lg:col-span-4">
                         <Tabs />
                         <Sellers />
-                        <AboutBook />
-                        <Description />
-                        <Examples />
-                        <Video />
-                        <Comments />
+                        <AboutBook product={product}/>
+                        <Description product={product} />
+                        <Examples images={product?.sample_images}/>
+                        <Video images={product?.video}/>
+                        <Comments id={id} />
                     </div>
                 </div>
             </main>
