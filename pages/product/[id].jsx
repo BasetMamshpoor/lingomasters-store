@@ -32,7 +32,7 @@ const Product = () => {
                         <AboutBook product={product}/>
                         <Description product={product} />
                         <Examples images={product?.sample_images}/>
-                        <Video images={product?.video}/>
+                        <Video movie={product?.video} image={product?.image}/>
                         <Comments id={id} />
                     </div>
                 </div>

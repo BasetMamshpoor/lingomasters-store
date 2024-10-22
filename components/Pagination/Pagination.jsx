@@ -1,7 +1,8 @@
 import { Pagination, PaginationItemType } from "@nextui-org/react";
 import ChevronIcon from "@icons/chevron-right.svg";
 
-export default function PaginationApp() {
+export default function PaginationApp({ total, per_page }) {
+    const pages = Math.ceil(total / per_page) || 1
     const renderItem = ({
         ref,
         key,
@@ -46,15 +47,17 @@ export default function PaginationApp() {
     };
 
     return (
-        <Pagination
-            disableCursorAnimation
-            showControls
-            total={10}
-            initialPage={1}
-            className="sm:[&>ul]:gap-3 [&>ul]:flex-row-reverse"
-            radius="full"
-            renderItem={renderItem}
-            variant="light"
-        />
+        <>
+            {pages > 1 && <Pagination
+                disableCursorAnimation
+                showControls
+                total={pages}
+                initialPage={1}
+                className="sm:[&>ul]:gap-3 [&>ul]:flex-row-reverse"
+                radius="full"
+                renderItem={renderItem}
+                variant="light"
+            />}
+        </>
     );
 }

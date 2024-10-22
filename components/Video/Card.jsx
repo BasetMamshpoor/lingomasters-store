@@ -1,5 +1,6 @@
 import { Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, Button, useDisclosure } from "@nextui-org/react";
 import Image from "next/image";
+import Play from '@icons/surface.svg';
 
 export default function Card({ bgSrc, className, movie }) {
     const { isOpen, onOpen, onOpenChange } = useDisclosure();
@@ -8,6 +9,7 @@ export default function Card({ bgSrc, className, movie }) {
         <>
             <div onClick={onOpen} className={`centerOfParent relative cursor-pointer ${className}`}>
                 <Image src={bgSrc} width='0' height='0' sizes='100vw' className='w-full h-full object-contain' />
+                <div className="centerOfParent absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"><Play className='w-16 h-12' /></div>
             </div>
             <Modal
                 backdrop="opaque"

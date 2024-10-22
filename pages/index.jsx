@@ -8,8 +8,10 @@ import Stuff from '@icons/online-learning.svg';
 import New from '@icons/new.svg';
 import MostSell from '@icons/best-seller.svg';
 import Banner from "@/components/Banner";
+import useGetRequest from "@/hooks/useGetRequest";
 
 export default function Page() {
+  const [] = useGetRequest('/main-page')
   return (
     <>
       <div>

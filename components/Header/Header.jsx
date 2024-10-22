@@ -40,7 +40,7 @@ const Header = () => {
     };
     return (
         <>
-            <header className="sm:py-6 py-3 sticky top-0 bg-[#FBFCFE] z-[100] border-b" dir="rtl">
+            <header className="sm:py-6 py-3 sticky top-0 bg-[#FBFCFE] z-[50] border-b" dir="rtl">
                 <div className="container flex flex-col gap-6 sm:px-10">
                     <div className="flex items-center justify-between">
                         <div className="centerOfParent">

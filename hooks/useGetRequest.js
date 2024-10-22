@@ -10,7 +10,7 @@ const useGetRequest = (url, page = 1, obj) => {
         const get = async () => {
             await axios.get(url, { params: { ...obj, page } })
                 .then(res => {
-                    const { data, ...pagination } = res.data
+                    const { data, ...pagination } = res.data.response
                     setData(data)
                     setPaginations(pagination)
                 })

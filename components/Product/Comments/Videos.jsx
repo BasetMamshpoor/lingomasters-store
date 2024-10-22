@@ -12,14 +12,14 @@ import useGetRequest from "@/hooks/useGetRequest";
 import axios from "axios";
 
 const generateUniqueFilename = (blob) => {
-    const fileExtension = blob.type.split('/')[1]; 
+    const fileExtension = blob.type.split('/')[1];
     const uniqueName = `video_${Date.now()}_${Math.random().toString(36).substring(7)}.${fileExtension}`;
     return uniqueName;
 };
 
-const Videos = () => {
+const Videos = ({ id }) => {
     const [showMore, setShowMore] = useState(false)
-    const [comments] = useGetRequest('/video-comments')
+    const [comments, setComments, setReload, pagination] = useGetRequest(`/video-comments/${id}`)
     const [recordedBlob, setRecordedBlob] = useState(null);
 
     const handleSubmit = async (event) => {
@@ -33,7 +33,7 @@ const Videos = () => {
         const uniqueFilename = generateUniqueFilename(recordedBlob);
         formData.append('video', recordedBlob, uniqueFilename);
         console.log(formData);
-        
+
         await axios.post('/video-comments/store', formData, {
             headers: {
                 'Content-Type': 'multipart/form-data',
@@ -60,12 +60,12 @@ const Videos = () => {
                 </div>
                 <div className="flex flex-col gap-6">
                     <p className="text-primary-950 font-semibold text-sm self-start">نظرات کاربران</p>
-                    <div className="flex flex-col gap-6">
+                    {!!comments ? <div className="flex flex-col gap-6">
                         <ul className="flex flex-col gap-4 items-stretch">
-                            {comments?.map((v, i) => {
+                            {!!comments.length ? comments.map((c, i) => {
                                 if (i < (showMore ? 10 : 5)) return <li className="flex items-center justify-between gap-3" key={i}>
                                     <div className="flex items-center gap-3">
-                                        <div className="centerOfParent rounded-full w-40 h-auto"><Card movie={v.video_path} bgSrc={'/images/video/bg.jfif'} /></div>
+                                        <div className="centerOfParent rounded-full w-40 h-auto"><Card movie={c.video_path} bgSrc={'/images/video/bg.jfif'} /></div>
                                         <p className="sm:text-xs text-[10px] text-primary-950">علی اسدی</p>
                                     </div>
                                     <div className="flex items-center gap-4">
@@ -79,19 +79,19 @@ const Videos = () => {
                                         </div>
                                     </div>
                                 </li>
-                            })}
+                            }) : <div className="centerOfParent w-full">کامنتی ثبت نشده است</div>}
                         </ul>
-                        <div className="self-center">
+                        {pagination.total > 5 && <div className="self-center">
                             {showMore ?
                                 <div className="w-full">
-                                    <Pagination />
+                                    <Pagination total={pagination.total} per_page={pagination.per_page} />
                                 </div>
                                 : <div className="flex items-center gap-2 cursor-pointer" onClick={() => setShowMore(true)}>
                                     <span className="text-xs text-primary-500">مشاهده بیشتر</span>
                                     <div className="centerofParent"><Down className='w-5 h-5 fill-primary-600' /></div>
                                 </div>}
-                        </div>
-                    </div>
+                        </div>}
+                    </div> : <div className="centerOfParent w-full">درحال بارگزاری...</div>}
                 </div>
             </div>
         </>

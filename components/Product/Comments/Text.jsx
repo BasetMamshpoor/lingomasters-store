@@ -8,9 +8,11 @@ import Pagination from "@/components/Pagination";
 import Like from '@icons/like.svg'
 import Dislike from '@icons/dislike.svg'
 import Down from '@icons/arrow-down.svg'
+import useGetRequest from "@/hooks/useGetRequest";
 
-const Text = () => {
+const Text = ({ id }) => {
     const [showMore, setShowMore] = useState(false)
+    const [comments, setComments, setReload, pagination] = useGetRequest(`/text-comments/${id}`)
 
     return (
         <>
@@ -39,15 +41,15 @@ const Text = () => {
                 </div>
                 <div className="flex flex-col gap-6">
                     <p className="text-primary-950 font-semibold sm:text-sm text-xs self-start">نظرات کاربران</p>
-                    <div className="flex flex-col gap-6">
+                    {!!comments ? <div className="flex flex-col gap-6">
                         <ul className="flex flex-col gap-4 items-stretch">
-                            {[...Array(10)].map((_, i) => {
-                                if (i < (showMore ? 10 : 5)) return <li className="flex items-center justify-between gap-3" key={i}>
+                            {!!comments.length ? comments.map((c, i) => {
+                                if (i < (showMore ? 10 : 5)) return <li className="flex items-center justify-between gap-3" key={c.id}>
                                     <div className="flex items-center gap-3">
-                                        <div className="centerOfParent rounded-full w-10 h-10"><Image src='/images/avatar.jpg' width='0' height='0' sizes="100vw" className="w-full h-full object-cover" /></div>
+                                        <div className="centerOfParent rounded-full w-10 h-10 shrink-0"><Image src='/images/avatar.jpg' width='0' height='0' sizes="100vw" className="w-full h-full object-cover" /></div>
                                         <div className="flex flex-col items-start gap-3">
                                             <p className="sm:text-xs text-[10px] text-primary-950">علی اسدی</p>
-                                            <p className="sm:text-xs text-[8px] text-primary-950">استادی بسیار عالی و ارزشمند</p>
+                                            <p dir="auto" className="sm:text-xs text-[8px] text-primary-950">{c.content}</p>
                                         </div>
                                     </div>
                                     <div className="flex items-center gap-4">
@@ -61,19 +63,19 @@ const Text = () => {
                                         </div>
                                     </div>
                                 </li>
-                            })}
+                            }) : <div className="centerOfParent w-full">کامنتی ثبت نشده است</div>}
                         </ul>
-                        <div className="self-center">
+                        {pagination.total > 5 && <div className="self-center">
                             {showMore ?
                                 <div className="w-full">
-                                    <Pagination />
+                                    <Pagination total={pagination.total} per_page={pagination.per_page} />
                                 </div>
                                 : <div className="flex items-center gap-2 cursor-pointer" onClick={() => setShowMore(true)}>
                                     <span className="text-xs text-primary-500">مشاهده بیشتر</span>
                                     <div className="centerofParent"><Down className='w-5 h-5 fill-primary-600' /></div>
                                 </div>}
-                        </div>
-                    </div>
+                        </div>}
+                    </div> : <div className="centerOfParent w-full">درحال بارگزاری...</div>}
                 </div>
             </div>
         </>

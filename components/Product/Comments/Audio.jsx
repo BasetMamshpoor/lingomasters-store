@@ -18,11 +18,11 @@ const generateUniqueFileName = (blob) => {
     return `recording_${timestamp}_${blobSize}_${randomValue}.wav`;
 };
 
-const Audio = () => {
+const Audio = ({ id }) => {
     const [showMore, setShowMore] = useState(false)
 
-    const [comments] = useGetRequest('/audio-comments')
-    
+    const [comments, setComments, setReload, pagination] = useGetRequest(`/audio-comments/${id}`)
+
     const [audioBlob, setAudioBlob] = useState(null);
 
     const handleSubmit = async (e) => {
@@ -33,7 +33,7 @@ const Audio = () => {
             return;
         }
         const formData = new FormData();
-        const name =generateUniqueFileName(audioBlob)
+        const name = generateUniqueFileName(audioBlob)
         formData.append('audio', audioBlob, name);
         await axios.post('/audio-comments/store', formData, {
             headers: {
@@ -62,9 +62,9 @@ const Audio = () => {
                 </div>
                 <div className="flex flex-col gap-6">
                     <p className="text-primary-950 font-semibold text-sm self-start">نظرات کاربران</p>
-                    <div className="flex flex-col gap-6">
+                    {!!comments ? <div className="flex flex-col gap-6">
                         <ul className="flex flex-col gap-4 items-stretch">
-                            {comments?.map((a, i) => {
+                            {!!comments.length ? comments.map((c, i) => {
                                 if (i < (showMore ? 10 : 5)) return <li className="flex items-center justify-between gap-3" key={i}>
                                     <div className="flex items-center gap-3">
                                         <div className="centerOfParent rounded-full w-10 h-10"><Image src='/images/avatar.jpg' width='0' height='0' sizes="100vw" className="w-full h-full object-cover" /></div>
@@ -84,19 +84,19 @@ const Audio = () => {
                                         </div>
                                     </div>
                                 </li>
-                            })}
+                            }) : <div className="centerOfParent w-full">کامنتی ثبت نشده است</div>}
                         </ul>
                         <div className="self-center">
-                            {showMore ?
+                            {pagination.total > 5 && (showMore ?
                                 <div className="w-full">
-                                    <Pagination />
+                                    <Pagination total={pagination.total} per_page={pagination.per_page} />
                                 </div>
                                 : <div className="flex items-center gap-2 cursor-pointer" onClick={() => setShowMore(true)}>
                                     <span className="text-xs text-primary-500">مشاهده بیشتر</span>
                                     <div className="centerofParent"><Down className='w-5 h-5 fill-primary-600' /></div>
-                                </div>}
+                                </div>)}
                         </div>
-                    </div>
+                    </div> : <div className="centerOfParent w-full">درحال بارگزاری...</div>}
                 </div>
             </div>
         </>
