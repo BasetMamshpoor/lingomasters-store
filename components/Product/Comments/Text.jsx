@@ -6,7 +6,9 @@ import Pagination from "@/components/Pagination";
 
 //icons
 import Like from '@icons/like.svg'
+import LikeFill from '@icons/like-fill.svg'
 import Dislike from '@icons/dislike.svg'
+import DislikeFill from '@icons/dislike-fill.svg'
 import Down from '@icons/arrow-down.svg'
 import useGetRequest from "@/hooks/useGetRequest";
 
@@ -46,20 +48,20 @@ const Text = ({ id }) => {
                             {!!comments.length ? comments.map((c, i) => {
                                 if (i < (showMore ? 10 : 5)) return <li className="flex items-center justify-between gap-3" key={c.id}>
                                     <div className="flex items-center gap-3">
-                                        <div className="centerOfParent rounded-full w-10 h-10 shrink-0"><Image src='/images/avatar.jpg' width='0' height='0' sizes="100vw" className="w-full h-full object-cover" /></div>
+                                        <div className="centerOfParent rounded-full w-10 h-10 shrink-0"><Image src={c.user.image || '/images/avatar.jpg'} width='0' height='0' sizes="100vw" className="w-full h-full object-cover" /></div>
                                         <div className="flex flex-col items-start gap-3">
-                                            <p className="sm:text-xs text-[10px] text-primary-950">علی اسدی</p>
+                                            <p className="sm:text-xs text-[10px] text-primary-950">{c.user.user_name || 'ناشناس'}</p>
                                             <p dir="auto" className="sm:text-xs text-[8px] text-primary-950">{c.content}</p>
                                         </div>
                                     </div>
                                     <div className="flex items-center gap-4">
                                         <div className="flex items-center gap-1">
-                                            <span className="text-primary-950 text-[8px]">24</span>
-                                            <div className="centerOfParent"><Dislike className='sm:w-6 sm:h-6 w-4 h-4' /></div>
+                                            <span className="text-primary-950 text-[8px]">{c.dislikes_count}</span>
+                                            <div className="centerOfParent">{c.is_dislike ? <DislikeFill className='sm:w-6 sm:h-6 w-4 h-4 fill-red-600' /> : <Dislike className='sm:w-6 sm:h-6 w-4 h-4' />}</div>
                                         </div>
                                         <div className="flex items-center gap-1">
-                                            <span className="text-primary-950 text-[8px]">24</span>
-                                            <div className="centerOfParent"><Like className='sm:w-6 sm:h-6 w-4 h-4' /></div>
+                                            <span className="text-primary-950 text-[8px]">{c.likes_count}</span>
+                                            <div className="centerOfParent">{c.is_like?<LikeFill className='sm:w-6 sm:h-6 w-4 h-4 fill-green-600' />:<Like className='sm:w-6 sm:h-6 w-4 h-4' />}</div>
                                         </div>
                                     </div>
                                 </li>

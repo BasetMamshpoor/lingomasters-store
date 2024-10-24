@@ -92,7 +92,7 @@ const Header = () => {
                     </div>
                 </div>
             </header>
-            <div className={`z-[9] fixed lg:hidden top-0 left-0 right-0 bottom-0 duration-300 ${isSidebarOpen ? 'backdrop-blur-sm' : ''}`}>
+            <div className={`z-[9] fixed lg:hidden top-0 bottom-0 w-full duration-300 backdrop-blur-sm ${isSidebarOpen ? 'right-0' : '-right-full'}`}>
                 <aside dir="rtl" className={`fixed top-0 right-0 w-64 h-screen pt-[90px] duration-300 ${isSidebarOpen ? '-right-1' : '!-right-full'} sm:translate-x-0 bg-white border-l border-gray-200`}>
                     <div className="h-full px-3 py-4 overflow-y-auto bg-white">
                         <ul className="flex flex-col gap-2 font-medium">
