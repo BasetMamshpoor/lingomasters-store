@@ -7,7 +7,7 @@ import Sort from '@icons/sort.svg'
 import Down from '@icons/solid-arrow-down.svg'
 import { useRouter } from 'next/router';
 
-const SortBy = () => {
+const SortBy = ({ setCurrentPage }) => {
     const router = useRouter()
     const { slug, sort, ...Query } = router.query
 
@@ -46,7 +46,7 @@ const SortBy = () => {
                                     pathname: router.asPath.split('?')[0],
                                     query: { ...Query, sort: s.key },
                                 }} className='w-full block text-sm'
-                                    passHref
+                                    passHref onClick={() => setCurrentPage(1)}
                                     shallow
                                     replace>{s.title}</Link>
                             </DropdownItem>

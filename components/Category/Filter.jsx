@@ -5,7 +5,7 @@ import FilterIcon from '@icons/filter.svg';
 import Close from '@icons/close.svg';
 import FiltersEdu from "./FiltersEdu";
 
-export default function Filter({ edu }) {
+export default function Filter({ edu,setCurrentPage }) {
     const { isOpen, onOpen, onOpenChange } = useDisclosure();
 
     return (
@@ -33,7 +33,7 @@ export default function Filter({ edu }) {
                                 <div onClick={onOpenChange} className="centerOfParent"><Close /></div>
                             </ModalHeader>
                             <ModalBody>
-                                {edu ? <FiltersEdu /> : <Filters />}
+                                {edu ? <FiltersEdu setCurrentPage={setCurrentPage} /> : <Filters setCurrentPage={setCurrentPage}/>}
                             </ModalBody>
                         </>
                     )}

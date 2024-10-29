@@ -71,7 +71,7 @@ const Slider = ({ title, icon, loop, to, data = [] }) => {
                                 },
                             }}
                         >
-                            {data.map(p => <SwiperSlide>
+                            {data.map(p => <SwiperSlide key={p.id}>
                                 <Card data={p} />
                             </SwiperSlide>)}
                         </Swiper>

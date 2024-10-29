@@ -2,14 +2,14 @@ import Dropdown from 'components/Dropdown/DropDown';
 import useGetRequest from 'hooks/useGetRequest';
 import React, { useState } from 'react';
 import RangeSlider from './Range';
-import { Checkbox, CheckboxGroup, Radio, RadioGroup } from '@nextui-org/react';
+import { Card, Checkbox, CheckboxGroup, Radio, RadioGroup, Skeleton } from '@nextui-org/react';
 import { useRouter } from "next/router";
 
 import FilterIcon from '@icons/filter.svg';
 import Search from '@icons/search.svg';
 
 
-const Filters = () => {
+const Filters = ({ setCurrentPage }) => {
     const router = useRouter()
     const { slug: category, sort } = router.query
 
@@ -32,7 +32,7 @@ const Filters = () => {
 
     const [data] = useGetRequest(`/product/get-filter/${category}`)
 
-    const handleFilter = (name, value) => {        
+    const handleFilter = (name, value) => {
         setFilters(prev => {
             return {
                 ...prev,
@@ -40,6 +40,7 @@ const Filters = () => {
             }
         })
         changeUrl(name, value)
+        setCurrentPage(1)
     }
 
     const changeUrl = (name, value) => {
@@ -70,7 +71,7 @@ const Filters = () => {
 
     return (
         <>
-            {!!data ?
+            {data ?
                 <div className='flex flex-col gap-3 lg:border border-natural_gray-100 rounded-xl bg-white lg:py-6 pb-6 lg:px-4' dir='rtl'>
                     <div className='lg:flex hidden items-center gap-4 py-3'>
                         <div className="centerOfParent"><FilterIcon /></div>
@@ -148,7 +149,11 @@ const Filters = () => {
                             </label>
                         </div>
                     </div>
-                </div> : <p>... درحال‌ بارگذاری</p>}
+                </div>
+                : <Skeleton className="rounded-lg h-full">
+                    <div className="h-24 rounded-lg bg-default-300"></div>
+                </Skeleton>
+            }
         </>
     );
 };

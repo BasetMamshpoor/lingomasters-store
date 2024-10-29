@@ -9,7 +9,7 @@ import FilterIcon from '@icons/filter.svg';
 import Search from '@icons/search.svg';
 
 
-const FiltersEdu = () => {
+const FiltersEdu = ({setCurrentPage}) => {
     const router = useRouter()
 
     const readUrl = () => {
@@ -39,6 +39,7 @@ const FiltersEdu = () => {
             }
         })
         changeUrl(name, value)
+        setCurrentPage(1)
     }
 
     const changeUrl = (name, value) => {

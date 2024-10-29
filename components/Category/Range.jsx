@@ -8,22 +8,32 @@ export default function RangeSlider({ filters, handleFilter, data }) {
     const minSliderValue = data.min_price;
     const maxSliderValue = data.max_price;
 
-    const firstTime = useRef(true)
+    const firstTime2 = useRef(true)
+    const firstTime3 = useRef(true)
 
     const [values, setValues] = useState([minSliderValue, maxSliderValue]);
 
     const [min, max] = useDebounce(values);
 
     useEffect(() => {
-        if (firstTime.current) {
-            firstTime.current = false
-            setValues([filters.min ? Number(filters.min[0]?.value) : minSliderValue, filters.max ? Number(filters.max[0]?.value) : maxSliderValue])
+        setValues([filters.min ? Number(filters.min[0]?.value) : minSliderValue, filters.max ? Number(filters.max[0]?.value) : maxSliderValue])
+    }, []);
+
+    useEffect(() => {
+        if (firstTime2.current) {
+            firstTime2.current = false
             return
-        } else {
+        } else
             handleFilter('min_price', [{ value: min.toString() }])
+    }, [min])
+    useEffect(() => {
+        if (firstTime3.current) {
+            firstTime3.current = false
+            return
+        } else
             handleFilter('max_price', [{ value: max.toString() }])
-        }
-    }, [min, max]);
+    }, [max])
+
 
     // Handle input change for min value
     const handleMinChange = (e) => {

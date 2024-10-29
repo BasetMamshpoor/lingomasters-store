@@ -36,7 +36,7 @@ const Carousel = ({ data }) => {
                 >
                     {data?.map(s => {
                         return (
-                            <SwiperSlide>
+                            <SwiperSlide key={s.id}>
                                 <Link href={s.link}>
                                     <div className="w-full h-full max-h-[537px]">
                                         <picture>

@@ -8,6 +8,8 @@ const useGetRequest = (url, page = 1, obj) => {
 
     useEffect(() => {
         const get = async () => {
+            if (!url) 
+                return
             await axios.get(url, { params: { ...obj, page } })
                 .then(res => {
                     const { data, ...pagination } = res.data.response

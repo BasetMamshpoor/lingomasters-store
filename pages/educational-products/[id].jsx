@@ -11,14 +11,12 @@ import { useRouter } from "next/router";
 const Product = () => {
     const { query } = useRouter()
     const { id } = query
-    if (!id)
-        return
 
-    const [product] = useGetRequest(`/educational-product/show/${id}`)
+    const [product] = useGetRequest(id ? `/educational-product/show/${id}` : null)
 
     return (
         <>
-            {product && <main dir='rtl'>
+            {product ? <main dir='rtl'>
                 <Hero product={product} />
                 <div className="container sm:px-10 grid lg:grid-cols-6 grid-cols-1 gap-6">
                     <div className="lg:col-span-2">
@@ -32,7 +30,7 @@ const Product = () => {
                         <Comments id={id} />
                     </div>
                 </div>
-            </main>}
+            </main> : <div className="centerOfParent w-full min-h-64">درحال بارگزاری</div>}
         </>
     );
 };

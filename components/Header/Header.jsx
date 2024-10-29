@@ -88,7 +88,7 @@ const Header = () => {
                                         <Dropdown dir="rtl">
                                             <DropdownTrigger><div><Item i={i} /></div></DropdownTrigger>
                                             <DropdownMenu>
-                                                {category.map(c => <DropdownItem key={c.slug} href={`/category/${c.slug}`}>{c.title}</DropdownItem>)}
+                                                {category.map(c => <DropdownItem key={c.slug} ><Link className="w-full block" href={`/category/${c.slug}`}>{c.title}</Link></DropdownItem>)}
                                             </DropdownMenu>
                                         </Dropdown>
                                         : <Link href={i.link}>{i.icon}{i.text}</Link>}</li>

@@ -14,15 +14,15 @@ const Categories = ({ data = [] }) => {
                         </div>
                     </div>
                     <div className="flex items-center justify-evenly flex-wrap gap-4 w-full overflow-hidden [&>*]:w-[139px]">
-                        {!data ? [...Array(8)].map(p => {
-                            return <div className="flex flex-col items-center gap-6">
+                        {!data ? [...Array(8)].map((p, i) => {
+                            return <div key={i} className="flex flex-col items-center gap-6">
                                 <Skeleton className="flex rounded-full w-12 h-12" />
                                 <Skeleton className="h-3 w-1/2 rounded-lg" />
                             </div>
                         }) : <>
                             {data.length ? data.map(c => {
                                 return (
-                                    <Link href={`/category/${c.slug}`} className="flex flex-col items-center gap-6">
+                                    <Link key={c.id} href={`/category/${c.slug}`} className="flex flex-col items-center gap-6">
                                         <div className="centerOfParent p-4 bg-primary-700 rounded-full"><img src={c.icon} alt="" className='w-8 h-8' /></div>
                                         <span className='p-2'>{c.title}</span>
                                     </Link>
