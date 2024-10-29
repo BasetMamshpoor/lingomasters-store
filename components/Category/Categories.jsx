@@ -1,8 +1,8 @@
 import Icon from '@icons/category.svg';
-import Book from '@icons/book-white.svg';
 import Link from 'next/link';
+import { Skeleton } from '@nextui-org/react';
 
-const Categories = () => {
+const Categories = ({ data = [] }) => {
     return (
         <>
             <div className="my-12">
@@ -14,38 +14,21 @@ const Categories = () => {
                         </div>
                     </div>
                     <div className="flex items-center justify-evenly flex-wrap gap-4 w-full overflow-hidden [&>*]:w-[139px]">
-                        <Link href='/category/printed' className="flex flex-col items-center gap-6">
-                            <div className="centerOfParent p-4 bg-primary-700 rounded-full"><Book className='w-8 h-8' /></div>
-                            <span className='p-2'>کتاب های چاپی</span>
-                        </Link>
-                        <Link href='/category/printed' className="flex flex-col items-center gap-6">
-                            <div className="centerOfParent p-4 bg-primary-700 rounded-full"><Book className='w-8 h-8' /></div>
-                            <span className='p-2'>کتاب های چاپی</span>
-                        </Link>
-                        <Link href='/category/printed' className="flex flex-col items-center gap-6">
-                            <div className="centerOfParent p-4 bg-primary-700 rounded-full"><Book className='w-8 h-8' /></div>
-                            <span className='p-2'>کتاب های چاپی</span>
-                        </Link>
-                        <Link href='/category/printed' className="flex flex-col items-center gap-6">
-                            <div className="centerOfParent p-4 bg-primary-700 rounded-full"><Book className='w-8 h-8' /></div>
-                            <span className='p-2'>کتاب های چاپی</span>
-                        </Link>
-                        <Link href='/category/printed' className="flex flex-col items-center gap-6">
-                            <div className="centerOfParent p-4 bg-primary-700 rounded-full"><Book className='w-8 h-8' /></div>
-                            <span className='p-2'>کتاب های چاپی</span>
-                        </Link>
-                        <Link href='/category/printed' className="flex flex-col items-center gap-6">
-                            <div className="centerOfParent p-4 bg-primary-700 rounded-full"><Book className='w-8 h-8' /></div>
-                            <span className='p-2'>کتاب های چاپی</span>
-                        </Link>
-                        <Link href='/category/printed' className="flex flex-col items-center gap-6">
-                            <div className="centerOfParent p-4 bg-primary-700 rounded-full"><Book className='w-8 h-8' /></div>
-                            <span className='p-2'>کتاب های چاپی</span>
-                        </Link>
-                        <Link href='/category/printed' className="flex flex-col items-center gap-6">
-                            <div className="centerOfParent p-4 bg-primary-700 rounded-full"><Book className='w-8 h-8' /></div>
-                            <span className='p-2'>کتاب های چاپی</span>
-                        </Link>
+                        {!data ? [...Array(8)].map(p => {
+                            return <div className="flex flex-col items-center gap-6">
+                                <Skeleton className="flex rounded-full w-12 h-12" />
+                                <Skeleton className="h-3 w-1/2 rounded-lg" />
+                            </div>
+                        }) : <>
+                            {data.length ? data.map(c => {
+                                return (
+                                    <Link href={`/category/${c.slug}`} className="flex flex-col items-center gap-6">
+                                        <div className="centerOfParent p-4 bg-primary-700 rounded-full"><img src={c.icon} alt="" className='w-8 h-8' /></div>
+                                        <span className='p-2'>{c.title}</span>
+                                    </Link>
+                                )
+                            }) : <div>دسته ای وجود ندارد</div>}
+                        </>}
                     </div>
                 </div>
             </div>

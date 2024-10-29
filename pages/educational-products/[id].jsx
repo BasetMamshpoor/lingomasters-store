@@ -2,11 +2,9 @@ import AboutBook from "@/components/Product/AboutBook";
 import Banner from "@/components/Product/Banner";
 import Comments from "@/components/Product/Comments";
 import Description from "@/components/Product/Description";
-import Examples from "@/components/Product/Examples";
 import Hero from "@/components/Product/Hero";
 import Sellers from "@/components/Product/Sellers";
 import Tabs from "@/components/Product/Tabs";
-import Video from "@/components/Product/Video";
 import useGetRequest from "@/hooks/useGetRequest";
 import { useRouter } from "next/router";
 
@@ -16,7 +14,7 @@ const Product = () => {
     if (!id)
         return
 
-    const [product] = useGetRequest(`/product/show/${id}`)
+    const [product] = useGetRequest(`/educational-product/show/${id}`)
 
     return (
         <>
@@ -31,8 +29,6 @@ const Product = () => {
                         <Sellers />
                         <AboutBook product={product} />
                         <Description product={product} />
-                        <Examples images={product?.sample_images} />
-                        <Video movie={product?.video} image={product?.image} />
                         <Comments id={id} />
                     </div>
                 </div>

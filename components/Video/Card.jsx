@@ -2,12 +2,12 @@ import { Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, Button, useDi
 import Image from "next/image";
 import Play from '@icons/surface.svg';
 
-export default function Card({ bgSrc, className, movie }) {
+export default function Card({ bgSrc, data, className, movie }) {
     const { isOpen, onOpen, onOpenChange } = useDisclosure();
 
     return (
         <>
-            <div onClick={onOpen} className={`centerOfParent relative cursor-pointer ${className}`}>
+            <div onClick={onOpen} className={`centerOfParent relative w-fit max-h-80 rounded-lg overflow-hidden cursor-pointer ${className}`}>
                 <Image src={bgSrc} width='0' height='0' sizes='100vw' className='w-full h-full object-contain' />
                 <div className="centerOfParent absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"><Play className='w-16 h-12' /></div>
             </div>
@@ -16,8 +16,9 @@ export default function Card({ bgSrc, className, movie }) {
                 size="5xl"
                 isOpen={isOpen}
                 onOpenChange={onOpenChange}
+                scrollBehavior="inside"
                 classNames={{
-                    backdrop: "bg-gradient-to-t from-zinc-900 to-zinc-900/10 backdrop-opacity-20"
+                    backdrop: "bg-gradient-to-t from-zinc-900 to-zinc-900/10 backdrop-opacity-20",
                 }}
             >
                 <ModalContent className='bg-white rounded-lg'>

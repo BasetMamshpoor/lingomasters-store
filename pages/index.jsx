@@ -11,32 +11,35 @@ import Banner from "@/components/Banner";
 import useGetRequest from "@/hooks/useGetRequest";
 
 export default function Page() {
-  const [] = useGetRequest('/main-page')
+
+  const [data] = useGetRequest('/main-page')
+  let category = 'print'
+  // JSON.parse(localStorage?.getItem('category'))[0].slug || 
   return (
     <>
       <div>
-        <Carousel />
-        <Categories />
-        <OfferSlider />
-        <Slider title='پکیج های آموزشی' icon={<Book className='sm:w-10 sm:h-10' />} />
-        <div className="container grid sm:grid-cols-2 gap-6 my-12">
-          <Card bgSrc='/images/video/1.jpg' />
-          <Card bgSrc='/images/video/1.jpg' />
+        <Carousel data={data?.sliders} />
+        <Categories data={data?.categories} />
+        <OfferSlider to={`/category/${category}?discount=true`} data={data?.discounted_products} />
+        <Slider to={`/product/${category}`} data={data?.random_products} title='پکیج های آموزشی' icon={<Book className='sm:w-10 sm:h-10' />} />
+        <div className="container grid sm:grid-cols-2 gap-6 my-12 [&>div]:mx-auto">
+          <Card movie={data?.video_banners[0].path} bgSrc={data?.video_banners[0].cover || '/images/video/1.jpg'} />
+          <Card movie={data?.video_banners[1].path} bgSrc={data?.video_banners[1].cover || '/images/video/1.jpg'} />
         </div>
-        <Slider title="جدید ترین ها" icon={<New className='sm:w-10 sm:h-10' />} />
+        <Slider to={`/products/${category}?sort=newest`} data={data?.latest_products} title="جدید ترین ها" icon={<New className='sm:w-10 sm:h-10' />} />
         <div className="max-w-[1280px] w-full mx-auto grid sm:grid-cols-2 items-center gap-6 my-12">
-          <Banner />
-          <Banner />
+          <Banner data={data?.baners.order1[0]} />
+          <Banner data={data?.baners.order1[1]} />
         </div>
-        <Slider title="پرفروش ترین ها" icon={<MostSell className='sm:w-10 sm:h-10' />} />
+        <Slider to={`/products/${category}?sort=bestselling`} data={data?.best_selling_products} title="پرفروش ترین ها" icon={<MostSell className='sm:w-10 sm:h-10' />} />
         <div className="max-w-[1280px] w-full mx-auto grid sm:grid-cols-2 items-center gap-6 my-12">
-          <Banner />
-          <Banner />
+          <Banner data={data?.baners.order2[0]} />
+          <Banner data={data?.baners.order2[1]} />
         </div>
-        <Slider title='وسایل کمک آموزشی' icon={<Stuff className='sm:w-10 sm:h-10' />} />
+        <Slider to='/educational-products' data={data?.latest_educational_products} title='وسایل کمک آموزشی' icon={<Stuff className='sm:w-10 sm:h-10' />} />
         <div className="max-w-[1280px] w-full mx-auto grid sm:grid-cols-2 items-center gap-6 my-12">
-          <Banner />
-          <Banner />
+          <Banner data={data?.baners.order3[0]} />
+          <Banner data={data?.baners.order3[1]} />
         </div>
       </div>
     </>

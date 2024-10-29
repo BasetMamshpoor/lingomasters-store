@@ -1,7 +1,7 @@
 import { Pagination, PaginationItemType } from "@nextui-org/react";
 import ChevronIcon from "@icons/chevron-right.svg";
 
-export default function PaginationApp({ total, per_page }) {
+export default function PaginationApp({ total, per_page, ...props }) {
     const pages = Math.ceil(total / per_page) || 1
     const renderItem = ({
         ref,
@@ -57,6 +57,7 @@ export default function PaginationApp({ total, per_page }) {
                 radius="full"
                 renderItem={renderItem}
                 variant="light"
+                {...props}
             />}
         </>
     );

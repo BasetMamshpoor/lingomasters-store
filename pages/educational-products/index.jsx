@@ -1,11 +1,9 @@
 import Filter from "@/components/Category/Filter";
-import Filters from "@/components/Category/Filters";
+import FiltersEdu from "@/components/Category/FiltersEdu";
 import Products from "@/components/Category/Products";
 import SortBy from "@/components/Category/SortBy";
-import { useRouter } from "next/router";
 
-const ProductsList = () => {
-    const router = useRouter()
+const ProductsEdu = () => {
 
     return (
         <>
@@ -13,19 +11,19 @@ const ProductsList = () => {
                 <div className="container">
                     <div className='grid lg:grid-cols-12 grid-cols-1'>
                         <div className='hidden lg:block lg:col-span-3 bg-white'>
-                            {router.isReady && <Filters />}
+                            <FiltersEdu />
                         </div>
                         <div className='flex flex-col lg:col-span-9 gap-4'>
                             <div className='flex items-center justify-between'>
                                 <div className=""> </div>
                                 <div className="flex items-center gap-6">
                                     <div className="lg:hidden centerOfParent">
-                                        {router.isReady && <Filter />}
+                                        <Filter edu />
                                     </div>
                                     <SortBy />
                                 </div>
                             </div>
-                            <Products />
+                            <Products edu />
                         </div>
                     </div>
                 </div>
@@ -34,4 +32,4 @@ const ProductsList = () => {
     );
 };
 
-export default ProductsList;
+export default ProductsEdu;

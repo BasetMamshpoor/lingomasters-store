@@ -3,8 +3,9 @@ import { Modal, ModalContent, ModalHeader, ModalBody, useDisclosure, } from "@ne
 import Filters from "./Filters";
 import FilterIcon from '@icons/filter.svg';
 import Close from '@icons/close.svg';
+import FiltersEdu from "./FiltersEdu";
 
-export default function Filter() {
+export default function Filter({ edu }) {
     const { isOpen, onOpen, onOpenChange } = useDisclosure();
 
     return (
@@ -32,7 +33,7 @@ export default function Filter() {
                                 <div onClick={onOpenChange} className="centerOfParent"><Close /></div>
                             </ModalHeader>
                             <ModalBody>
-                                <Filters />
+                                {edu ? <FiltersEdu /> : <Filters />}
                             </ModalBody>
                         </>
                     )}

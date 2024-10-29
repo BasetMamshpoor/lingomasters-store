@@ -58,7 +58,7 @@ const Dropdown = ({
 
     const filterByReference = (arr1, arr2) => {
         return arr1.filter(el =>
-            arr2.find(element => element.name === el.name)
+            arr2.find(element => element.value === el.value)
         );
     };
 

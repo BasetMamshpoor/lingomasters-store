@@ -4,18 +4,33 @@ import "@/styles/fonts.css";
 import Footer from "@/components/Footer";
 import { NextUIProvider } from "@nextui-org/react";
 import axios from "axios";
+import CartContextProvider from "@/providers/CartContextProvider";
+import { useEffect } from "react";
 
 axios.defaults.baseURL = `${process.env.NEXT_PUBLIC_BASE_URL}/api`
 
 export default function App({ Component, pageProps }) {
+  useEffect(() => {
+    const get = async () => {
+      await axios.get('/category')
+        .then(res => {
+          localStorage.setItem('category', JSON.stringify(res.data.response.data))
+        })
+        .catch(err => alert(err.response?.data.message))
+    }
+    get()
+  }, [])
+
   return (
     <>
       <NextUIProvider>
-        <div style={{ maxWidth: '1440px', margin: '0 auto' }}>
-          <Header />
-          <Component {...pageProps} />
-          <Footer />
-        </div>
+        <CartContextProvider>
+          <div style={{ maxWidth: '1440px', margin: '0 auto' }}>
+            <Header />
+            <Component {...pageProps} />
+            <Footer />
+          </div>
+        </CartContextProvider>
       </NextUIProvider>
     </>
   );

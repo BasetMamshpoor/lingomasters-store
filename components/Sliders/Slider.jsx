@@ -2,10 +2,10 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import { Navigation } from 'swiper/modules';
-import Card from '../Card'; // Import your Card component
+import Card from '../Card';
 import Link from 'next/link';
 
-const Slider = ({ title, icon}) => {
+const Slider = ({ title, icon, loop, to, data = [] }) => {
 
     return (
         <>
@@ -16,7 +16,7 @@ const Slider = ({ title, icon}) => {
                             <div className="centerOfParent">{icon}</div>
                             <p className='sm:text-xl font-semibold'>{title}</p>
                         </div>
-                        <Link href='' className='centerOfParent sm:w-[140px] w-[95px] sm:h-12 h-8 sm:text-base text-xs sm:px-6 px-4 sm:py-4 py-2 rounded bg-primary-600 text-white whitespace-nowrap'>مشاهده همه</Link>
+                        <Link href={to || ''} className='centerOfParent sm:w-[140px] w-[95px] sm:h-12 h-8 sm:text-base text-xs sm:px-6 px-4 sm:py-4 py-2 rounded bg-primary-600 text-white whitespace-nowrap'>مشاهده همه</Link>
                     </div>
                     <div className="w-full relative slider">
                         <Swiper
@@ -24,7 +24,7 @@ const Slider = ({ title, icon}) => {
                             spaceBetween={10}
                             slidesPerView={1.2} // Start with 1.5 slides for mobile
                             centeredSlides={false}
-                            loop={true}
+                            loop={loop ? true : false}
                             navigation
                             breakpoints={{
                                 319: {
@@ -71,30 +71,9 @@ const Slider = ({ title, icon}) => {
                                 },
                             }}
                         >
-                            <SwiperSlide>
-                                <Card />
-                            </SwiperSlide>
-                            <SwiperSlide>
-                                <Card />
-                            </SwiperSlide>
-                            <SwiperSlide>
-                                <Card />
-                            </SwiperSlide>
-                            <SwiperSlide>
-                                <Card />
-                            </SwiperSlide>
-                            <SwiperSlide>
-                                <Card />
-                            </SwiperSlide>
-                            <SwiperSlide>
-                                <Card />
-                            </SwiperSlide>
-                            <SwiperSlide>
-                                <Card />
-                            </SwiperSlide>
-                            <SwiperSlide>
-                                <Card />
-                            </SwiperSlide>
+                            {data.map(p => <SwiperSlide>
+                                <Card data={p} />
+                            </SwiperSlide>)}
                         </Swiper>
                     </div>
                 </div>

@@ -1,6 +1,5 @@
 // import Swiper core and required modules
 import { Navigation, Pagination, A11y } from 'swiper/modules';
-
 import { Swiper, SwiperSlide } from 'swiper/react';
 
 // Import Swiper styles
@@ -12,11 +11,12 @@ import Left from '@icons/left.svg';
 import Right from '@icons/right.svg';
 
 import Image from 'next/image';
+import Link from 'next/link';
 
-const Carousel = () => {
+const Carousel = ({ data }) => {
     return (
         <>
-            <div className="relative">
+            <div className="relative my-4" dir='ltr'>
                 <Swiper
                     modules={[Navigation, Pagination, A11y]}
                     slidesPerView={1.5}
@@ -34,93 +34,33 @@ const Carousel = () => {
                         bulletActiveClass: 'custom-bullet-active',
                     }}
                 >
-                    <SwiperSlide>
-                        <div className="w-full h-auto">
-                            <picture>
-                                <source
-                                    srcSet="/images/Slider/sm.jpg"
-                                    media="(max-width: 639px)" />
-                                <source
-                                    srcSet="/images/Slider/md.jpg"
-                                    media="(min-width: 640px) and (max-width: 1023px)" />
-                                <source
-                                    srcSet="/images/Slider/lg.jpg"
-                                    media="(min-width: 1024px)" />
-                                <Image
-                                    src="/images/Slider/lg.jpg"
-                                    alt="Responsive example"
-                                    width={0}
-                                    height={0} sizes='100vw'
-                                    className='w-full h-full object-contain' />
-                            </picture>
-                        </div>
-                    </SwiperSlide>
-                    <SwiperSlide>
-                        <div className="w-full h-auto">
-                            <picture>
-                                <source
-                                    srcSet="/images/Slider/sm.jpg"
-                                    media="(max-width: 639px)" />
-
-                                <source
-                                    srcSet="/images/Slider/md.jpg"
-                                    media="(min-width: 640px) and (max-width: 1023px)" />
-                                <source
-                                    srcSet="/images/Slider/lg.jpg"
-                                    media="(min-width: 1024px)" />
-                                <Image
-                                    src="/images/Slider/lg.jpg"
-                                    alt="Responsive example"
-                                    width={0}
-                                    height={0} sizes='100vw'
-                                    className='w-full h-full object-contain' />
-                            </picture>
-                        </div>
-                    </SwiperSlide>
-                    <SwiperSlide>
-                        <div className="w-full h-auto">
-                            <picture>
-                                <source
-                                    srcSet="/images/Slider/sm.jpg"
-                                    media="(max-width: 639px)" />
-
-                                <source
-                                    srcSet="/images/Slider/md.jpg"
-                                    media="(min-width: 640px) and (max-width: 1023px)" />
-                                <source
-                                    srcSet="/images/Slider/lg.jpg"
-                                    media="(min-width: 1024px)" />
-                                <Image
-                                    src="/images/Slider/lg.jpg"
-                                    alt="Responsive example"
-                                    width={0}
-                                    height={0} sizes='100vw'
-                                    className='w-full h-full object-contain' />
-                            </picture>
-                        </div>
-                    </SwiperSlide>
-                    <SwiperSlide>
-                        <div className="w-full h-auto">
-                            <picture>
-                                <source
-                                    srcSet="/images/Slider/sm.jpg"
-                                    media="(max-width: 639px)" />
-
-                                <source
-                                    srcSet="/images/Slider/md.jpg"
-                                    media="(min-width: 640px) and (max-width: 1023px)" />
-                                <source
-                                    srcSet="/images/Slider/lg.jpg"
-                                    media="(min-width: 1024px)" />
-                                <Image
-                                    src="/images/Slider/lg.jpg"
-                                    alt="Responsive example"
-                                    width={0}
-                                    height={0} sizes='100vw'
-                                    className='w-full h-full object-contain' />
-                            </picture>
-                        </div>
-                    </SwiperSlide>
+                    {data?.map(s => {
+                        return (
+                            <SwiperSlide>
+                                <Link href={s.link}>
+                                    <div className="w-full h-full max-h-[537px]">
+                                        <picture>
+                                            <source
+                                                srcSet={s.mobil_image || "/images/Slider/sm.jpg"}
+                                                media="(max-width: 639px)" />
+                                            <source
+                                                srcSet={s.tablet_image || "/images/Slider/md.jpg"}
+                                                media="(min-width: 640px) and (max-width: 1023px)" />
+                                            <source
+                                                srcSet={s.laptop_image || "/images/Slider/lg.jpg"}
+                                                media="(min-width: 1024px)" />
+                                            <Image
+                                                src={s.laptop_image || "/images/Slider/lg.jpg"}
+                                                alt="Responsive example"
+                                                width={0}
+                                                height={0} sizes='100vw'
+                                                className='w-full h-full object-cover' />
+                                        </picture>
+                                    </div>
+                                </Link>
+                            </SwiperSlide>
+                        )
+                    })}
                 </Swiper>
                 <div className="swiper-pagination !left-1/2 items-center justify-center !bottom-6 !-translate-x-1/2 hidden lg:flex"></div>
                 <div className="hidden lg:block">

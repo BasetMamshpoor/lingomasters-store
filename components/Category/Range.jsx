@@ -3,10 +3,10 @@ import { Slider } from "@nextui-org/react";
 import { useDebounce } from "@/hooks/useDebounce";
 import formatCurrency from "@/helpers/formatCurrency";
 
-export default function RangeSlider({ filters, handleFilter }) {
+export default function RangeSlider({ filters, handleFilter, data }) {
 
-    const minSliderValue = 350000;
-    const maxSliderValue = 6560000;
+    const minSliderValue = data.min_price;
+    const maxSliderValue = data.max_price;
 
     const firstTime = useRef(true)
 
@@ -17,12 +17,11 @@ export default function RangeSlider({ filters, handleFilter }) {
     useEffect(() => {
         if (firstTime.current) {
             firstTime.current = false
-            setValues([filters.min ? Number(filters.min[0]?.name) : minSliderValue, filters.max ? Number(filters.max[0]?.name) : maxSliderValue])
+            setValues([filters.min ? Number(filters.min[0]?.value) : minSliderValue, filters.max ? Number(filters.max[0]?.value) : maxSliderValue])
             return
         } else {
-            handleFilter('min', [{ name: min.toString() }])
-            handleFilter('max', [{ name: max.toString() }])
-
+            handleFilter('min_price', [{ value: min.toString() }])
+            handleFilter('max_price', [{ value: max.toString() }])
         }
     }, [min, max]);
 

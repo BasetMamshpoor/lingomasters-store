@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Dropdown, DropdownTrigger, DropdownMenu, DropdownItem, Input } from "@nextui-org/react";
 import Link from "next/link";
 import Cart from '@icons/cart.svg'
@@ -20,14 +20,15 @@ const Item = ({ i, isSubmenuOpen }) => <div className="flex items-center justify
 
 const links = [
     { link: '/', icon: <Home />, text: 'صفحه‌اصلی', underMenu: false },
-    { link: '/', icon: <Books />, text: 'دسته‌بندی‌کتاب‌ها', underMenu: true },
-    { link: '/', icon: <Book />, text: 'وسایل‌کمک‌آموزشی', underMenu: false },
+    { link: '', icon: <Books />, text: 'دسته‌بندی‌کتاب‌ها', underMenu: true },
+    { link: '/educational-products', icon: <Book />, text: 'وسایل‌کمک‌آموزشی', underMenu: false },
     { link: '/', icon: <Seller />, text: 'فروشنده‌شوید', underMenu: false },
     { link: '/', icon: <About />, text: 'درباره‌ما', underMenu: false },
     { link: '/', icon: <Contact />, text: 'ارتباطباما', underMenu: false },
 ]
 
 const Header = () => {
+    const [category, setCategory] = useState([])
     const [isSidebarOpen, setSidebarOpen] = useState(false);
     const [isSubmenuOpen, setSubmenuOpen] = useState(false);
     const toggleSidebar = () => {
@@ -38,6 +39,11 @@ const Header = () => {
     const toggleSubmenu = () => {
         setSubmenuOpen(!isSubmenuOpen);
     };
+    useEffect(() => {
+        const categories = JSON.parse(localStorage.getItem('category'))
+        setCategory(categories)
+    }, [])
+
     return (
         <>
             <header className="sm:py-6 py-3 sticky top-0 bg-[#FBFCFE] z-[50] border-b" dir="rtl">
@@ -75,20 +81,20 @@ const Header = () => {
                         <Input radius="sm" placeholder="جستجو کتاب، نویسنده و ." isClearable variant="bordered" className="max-w-[628px] bg-white" startContent={<Search className="fill-natural_gray-600" />} />
                     </div>
                     <div className="lg:block hidden">
-                        <ui className="list-none flex items-center justify-between">
+                        <ul className="list-none flex items-center justify-between">
                             {links.map((i, o) => {
                                 return (
                                     <li key={o} className="[&>a]:flex [&>a]:items-center [&>a]:gap-3 cursor-pointer">{i.underMenu ?
                                         <Dropdown dir="rtl">
                                             <DropdownTrigger><div><Item i={i} /></div></DropdownTrigger>
                                             <DropdownMenu>
-                                                <DropdownItem key="rr" href={i.link}><Iran /></DropdownItem>
+                                                {category.map(c => <DropdownItem key={c.slug} href={`/category/${c.slug}`}>{c.title}</DropdownItem>)}
                                             </DropdownMenu>
                                         </Dropdown>
                                         : <Link href={i.link}>{i.icon}{i.text}</Link>}</li>
                                 )
                             })}
-                        </ui>
+                        </ul>
                     </div>
                 </div>
             </header>
@@ -111,12 +117,14 @@ const Header = () => {
                                                     </span>
                                                 </button>
                                                 {isSubmenuOpen && (
-                                                    <ul className="pl-8 flex flex-col gap-6">
-                                                        <li className="group duration-300 hover:bg-gray-50 rounded-lg">
-                                                            <Link href={i.link} className="flex items-center p-2 text-gray-900">
-                                                                فارسی
-                                                            </Link>
-                                                        </li>
+                                                    <ul className="pr-8 flex flex-col gap-1">
+                                                        {category.map(c => {
+                                                            return <li key={c.id} className="group duration-300 hover:bg-gray-50 rounded-lg">
+                                                                <Link href={`/category/${c.slug}`} className="flex items-center p-2 text-gray-900">
+                                                                    {c.title}
+                                                                </Link>
+                                                            </li>
+                                                        })}
                                                     </ul>
                                                 )}
                                             </>

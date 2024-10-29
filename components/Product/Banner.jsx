@@ -9,17 +9,22 @@ import Star from '@icons/magic-star.svg'
 import Right from '@icons/chevron-right.svg'
 import FillHeart from '@icons/fill-heart.svg'
 import Flag from '@icons/Flags/Country=United States of America, Style=Flag, Radius=On.svg'
+import Trush from "@icons/bin.svg";
 
 import Image from 'next/image';
 import Link from 'next/link';
 import { BreadcrumbItem, Breadcrumbs } from '@nextui-org/react';
 import formatCurrency from '@/helpers/formatCurrency';
+import { CartContext } from '@/providers/CartContextProvider';
+import { useContext } from 'react';
+import { IsInCart, quantityItem } from '@/helpers/functions';
 
 
 
 const Banner = ({ product = {} }) => {
 
-    const { title, rate, id, language, sellers, category, seller, image, subject, age_group, page_number, product_type_id, price, discount_percentage } = product
+    const { title, id, sellers, category, seller, image, page_number, off_price, discount_percentage, selected_seller } = product
+    const { state, dispatch } = useContext(CartContext)
 
     return (
         <>
@@ -86,26 +91,26 @@ const Banner = ({ product = {} }) => {
                                 </div>}
                                 <div className="sm:h-[60px] h-8 flex items-center justify-between bg-natural_gray-50 px-3">
                                     <span className='text-natural_gray-900 sm:text-xs text-[10px]'>خرید از {seller?.name}</span>
-                                    <span className='text-green-500 sm:text-sm text-xs hasToman'>{formatCurrency(price)}</span>
+                                    <span className='text-green-500 sm:text-sm text-xs hasToman'>{formatCurrency(off_price)}</span>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div className="centerOfParent">
-                        {(3 < 2 ?
+                        {(IsInCart(state, id + "_" + selected_seller.id) ?
                             <div className='flex items-center gap-2 h-10 mx-auto py-1 px-2 border border-natural_gray-300 rounded justify-between w-fit'>
-                                <button type='button' className="centerOfParent bg-none border-0" onClick={() => dispatch({ type: 'INCREASE', payload: paint })}>
-                                    <Plus className="cursor-pointer w-4 h-4" />
+                                <button type='button' className="centerOfParent bg-none border-0" onClick={() => dispatch({ type: 'INCREASE', payload: { ...product, idp: product.id + "_" + product.selected_seller.id } })}>
+                                    <Plus className="cursor-pointer w-6 h-6 fill-primary-600" />
                                 </button>
-                                <span className='sm:text-base text-sm centerOfParent text-natural_gray-800'>{1}</span>
+                                <span className='sm:text-base text centerOfParent text-natural_gray-800'>{quantityItem(state, id + "_" + selected_seller.id)}</span>
                                 <button type='button' className='centerOfParent bg-none border-0'>
-                                    {1 < 2 ?
-                                        <Minus className="cursor-pointer w-4 h-4" onClick={() => dispatch({ type: "REMOVE_ITEM", payload: paint })} /> :
-                                        <Minus className="cursor-pointer w-4 h-4" onClick={() => dispatch({ type: "DECREASE", payload: paint })} />
+                                    {quantityItem(state, id + "_" + selected_seller.id) < 2 ?
+                                        <Trush className="cursor-pointer w-6 h-6 fill-red-500" onClick={() => dispatch({ type: "REMOVE_ITEM", payload: { ...product, idp: product.id + "_" + product.selected_seller.id } })} /> :
+                                        <Minus className="cursor-pointer w-6 h-6 fill-primary-600" onClick={() => dispatch({ type: "DECREASE", payload: { ...product, idp: product.id + "_" + product.selected_seller.id } })} />
                                     }
                                 </button>
                             </div>
-                            : <button type='button' onClick={() => dispatch({ type: "ADD_ITEM", payload: paint })} disabled={false}
+                            : <button type='button' onClick={() => dispatch({ type: "ADD_ITEM", payload: { ...product, idp: product.id + "_" + product.selected_seller.id } })} disabled={false}
                                 className="disabled:opacity-50 bg-primary-600 p-2 text-sm text-white rounded centerOfParent gap-2 ">
                                 <Cart className='sm:w-6 sm:h-6 w-4 h-4 fill-white' />
                                 <span className='sm:text-base text-xs'>افزودن به سبد خرید</span>

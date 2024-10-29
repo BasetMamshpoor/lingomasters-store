@@ -35,7 +35,12 @@ const Text = ({ id }) => {
                             </div>
                             <div className="flex flex-col items-start gap-2">
                                 <label className="sm:text-sm text-xs text-natural_gray-950 mr-2" htmlFor="">توضیحات<span className="text-red-500 mr-1">*</span></label>
-                                <Textarea minRows={5} radius="sm" maxRows={10} variant="bordered" className="self-stretch" placeholder="توضیحات">توضیحات</Textarea>
+                                <div className="relative">
+                                    <Textarea minRows={5} radius="sm" maxRows={10} variant="bordered" className="self-stretch" placeholder="توضیحات">توضیحات</Textarea>
+                                    <div className="absolute left-0 bottom-0">
+                                        <span className="text-primary-600">انتخاب نظر اماده</span>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                         <button className="sm:py-4 py-2 sm:px-6 px-4 sm:text-base text-xs rounded text-white bg-primary-600 sm:w-[140px] sm:h-fit h-9 w-full self-end">ارسال</button>
@@ -61,7 +66,7 @@ const Text = ({ id }) => {
                                         </div>
                                         <div className="flex items-center gap-1">
                                             <span className="text-primary-950 text-[8px]">{c.likes_count}</span>
-                                            <div className="centerOfParent">{c.is_like?<LikeFill className='sm:w-6 sm:h-6 w-4 h-4 fill-green-600' />:<Like className='sm:w-6 sm:h-6 w-4 h-4' />}</div>
+                                            <div className="centerOfParent">{c.is_like ? <LikeFill className='sm:w-6 sm:h-6 w-4 h-4 fill-green-600' /> : <Like className='sm:w-6 sm:h-6 w-4 h-4' />}</div>
                                         </div>
                                     </div>
                                 </li>
