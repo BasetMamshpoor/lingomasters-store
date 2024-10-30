@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { Input, Textarea } from "@nextui-org/react";
 import Image from "next/image";
 import Pagination from "@/components/Pagination";
@@ -8,14 +8,56 @@ import Pagination from "@/components/Pagination";
 import Like from '@icons/like.svg'
 import LikeFill from '@icons/like-fill.svg'
 import Dislike from '@icons/dislike.svg'
+import Close from '@icons/close.svg'
 import DislikeFill from '@icons/dislike-fill.svg'
 import Down from '@icons/arrow-down.svg'
 import useGetRequest from "@/hooks/useGetRequest";
-
+let staticComments = [
+    'عالی است',
+    'بهترین است',
+    'دوست داشتم',
+    'بد بود',
+    'بسیار بد بود',
+    'عالی است',
+    'بهترین است',
+    'دوست داشتم',
+    'بد بود',
+    'بسیار بد بود',
+    'عالی است',
+    'بهترین است',
+    'دوست داشتم',
+    'بد بود',
+    'بسیار بد بود',
+    'عالی است',
+    'بهترین است',
+    'دوست داشتم',
+    'بد بود',
+    'بسیار بد بود',
+];
 const Text = ({ id }) => {
+    const [data, setData] = useState({ name: '', email: '', text: '' })
+    const [xComment, setXComment] = useState(true)
     const [showMore, setShowMore] = useState(false)
     const [comments, setComments, setReload, pagination] = useGetRequest(`/text-comments/${id}`)
+    const handleChange = (event) => {
+        const { name, value } = event.target
+        setData(prev => {
+            return {
+                ...prev,
+                [name]: value
+            }
+        })
+    }
 
+    const handleClick = (value) => {
+        setData(prev => {
+            return {
+                ...prev,
+                text: value
+            }
+        })
+        setXComment(!xComment)
+    }
     return (
         <>
             <div className="flex flex-col gap-10">
@@ -26,19 +68,20 @@ const Text = ({ id }) => {
                             <div className="flex sm:flex-row flex-col sm:items-center items-stretch gap-4 *:flex-[1_0_0]">
                                 <div className="flex flex-col items-start gap-2">
                                     <label className="sm:text-sm text-xs text-natural_gray-950 mr-2" htmlFor="">نام<span className="text-red-500 mr-1">*</span></label>
-                                    <Input isRequired radius="sm" variant="bordered" name="name" placeholder="نام" className="self-stretch" />
+                                    <Input onChange={handleChange} value={data.name} isRequired radius="sm" variant="bordered" name="name" placeholder="نام" className="self-stretch" />
                                 </div>
                                 <div className="flex flex-col items-start gap-2">
                                     <label className="sm:text-sm text-xs text-natural_gray-950 mr-2" htmlFor="">ایمیل<span className="text-red-500 mr-1">*</span></label>
-                                    <Input isRequired radius="sm" variant="bordered" type="email" name="email" placeholder="ایمیل" className="self-stretch" />
+                                    <Input onChange={handleChange} value={data.email} isRequired radius="sm" variant="bordered" type="email" name="email" placeholder="ایمیل" className="self-stretch" />
                                 </div>
                             </div>
                             <div className="flex flex-col items-start gap-2">
                                 <label className="sm:text-sm text-xs text-natural_gray-950 mr-2" htmlFor="">توضیحات<span className="text-red-500 mr-1">*</span></label>
-                                <div className="relative">
-                                    <Textarea minRows={5} radius="sm" maxRows={10} variant="bordered" className="self-stretch" placeholder="توضیحات">توضیحات</Textarea>
-                                    <div className="absolute left-0 bottom-0">
-                                        <span className="text-primary-600">انتخاب نظر اماده</span>
+                                <div className="relative w-full">
+                                    <Textarea onChange={handleChange} value={data.text} minRows={5} radius="sm" maxRows={10} variant="bordered" name="text" className="self-stretch" placeholder="توضیحات">توضیحات</Textarea>
+                                    <div className="absolute left-0 bottom-0 px-3 py-1 text-sm flex items-center gap-2 w-full">
+                                        <div className={`${xComment ? 'hidden' : 'flex'} items-center gap-2 overflow-x-auto px-1`}>{staticComments.map((_, i) => <span key={i} className="border rounded-lg py-0.5 px-2 whitespace-nowrap cursor-pointer" onClick={() => handleClick(_)}>{_}</span>)}</div>
+                                        <span className="text-primary-600 whitespace-nowrap mr-auto cursor-pointer" onClick={() => setXComment(!xComment)}>{!xComment ? <Close className='fill-primary-600' /> : 'انتخاب نظر اماده'}</span>
                                     </div>
                                 </div>
                             </div>

@@ -36,7 +36,7 @@ const Products = ({ edu, currentPage, setCurrentPage }) => {
                 </>
                 : <div className="grid md:grid-cols-3 grid-cols-2 lg:gap-6 gap-4 px-4">
                     {[...Array(10)].map((_, i) => {
-                        return <Card className="flex flex-col gap-2 p-4" radius="lg">
+                        return <Card key={i} className="flex flex-col gap-2 p-4" radius="lg">
                             <Skeleton className="rounded-lg">
                                 <div className="h-24 rounded-lg bg-default-300"></div>
                             </Skeleton>
