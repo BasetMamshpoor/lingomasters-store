@@ -11,6 +11,7 @@ import Tiktok from '@icons/tik_tok.svg'
 import Whatsapp from '@icons/whatsapp.svg'
 import Pinterest from '@icons/pinterest.svg'
 import Facebook from '@icons/facebook.svg'
+import Link from 'next/link'
 
 const Footer = () => {
     return (
@@ -64,26 +65,26 @@ const Footer = () => {
                                     </div>
                                     <div className="grow flex sm:flex-row flex-col w-full justify-between sm:items-center sm:gap-1 sm:text-sm text-xs text-natural_gray-900">
                                         <div className="flex flex-col sm:gap-6 gap-2">
-                                            <a href="">صفحه اصلی</a>
-                                            <a href="">پشتیبانی</a>
-                                            <a href="">درباره ما</a>
-                                            <a href="">تماس با ما</a>
+                                            <Link href="/">صفحه اصلی</Link>
+                                            <Link href="">پشتیبانی</Link>
+                                            <Link href="">درباره ما</Link>
+                                            <Link href="">تماس با ما</Link>
                                         </div>
                                         <div className="flex flex-col sm:gap-6 gap-2">
-                                            <a href="">قوانین و مقررات</a>
-                                            <a href="">اخبار و اطلاعیه ها</a>
-                                            <a href="">سوالات متداول خریداران</a>
-                                            <a href="">سوالات متداول فروشندگان</a>
+                                            <Link href="/rules">قوانین و مقررات</Link>
+                                            <Link href="">اخبار و اطلاعیه ها</Link>
+                                            <Link href="/faq">سوالات متداول خریداران</Link>
+                                            <Link href="/faq">سوالات متداول فروشندگان</Link>
                                         </div>
                                         <div className="flex flex-col sm:gap-6 gap-2">
-                                            <a href="">سبد خرید</a>
-                                            <a href="">پیگیری سفارش</a>
-                                            <a href="">فروشنده شوید</a>
-                                            <a href="">ورود و ثبت نام</a>
+                                            <Link href="/checkout/cart">سبد خرید</Link>
+                                            <Link href="">پیگیری سفارش</Link>
+                                            <Link href="">فروشنده شوید</Link>
+                                            <Link href="">ورود و ثبت نام</Link>
                                         </div>
                                         <div className="flex items-center justify-between sm:gap-6 gap-2 sm:mt-0 mt-10">
-                                            <a href=""><img src="/images/image 9.png" className='mix-blend-multiply' alt="" /></a>
-                                            <a href="" className='sm:hidden'><img src="/images/etehadie.png" className='mix-blend-multiply' alt="" /></a>
+                                            <Link href=""><img src="/images/image 9.png" className='mix-blend-multiply' alt="" /></Link>
+                                            <Link href="" className='sm:hidden'><img src="/images/etehadie.png" className='mix-blend-multiply' alt="" /></Link>
                                         </div>
                                     </div>
                                 </div>

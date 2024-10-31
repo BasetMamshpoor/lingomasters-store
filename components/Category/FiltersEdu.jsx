@@ -2,14 +2,14 @@ import Dropdown from 'components/Dropdown/DropDown';
 import useGetRequest from 'hooks/useGetRequest';
 import React, { useState } from 'react';
 import RangeSlider from './Range';
-import { Radio, RadioGroup } from '@nextui-org/react';
+import { Radio, RadioGroup, Skeleton } from '@nextui-org/react';
 import { useRouter } from "next/router";
 
 import FilterIcon from '@icons/filter.svg';
 import Search from '@icons/search.svg';
 
 
-const FiltersEdu = ({setCurrentPage}) => {
+const FiltersEdu = ({ setCurrentPage }) => {
     const router = useRouter()
 
     const readUrl = () => {
@@ -31,7 +31,7 @@ const FiltersEdu = ({setCurrentPage}) => {
 
     const [data] = useGetRequest('/educational-product/get-filter')
 
-    const handleFilter = (name, value) => {        
+    const handleFilter = (name, value) => {
         setFilters(prev => {
             return {
                 ...prev,
@@ -70,16 +70,16 @@ const FiltersEdu = ({setCurrentPage}) => {
 
     return (
         <>
-            <div className='flex flex-col gap-3 lg:border border-natural_gray-100 rounded-xl bg-white lg:py-6 pb-6 lg:px-4' dir='rtl'>
-                <div className='lg:flex hidden items-center gap-4 py-3'>
-                    <div className="centerOfParent"><FilterIcon /></div>
-                    <p className='text-lg font-semibold'>فیلتر ها</p>
-                </div>
-                <div className="relative px-3 py-2 pr-10 border border-r-natural_gray-300 rounded-md">
-                    <input type="text" className='w-full' placeholder='جستجو' />
-                    <div className="absolute top-1/2 -translate-y-1/2 right-2 bg-white centerOfParent"><Search className='fill-natural_gray-600' /></div>
-                </div>
-                {!!data ? <>
+            {!!data ? <>
+                <div className='flex flex-col gap-3 lg:border border-natural_gray-100 rounded-xl bg-white lg:py-6 pb-6 lg:px-4' dir='rtl'>
+                    <div className='lg:flex hidden items-center gap-4 py-3'>
+                        <div className="centerOfParent"><FilterIcon /></div>
+                        <p className='text-lg font-semibold'>فیلتر ها</p>
+                    </div>
+                    <div className="relative px-3 py-2 pr-10 border border-r-natural_gray-300 rounded-md">
+                        <input type="text" className='w-full' placeholder='جستجو' />
+                        <div className="absolute top-1/2 -translate-y-1/2 right-2 bg-white centerOfParent"><Search className='fill-natural_gray-600' /></div>
+                    </div>
                     <Dropdown
                         array={data.language} defaultValue={filters['language']}
                         Multiple Searchable label="انتخاب زبان" setState={handleFilter} name="language" placeHolder='زبان هدف'
@@ -99,26 +99,28 @@ const FiltersEdu = ({setCurrentPage}) => {
                         </RadioGroup>
                     </div>
                     <RangeSlider {...{ filters, handleFilter, data: data.price_range }} />
-                </> : <p>... درحال‌ بارگذاری</p>}
-                <div className='px-3 py-5 flex flex-col gap-4'>
-                    <div className='flex items-center justify-between'>
-                        <label className="inline-flex items-center justify-between w-full cursor-pointer">
-                            <input type="checkbox" name="free_shipping" id="free_shippingField" checked={filters['free_shipping'] ? true : false} className="sr-only peer"
-                                onChange={({ target }) => target.checked ? handleFilter('free_shipping', true) : handleFilter('free_shipping', null)} />
-                            <span className="text-sm text-natural_gray-950">ارسال رایگان</span>
-                            <div className="relative w-11 h-6 bg-gray-200 rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-green-600"></div>
-                        </label>
-                    </div>
-                    <div className='flex items-center justify-between'>
-                        <label className="inline-flex items-center justify-between w-full cursor-pointer">
-                            <input type="checkbox" name="discounted" id="discountedField" checked={filters['discounted'] ? true : false} className="sr-only peer"
-                                onChange={({ target }) => target.checked ? handleFilter('discounted', true) : handleFilter('discounted', null)} />
-                            <span className="text-sm text-natural_gray-950">تخفیف دار</span>
-                            <div className="relative w-11 h-6 bg-gray-200 rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-green-600"></div>
-                        </label>
+                    <div className='px-3 py-5 flex flex-col gap-4'>
+                        <div className='flex items-center justify-between'>
+                            <label className="inline-flex items-center justify-between w-full cursor-pointer">
+                                <input type="checkbox" name="free_shipping" id="free_shippingField" checked={filters['free_shipping'] ? true : false} className="sr-only peer"
+                                    onChange={({ target }) => target.checked ? handleFilter('free_shipping', true) : handleFilter('free_shipping', null)} />
+                                <span className="text-sm text-natural_gray-950">ارسال رایگان</span>
+                                <div className="relative w-11 h-6 bg-gray-200 rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-green-600"></div>
+                            </label>
+                        </div>
+                        <div className='flex items-center justify-between'>
+                            <label className="inline-flex items-center justify-between w-full cursor-pointer">
+                                <input type="checkbox" name="discounted" id="discountedField" checked={filters['discounted'] ? true : false} className="sr-only peer"
+                                    onChange={({ target }) => target.checked ? handleFilter('discounted', true) : handleFilter('discounted', null)} />
+                                <span className="text-sm text-natural_gray-950">تخفیف دار</span>
+                                <div className="relative w-11 h-6 bg-gray-200 rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-green-600"></div>
+                            </label>
+                        </div>
                     </div>
                 </div>
-            </div>
+            </> : <Skeleton className="rounded-lg h-full">
+                <div className="h-24 rounded-lg bg-default-300"></div>
+            </Skeleton>}
         </>
     );
 };

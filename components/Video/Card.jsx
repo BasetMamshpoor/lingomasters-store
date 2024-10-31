@@ -1,16 +1,16 @@
-import { Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, Button, useDisclosure } from "@nextui-org/react";
+import { Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, Button, useDisclosure, Skeleton } from "@nextui-org/react";
 import Image from "next/image";
 import Play from '@icons/surface.svg';
 
-export default function Card({ bgSrc, data, className, movie }) {
+export default function Card({ bgSrc, className, movie }) {
     const { isOpen, onOpen, onOpenChange } = useDisclosure();
 
     return (
         <>
-            <div onClick={onOpen} className={`centerOfParent relative w-fit max-h-80 rounded-lg overflow-hidden cursor-pointer ${className}`}>
+            {bgSrc ? <div onClick={movie ? onOpen : null} className={`centerOfParent relative w-fit max-h-80 rounded-lg overflow-hidden cursor-pointer ${className}`}>
                 <Image src={bgSrc} width='0' height='0' sizes='100vw' className='w-full h-full object-contain' />
                 <div className="centerOfParent absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"><Play className='w-16 h-12' /></div>
-            </div>
+            </div> : <Skeleton className={`centerOfParent relative w-1/2 min-h-80 rounded-lg overflow-hidden cursor-pointer ${className}`} />}
             <Modal
                 backdrop="opaque"
                 size="5xl"

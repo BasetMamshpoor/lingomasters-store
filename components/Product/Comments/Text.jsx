@@ -63,7 +63,7 @@ const Text = ({ id }) => {
             <div className="flex flex-col gap-10">
                 <div className="flex flex-col gap-6">
                     <p className="text-primary-950 font-semibold sm:text-sm text-xs self-start">نظرات خود را ثبت کنید.</p>
-                    <form className="flex flex-col gap-8">
+                    <form className="flex flex-col gap-8" onSubmit={(e) => e.preventDefault()}>
                         <div className="flex flex-col gap-4 items-stretch">
                             <div className="flex sm:flex-row flex-col sm:items-center items-stretch gap-4 *:flex-[1_0_0]">
                                 <div className="flex flex-col items-start gap-2">

@@ -28,8 +28,8 @@ export default function Page() {
         <OfferSlider to={`/category/${category}?discount=true`} data={data?.discounted_products} />
         <Slider to={`/category/${category}`} data={data?.random_products} title='پکیج های آموزشی' icon={<Book className='sm:w-10 sm:h-10' />} />
         <div className="container grid sm:grid-cols-2 gap-6 my-12 [&>div]:mx-auto">
-          <Card movie={data?.video_banners[0].path} bgSrc={data?.video_banners[0].cover || '/images/video/1.jpg'} />
-          <Card movie={data?.video_banners[1].path} bgSrc={data?.video_banners[1].cover || '/images/video/1.jpg'} />
+          <Card movie={data?.video_banners[0].path} bgSrc={data?.video_banners[0].cover} />
+          <Card movie={data?.video_banners[1].path} bgSrc={data?.video_banners[1].cover} />
         </div>
         <Slider to={`/category/${category}?sort=newest`} data={data?.latest_products} title="جدید ترین ها" icon={<New className='sm:w-10 sm:h-10' />} />
         <div className="max-w-[1280px] w-full mx-auto grid sm:grid-cols-2 items-center gap-6 my-12">

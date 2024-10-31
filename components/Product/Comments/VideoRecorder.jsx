@@ -40,7 +40,7 @@ const VideoRecorder = ({ setRecordedBlob }) => {
                                                         <VideoPreview stream={previewStream} />
                                                     </ModalBody>
                                                     <ModalFooter>
-                                                        <Button color="danger" variant="light" onPress={() => { onClose(); stopRecording() }}>
+                                                        <Button color="danger" variant="solid" onPress={() => { onClose(); stopRecording() }}>
                                                             بستن
                                                         </Button>
                                                     </ModalFooter>

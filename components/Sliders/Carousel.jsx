@@ -12,6 +12,7 @@ import Right from '@icons/right.svg';
 
 import Image from 'next/image';
 import Link from 'next/link';
+import { Skeleton } from "@nextui-org/react";
 
 const Carousel = ({ data }) => {
     return (
@@ -34,33 +35,40 @@ const Carousel = ({ data }) => {
                         bulletActiveClass: 'custom-bullet-active',
                     }}
                 >
-                    {data?.map(s => {
+                    {!data ? [...Array(4)].map((_, i) => {
                         return (
-                            <SwiperSlide key={s.id}>
-                                <Link href={s.link}>
-                                    <div className="w-full h-full max-h-[537px]">
-                                        <picture>
-                                            <source
-                                                srcSet={s.mobil_image || "/images/Slider/sm.jpg"}
-                                                media="(max-width: 639px)" />
-                                            <source
-                                                srcSet={s.tablet_image || "/images/Slider/md.jpg"}
-                                                media="(min-width: 640px) and (max-width: 1023px)" />
-                                            <source
-                                                srcSet={s.laptop_image || "/images/Slider/lg.jpg"}
-                                                media="(min-width: 1024px)" />
-                                            <Image
-                                                src={s.laptop_image || "/images/Slider/lg.jpg"}
-                                                alt="Responsive example"
-                                                width={0}
-                                                height={0} sizes='100vw'
-                                                className='w-full h-full object-cover' />
-                                        </picture>
-                                    </div>
-                                </Link>
+                            <SwiperSlide key={i}>
+                                <Skeleton className="w-full h-full min-h-[537px]" />
                             </SwiperSlide>
                         )
-                    })}
+                    })
+                        : data.map(s => {
+                            return (
+                                <SwiperSlide key={s.id}>
+                                    <Link href={s.link}>
+                                        <div className="w-full h-full max-h-[537px]">
+                                            <picture>
+                                                <source
+                                                    srcSet={s.mobil_image || "/images/Slider/sm.jpg"}
+                                                    media="(max-width: 639px)" />
+                                                <source
+                                                    srcSet={s.tablet_image || "/images/Slider/md.jpg"}
+                                                    media="(min-width: 640px) and (max-width: 1023px)" />
+                                                <source
+                                                    srcSet={s.laptop_image || "/images/Slider/lg.jpg"}
+                                                    media="(min-width: 1024px)" />
+                                                <Image
+                                                    src={s.laptop_image || "/images/Slider/lg.jpg"}
+                                                    alt="Responsive example"
+                                                    width={0}
+                                                    height={0} sizes='100vw'
+                                                    className='w-full h-full object-cover' />
+                                            </picture>
+                                        </div>
+                                    </Link>
+                                </SwiperSlide>
+                            )
+                        })}
                 </Swiper>
                 <div className="swiper-pagination !left-1/2 items-center justify-center !bottom-6 !-translate-x-1/2 hidden lg:flex"></div>
                 <div className="hidden lg:block">
