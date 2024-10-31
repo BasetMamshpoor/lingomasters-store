@@ -6,6 +6,7 @@ import { NextUIProvider } from "@nextui-org/react";
 import axios from "axios";
 import CartContextProvider from "@/providers/CartContextProvider";
 import { useEffect } from "react";
+import Head from "next/head";
 
 axios.defaults.baseURL = `${process.env.NEXT_PUBLIC_BASE_URL}/api`
 
@@ -23,6 +24,9 @@ export default function App({ Component, pageProps }) {
 
   return (
     <>
+      <Head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+      </Head>
       <NextUIProvider>
         <CartContextProvider>
           <div style={{ maxWidth: '1440px', margin: '0 auto' }}>

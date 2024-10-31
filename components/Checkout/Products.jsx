@@ -81,10 +81,10 @@ const Products = ({ download }) => {
                         {items.length - 1 !== i && <hr className="border-primary-100" />}
                     </>
                 )
-            }) : 
+            }) :
                 <div className='centerOfParent w-full'>
                     <div className='w-[280px] h-[280px] flex flex-col items-center gap-4'>
-                        <p className="text-xl font-bold">سبد خرید شما خالی است.</p>
+                        <p className="text-xl font-bold">سبد خرید {download ? 'دانلودی' : null} شما خالی است.</p>
                     </div>
                 </div>
             }

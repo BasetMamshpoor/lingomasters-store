@@ -17,18 +17,18 @@ const Cart = () => {
                         <div className="col-span-6 p-6 border border-natural_gray-100 rounded-lg bg-white flex flex-col gap-10">
                             <div className="flex items-center justify-between">
                                 <p className="font-bold">سبد خرید شما</p>
-                                <div className="centerOfParent cursor-pointer" onClick={() => dispatch({ type: "CLEAR" })}><Brush /></div>
+                                {!!state.items.length && <div className="centerOfParent cursor-pointer" onClick={() => dispatch({ type: "CLEAR" })}><Brush /></div>}
                             </div>
                             <div className="flex flex-col gap-6 items-stretch">
                                 <Products />
                             </div>
-                            <div className="flex flex-col gap-4">
+                            {!!state.items.length && <div className="flex flex-col gap-4">
                                 <p className="font-semibold">دانلودی ها</p>
                                 <hr className="border-2" />
                                 <div className="flex flex-col gap-6 items-stretch"><Products download /></div>
-                            </div>
+                            </div>}
                         </div>
-                        <div className="col-span-2">
+                        {!!state.items.length && <div className="col-span-2">
                             <div className="flex flex-col gap-10 p-4 h-fit border border-natural_gray-100 rounded-lg bg-white">
                                 <div className="flex flex-col gap-3">
                                     <div className="flex items-center rounded h-8 justify-between px-3 bg-natural_gray-50">
@@ -56,7 +56,7 @@ const Cart = () => {
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div>}
                     </div>
                     <div className=""></div>
                 </div>
