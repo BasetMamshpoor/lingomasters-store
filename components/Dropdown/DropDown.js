@@ -34,7 +34,7 @@ const Dropdown = ({
     useEffect(() => {
         if (defaultValue) {
             if (Multiple) setSelectedValue(filterByReference(array, defaultValue))
-            else setSelectedValue(array.find(el => el.value === defaultValue) || null)
+            else setSelectedValue(array.find(el => el.value == defaultValue) || null)
         } else if (required && array.length > 0) {
             if (Multiple) {
                 const initialValue = [array[0]];
@@ -53,12 +53,12 @@ const Dropdown = ({
     useEffect(() => {
         if (Multiple) {
             if (!defaultValue && !filterByReference(array, selectedValue).length && !required) setSelectedValue([])
-        } else if (!defaultValue && !array.find(i => i.value === selectedValue?.value) && !required) setSelectedValue(null)
+        } else if (!defaultValue && !array.find(i => i.value == selectedValue?.value) && !required) setSelectedValue(null)
     }, [array])
 
     const filterByReference = (arr1, arr2) => {
         return arr1.filter(el =>
-            arr2.find(element => element.value === el.value)
+            arr2.find(element => element.value == el.value)
         );
     };
 

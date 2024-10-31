@@ -16,7 +16,7 @@ export default function RangeSlider({ filters, handleFilter, data }) {
     const [min, max] = useDebounce(values);
 
     useEffect(() => {
-        setValues([filters.min ? Number(filters.min[0]?.value) : minSliderValue, filters.max ? Number(filters.max[0]?.value) : maxSliderValue])
+        setValues([filters.min_price ? Number(filters.min_price[0]?.value) : minSliderValue, filters.max_price ? Number(filters.max_price[0]?.value) : maxSliderValue])
     }, []);
 
     useEffect(() => {

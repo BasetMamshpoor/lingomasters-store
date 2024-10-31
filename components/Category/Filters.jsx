@@ -1,8 +1,8 @@
 import Dropdown from 'components/Dropdown/DropDown';
 import useGetRequest from 'hooks/useGetRequest';
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import RangeSlider from './Range';
-import { Checkbox, CheckboxGroup, Radio, RadioGroup, Skeleton } from '@nextui-org/react';
+import { Checkbox, CheckboxGroup, Input, Radio, RadioGroup, Skeleton } from '@nextui-org/react';
 import { useRouter } from "next/router";
 
 import FilterIcon from '@icons/filter.svg';
@@ -10,8 +10,9 @@ import Search from '@icons/search.svg';
 
 
 const Filters = ({ setCurrentPage }) => {
+    const searchRef = useRef(null)
     const router = useRouter()
-    const { slug: category, sort } = router.query
+    const { slug: category, ...queries } = router.query
 
     const readUrl = () => {
         let object = {};
@@ -77,27 +78,42 @@ const Filters = ({ setCurrentPage }) => {
                         <div className="centerOfParent"><FilterIcon /></div>
                         <p className='text-lg font-semibold'>فیلتر ها</p>
                     </div>
-                    <div className="relative px-3 py-2 pr-10 border border-r-natural_gray-300 rounded-md">
-                        <input type="text" className='w-full' placeholder='جستجو' />
-                        <div className="absolute top-1/2 -translate-y-1/2 right-2 bg-white centerOfParent"><Search className='fill-natural_gray-600' /></div>
-                    </div>
+                    <form
+                        onSubmit={(e) => {
+                            e.preventDefault();
+                            const { value } = searchRef.current
+                            const { search, slug, ...query } = router.query
+                            router.replace({
+                                pathname: router.asPath.split('?')[0],
+                                query: value.trim().length ? { ...query, search: value } : { ...query },
+                            }, undefined, { shallow: true })
+                        }}>
+                        <Input defaultValue={filters.search ? filters.search[0].value : null} ref={searchRef}
+                            type="text" classNames={{ clearButton: '!p-px', }} isClearable placeholder='جستجو' variant='bordered' radius='sm'
+                            startContent={
+                                <button className="bg-white centerOfParent"><Search className='fill-natural_gray-600' /></button>
+                            } />
+                    </form>
                     <Dropdown
                         array={data.language} defaultValue={filters['language']}
                         Multiple Searchable label="انتخاب زبان" setState={handleFilter} name="language" placeHolder='زبان هدف'
                         className='!px-3 !py-2 border border-gray-400 rounded-lg bg-white' />
-
                     <div className="flex flex-col gap-3">
                         <label className='font-semibold'>دسته بندی کتاب</label>
                         <CheckboxGroup
                             aria-label=" "
                             orientation="horizontal"
-                            defaultValue={["1"]}
                             style={{
                                 "--nextui-success": "196 94% 25%",
                             }}
+                            value={[category]}
                             color='success'
+                            onValueChange={(e) => router.replace({
+                                pathname: `/category/${e[e.length - 1]}`,
+                                query: queries,
+                            }, undefined, { shallow: true })}
                         >
-                            {data.category.map(c => <Checkbox classNames={{ icon: 'text-white' }} key={c.id} name='category' value={c.id}>{c.name}</Checkbox>)}
+                            {data.category.map(c => <Checkbox classNames={{ icon: 'text-white' }} key={c.id} name='category' value={c.slug}>{c.name}</Checkbox>)}
                         </CheckboxGroup>
                     </div>
                     <Dropdown
@@ -113,13 +129,14 @@ const Filters = ({ setCurrentPage }) => {
                         <RadioGroup
                             aria-label=" "
                             orientation="horizontal"
-                            defaultValue="child"
+                            defaultValue={filters.age_group ? filters.age_group[0].value : undefined}
                             style={{
                                 "--nextui-default-500": "196 94% 25%",
                             }}
                             color='default'
+                            onValueChange={(e) => handleFilter('age_group', e)}
                         >
-                            {data.age_group.map(a => <Radio key={a.value} value={a.value}>{a.name}</Radio>)}
+                            {data.age_group.map(a => <Radio key={a.value} value={a.value.toString()}>{a.name}</Radio>)}
                         </RadioGroup>
                     </div>
                     <RangeSlider {...{ filters, handleFilter, data: data.price_range }} />
