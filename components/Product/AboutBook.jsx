@@ -66,7 +66,7 @@ const AboutBook = ({ product = {} }) => {
                                 <div className="centerOfParent"><Alt className='sm:w-4 sm:h-4 w-3 h-3 fill-primary-800' /></div>
                                 <span className='text-natural_gray-950'>انتشارات</span>
                             </div>
-                            <span className="col-span-3 text-right">{publication.title}</span>
+                            <span className="col-span-3 text-right">{publication}</span>
                         </li>
                         <li className='grid grid-cols-5 sm:text-base text-xs'>
                             <div className="col-span-2 flex items-center gap-2">

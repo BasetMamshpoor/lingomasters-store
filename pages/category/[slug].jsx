@@ -24,7 +24,7 @@ const ProductsList = () => {
                                     <div className="lg:hidden centerOfParent">
                                         {router.isReady && <Filter setCurrentPage={setCurrentPage} />}
                                     </div>
-                                    <SortBy />
+                                    <SortBy setCurrentPage={setCurrentPage} />
                                 </div>
                             </div>
                             <Products currentPage={currentPage} setCurrentPage={setCurrentPage} />

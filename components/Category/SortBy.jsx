@@ -18,6 +18,7 @@ const SortBy = ({ setCurrentPage }) => {
         if (sort) {
             const query = sortBy.sort.find(s => s.key === sort)?.title
             setSelectedKeys(query)
+            setCurrentPage(1)
         }
     }, [sort])
 
@@ -46,7 +47,7 @@ const SortBy = ({ setCurrentPage }) => {
                                     pathname: router.asPath.split('?')[0],
                                     query: { ...Query, sort: s.key },
                                 }} className='w-full block text-sm'
-                                    passHref onClick={() => setCurrentPage(1)}
+                                    passHref
                                     shallow
                                     replace>{s.title}</Link>
                             </DropdownItem>

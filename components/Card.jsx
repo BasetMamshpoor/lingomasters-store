@@ -37,7 +37,7 @@ const Card = ({ data = {}, withLabel = true, solid = false, offRed = false, with
                         <div className="centerofParent cursor-pointer">{data.is_like ? <FillHeart className='fill-red-500' /> : <Heart />}</div>
                         <p className='line-clamp-1 sm:text-lg text-sm leading-6' dir='rtl'>{data.title}</p>
                     </div>
-                    {withTag && <div className="flex items-center self-end">
+                    {withTag && data.category && <div className="flex items-center self-end">
                         <span className="sm:px-3 px-2.5 sm:py-1 py-0 sm:text-base text-[10px] centerOfParent h-8 rounded-[20px] bg-primary-100 text-primary-950 font-semibold">{data.category}</span>
                     </div>}
                     <div className="w-full flex flex-col items-end" dir='rtl'>

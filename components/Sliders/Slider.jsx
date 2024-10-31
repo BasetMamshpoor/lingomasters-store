@@ -5,7 +5,7 @@ import { Navigation } from 'swiper/modules';
 import Card from '../Card';
 import Link from 'next/link';
 
-const Slider = ({ title, icon, loop, to, data = [] }) => {
+const Slider = ({ title, icon, loop, to, edu, data = [] }) => {
 
     return (
         <>
@@ -16,7 +16,7 @@ const Slider = ({ title, icon, loop, to, data = [] }) => {
                             <div className="centerOfParent">{icon}</div>
                             <p className='sm:text-xl font-semibold'>{title}</p>
                         </div>
-                        <Link href={to || ''} className='centerOfParent sm:w-[140px] w-[95px] sm:h-12 h-8 sm:text-base text-xs sm:px-6 px-4 sm:py-4 py-2 rounded bg-primary-600 text-white whitespace-nowrap'>مشاهده همه</Link>
+                        <Link href={to} className='centerOfParent sm:w-[140px] w-[95px] sm:h-12 h-8 sm:text-base text-xs sm:px-6 px-4 sm:py-4 py-2 rounded bg-primary-600 text-white whitespace-nowrap'>مشاهده همه</Link>
                     </div>
                     <div className="w-full relative slider">
                         <Swiper
@@ -72,7 +72,7 @@ const Slider = ({ title, icon, loop, to, data = [] }) => {
                             }}
                         >
                             {data.map(p => <SwiperSlide key={p.id}>
-                                <Card data={p} />
+                                <Card data={p} withTag={edu ? false : true} solid={edu ? true : false} offRed={edu ? true : false} edu={edu} withLabel={edu ? false : true} />
                             </SwiperSlide>)}
                         </Swiper>
                     </div>

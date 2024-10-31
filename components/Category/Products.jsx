@@ -12,7 +12,7 @@ const Products = ({ edu, currentPage, setCurrentPage }) => {
     const serializedQuery = JSON.stringify(query);
 
     const parsedQuery = JSON.parse(serializedQuery);
-    const [data, setData, setReload, pagination] = useGetRequest(slug ? (edu ? '/educational-product' : `/product/${slug}`) : null, currentPage, parsedQuery);
+    const [data, setData, setReload, pagination] = useGetRequest(edu ? '/educational-product' : (slug ? `/product/${slug}` : null), currentPage, parsedQuery);
 
 
     const handleReload = useCallback(() => {
@@ -31,7 +31,7 @@ const Products = ({ edu, currentPage, setCurrentPage }) => {
                         {data.map((d, i) => <CardC key={i} data={d} withTag={edu ? false : true} solid={edu ? true : false} offRed={edu ? true : false} edu={edu} withLabel={edu ? false : true} />)}
                     </div>
                     <div className="centerOfParent">
-                        <Pagination total={pagination.total} per_page={pagination.per_page} onChange={(e) => setCurrentPage(e)} />
+                        <Pagination total={pagination.total} per_page={pagination.per_page} currentPage={currentPage} onChange={(e) => setCurrentPage(e)} />
                     </div>
                 </>
                 : <div className="grid md:grid-cols-3 grid-cols-2 lg:gap-6 gap-4 px-4">

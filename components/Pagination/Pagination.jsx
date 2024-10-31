@@ -1,7 +1,7 @@
 import { Pagination, PaginationItemType } from "@nextui-org/react";
 import ChevronIcon from "@icons/chevron-right.svg";
 
-export default function PaginationApp({ total, per_page, ...props }) {
+export default function PaginationApp({ total, per_page, currentPage, ...props }) {
     const pages = Math.ceil(total / per_page) || 1
     const renderItem = ({
         ref,
@@ -52,7 +52,7 @@ export default function PaginationApp({ total, per_page, ...props }) {
                 disableCursorAnimation
                 showControls
                 total={pages}
-                initialPage={1}
+                page={currentPage || 1}
                 className="sm:[&>ul]:gap-3 [&>ul]:flex-row-reverse"
                 radius="full"
                 renderItem={renderItem}

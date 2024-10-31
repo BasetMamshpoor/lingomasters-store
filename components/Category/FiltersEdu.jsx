@@ -103,14 +103,6 @@ const FiltersEdu = ({setCurrentPage}) => {
                 <div className='px-3 py-5 flex flex-col gap-4'>
                     <div className='flex items-center justify-between'>
                         <label className="inline-flex items-center justify-between w-full cursor-pointer">
-                            <input type="checkbox" name="is_used" id="is_usedField" checked={filters['is_used'] ? true : false} className="sr-only peer"
-                                onChange={({ target }) => target.checked ? handleFilter('is_used', true) : handleFilter('is_used', null)} />
-                            <span className="text-sm text-natural_gray-950">کتاب دست دوم</span>
-                            <div className="relative w-11 h-6 bg-gray-200 rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-green-600"></div>
-                        </label>
-                    </div>
-                    <div className='flex items-center justify-between'>
-                        <label className="inline-flex items-center justify-between w-full cursor-pointer">
                             <input type="checkbox" name="free_shipping" id="free_shippingField" checked={filters['free_shipping'] ? true : false} className="sr-only peer"
                                 onChange={({ target }) => target.checked ? handleFilter('free_shipping', true) : handleFilter('free_shipping', null)} />
                             <span className="text-sm text-natural_gray-950">ارسال رایگان</span>
@@ -119,8 +111,8 @@ const FiltersEdu = ({setCurrentPage}) => {
                     </div>
                     <div className='flex items-center justify-between'>
                         <label className="inline-flex items-center justify-between w-full cursor-pointer">
-                            <input type="checkbox" name="discount" id="discountField" checked={filters['discount'] ? true : false} className="sr-only peer"
-                                onChange={({ target }) => target.checked ? handleFilter('discount', true) : handleFilter('discount', null)} />
+                            <input type="checkbox" name="discounted" id="discountedField" checked={filters['discounted'] ? true : false} className="sr-only peer"
+                                onChange={({ target }) => target.checked ? handleFilter('discounted', true) : handleFilter('discounted', null)} />
                             <span className="text-sm text-natural_gray-950">تخفیف دار</span>
                             <div className="relative w-11 h-6 bg-gray-200 rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-green-600"></div>
                         </label>
