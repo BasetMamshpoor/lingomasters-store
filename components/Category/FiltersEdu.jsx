@@ -1,8 +1,8 @@
 import Dropdown from 'components/Dropdown/DropDown';
 import useGetRequest from 'hooks/useGetRequest';
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import RangeSlider from './Range';
-import { Radio, RadioGroup, Skeleton } from '@nextui-org/react';
+import { Input, Radio, RadioGroup, Skeleton } from '@nextui-org/react';
 import { useRouter } from "next/router";
 
 import FilterIcon from '@icons/filter.svg';
@@ -10,14 +10,16 @@ import Search from '@icons/search.svg';
 
 
 const FiltersEdu = ({ setCurrentPage }) => {
+    const searchRef = useRef(null)
     const router = useRouter()
-
+    const { query } = router
+    
     const readUrl = () => {
         let object = {};
-        for (const name in router.query) {
-            if (Object.hasOwnProperty.call(router.query, name)) {
+        for (const name in query) {
+            if (Object.hasOwnProperty.call(query, name)) {
                 let filter = []
-                const value = router.query[name];
+                const value = query[name];
                 const newValue = value.split('-')
                 newValue.forEach((f, i) => {
                     filter.push({ value: f, name: i })
@@ -76,10 +78,22 @@ const FiltersEdu = ({ setCurrentPage }) => {
                         <div className="centerOfParent"><FilterIcon /></div>
                         <p className='text-lg font-semibold'>فیلتر ها</p>
                     </div>
-                    <div className="relative px-3 py-2 pr-10 border border-r-natural_gray-300 rounded-md">
-                        <input type="text" className='w-full' placeholder='جستجو' />
-                        <div className="absolute top-1/2 -translate-y-1/2 right-2 bg-white centerOfParent"><Search className='fill-natural_gray-600' /></div>
-                    </div>
+                    <form
+                        onSubmit={(e) => {
+                            e.preventDefault();
+                            const { value } = searchRef.current
+                            const { search, slug, ...query } = router.query
+                            router.replace({
+                                pathname: router.asPath.split('?')[0],
+                                query: value.trim().length ? { ...query, search: value } : { ...query },
+                            }, undefined, { shallow: true })
+                        }}>
+                        <Input defaultValue={filters.search ? filters.search[0].value : null} ref={searchRef}
+                            type="text" classNames={{ clearButton: '!p-px', }} isClearable placeholder='جستجو' variant='bordered' radius='sm'
+                            startContent={
+                                <button className="bg-white centerOfParent"><Search className='fill-natural_gray-600' /></button>
+                            } />
+                    </form>
                     <Dropdown
                         array={data.language} defaultValue={filters['language']}
                         Multiple Searchable label="انتخاب زبان" setState={handleFilter} name="language" placeHolder='زبان هدف'
@@ -89,13 +103,14 @@ const FiltersEdu = ({ setCurrentPage }) => {
                         <RadioGroup
                             aria-label=" "
                             orientation="horizontal"
-                            defaultValue="child"
+                            defaultValue={filters.age_group ? filters.age_group[0].value : undefined}
                             style={{
                                 "--nextui-default-500": "196 94% 25%",
                             }}
                             color='default'
+                            onValueChange={(e) => handleFilter('age_group', e)}
                         >
-                            {data.age_group.map(a => <Radio key={a.value} value={a.value}>{a.name}</Radio>)}
+                            {data.age_group.map(a => <Radio key={a.value} value={a.value.toString()}>{a.name}</Radio>)}
                         </RadioGroup>
                     </div>
                     <RangeSlider {...{ filters, handleFilter, data: data.price_range }} />

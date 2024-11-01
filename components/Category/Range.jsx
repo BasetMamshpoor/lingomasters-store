@@ -5,8 +5,8 @@ import formatCurrency from "@/helpers/formatCurrency";
 
 export default function RangeSlider({ filters, handleFilter, data }) {
 
-    const minSliderValue = data.min_price;
-    const maxSliderValue = data.max_price;
+    const minSliderValue = data?.min_price || 0;
+    const maxSliderValue = data?.max_price || 1;
 
     const firstTime2 = useRef(true)
     const firstTime3 = useRef(true)

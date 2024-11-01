@@ -16,10 +16,10 @@ const Filters = ({ setCurrentPage }) => {
 
     const readUrl = () => {
         let object = {};
-        for (const name in router.query) {
-            if (Object.hasOwnProperty.call(router.query, name)) {
+        for (const name in queries) {
+            if (Object.hasOwnProperty.call(queries, name)) {
                 let filter = []
-                const value = router.query[name];
+                const value = queries[name];
                 const newValue = value.split('-')
                 newValue.forEach((f, i) => {
                     filter.push({ value: f, name: i })
@@ -108,12 +108,21 @@ const Filters = ({ setCurrentPage }) => {
                             }}
                             value={[category]}
                             color='success'
-                            onValueChange={(e) => router.replace({
-                                pathname: `/category/${e[e.length - 1]}`,
-                                query: queries,
-                            }, undefined, { shallow: true })}
+                            onValueChange={() => { }}
                         >
-                            {data.category.map(c => <Checkbox classNames={{ icon: 'text-white' }} key={c.id} name='category' value={c.slug}>{c.name}</Checkbox>)}
+                            {data.category?.map(c => <Checkbox onChange={() => {
+
+                                if (c.slug !== category) {
+                                    router.replace(
+                                        {
+                                            pathname: `/category/${c.slug}`,
+                                            query: queries,
+                                        },
+                                        undefined,
+                                        { shallow: true }
+                                    );
+                                }
+                            }} classNames={{ icon: 'text-white' }} key={c.id} value={c.slug}>{c.name}</Checkbox>)}
                         </CheckboxGroup>
                     </div>
                     <Dropdown
@@ -136,7 +145,7 @@ const Filters = ({ setCurrentPage }) => {
                             color='default'
                             onValueChange={(e) => handleFilter('age_group', e)}
                         >
-                            {data.age_group.map(a => <Radio key={a.value} value={a.value.toString()}>{a.name}</Radio>)}
+                            {data.age_group?.map(a => <Radio key={a.value} value={a.value.toString()}>{a.name}</Radio>)}
                         </RadioGroup>
                     </div>
                     <RangeSlider {...{ filters, handleFilter, data: data.price_range }} />

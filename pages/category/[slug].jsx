@@ -27,7 +27,7 @@ const ProductsList = () => {
                                     <SortBy setCurrentPage={setCurrentPage} />
                                 </div>
                             </div>
-                            <Products currentPage={currentPage} setCurrentPage={setCurrentPage} />
+                            {router.isReady && <Products currentPage={currentPage} setCurrentPage={setCurrentPage} />}
                         </div>
                     </div>
                 </div>
