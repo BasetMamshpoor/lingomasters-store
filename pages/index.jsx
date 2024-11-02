@@ -31,7 +31,7 @@ export default function Page() {
           <Card movie={data?.video_banners[0].path} bgSrc={data?.video_banners[0].cover} />
           <Card movie={data?.video_banners[1].path} bgSrc={data?.video_banners[1].cover} />
         </div>
-        <Slider to={`/category/${category}?sort=newest`} data={data?.latest_products} title="جدید ترین ها" icon={<New className='sm:w-10 sm:h-10' />} />
+        <Slider to={`/category/${category}?sort=newest`} data={data?.latest_products} title="جدید ترین ها" icon={<New className='sm:w-10 sm:h-10' />} New />
         <div className="max-w-[1280px] w-full mx-auto grid sm:grid-cols-2 items-center gap-6 my-12">
           <Banner withTag data={data?.baners.order1[0]} />
           <Banner withTag data={data?.baners.order1[1]} />

@@ -3,6 +3,7 @@ import { Dropdown, DropdownTrigger, DropdownMenu, DropdownItem, Input } from "@n
 import Link from "next/link";
 import Cart from '@icons/cart.svg'
 import Search from '@icons/search.svg'
+import SearchOrder from '@icons/search-order.svg'
 import Home from '@icons/home.svg'
 import Books from '@icons/books.svg'
 import Book from '@icons/book3.svg'
@@ -23,8 +24,9 @@ const links = [
     { link: '', icon: <Books />, text: 'دسته‌بندی‌کتاب‌ها', underMenu: true },
     { link: '/educational-products', icon: <Book />, text: 'وسایل‌کمک‌آموزشی', underMenu: false },
     { link: '/', icon: <Seller />, text: 'فروشنده‌شوید', underMenu: false },
+    { link: '/ordertracking', icon: <SearchOrder />, text: 'پیگیری سفارش', underMenu: false },
     { link: '/', icon: <About />, text: 'درباره‌ما', underMenu: false },
-    { link: '/', icon: <Contact />, text: 'ارتباطباما', underMenu: false },
+    { link: '/', icon: <Contact />, text: 'تماس‌با‌ما', underMenu: false },
 ]
 
 const Header = () => {
@@ -98,7 +100,7 @@ const Header = () => {
                     </div>
                 </div>
             </header>
-            <div className={`z-[9] fixed lg:hidden top-0 bottom-0 w-full duration-300 backdrop-blur-sm ${isSidebarOpen ? 'right-0' : '-right-full'}`}>
+            <div className={`z-[9] fixed lg:hidden top-0 bottom-0 w-full duration-300 backdrop-blur-sm ${isSidebarOpen ? 'right-0' : '-right-full'}`} onClick={() => setSidebarOpen(false)}>
                 <aside dir="rtl" className={`fixed top-0 right-0 w-64 h-screen pt-[90px] duration-300 ${isSidebarOpen ? '-right-1' : '!-right-full'} sm:translate-x-0 bg-white border-l border-gray-200`}>
                     <div className="h-full px-3 py-4 overflow-y-auto bg-white">
                         <ul className="flex flex-col gap-2 font-medium">
@@ -119,7 +121,7 @@ const Header = () => {
                                                 {isSubmenuOpen && (
                                                     <ul className="pr-8 flex flex-col gap-1">
                                                         {category.map(c => {
-                                                            return <li key={c.id} className="group duration-300 hover:bg-gray-50 rounded-lg">
+                                                            return <li key={c.id} className="group duration-300 hover:bg-gray-50 rounded-lg" onClick={() => setSidebarOpen(false)}>
                                                                 <Link href={`/category/${c.slug}`} className="flex items-center p-2 text-gray-900">
                                                                     {c.title}
                                                                 </Link>

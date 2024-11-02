@@ -5,13 +5,12 @@ import FilterIcon from '@icons/filter.svg';
 import Close from '@icons/close.svg';
 import FiltersEdu from "./FiltersEdu";
 
-export default function Filter({ edu,setCurrentPage }) {
+export default function Filter({ edu, setCurrentPage }) {
     const { isOpen, onOpen, onOpenChange } = useDisclosure();
 
     return (
         <div className="flex flex-col gap-2">
             <div onClick={onOpen} className='flex items-center gap-4 px-3'>
-                <p className='sm:block hidden text-base font-thin text-primary-950'>فیلتر ها</p>
                 <div className="centerOfParent"><FilterIcon /></div>
             </div>
             <Modal
@@ -33,7 +32,7 @@ export default function Filter({ edu,setCurrentPage }) {
                                 <div onClick={onOpenChange} className="centerOfParent"><Close /></div>
                             </ModalHeader>
                             <ModalBody>
-                                {edu ? <FiltersEdu setCurrentPage={setCurrentPage} /> : <Filters setCurrentPage={setCurrentPage}/>}
+                                {edu ? <FiltersEdu setCurrentPage={setCurrentPage} /> : <Filters setCurrentPage={setCurrentPage} />}
                             </ModalBody>
                         </>
                     )}

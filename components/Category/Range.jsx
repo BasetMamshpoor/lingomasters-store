@@ -57,30 +57,33 @@ export default function RangeSlider({ filters, handleFilter, data }) {
 
     return (
         <div className="flex flex-col gap-4 w-full">
-            <label className='font-semibold'>مبلغ</label>
+            <label className='font-semibold'>مبلغ کتاب</label>
             <div className="flex flex-col items-center justify-center gap-4">
-                <div className="flex items-center justify-between w-full">
-                    <span className="hasToman">{formatCurrency(maxSliderValue)}</span>
-                    <span className="hasToman">{formatCurrency(minSliderValue)}</span>
+                <div className="flex flex-col gap-2 w-full">
+                    <Slider
+                        aria-label=' '
+                        step={50}
+                        minValue={minSliderValue}
+                        maxValue={maxSliderValue}
+                        value={values}
+                        onChange={setValues}
+                        className="rotate-180"
+                        classNames={{
+                            base: "max-w-md",
+                            track: "h-1",
+                            filler: "bg-[#035477]"
+                        }}
+                        renderThumb={({ index, ...props }) => (
+                            <div {...props} className="p-0.5 top-1/2 bg-[#035477] rounded-full cursor-grab" >
+                                <span className='block rounded-full w-2 h-2' />
+                            </div>
+                        )}
+                    />
+                    <div className="flex items-center justify-between w-full text-xs">
+                        <span className="hasToman">{formatCurrency(minSliderValue)}</span>
+                        <span className="hasToman">{formatCurrency(maxSliderValue)}</span>
+                    </div>
                 </div>
-                <Slider
-                    aria-label=' '
-                    step={50}
-                    minValue={minSliderValue}
-                    maxValue={maxSliderValue}
-                    value={values}
-                    onChange={setValues}
-                    classNames={{
-                        base: "max-w-md",
-                        track: "h-1",
-                        filler: "bg-[#035477]"
-                    }}
-                    renderThumb={({ index, ...props }) => (
-                        <div {...props} className="p-0.5 top-1/2 bg-[#035477] rounded-full cursor-grab" >
-                            <span className='block rounded-full w-2 h-2' />
-                        </div>
-                    )}
-                />
                 <div className="flex items-center gap-2 px-1">
                     <div className="flex items-center gap-2">
                         <label htmlFor="minValue" className="font-bold">از</label>

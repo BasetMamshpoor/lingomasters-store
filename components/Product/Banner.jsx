@@ -70,9 +70,9 @@ const Banner = ({ product = {} }) => {
                             </div>
                             <div className="centerOfParent flex-col gap-1 w-full">
                                 <h1 className='sm:text-xl text-base font-semibold'>{title}</h1>
-                                <p className='text-natural_gray-600 text-xs'>(کد کتاب: {id})</p>
-                                <div className="centerOfParent"><Flag /></div>
-                                <div className="flex items-center gap-1">
+                                <p className='lg:hidden text-natural_gray-600 text-xs'>(کد کتاب: {id})</p>
+                                <div className="lg:hidden centerOfParent"><Flag /></div>
+                                <div className="lg:hidden flex items-center gap-1">
                                     <div className="centerOfParent"><Star className='w-5 h-5 fill-warning' /></div>
                                     <div className="flex items-center gap-2">
                                         <span className='text-natural_gray-950 text-xs'>4.8</span>
@@ -90,7 +90,7 @@ const Banner = ({ product = {} }) => {
                                     <span className='text-red-500 sm:text-sm text-xs'>{discount_percentage} تخفیف</span>
                                 </div>}
                                 <div className="sm:h-[60px] h-8 flex items-center justify-between bg-natural_gray-50 px-3">
-                                    <span className='text-natural_gray-900 sm:text-xs text-[10px]'>خرید از {seller?.name}</span>
+                                    <span className='text-natural_gray-900 sm:text-xs text-[10px]'>خرید از {selected_seller?.title}</span>
                                     <span className='text-green-500 sm:text-sm text-xs hasToman'>{formatCurrency(off_price)}</span>
                                 </div>
                             </div>

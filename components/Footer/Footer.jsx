@@ -30,7 +30,7 @@ const Footer = () => {
                             <div className="centerOfParent"><OnlineShopping /></div>
                             <div className="flex flex-col">
                                 <p className='text-natural_gray-950 sm:text-base text-xs'>خرید آنلاین</p>
-                                <span className='text-natural_gray-950 sm:text-sm text-[10px] opacity-80 line-clamp-1'>پرداخت امن از طریق درگاه مطمين</span>
+                                <span className='text-natural_gray-950 sm:text-sm text-[10px] opacity-80 line-clamp-1'>پرداخت امن از طریق درگاه مطمئن</span>
                             </div>
                         </div>
 
@@ -78,7 +78,7 @@ const Footer = () => {
                                         </div>
                                         <div className="flex flex-col sm:gap-6 gap-2">
                                             <Link href="/checkout/cart">سبد خرید</Link>
-                                            <Link href="">پیگیری سفارش</Link>
+                                            <Link href="/ordertracking">پیگیری سفارش</Link>
                                             <Link href="">فروشنده شوید</Link>
                                             <Link href="">ورود و ثبت نام</Link>
                                         </div>

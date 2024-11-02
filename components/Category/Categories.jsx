@@ -10,7 +10,7 @@ const Categories = ({ data }) => {
                     <div className="centerOfParent w-full">
                         <div className="centerOfParent gap-4">
                             <p className='lg:text-2xl text-black sm:text-base text-sm'>انواع دسته بندی کتاب ها</p>
-                            <div className="centerOfParent"><Icon /></div>
+                            <div className="centerOfParent"><Icon className='fill-primary-600' /></div>
                         </div>
                     </div>
                     <div className="flex items-center justify-evenly flex-wrap gap-4 w-full overflow-hidden [&>*]:w-[139px]">

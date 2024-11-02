@@ -6,7 +6,7 @@ import Card from '../Card';
 import Link from 'next/link';
 import { Skeleton } from "@nextui-org/react";
 
-const Slider = ({ title, icon, loop, to, edu, data }) => {
+const Slider = ({ title, icon, loop, to, edu, New, data }) => {
 
     return (
         <>
@@ -88,7 +88,7 @@ const Slider = ({ title, icon, loop, to, edu, data }) => {
                                 )
                             })
                                 : data?.map(p => <SwiperSlide key={p.id}>
-                                    <Card data={p} withTag={edu ? false : true} solid={edu ? true : false} offRed={edu ? true : false} edu={edu} withLabel={edu ? false : true} />
+                                    <Card data={p} withTag={edu ? false : true} solid={edu ? true : false} offRed={edu ? true : false} edu={edu} withLabel={edu ? false : true} New={New} />
                                 </SwiperSlide>)}
                         </Swiper>
                     </div>

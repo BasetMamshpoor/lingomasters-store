@@ -7,7 +7,7 @@ import FillHeart from '@icons/fill-heart.svg'
 import Flag from '@icons/Flags/Country=United States of America, Style=Flag, Radius=On.svg'
 
 const Hero = ({ product = {} }) => {
-    const { title, rate, id, language, is_like, category, seller, subject, age_group, page_number, product_type, book_category } = product
+    const { title, rate = 0, id, language, is_like, category, seller, subject, age_group, page_number, product_type, book_category } = product
 
     return (
         <>

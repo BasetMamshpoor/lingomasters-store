@@ -12,7 +12,7 @@ import { useContext } from "react";
 import { CartContext } from "@/providers/CartContextProvider";
 import { useRouter } from "next/router";
 
-const Card = ({ data = {}, withLabel = true, solid = false, offRed = false, withTag = true, edu = false }) => {
+const Card = ({ data = {}, withLabel = true, solid = false, New = false, offRed = false, withTag = true, edu = false }) => {
     const { push } = useRouter()
     const { dispatch } = useContext(CartContext)
 
@@ -52,7 +52,7 @@ const Card = ({ data = {}, withLabel = true, solid = false, offRed = false, with
                         <Link href={`/${edu ? 'educational-products' : 'product'}/${data.id}`} className='sm:text-base text-xs sm:h-12 h-8 flex-[1_0_0] sm:px-6 px-4 sm:py-4 py-2 rounded border-secondary-500 sm:border-[1.5px] border text-secondary-500 centerOfParent'>مشاهده</Link>
                     </div>
                 </div>
-                {withLabel && data.discount_percentage && <div className="absolute centerOfParent w-[136px] -rotate-45 px-[11px] py-[7px] bg-red-200 -left-9 top-3 sm:text-lg text-xs text-red-950">{data.discount_percentage}%</div>}
+                {(New || (withLabel && data.discount_percentage)) && <div className={`absolute centerOfParent w-[136px] -rotate-45 px-[11px] py-[7px] ${New ? 'bg-secondary-300' : 'bg-red-200'} -left-9 top-3 sm:text-lg text-xs ${New ? 'text-[#441A04]' : 'text-red-950'}`}>{New ? 'جدید' : `${data.discount_percentage}%`}</div>}
                 <div className="absolute right-1 top-1 centerOfParent w-10 h-10 p-1"><English /></div>
             </div>
         </>

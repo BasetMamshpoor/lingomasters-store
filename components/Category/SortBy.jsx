@@ -25,7 +25,7 @@ const SortBy = ({ setCurrentPage }) => {
 
     return (
         <>
-            <Dropdown onOpenChange={setIsOpen} dir='rtl'>
+            <Dropdown onOpenChange={setIsOpen} dir='rtl'z>
                 <DropdownTrigger className='cursor-pointer'>
                     <div className='flex items-center text-primary-950 gap-1 whitespace-nowrap'>
                         <span className='centerOfParent ml-1'><Sort /></span>
