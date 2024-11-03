@@ -3,6 +3,7 @@ import Store from "@icons/store.svg";
 import Plus from "@icons/plus.svg";
 import Minus from "@icons/minus.svg";
 import Trush from "@icons/bin.svg";
+import Download from "@icons/download.svg";
 
 import Image from "next/image";
 import Link from "next/link";
@@ -12,10 +13,9 @@ import { CartContext } from "@/providers/CartContextProvider";
 
 const Products = ({ download }) => {
     const { state, dispatch } = useContext(CartContext)
-    const items = state.items.filter(i => download ? i.is_download === 1 : i.is_download === 0)
     return (
         <>
-            {items.length ? items.map((p, i) => {
+            {state.itemsCounter ? state.items.map((p, i) => {
                 return (
                     <>
                         <div className='flex flex-col items-stretch overflow-hidden relative' key={p.idp} id='product'>
@@ -38,6 +38,12 @@ const Products = ({ download }) => {
                                             </div>
                                             <p className="sm:text-sm text-xs">{p.selected_seller.name}</p>
                                         </div>
+                                        {!!p.is_download && <div className='centerOfParent gap-2'>
+                                            <div className='centerOfParent'>
+                                                <Download className='sm:w-6 sm:h-6 w-4 h-4' />
+                                            </div>
+                                            <p className="sm:text-sm text-xs">دانلودی</p>
+                                        </div>}
                                     </div>
                                     <div className={`md:flex items-center justify-between hidden w-full`}>
                                         <div className='flex items-center gap-1 flex-wrap md:flex-row flex-col-reverse'>
@@ -78,7 +84,7 @@ const Products = ({ download }) => {
                                 </div>
                             </div>
                         </div>
-                        {items.length - 1 !== i && <hr className="border-primary-100" />}
+                        {state.items.length - 1 !== i && <hr className="border-primary-100" />}
                     </>
                 )
             }) :

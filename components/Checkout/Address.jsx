@@ -21,7 +21,7 @@ const Address = () => {
                 .catch(err => alert(err.response?.data.message || 'استان ها پیدا نشدند'))
                 .finally(() => setLoading(prev => ({ ...prev, pro: false })))
         }
-        get()
+        // get()
     }, [])
 
     useEffect(() => {
@@ -31,7 +31,7 @@ const Address = () => {
                 .catch(err => alert(err.response?.data.message || 'شهر ها پیدا نشدند'))
                 .finally(() => setLoading(prev => ({ ...prev, city: false })))
         }
-        get()
+        // get()
     }, [province])
 
     return (

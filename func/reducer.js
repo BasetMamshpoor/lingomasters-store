@@ -3,7 +3,7 @@ const sumItems = (items) => {
 
     let total = items.reduce((total, product) => total + product.price * product.quantity, 0)
 
-    let total_after_off = items.reduce((total, product) => total + product.off_price * product.quantity, 0)
+    let total_after_off = items.reduce((total, product) => total + (product.off_price || product.price) * product.quantity, 0)
 
     return { itemsCounter, total, total_after_off }
 }
