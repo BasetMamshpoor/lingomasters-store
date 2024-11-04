@@ -17,7 +17,7 @@ import { Skeleton } from "@nextui-org/react";
 const Carousel = ({ data }) => {
     return (
         <>
-            <div className="relative my-4" dir='ltr'>
+            <div className="relative mt-4 lg:mb-[140px] sm:mb-20 mb-[60px]" dir='ltr'>
                 <Swiper
                     modules={[Navigation, Pagination, A11y]}
                     slidesPerView={1.5}

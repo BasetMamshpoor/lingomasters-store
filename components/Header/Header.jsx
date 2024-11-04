@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Dropdown, DropdownTrigger, DropdownMenu, DropdownItem, Input } from "@nextui-org/react";
 import Link from "next/link";
 import Cart from '@icons/cart.svg'
@@ -14,13 +14,14 @@ import Down from '@icons/arrow-down.svg'
 import Menu from '@icons/menu.svg'
 import Close from '@icons/close.svg'
 import Iran from '@icons/Flags/Country=Iran, Style=Flag, Radius=On.svg'
+import { CartContext } from "@/providers/CartContextProvider";
 
 const Item = ({ i, isSubmenuOpen }) => <div className="flex items-center justify-between gap-3">
     {i.icon}{i.text}<Down className={`w-4 h-4 transform transition-transform ${isSubmenuOpen ? 'rotate-180' : ''}`} />
 </div>
 
 const links = [
-    { link: '/', icon: <Home />, text: 'صفحه‌اصلی', underMenu: false },
+    { link: 'https://www.lingomasters.ir', icon: <Home />, text: 'صفحه‌اصلی', underMenu: false },
     { link: '', icon: <Books />, text: 'دسته‌بندی‌کتاب‌ها', underMenu: true },
     { link: '/educational-products', icon: <Book />, text: 'وسایل‌کمک‌آموزشی', underMenu: false },
     { link: '/', icon: <Seller />, text: 'فروشنده‌شوید', underMenu: false },
@@ -30,6 +31,7 @@ const links = [
 ]
 
 const Header = () => {
+    const { state } = useContext(CartContext)
     const [category, setCategory] = useState([])
     const [isSidebarOpen, setSidebarOpen] = useState(false);
     const [isSubmenuOpen, setSubmenuOpen] = useState(false);
@@ -75,7 +77,7 @@ const Header = () => {
                                     </DropdownMenu>
                                 </Dropdown>
                             </div> */}
-                            <Link href='/checkout/cart' className="px-1.5 py-1 centerOfParent border-1.5 rounded border-secondary-500"><Cart className='fill-secondary-500' /></Link>
+                            <Link href='/checkout/cart' className="px-1.5 py-1 centerOfParent border-1.5 rounded border-secondary-500">{state.itemsCounter}<Cart className='fill-secondary-500' /></Link>
                             <Link href='/auth/login' className="px-4 py-2 centerOfParent bg-primary-600 text-white rounded text-sm">ورود<span className="lg:inline-block hidden">/ثبت نام</span></Link>
                         </div>
                     </div>
@@ -89,7 +91,7 @@ const Header = () => {
                                     <li key={o} className="[&>a]:flex [&>a]:items-center [&>a]:gap-3 cursor-pointer">{i.underMenu ?
                                         <Dropdown dir="rtl">
                                             <DropdownTrigger><div><Item i={i} /></div></DropdownTrigger>
-                                            <DropdownMenu>
+                                            <DropdownMenu className="max-h-64 overflow-y-auto scrollbar scrollbar-w-8 scrollbar-thumb-natural_gray-800 scrollbar-track-white">
                                                 {category.map(c => <DropdownItem key={c.slug} ><Link className="w-full block" href={`/category/${c.slug}`}>{c.title}</Link></DropdownItem>)}
                                             </DropdownMenu>
                                         </Dropdown>
@@ -100,13 +102,14 @@ const Header = () => {
                     </div>
                 </div>
             </header>
-            <div className={`z-[9] fixed lg:hidden top-0 bottom-0 w-full duration-300 backdrop-blur-sm ${isSidebarOpen ? 'right-0' : '-right-full'}`} onClick={() => setSidebarOpen(false)}>
-                <aside dir="rtl" className={`fixed top-0 right-0 w-64 h-screen pt-[90px] duration-300 ${isSidebarOpen ? '-right-1' : '!-right-full'} sm:translate-x-0 bg-white border-l border-gray-200`}>
+            <div className={`z-[9] fixed lg:hidden top-0 bottom-0 w-full duration-300 backdrop-blur-sm ${isSidebarOpen ? 'right-0' : '-right-full'}`}
+                onClick={(e) => e.target === e.currentTarget ? setSidebarOpen(false) : null}>
+                <aside dir="rtl" className={`fixed z-10 top-0 right-0 w-64 h-screen pt-[90px] duration-300 ${isSidebarOpen ? '-right-1' : '!-right-full'} sm:translate-x-0 bg-white border-l border-gray-200`}>
                     <div className="h-full px-3 py-4 overflow-y-auto bg-white">
                         <ul className="flex flex-col gap-2 font-medium">
                             {links.map((i, o) => {
                                 return (
-                                    <li key={o} className="[&>a]:flex [&>a]:items-center [&>a]:gap-3 cursor-pointer">
+                                    <li key={o} className="[&>a]:flex [&>a]:items-center [&>a]:gap-3 cursor-pointer" onClick={i.underMenu ? () => { } : () => setSidebarOpen(false)}>
                                         {i.underMenu ?
                                             <>
                                                 <button

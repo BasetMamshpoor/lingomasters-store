@@ -5,19 +5,20 @@ import { Navigation } from 'swiper/modules';
 import Card from '../Card';
 import Link from 'next/link';
 import { Skeleton } from "@nextui-org/react";
+import Left from '@icons/arrow-left.svg'
 
 const Slider = ({ title, icon, loop, to, edu, New, data }) => {
 
     return (
         <>
-            <div className="my-12" dir='rtl'>
+            <div className="lg:mb-[140px] sm:mb-20 mb-[60px]" dir='rtl'>
                 <div className="max-w-[1280px] w-full mx-auto flex flex-col gap-4">
                     <div className="flex items-center justify-between px-4">
                         <div className="centerOfParent gap-4">
                             <div className="centerOfParent">{icon}</div>
                             <p className='sm:text-xl font-semibold'>{title}</p>
                         </div>
-                        <Link href={to} className='centerOfParent sm:w-[140px] w-[95px] sm:h-12 h-8 sm:text-base text-xs sm:px-6 px-4 sm:py-4 py-2 rounded bg-primary-600 text-white whitespace-nowrap'>مشاهده همه</Link>
+                        <Link href={to} className='centerOfParent sm:text-base text-xs gap-2 text-primary-600 whitespace-nowrap'>مشاهده همه <Left className='w-5 h-5 fill-primary-600' /></Link>
                     </div>
                     <div className="w-full relative slider">
                         <Swiper

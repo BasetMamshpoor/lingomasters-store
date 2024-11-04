@@ -19,7 +19,7 @@ const Banner = ({ withTag = true, data }) => {
                     <Skeleton className="centerOfParent sm:grow flex-shrink-0 lg:w-[302px] lg:h-[300px] sm:w-[165px] w-[156] h-[168px]" />
                 </div>
                 : <div className="flex items-center ww-full sm:mx-0 mx-2">
-                    <div dir='rtl' className="bg-primary-50 lg:p-6 py-4 px-2 flex flex-col lg:gap-8 gap-4 lg:h-[236px] h-[156px] w-full sm:grow-0 grow">
+                    <div dir='rtl' className="bg-primary-50 lg:p-6 py-4 px-2 flex flex-col lg:gap-8 gap-4 lg:h-[236px] h-[156px] w-full sm:grow-0 grow rounded-l-lg">
                         <div className={`flex items-center justify-${withTag ? 'between' : 'center'} gap-1`}>
                             <p className='line-clamp-1 lg:text-xl text-sm leading-6'>{data?.title}</p>
                             {withTag && data?.category && <span className="lg:px-3 px-2.5 lg:py-1 py-0 lg:text-base text-[10px] centerOfParent h-8 rounded-[20px] bg-natural_gray-200 text-natural_gray-950 font-semibold">{data.category}</span>}

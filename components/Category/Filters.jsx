@@ -73,7 +73,7 @@ const Filters = ({ setCurrentPage }) => {
     return (
         <>
             {data ?
-                <div className='flex flex-col gap-3 lg:border border-natural_gray-100 rounded-xl bg-white lg:py-6 pb-6 lg:px-4' dir='rtl'>
+                <div className='flex flex-col gap-6 lg:border border-natural_gray-100 rounded-xl bg-white lg:py-6 pb-6 lg:px-4' dir='rtl'>
                     <div className='lg:flex hidden items-center gap-4 py-3'>
                         <div className="centerOfParent"><FilterIcon /></div>
                         <p className='text-lg font-semibold'>فیلتر ها</p>
@@ -98,7 +98,7 @@ const Filters = ({ setCurrentPage }) => {
                         array={data.language} defaultValue={filters['language']}
                         Multiple Searchable label="انتخاب زبان" setState={handleFilter} name="language" placeHolder='زبان هدف'
                         className='!px-3 !py-2 border border-gray-400 rounded-lg bg-white' />
-                    <div className="flex flex-col gap-3">
+                    <div className="flex flex-col gap-4">
                         <label className='font-semibold'>دسته بندی کتاب</label>
                         <CheckboxGroup
                             aria-label=" "
@@ -133,7 +133,7 @@ const Filters = ({ setCurrentPage }) => {
                         array={data.publication} defaultValue={filters['publication']}
                         Multiple Searchable label="انتشارات" setState={handleFilter} name="publication" placeHolder='انتشارات'
                         className='!px-3 !py-2 border border-gray-400 rounded-lg bg-white' />
-                    <div className="flex flex-col gap-3">
+                    <div className="flex flex-col gap-4">
                         <label className='font-semibold'>گروه سنی</label>
                         <RadioGroup
                             aria-label=" "

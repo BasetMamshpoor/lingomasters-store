@@ -12,7 +12,7 @@ import { Skeleton } from '@nextui-org/react';
 const Slider = ({ data, to }) => {
     return (
         <>
-            <div className="slider relative md:my-12 my-4">
+            <div className="slider relative lg:mb-[140px] sm:mb-20 mb-[60px]">
                 <div className="max-w-[1280px] w-full mx-auto lg:rounded-lg lg:py-16 sm:pb-16 pb-8 lg:pr-0 pr-1 bg-gradient-to-l from-[#2B49A2E5] to-[#597EECCC]">
                     <div dir='rtl' className='w-full flex items-center lg:flex-row flex-col lg:gap-0 gap-4'>
 
