@@ -14,18 +14,17 @@ const Slider = ({ data, to }) => {
         <>
             <div className="slider relative lg:mb-[140px] sm:mb-20 mb-[60px]">
                 <div className="max-w-[1280px] w-full mx-auto lg:rounded-lg lg:py-16 sm:pb-16 pb-8 lg:pr-0 pr-1 bg-gradient-to-l from-[#2B49A2E5] to-[#597EECCC]">
-                    <div dir='rtl' className='w-full flex items-center lg:flex-row flex-col lg:gap-0 gap-4'>
-
+                    <img src="/icons/Group.svg" alt="" className='absolute z-0 top-0 left-0 bottom-0 right-0 w-full h-full opacity-5' />
+                    <div dir='rtl' className='z-[1] w-full flex items-center lg:flex-row flex-col lg:gap-0 gap-4'>
                         <div className='lg:w-[311px] w-full flex-shrink-0 pt-6 flex flex-col lg:gap-0 gap-2 justify-between items-center'>
                             <div className="lg:w-[247px] sm:[328px] w-[156px] lg:h-24 sm:h-12 h-9 centerOfParent rounded-b-2xl bg-primary-50 absolute top-0">
                                 <span className='text-primary-950 lg:text-2xl sm:text-base text-sm font-semibold'>تخفیف‌ها</span>
                             </div>
-                            <div className="w-full sm:px-8 px-4 flex items-center sm:py-4 pt-5 justify-between lg:flex-col gap-1 text-white lg:h-48">
+                            <div className="relative z-[1] w-full sm:px-8 px-4 flex items-center sm:py-4 pt-5 justify-between lg:flex-col gap-1 text-white lg:h-48">
                                 <p className='sm:text-2xl text-sm'>پیشنهاد لینگومسترز</p>
                                 <Link href={to || '/'} className='flex items-center gap-2 sm:text-xl text-sm'>مشاهده همه <span><Left className='sm:w-6 sm:h-6 w-4 h-4 fill-white' /></span></Link>
                             </div>
                         </div>
-
                         <div className="w-full overflow-hidden">
                             <Swiper
                                 modules={[Navigation, Pagination, A11y]}

@@ -1,5 +1,5 @@
 // import Swiper core and required modules
-import { Navigation, Pagination, A11y } from 'swiper/modules';
+import { Navigation, Pagination, A11y, Autoplay } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
 
 // Import Swiper styles
@@ -19,11 +19,15 @@ const Carousel = ({ data }) => {
         <>
             <div className="relative mt-4 lg:mb-[140px] sm:mb-20 mb-[60px]" dir='ltr'>
                 <Swiper
-                    modules={[Navigation, Pagination, A11y]}
+                    modules={[Navigation, Pagination, A11y, Autoplay]}
                     slidesPerView={1.5}
                     centeredSlides={true}
                     spaceBetween={30}
                     loop={true}
+                    autoplay={{
+                        delay: 2500,
+                        // disableOnInteraction: true,
+                    }}
                     navigation={{
                         nextEl: '.custom-next', // Custom next button
                         prevEl: '.custom-prev', // Custom previous button

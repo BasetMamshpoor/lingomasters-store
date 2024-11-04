@@ -11,10 +11,12 @@ import formatCurrency from "@/helpers/formatCurrency";
 import { useContext } from "react";
 import { CartContext } from "@/providers/CartContextProvider";
 import { useRouter } from "next/router";
+import Timer from "./Timer";
 
 const Card = ({ data = {}, withLabel = true, solid = false, New = false, offRed = false, withTag = true, edu = false }) => {
     const { push } = useRouter()
     const { dispatch } = useContext(CartContext)
+    const timeDiscount = data.off_price ? ((new Date('2024-11-05 13:33:54').getTime() - new Date().getTime()) / 1000).toFixed() : null
 
     const handleClick = () => {
         dispatch({ type: 'ADD_ITEM', payload: { ...data, idp: data.id + "_" + data.selected_seller.id } })
@@ -47,6 +49,9 @@ const Card = ({ data = {}, withLabel = true, solid = false, New = false, offRed 
                         </div>}
                         <p className='text-primary-700 sm:text-2xl text-xs hasToman'>{formatCurrency(data.off_price || data.price)}</p>
                     </div>
+                    {!!data.off_price && (timeDiscount < 86400) && <>
+                        <Timer message='اتمام تخفیف' time={timeDiscount} />
+                    </>}
                     <div className="flex items-center sm:gap-6 gap-4 sm:max-w-64 max-w-52 w-full">
                         <button onClick={handleClick} className="centerOfParent bg-primary-500 p-4 sm:w-[60px] w-11 sm:h-12 h-8 rounded-md"><Cart className='fill-white' /></button>
                         <Link href={`/${edu ? 'educational-products' : 'product'}/${data.id}`} className='sm:text-base text-xs sm:h-12 h-8 flex-[1_0_0] sm:px-6 px-4 sm:py-4 py-2 rounded border-secondary-500 sm:border-[1.5px] border text-secondary-500 centerOfParent'>مشاهده</Link>

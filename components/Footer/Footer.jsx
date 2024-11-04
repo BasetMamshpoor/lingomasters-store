@@ -63,7 +63,7 @@ const Footer = () => {
                                             در قسمت فروشگاهی لینگومسترز ما کتاب های زبان می فروشیم و به یادگیری شما در زبان های مختلف کمک می کنیم .<br />
                                             همچنین شما می توانید در این قسمت کتاب های زبان خود را بفروش برسانید</p>
                                     </div>
-                                    <div className="grow flex sm:flex-row flex-col w-full justify-between sm:items-center gap-1 sm:text-sm text-xs text-natural_gray-900">
+                                    <div className="grow flex sm:flex-row flex-col w-full justify-between sm:items-center gap-2 sm:text-sm text-xs text-natural_gray-900">
                                         <div className="flex flex-col sm:gap-6 gap-2">
                                             <Link href="/">صفحه اصلی</Link>
                                             <Link href="">پشتیبانی</Link>
@@ -82,7 +82,7 @@ const Footer = () => {
                                             <Link href="">فروشنده شوید</Link>
                                             <Link href="">ورود و ثبت نام</Link>
                                         </div>
-                                        <div className="flex items-center justify-between sm:gap-6 gap-2 sm:mt-0 mt-10">
+                                        <div className="flex items-center justify-evenly sm:gap-6 gap-2 sm:mt-0 mt-10">
                                             <Link href=""><img src="/images/image 9.png" className='mix-blend-multiply' alt="" /></Link>
                                             <Link href="" className='sm:hidden'><img src="/images/etehadie.png" className='mix-blend-multiply' alt="" /></Link>
                                         </div>
