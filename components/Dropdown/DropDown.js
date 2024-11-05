@@ -148,7 +148,7 @@ const Dropdown = ({
 
     return (
         <div className={disabled ? style.disabledDropdown : style.dropdown_container} style={styles ? styles : null}>
-            {label && <label className='mb-4 mr-2 font-semibold'>{label}</label>}
+            {label && <label className='mb-4 font-semibold'>{label}</label>}
             <div className='relative'>
                 <section ref={inputRef} onClick={handleInputClick} className={`${style.dropdown_input} ${className || ' '}`}>
                     <div className={style.dropdown_selected_value} ref={scrollRef}>{getDisplay()}</div>

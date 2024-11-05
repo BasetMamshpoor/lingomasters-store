@@ -77,7 +77,10 @@ const Header = () => {
                                     </DropdownMenu>
                                 </Dropdown>
                             </div> */}
-                            <Link href='/checkout/cart' className="px-1.5 py-1 centerOfParent border-1.5 rounded border-secondary-500">{state.itemsCounter}<Cart className='fill-secondary-500' /></Link>
+                            <Link href='/checkout/cart' className="relative px-1.5 py-1 centerOfParent border-1.5 rounded border-secondary-500">
+                                <Cart className='fill-secondary-500' />
+                                {!!state.itemsCounter && <span className="absolute -bottom-1/2 -right-1/2 -translate-x-1/2 -translate-y-1/4 bg-primary-600 text-white rounded px-[7px] py-[3px] text-[10px] text-center">{state.itemsCounter}</span>}
+                            </Link>
                             <Link href='/auth/login' className="px-4 py-2 centerOfParent bg-primary-600 text-white rounded text-sm">ورود<span className="lg:inline-block hidden">/ثبت نام</span></Link>
                         </div>
                     </div>

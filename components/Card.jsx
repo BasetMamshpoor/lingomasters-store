@@ -16,7 +16,7 @@ import Timer from "./Timer";
 const Card = ({ data = {}, withLabel = true, solid = false, New = false, offRed = false, withTag = true, edu = false }) => {
     const { push } = useRouter()
     const { dispatch } = useContext(CartContext)
-    const timeDiscount = data.off_price ? ((new Date('2024-11-05 13:33:54').getTime() - new Date().getTime()) / 1000).toFixed() : null
+    const timeDiscount = data.off_price ? ((new Date(data?.discount_expiration).getTime() - new Date().getTime()) / 1000).toFixed() : null
 
     const handleClick = () => {
         dispatch({ type: 'ADD_ITEM', payload: { ...data, idp: data.id + "_" + data.selected_seller.id } })
