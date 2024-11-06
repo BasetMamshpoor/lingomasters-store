@@ -12,6 +12,7 @@ import Close from '@icons/close.svg'
 import DislikeFill from '@icons/dislike-fill.svg'
 import Down from '@icons/arrow-down.svg'
 import useGetRequest from "@/hooks/useGetRequest";
+import useSwipeScroll from "@/hooks/useHorizontalScroll";
 let staticComments = [
     'عالی است',
     'بهترین است',
@@ -39,6 +40,7 @@ const Text = ({ id }) => {
     const [xComment, setXComment] = useState(true)
     const [showMore, setShowMore] = useState(false)
     const [comments, setComments, setReload, pagination] = useGetRequest(`/text-comments/${id}`)
+    const ref = useSwipeScroll()
     const handleChange = (event) => {
         const { name, value } = event.target
         setData(prev => {
@@ -80,7 +82,7 @@ const Text = ({ id }) => {
                                 <div className="relative w-full">
                                     <Textarea onChange={handleChange} value={data.text} minRows={5} radius="sm" maxRows={10} variant="bordered" name="text" className="self-stretch" placeholder="توضیحات">توضیحات</Textarea>
                                     <div className="absolute left-0 bottom-0 px-3 py-1 text-sm flex items-center gap-2 w-full">
-                                        <div className={`${xComment ? 'hidden' : 'flex'} items-center gap-2 overflow-x-auto px-1`}>{staticComments.map((_, i) => <span key={i} className="border rounded-lg py-0.5 px-2 whitespace-nowrap cursor-pointer" onClick={() => handleClick(_)}>{_}</span>)}</div>
+                                        <div ref={ref} className={`${xComment ? 'hidden' : 'flex'} items-center gap-2 overflow-x-auto scrollbar-hide px-1`}>{staticComments.map((_, i) => <span key={i} className="border rounded-lg py-0.5 px-2 whitespace-nowrap cursor-pointer" onClick={() => handleClick(_)}>{_}</span>)}</div>
                                         <span className="text-primary-600 whitespace-nowrap mr-auto cursor-pointer" onClick={() => setXComment(!xComment)}>{!xComment ? <Close className='fill-primary-600' /> : 'انتخاب نظر اماده'}</span>
                                     </div>
                                 </div>

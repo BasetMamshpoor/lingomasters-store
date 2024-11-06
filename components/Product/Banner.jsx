@@ -23,7 +23,7 @@ import { IsInCart, quantityItem } from '@/helpers/functions';
 
 const Banner = ({ product = {} }) => {
 
-    const { title, id, sellers, category, seller, image, page_number, off_price, discount_percentage, selected_seller } = product
+    const { title, id, sellers, category, image, page_number, off_price, price, discount_percentage, selected_seller } = product
     const { state, dispatch } = useContext(CartContext)
 
     return (
@@ -91,7 +91,7 @@ const Banner = ({ product = {} }) => {
                                 </div>}
                                 <div className="sm:h-[60px] h-8 flex items-center justify-between bg-natural_gray-50 px-3">
                                     <span className='text-natural_gray-900 sm:text-xs text-[10px]'>خرید از {selected_seller?.title}</span>
-                                    <span className='text-green-500 sm:text-sm text-xs hasToman'>{formatCurrency(off_price)}</span>
+                                    <span className='text-green-500 sm:text-sm text-xs hasToman'>{formatCurrency(off_price || price)}</span>
                                 </div>
                             </div>
                         </div>

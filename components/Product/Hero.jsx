@@ -7,7 +7,7 @@ import FillHeart from '@icons/fill-heart.svg'
 import Flag from '@icons/Flags/Country=United States of America, Style=Flag, Radius=On.svg'
 
 const Hero = ({ product = {} }) => {
-    const { title, rate = 0, id, language, is_like, category, seller, subject, age_group, page_number, product_type, book_category } = product
+    const { title, rate = 0, id, language, is_like, category,category_slug, selected_seller, subject, age_group, page_number, product_type, book_category } = product
 
     return (
         <>
@@ -23,7 +23,7 @@ const Hero = ({ product = {} }) => {
                                         separator: "px-2 text-natural_gray-600"
                                     }}>
                                     <BreadcrumbItem href="/">صفحه اصلی</BreadcrumbItem>
-                                    <BreadcrumbItem href={`/category/${category?.slug}`}>{category?.title}</BreadcrumbItem>
+                                    <BreadcrumbItem href={`/category/${category_slug}`}>{category}</BreadcrumbItem>
                                     <BreadcrumbItem>{title}</BreadcrumbItem>
                                 </Breadcrumbs>
                                 <div className="centerOfParent cursor-pointer" onClick={() => { navigator.clipboard.writeText(location.href) }}><Share /></div>
@@ -37,7 +37,7 @@ const Hero = ({ product = {} }) => {
                             </div>
                             <div className="flex items-center justify-between mb-3">
                                 <div className="flex items-center">
-                                    <h2 className='text-natural_gray-950'>فروشنده : {seller?.name}</h2>
+                                    <h2 className='text-natural_gray-950'>فروشنده : {selected_seller?.title}</h2>
                                 </div>
                                 <div className="flex items-center gap-1">
                                     <div className="flex items-center [&>svg]:w-4 [&>svg]:h-4">

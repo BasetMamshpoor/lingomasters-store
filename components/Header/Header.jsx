@@ -94,7 +94,7 @@ const Header = () => {
                                     <li key={o} className="[&>a]:flex [&>a]:items-center [&>a]:gap-3 cursor-pointer">{i.underMenu ?
                                         <Dropdown dir="rtl">
                                             <DropdownTrigger><div><Item i={i} /></div></DropdownTrigger>
-                                            <DropdownMenu className="max-h-64 overflow-y-auto scrollbar scrollbar-w-8 scrollbar-thumb-natural_gray-800 scrollbar-track-white">
+                                            <DropdownMenu className="max-h-64 overflow-y-auto scrollbar-hide scrollbar scrollbar-w-8 scrollbar-thumb-natural_gray-800 scrollbar-track-white">
                                                 {category.map(c => <DropdownItem key={c.slug} ><Link className="w-full block" href={`/category/${c.slug}`}>{c.title}</Link></DropdownItem>)}
                                             </DropdownMenu>
                                         </Dropdown>
