@@ -25,7 +25,7 @@ const Card = ({ data = {}, withLabel = true, solid = false, New = false, offRed 
 
     return (
         <>
-            <div dir='ltr' className={`relative select-none overflow-hidden flex flex-col items-stretch sm:gap-3 gap-1 sm:max-w-[302px] w-full h-[405px] sm:h-[528px] flex-shrink-0 rounded-lg border border-natural_gray-${solid ? "400" : '100'} md:p-6 p-4 bg-white`}>
+            <div dir='ltr' className={`relative transition-all select-none overflow-hidden flex flex-col items-stretch sm:gap-3 gap-1 sm:max-w-[302px] w-full h-[405px] sm:h-[528px] flex-shrink-0 rounded-lg border border-natural_gray-${solid ? "400" : '100'} hover:border-2 hover:border-primary-400 md:p-6 p-4 bg-white`}>
                 <div className="centerOfParent sm:max-w-[254px] max-w-[210px] w-full sm:h-[250px] h-[200px] flex-shrink-0 rounded-lg mix-blend-darken">
                     <Image
                         src={data.image || "/images/Slider/1.jpg"}
@@ -36,7 +36,7 @@ const Card = ({ data = {}, withLabel = true, solid = false, New = false, offRed 
                 </div>
                 <div className="grow flex flex-col justify-between">
                     <div className="flex items-center justify-between gap-1">
-                        <div className="centerofParent cursor-pointer">{data.is_like ? <FillHeart className='fill-red-500' /> : <Heart />}</div>
+                        <div className="centerofParent cursor-pointer">{data.is_like ? <FillHeart className='fill-red-500' /> : <Heart className='transition-all hover:fill-red-500' />}</div>
                         <p className='line-clamp-1 sm:text-lg text-sm leading-6' dir='rtl'>{data.title}</p>
                     </div>
                     {withTag && data.category && <div className="flex items-center self-end">
@@ -54,7 +54,7 @@ const Card = ({ data = {}, withLabel = true, solid = false, New = false, offRed 
                     </>}
                     <div className="flex items-center sm:gap-6 gap-4 sm:max-w-64 max-w-52 w-full">
                         <button onClick={handleClick} className="centerOfParent bg-primary-500 p-4 sm:w-[60px] w-11 sm:h-12 h-8 rounded-md"><Cart className='fill-white' /></button>
-                        <Link href={`/${edu ? 'educational-products' : 'product'}/${data.id}`} className='sm:text-base text-xs sm:h-12 h-8 flex-[1_0_0] sm:px-6 px-4 sm:py-4 py-2 rounded border-secondary-500 sm:border-[1.5px] border text-secondary-500 centerOfParent'>مشاهده</Link>
+                        <Link href={`/${edu ? 'educational-products' : 'product'}/${data.id}`} className='effect-1 sm:text-base text-xs sm:h-12 h-8 flex-[1_0_0] sm:px-6 px-4 sm:py-4 py-2 rounded border-secondary-500 sm:border-[1.5px] border text-secondary-500 centerOfParent'>مشاهده</Link>
                     </div>
                 </div>
                 {(New || (withLabel && data.discount_percentage)) && <div className={`absolute centerOfParent w-[136px] -rotate-45 px-[11px] py-[7px] ${New ? 'bg-secondary-300' : 'bg-red-200'} -left-9 top-3 sm:text-lg text-xs ${New ? 'text-[#441A04]' : 'text-red-950'}`}>{New ? 'جدید' : `${data.discount_percentage}%`}</div>}

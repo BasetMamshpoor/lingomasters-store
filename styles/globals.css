@@ -109,3 +109,78 @@ input:focus-within {
   font-size: 10px;
   font-weight: 700;
 }
+.effect-1 {
+  position: relative;
+}
+.effect-1::after {
+  transition: all 450ms ease;
+  position: absolute;
+  content: "";
+  width: 8px;
+  height: 60px;
+  background: #fff;
+  filter: blur(4px);
+  top: 50%;
+  transform: translateY(-50%);
+  left: 110%;
+  z-index: 2;
+}
+.effect-1:hover::after {
+  left: -15px;
+}
+.effect-2 {
+  position: relative;
+  overflow: hidden;
+}
+.effect-2::after {
+  transition: all 450ms ease;
+  position: absolute;
+  content: "";
+  width: 87px;
+  height: 4px;
+  background: #fff;
+  filter: blur(4px);
+  transform: rotate(45deg);
+  top: -60px;
+  left: 30%;
+  z-index: 2;
+}
+.effect-2:hover::after {
+  top: 70px;
+  left: -30px;
+}
+.effect-3 {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: row-reverse;
+  margin-right: -28px;
+  justify-content: start;
+}
+.effect-3 span {
+  transition: all 250ms ease;
+}
+.effect-3 svg {
+  transition: all 250ms ease;
+  width: 20px;
+  height: 20px;
+  margin-right: -20px;
+  opacity: 0;
+  fill: rgb(1, 1, 71) !important;
+}
+.effect-3:hover span {
+  margin-right: 4px;
+  color: rgb(1, 1, 71);
+}
+.effect-3:hover svg {
+  margin-right: 0;
+  opacity: 1;
+}
+@media (max-width: 640px) {
+  .effect-3 {
+    padding-right: 10px;
+  }
+  .effect-3 svg {
+    display: none;
+  }
+}

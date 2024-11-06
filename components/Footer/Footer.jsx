@@ -11,6 +11,7 @@ import Tiktok from '@icons/tik_tok.svg'
 import Whatsapp from '@icons/whatsapp.svg'
 import Pinterest from '@icons/pinterest.svg'
 import Facebook from '@icons/facebook.svg'
+import Left from '@icons/arrow-left.svg'
 import Link from 'next/link'
 
 const Footer = () => {
@@ -54,7 +55,7 @@ const Footer = () => {
                 </div>
                 <div className="">
                     <div className="flex flex-col items-center gap-20 lg:pt-[120px] sm:pt-[140px] pt-[120px] pb-10 bg-[linear-gradient(90deg,_#B5C7DF_0%,_#E8EFF8_100%)]">
-                        <div className="container px-2">
+                        <div className="container px-3">
                             <div className="flex flex-col items-center sm:gap-20 gap-4">
                                 <div className="flex lg:flex-row flex-col items-center sm:gap-10 gap-4 w-full">
                                     <div className="flex flex-col gap-6 lg:max-w-[411px] w-full">
@@ -64,25 +65,61 @@ const Footer = () => {
                                             همچنین شما می توانید در این قسمت کتاب های زبان خود را بفروش برسانید</p>
                                     </div>
                                     <div className="grow flex sm:flex-row flex-col w-full justify-between sm:items-center gap-2 sm:text-sm text-xs text-natural_gray-900">
-                                        <div className="flex flex-col sm:gap-6 gap-2">
-                                            <Link href="/">صفحه اصلی</Link>
-                                            <Link href="">پشتیبانی</Link>
-                                            <Link href="">درباره ما</Link>
-                                            <Link href="">تماس با ما</Link>
+                                        <div className="flex flex-col items-center sm:gap-6 gap-2 w-full">
+                                            <Link className='effect-3'
+                                                href="/">
+                                                <span>صفحه اصلی</span>
+                                                <Left /></Link>
+                                            <Link className='effect-3'
+                                                href="">
+                                                <span>پشتیبانی</span>
+                                                <Left /></Link>
+                                            <Link className='effect-3'
+                                                href="">
+                                                <span>درباره ما</span>
+                                                <Left /></Link>
+                                            <Link className='effect-3'
+                                                href="">
+                                                <span>تماس با ما</span>
+                                                <Left /></Link>
                                         </div>
-                                        <div className="flex flex-col sm:gap-6 gap-2">
-                                            <Link href="/rules">قوانین و مقررات</Link>
-                                            <Link href="">اخبار و اطلاعیه ها</Link>
-                                            <Link href="/faq">سوالات متداول خریداران</Link>
-                                            <Link href="/faq">سوالات متداول فروشندگان</Link>
+                                        <div className="flex flex-col items-center sm:gap-6 gap-2 w-full">
+                                            <Link className='effect-3'
+                                                href="/rules">
+                                                <span>قوانین و مقررات</span>
+                                                <Left /></Link>
+                                            <Link className='effect-3'
+                                                href="">
+                                                <span>اخبار و اطلاعیه ها</span>
+                                                <Left /></Link>
+                                            <Link className='effect-3'
+                                                href="/faq">
+                                                <span>سوالات متداول خریداران</span>
+                                                <Left /></Link>
+                                            <Link className='effect-3'
+                                                href="/faq">
+                                                <span>سوالات متداول فروشندگان</span>
+                                                <Left /></Link>
                                         </div>
-                                        <div className="flex flex-col sm:gap-6 gap-2">
-                                            <Link href="/checkout/cart">سبد خرید</Link>
-                                            <Link href="/ordertracking">پیگیری سفارش</Link>
-                                            <Link href="">فروشنده شوید</Link>
-                                            <Link href="">ورود و ثبت نام</Link>
+                                        <div className="flex flex-col items-center sm:gap-6 gap-2 w-full">
+                                            <Link className='effect-3'
+                                                href="/checkout/cart">
+                                                <span>سبد خرید</span>
+                                                <Left /></Link>
+                                            <Link className='effect-3'
+                                                href="/ordertracking">
+                                                <span>پیگیری سفارش</span>
+                                                <Left /></Link>
+                                            <Link className='effect-3'
+                                                href="">
+                                                <span>فروشنده شوید</span>
+                                                <Left /></Link>
+                                            <Link className='effect-3'
+                                                href="">
+                                                <span>ورود و ثبت نام</span>
+                                                <Left /></Link>
                                         </div>
-                                        <div className="flex items-center justify-evenly sm:gap-6 gap-2 sm:mt-0 mt-10">
+                                        <div className="flex items-center justify-evenly sm:gap-6 gap-2 sm:mt-0 mt-10 w-full">
                                             <Link href=""><img src="/images/image 9.png" className='mix-blend-multiply' alt="" /></Link>
                                             <Link href="" className='sm:hidden'><img src="/images/etehadie.png" className='mix-blend-multiply' alt="" /></Link>
                                         </div>

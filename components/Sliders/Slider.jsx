@@ -20,7 +20,7 @@ const Slider = ({ title, icon, loop, to, edu, New, data }) => {
                         </div>
                         <Link href={to} className='centerOfParent sm:text-base text-xs gap-2 text-primary-600 whitespace-nowrap'>مشاهده همه <Left className='w-5 h-5 fill-primary-600' /></Link>
                     </div>
-                    <div className="w-full relative slider">
+                    <div className="w-full relative slider px-1">
                         <Swiper
                             modules={[Navigation]}
                             spaceBetween={10}

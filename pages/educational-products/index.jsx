@@ -2,6 +2,7 @@ import Filter from "@/components/Category/Filter";
 import FiltersEdu from "@/components/Category/FiltersEdu";
 import Products from "@/components/Category/Products";
 import SortBy from "@/components/Category/SortBy";
+import Book from '@icons/book3.svg';
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 
@@ -23,15 +24,24 @@ const ProductsEdu = () => {
                         <div className='hidden lg:block lg:col-span-3 bg-white'>
                             {isRouterReady && <FiltersEdu setCurrentPage={setCurrentPage} />}
                         </div>
-                        <div className='flex flex-col lg:col-span-9 gap-4'>
-                            <div className='flex items-center justify-between'>
-                                <div className=""> </div>
-                                <div className="flex items-center gap-6">
-                                    <div className="lg:hidden centerOfParent">
-                                        {isRouterReady && <Filter edu setCurrentPage={setCurrentPage} />}
-                                    </div>
-                                    <SortBy setCurrentPage={setCurrentPage} />
+                        <div className='flex flex-col lg:col-span-9 gap-4 px-4'>
+                            <div className='lg:hidden flex items-center justify-between'>
+                                <div className="flex items-center gap-4">
+                                    <Book className='fill-[#243464] w-6 h-6' />
+                                    <h1 className="font-semibold">وسایل کمک آموزشی</h1>
                                 </div>
+                                <div className="centerOfParent">
+                                    {isRouterReady && <Filter setCurrentPage={setCurrentPage} />}
+                                </div>
+                            </div>
+                            <div className='flex items-center justify-between'>
+                                <div className="">
+                                    <div className="lg:flex hidden items-center gap-4">
+                                        <Book className='fill-[#243464] w-8 h-8' />
+                                        <h1 className="text-xl font-semibold">وسایل کمک آموزشی</h1>
+                                    </div>
+                                </div>
+                                <SortBy setCurrentPage={setCurrentPage} />
                             </div>
                             {isRouterReady && <Products edu currentPage={currentPage} setCurrentPage={setCurrentPage} />}
                         </div>
