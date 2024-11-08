@@ -42,7 +42,7 @@ const Cart = () => {
                                         <span className="hasToman text-sm text-green-600">{formatCurrency(state.total_after_off)}</span>
                                     </div>
                                 </div>
-                                <Link href='/checkout/shipping' className="text-white bg-primary-600 rounded h-12 lg:flex hidden items-center justify-center">ادامه ثبت سفارش</Link>
+                                <Link href='/checkout/shipping' className="effect-2 text-white bg-primary-600 rounded h-12 lg:flex hidden items-center justify-center">ادامه ثبت سفارش</Link>
                                 <div className="lg:hidden flex h-16 border-t px-8 items-center justify-between fixed z-30 bg-white w-ful left-0 right-0 bottom-0">
                                     <Link href='/checkout/shipping' className="text-white bg-primary-600 rounded h-10 px-5 sm:text-sm text-xs centerOfParent">ادامه ثبت سفارش</Link>
                                     <div className="flex flex-col items-end gap-2 sm:text-sm text-xs">

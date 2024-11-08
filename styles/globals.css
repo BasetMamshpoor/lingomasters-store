@@ -133,21 +133,21 @@ input:focus-within {
   overflow: hidden;
 }
 .effect-2::after {
-  transition: all 450ms ease;
+  transition: all 450ms;
   position: absolute;
   content: "";
-  width: 87px;
+  width: 120px;
   height: 4px;
   background: #fff;
   filter: blur(4px);
   transform: rotate(45deg);
-  top: -60px;
-  left: 30%;
+  top: -10px;
+  left: 88%;
   z-index: 2;
 }
 .effect-2:hover::after {
-  top: 70px;
-  left: -30px;
+  top: 55px;
+  left: -65px;
 }
 .effect-3 {
   width: 100%;

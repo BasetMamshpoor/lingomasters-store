@@ -57,7 +57,7 @@ const Videos = ({ id }) => {
                         <div className="flex items-center gap-6">
                             <VideoRecorder setRecordedBlob={setRecordedBlob} />
                         </div>
-                        <button className="sm:py-4 py-2 sm:px-6 px-4 sm:text-base text-xs rounded text-white bg-primary-600 sm:w-[140px] sm:h-fit h-9 w-full self-end">ارسال</button>
+                        <button className="effect-2 sm:py-4 py-2 sm:px-6 px-4 sm:text-base text-xs rounded text-white bg-primary-600 sm:w-[140px] sm:h-fit h-9 w-full self-end">ارسال</button>
                     </form>
                 </div>
                 <div className="flex flex-col gap-6">

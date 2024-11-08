@@ -20,7 +20,7 @@ const Ordertracking = () => {
                                     <input type="text" placeholder='متن' className='border px-4 py-2 rounded-lg ' />
                                 </div>
                             </div>
-                            <button type='button' className='py-3 px-6 centerOfParent w-full bg-primary-600 text-white rounded sm:text-base text-sm'>ثبت</button>
+                            <button type='button' className='effect-2 py-3 px-6 centerOfParent w-full bg-primary-600 text-white rounded sm:text-base text-sm'>ثبت</button>
                         </div>
                     </div>
                 </div>

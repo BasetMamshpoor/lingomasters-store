@@ -81,7 +81,7 @@ const Header = () => {
                                 <Cart className='fill-secondary-500' />
                                 {!!state.itemsCounter && <span className="absolute -bottom-1/2 -right-1/2 -translate-x-1/2 -translate-y-1/4 bg-primary-600 text-white rounded px-[7px] py-[3px] text-[10px] text-center">{state.itemsCounter}</span>}
                             </Link>
-                            <Link href='/auth/login' className="px-4 py-2 centerOfParent bg-primary-600 text-white rounded text-sm">ورود<span className="lg:inline-block hidden">/ثبت نام</span></Link>
+                            <Link href='/auth/login' className="effect-2 px-4 py-2 centerOfParent bg-primary-600 text-white rounded text-sm">ورود<span className="lg:inline-block hidden">/ثبت نام</span></Link>
                         </div>
                     </div>
                     <div className="lg:flex items-center justify-center hidden w-full">

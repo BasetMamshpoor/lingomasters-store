@@ -51,7 +51,7 @@ const Shipping = () => {
                                             <input type="text" id="website-admin" className="rounded-none rounded-e bg-gray-50 border text-gray-900 focus:ring-primary-500 focus:border-primary-500 block flex-1 min-w-0 w-full text-sm border-gray-300 px-2.5 py-1.5" />
                                         </div>
                                     </div>
-                                    <button className="text-white bg-green-600 rounded h-12 lg:flex hidden items-center justify-center">پرداخت</button>
+                                    <button className="text-white effect-2 bg-green-600 rounded h-12 lg:flex hidden items-center justify-center">پرداخت</button>
                                 </div>
                             </div>
                         </div>
