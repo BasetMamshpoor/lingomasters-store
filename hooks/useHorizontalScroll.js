@@ -48,7 +48,6 @@ function useSwipeScroll() {
         let momentumID;
 
         slider.addEventListener('wheel', (e) => {
-            e.preventDefault();
             cancelMomentumTracking();
         });
 

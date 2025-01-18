@@ -20,7 +20,7 @@ export default function App({ Component, pageProps }) {
         .catch(err => alert(err.response?.data.message))
     }
     get()
-  }, [])
+  }, [])  
 
   return (
     <>

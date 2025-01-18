@@ -1,26 +1,27 @@
 {
-  "name": "lingomasters",
+  "name": "lingomasters-store",
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev -p 2003",
+    "dev": "next dev -p 3355",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
   },
   "dependencies": {
-    "@nextui-org/react": "^2.4.6",
+    "@nextui-org/react": "^2.6.4",
     "@svgr/webpack": "^8.1.0",
     "@wavesurfer/react": "^1.0.7",
-    "axios": "^1.7.7",
-    "next": "14.2.8",
+    "axios": "^1.7.9",
+    "next": "14.2.20",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-media-recorder": "^1.7.1",
-    "swiper": "^11.1.12",
-    "wavesurfer.js": "^7.8.6"
+    "swiper": "^11.1.15",
+    "wavesurfer.js": "^7.8.10"
   },
   "devDependencies": {
+    "@tailwindcss/aspect-ratio": "^0.4.2",
     "@types/react": "^18.3.5",
     "eslint": "^8",
     "eslint-config-next": "14.2.8",

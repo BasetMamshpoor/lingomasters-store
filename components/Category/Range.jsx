@@ -67,7 +67,6 @@ export default function RangeSlider({ filters, handleFilter, data }) {
                         maxValue={maxSliderValue}
                         value={values}
                         onChange={setValues}
-                        className="rotate-180"
                         classNames={{
                             base: "max-w-md",
                             track: "h-1",
@@ -80,8 +79,8 @@ export default function RangeSlider({ filters, handleFilter, data }) {
                         )}
                     />
                     <div className="flex items-center justify-between w-full text-xs">
-                        <span className="hasToman">{formatCurrency(minSliderValue)}</span>
                         <span className="hasToman">{formatCurrency(maxSliderValue)}</span>
+                        <span className="hasToman">{formatCurrency(minSliderValue)}</span>
                     </div>
                 </div>
                 <div className="flex items-center gap-2 px-1">

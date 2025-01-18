@@ -22,12 +22,12 @@ const Product = () => {
                 <Hero product={product} />
                 <div className="container sm:px-10 grid lg:grid-cols-6 grid-cols-1 gap-6">
                     <div className="lg:col-span-2">
-                        <Banner product={product} />
+                        {/* <Banner product={product} /> */}
                     </div>
                     <div className="flex flex-col gap-10 lg:col-span-4">
                         <Tabs />
                         <Sellers sellers={product.sellers} />
-                        <AboutBook product={product} />
+                        {/* <AboutBook product={product} /> */}
                         <Description product={product} />
                         <Examples images={product?.sample_images} />
                         <Video movie={product?.video} image={product?.image} />
