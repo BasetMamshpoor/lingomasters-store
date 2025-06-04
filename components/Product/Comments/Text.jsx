@@ -1,5 +1,5 @@
 import { useRef, useState } from "react";
-import { Input, Textarea } from "@nextui-org/react";
+import { Input, Textarea } from "@heroui/react";
 import Image from "next/image";
 import Pagination from "@/components/Pagination";
 

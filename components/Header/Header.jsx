@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from "react";
-import { Dropdown, DropdownTrigger, DropdownMenu, DropdownItem, Input } from "@nextui-org/react";
+import { Dropdown, DropdownTrigger, DropdownMenu, DropdownItem, Input } from "@heroui/react";
 import Link from "next/link";
 import Cart from '@icons/cart.svg'
 import Search from '@icons/search.svg'

@@ -1,6 +1,6 @@
 import Icon from '@icons/category.svg';
 import Link from 'next/link';
-import { Skeleton } from '@nextui-org/react';
+import { Skeleton } from "@heroui/react";
 
 const Categories = ({ data }) => {
     return (

@@ -5,7 +5,7 @@ import Unlike from "@icons/heart.svg";
 import Person from "@icons/Icon-person.svg";
 import Chat from "@icons/chat-alt.svg";
 import Down from "@icons/arrow-down.svg";
-import {Avatar, Input, ModalBody} from "@nextui-org/react";
+import {Avatar, Input, ModalBody} from "@heroui/react";
 import useGetRequest from "@/hooks/useGetRequest";
 import Image from "next/image";
 import timeAgo from "@/helpers/timeago";

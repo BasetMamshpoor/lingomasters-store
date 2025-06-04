@@ -1,4 +1,4 @@
-import { Pagination, PaginationItemType } from "@nextui-org/react";
+import { Pagination, PaginationItemType } from "@heroui/react";
 import ChevronIcon from "@icons/chevron-right.svg";
 
 export default function PaginationApp({ total, per_page, currentPage, ...props }) {

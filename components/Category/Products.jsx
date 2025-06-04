@@ -3,7 +3,7 @@ import { useRouter } from "next/router";
 import Pagination from '../Pagination';
 import useGetRequest from '@/hooks/useGetRequest';
 import { useCallback, useEffect } from 'react';
-import { Skeleton } from '@nextui-org/react';
+import { Skeleton } from "@heroui/react";
 
 const Products = ({ edu, currentPage, setCurrentPage }) => {
     const router = useRouter()

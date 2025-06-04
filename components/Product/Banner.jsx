@@ -13,7 +13,7 @@ import Trush from "@icons/bin.svg";
 
 import Image from 'next/image';
 import Link from 'next/link';
-import { BreadcrumbItem, Breadcrumbs } from '@nextui-org/react';
+import { BreadcrumbItem, Breadcrumbs } from "@heroui/react";
 import formatCurrency from '@/helpers/formatCurrency';
 import { CartContext } from '@/providers/CartContextProvider';
 import { useContext } from 'react';

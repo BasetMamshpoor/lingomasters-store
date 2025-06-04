@@ -1,4 +1,4 @@
-import { Breadcrumbs, BreadcrumbItem } from '@nextui-org/react';
+import { Breadcrumbs, BreadcrumbItem } from "@heroui/react";
 //icons
 import Share from '@icons/share.svg'
 import Heart from '@icons/heart.svg'

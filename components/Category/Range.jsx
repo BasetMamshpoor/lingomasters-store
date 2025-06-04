@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import { Slider } from "@nextui-org/react";
+import { Slider } from "@heroui/react";
 import { useDebounce } from "@/hooks/useDebounce";
 import formatCurrency from "@/helpers/formatCurrency";
 

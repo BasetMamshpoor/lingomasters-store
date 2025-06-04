@@ -1,5 +1,5 @@
 import React from "react";
-import { Modal, ModalContent, ModalHeader, ModalBody, useDisclosure, } from "@nextui-org/react";
+import { Modal, ModalContent, ModalHeader, ModalBody, useDisclosure, } from "@heroui/react";
 import Filters from "./Filters";
 import FilterIcon from '@icons/filter.svg';
 import Close from '@icons/close.svg';

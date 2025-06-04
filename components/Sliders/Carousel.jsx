@@ -12,7 +12,7 @@ import Right from '@icons/right.svg';
 
 import Image from 'next/image';
 import Link from 'next/link';
-import { Skeleton } from "@nextui-org/react";
+import { Skeleton } from "@heroui/react";
 
 const Carousel = ({ data }) => {
     return (

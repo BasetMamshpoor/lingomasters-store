@@ -9,7 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@nextui-org/react": "^2.6.4",
+    "@heroui/react": "2.7.9",
     "@svgr/webpack": "^8.1.0",
     "@wavesurfer/react": "^1.0.7",
     "axios": "^1.7.9",

@@ -1,4 +1,4 @@
-import { Progress } from '@nextui-org/react';
+import { Progress } from "@heroui/react";
 import React, { useEffect, useState } from 'react';
 
 const Timer = ({ time, message, classNameTimer, classNameEtmam, withHour = true, withProgress = true }) => {

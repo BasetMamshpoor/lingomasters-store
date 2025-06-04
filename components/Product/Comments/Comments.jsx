@@ -1,4 +1,4 @@
-import { Tabs, Tab, Card, CardBody } from '@nextui-org/react';
+import { Tabs, Tab, Card, CardBody } from "@heroui/react";
 
 //icons
 import Chats from '@icons/chats.svg';

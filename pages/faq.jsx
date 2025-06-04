@@ -1,7 +1,7 @@
 import Icon from "@icons/question-circle.svg";
 import Right from "@icons/chevron-right.svg";
-import { Accordion, AccordionItem } from "@nextui-org/accordion";
-import { Tabs, Tab, Card, CardBody } from "@nextui-org/react";
+import { Accordion, AccordionItem } from "@heroui/accordion";
+import { Tabs, Tab, Card, CardBody } from "@heroui/react";
 
 export default function FaqSection() {
     const faqItems = [

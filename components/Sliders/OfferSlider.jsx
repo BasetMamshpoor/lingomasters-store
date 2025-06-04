@@ -7,7 +7,7 @@ import Link from 'next/link';
 import Card from '../Card';
 
 import Left from '@icons/arrow-left.svg';
-import { Skeleton } from '@nextui-org/react';
+import { Skeleton } from "@heroui/react";
 
 const Slider = ({ data, to }) => {
     return (

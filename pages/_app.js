@@ -2,7 +2,7 @@ import Header from "@/components/Header";
 import "@/styles/globals.css";
 import "@/styles/fonts.css";
 import Footer from "@/components/Footer";
-import { NextUIProvider } from "@nextui-org/react";
+import { HeroUIProvider } from "@heroui/react";
 import axios from "axios";
 import CartContextProvider from "@/providers/CartContextProvider";
 import { useEffect } from "react";
@@ -27,7 +27,7 @@ export default function App({ Component, pageProps }) {
       <Head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
       </Head>
-      <NextUIProvider>
+      <HeroUIProvider>
         <CartContextProvider>
           <div style={{ maxWidth: '1440px', margin: '0 auto' }}>
             <Header />
@@ -35,7 +35,7 @@ export default function App({ Component, pageProps }) {
             <Footer />
           </div>
         </CartContextProvider>
-      </NextUIProvider>
+      </HeroUIProvider>
     </>
   );
 }

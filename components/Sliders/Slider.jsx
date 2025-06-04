@@ -4,7 +4,7 @@ import 'swiper/css/navigation';
 import { Navigation } from 'swiper/modules';
 import Card from '../Card';
 import Link from 'next/link';
-import { Skeleton } from "@nextui-org/react";
+import { Skeleton } from "@heroui/react";
 import Left from '@icons/arrow-left.svg'
 
 const Slider = ({ title, icon, loop, to, edu, New, data }) => {

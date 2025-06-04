@@ -1,5 +1,5 @@
 import useAxios from "@/hooks/useAxios";
-import { Autocomplete, AutocompleteItem, Input } from "@nextui-org/react";
+import { Autocomplete, AutocompleteItem, Input } from "@heroui/react";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 

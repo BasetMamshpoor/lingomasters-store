@@ -4,7 +4,7 @@ import Like from "@icons/fill-heart.svg";
 import Unlike from "@icons/heart.svg";
 import Person from "@icons/Icon-person.svg";
 import Image from "next/image";
-import {Input} from "@nextui-org/react";
+import {Input} from "@heroui/react";
 import timeAgo from "@/helpers/timeago";
 import axios from "axios";
 

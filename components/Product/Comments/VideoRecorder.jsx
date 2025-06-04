@@ -1,4 +1,4 @@
-import { Button, Modal, ModalContent,  ModalBody, ModalFooter, useDisclosure } from '@nextui-org/react';
+import { Button, Modal, ModalContent,  ModalBody, ModalFooter, useDisclosure } from "@heroui/react";
 import { useRef, useEffect } from 'react';
 import { ReactMediaRecorder } from 'react-media-recorder';
 

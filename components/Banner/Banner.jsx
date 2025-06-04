@@ -1,6 +1,6 @@
 import Cart from '@icons/cart.svg';
 import formatCurrency from "@/helpers/formatCurrency";
-import { Skeleton } from '@nextui-org/react';
+import { Skeleton } from "@heroui/react";
 
 const Banner = ({ withTag = true, data }) => {
     return (

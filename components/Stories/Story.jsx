@@ -1,6 +1,6 @@
 import React from 'react';
 import Image from "next/image";
-import {Modal, ModalContent, useDisclosure} from "@nextui-org/react";
+import {Modal, ModalContent, useDisclosure} from "@heroui/react";
 import StoryContent from "@/components/Stories/StoryContent";
 
 const Story = ({story, ...props}) => {
