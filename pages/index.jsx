@@ -9,23 +9,19 @@ import New from '@icons/new.svg';
 import MostSell from '@icons/best-seller.svg';
 import Banner from "@/components/Banner";
 import useGetRequest from "@/hooks/useGetRequest";
-import {useEffect, useState} from "react";
+import {useContext, useEffect, useState} from "react";
 import Stories from "@/components/Stories/Stories";
 import HeaderBanner from "@/components/HeaderBanner";
+import {Category} from "@/providers/CategoriesProviders";
 
 export default function Page() {
-
-    const [data] = useGetRequest('/main-page')
-    const [category, setCategory] = useState('')
-    useEffect(() => {
-        const category = JSON.parse(localStorage.getItem('category'))[0]?.slug
-        setCategory(category)
-    }, [])
-
+    const {categories} = useContext(Category)
+    const category = categories[0]?.slug
+    const [data] = useGetRequest( '/main-page')
     return (
         <>
             <div>
-                <HeaderBanner data={data?.header_banner} />
+                <HeaderBanner data={data?.header_banner}/>
                 <Stories data={data?.stories}/>
                 <Carousel data={data?.sliders}/>
                 <Categories data={data?.categories}/>

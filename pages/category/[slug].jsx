@@ -3,13 +3,16 @@ import Filters from "@/components/Category/Filters";
 import Products from "@/components/Category/Products";
 import SortBy from "@/components/Category/SortBy";
 import { useRouter } from "next/router";
-import { useEffect, useState } from "react";
+import {useContext, useEffect, useState} from "react";
 
 import Book from '@icons/book-open.svg'
+import {Category} from "@/providers/CategoriesProviders";
 
 const ProductsList = () => {
     const router = useRouter()
-    const [category, setCategory] = useState({ })
+    const {slug}=router.query;
+    const {categories} = useContext(Category)
+    const [category, setCategory] = useState(categories.find(c => c.slug === slug))
     const [currentPage, setCurrentPage] = useState(1)
 
     useEffect(() => {

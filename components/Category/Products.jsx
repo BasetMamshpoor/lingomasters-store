@@ -2,26 +2,15 @@ import CardC from '../Card';
 import { useRouter } from "next/router";
 import Pagination from '../Pagination';
 import useGetRequest from '@/hooks/useGetRequest';
-import { useCallback, useEffect } from 'react';
+import { useMemo} from 'react';
 import { Skeleton } from "@heroui/react";
 
 const Products = ({ edu, currentPage, setCurrentPage }) => {
     const router = useRouter()
     const { slug, ...query } = router.query
+    const stableQuery = useMemo(() => ({ ...query }), [JSON.stringify(query)]);
 
-    const serializedQuery = JSON.stringify(query);
-
-    const parsedQuery = JSON.parse(serializedQuery);
-    const [data, setData, setReload, pagination] = useGetRequest(edu ? '/educational-product' : (slug ? `/product/${slug}` : null), currentPage, parsedQuery);
-
-
-    const handleReload = useCallback(() => {
-        setReload(Math.random());
-    }, [serializedQuery]);
-
-    useEffect(() => {
-        handleReload();
-    }, [handleReload]);
+    const [data, setData, setReload, pagination] = useGetRequest(edu ? '/educational-product' : (slug ? `/product/${slug}` : null), currentPage, stableQuery);
 
     return (
         <>
@@ -33,7 +22,7 @@ const Products = ({ edu, currentPage, setCurrentPage }) => {
                         </div>
                         : <p className='w-full'>محصولی پیدا نشد لطفا فیلتر ها را تغییر دهید</p>}
                     <div className="centerOfParent">
-                        <Pagination total={pagination.total} per_page={pagination.per_page} currentPage={currentPage} onChange={(e) => setCurrentPage(e)} />
+                        <Pagination total={pagination.total} per_page={pagination.per_page} currentPage={currentPage} onChange={setCurrentPage} />
                     </div>
                 </>
                 : <div className="grid md:grid-cols-3 grid-cols-2 lg:gap-6 gap-4">

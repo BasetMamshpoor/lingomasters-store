@@ -13,10 +13,12 @@
     "@svgr/webpack": "^8.1.0",
     "@wavesurfer/react": "^1.0.7",
     "axios": "^1.7.9",
+    "js-cookie": "^3.0.5",
     "next": "14.2.20",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-media-recorder": "^1.7.1",
+    "react-multi-date-picker": "^4.5.2",
     "swiper": "^11.1.15",
     "wavesurfer.js": "^7.8.10"
   },

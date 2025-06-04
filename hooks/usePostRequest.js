@@ -10,12 +10,12 @@ function usePostRequest() {
     const sendPostRequest = async (method = "POST", url, body, isFormData = false, useToken = true) => {
         setIsLoading(true);
         setError(null);
-        setMessage(null); // Reset message on new request
+        setMessage(null);
 
         try {
             const headers = {
                 ...(isFormData ? {'Content-Type': 'multipart/form-data'} : {}),
-                ...(useToken ? {'Authorization': `${JSON.parse(Cookies.get('token')).token_type} ${JSON.parse(Cookies.get('token')).access_token}`} : {}) // Set token if useToken is true
+                ...(useToken && Cookies.get('token') ? {'Authorization': `${JSON.parse(Cookies.get('token')).token_type} ${JSON.parse(Cookies.get('token')).access_token}`} : {})
             };
 
             const response = await axios({
@@ -25,13 +25,15 @@ function usePostRequest() {
                 headers
             });
 
-            const {message} = response.data; // Extract message from response
+            const {message} = response.data;
             setMessage(message);
-            return {success: true, data: response.data, errorMessage: null}; // Return success with data
+            return {success: true, data: response.data, errorMessage: null, successMessage: message};
+
         } catch (err) {
             const errorMessage = err.response?.data.message || err.message || 'Something went wrong.';
             setError(errorMessage);
-            return {success: false, data: null, errorMessage}; // Return failure with error message
+            return {success: false, data: null, errorMessage, status: err.response?.status};
+
         } finally {
             setIsLoading(false);
         }

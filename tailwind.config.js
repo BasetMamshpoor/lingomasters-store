@@ -81,5 +81,5 @@ module.exports = {
             },
         },
     },
-    plugins: [heroui(), require('@tailwindcss/aspect-ratio')],
+    plugins: [heroui()],
 };

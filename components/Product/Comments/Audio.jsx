@@ -1,6 +1,6 @@
 import { useState } from "react";
 import Image from "next/image";
-import Pagination from "@/components/Pagination";
+import Pagination from "@/Components/Pagination";
 import dynamic from "next/dynamic";
 const AudioRecorder = dynamic(() => import('./VoiceRecorder'), { ssr: false });
 
@@ -23,7 +23,7 @@ const generateUniqueFileName = (blob) => {
 const Audio = ({ id }) => {
     const [showMore, setShowMore] = useState(false)
 
-    const [comments, setComments, setReload, pagination] = useGetRequest(`/audio-comments/${id}`)
+    const [comments, setComments, setReload, pagination] = useGetRequest(true,`/audio-comments/${id}`)
 
     const [audioBlob, setAudioBlob] = useState(null);
 

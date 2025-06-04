@@ -1,5 +1,5 @@
 import { useState } from "react";
-import Pagination from "@/components/Pagination";
+import Pagination from "@/Components/Pagination";
 import dynamic from "next/dynamic";
 const VideoRecorder = dynamic(() => import('./VideoRecorder'), { ssr: false });
 
