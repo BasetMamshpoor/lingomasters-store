@@ -1,13 +1,27 @@
-import { Breadcrumbs, BreadcrumbItem } from "@heroui/react";
+import {Breadcrumbs, BreadcrumbItem, addToast} from "@heroui/react";
 //icons
 import Share from '@icons/share.svg'
-import Heart from '@icons/heart.svg'
-import Star from '@icons/magic-star.svg'
-import FillHeart from '@icons/fill-heart.svg'
-import Flag from '@icons/Flags/Country=United States of America, Style=Flag, Radius=On.svg'
+import Like from "@/components/Like";
+import Rate from "@/components/Rate";
+import Image from "next/image";
 
-const Hero = ({ product = {} }) => {
-    const { title, rate = 0, id, language, is_like, category,category_slug, selected_seller, subject, age_group, page_number, product_type, book_category } = product
+const Hero = ({product = {}}) => {
+    const {
+        title,
+        rate = 0,
+        id,
+        language,
+        is_like,
+        category,
+        category_slug,
+        rate_count,
+        selected_seller,
+        subject,
+        age_group,
+        page_number, flag,
+        product_type,
+        book_category
+    } = product
 
     return (
         <>
@@ -18,7 +32,7 @@ const Hero = ({ product = {} }) => {
                             <div className="flex items-center justify-between mb-10">
                                 <Breadcrumbs
                                     separator='/'
-                                    classNames={{ list: 'last:[&>li>span]:text-primary-950 [&>li]:text-natural_gray-600' }}
+                                    classNames={{list: 'last:[&>li>span]:text-primary-950 [&>li]:text-natural_gray-600'}}
                                     itemClasses={{
                                         separator: "px-2 text-natural_gray-600"
                                     }}>
@@ -26,57 +40,89 @@ const Hero = ({ product = {} }) => {
                                     <BreadcrumbItem href={`/category/${category_slug}`}>{category}</BreadcrumbItem>
                                     <BreadcrumbItem>{title}</BreadcrumbItem>
                                 </Breadcrumbs>
-                                <div className="centerOfParent cursor-pointer" onClick={() => { navigator.clipboard.writeText(location.href) }}><Share /></div>
+                                <button
+                                    type="button"
+                                    className="centerOfParent cursor-pointer"
+                                    aria-label="اشتراک‌گذاری"
+                                    onClick={() => {
+                                        if (window.innerWidth < 1024 && navigator.share) {
+                                            navigator.share({
+                                                title: title,
+                                                url: window.location.href,
+                                            }).then(() => {
+                                                addToast({
+                                                    description: 'لینک محصول با موفقیت به اشتراک گذاشته شد.',
+                                                    color: 'success',
+                                                });
+                                            }).catch(() => {
+                                                addToast({
+                                                    description: 'اشتراک‌گذاری لغو شد یا پشتیبانی نمی‌شود.',
+                                                    color: 'warning',
+                                                });
+                                            });
+                                        } else if (navigator.clipboard && window.location) {
+                                            navigator.clipboard.writeText(window.location.href);
+                                            addToast({
+                                                description: 'لینک محصول در کلیپ بورد شما کپی شد.',
+                                                color: 'success',
+                                            });
+                                        }
+                                    }}
+                                >
+                                    <Share/>
+                                </button>
                             </div>
                             <div className="flex items-center justify-between mb-3">
                                 <div className="flex items-center gap-3">
                                     <h1 className='text-2xl font-semibold'>{title}</h1>
                                     <span className='text-natural_gray-600 text-xs'>(کد کتاب: {id})</span>
                                 </div>
-                                <div className="centerOfParent">{is_like ? <FillHeart /> : <Heart />}</div>
+                                <Like isLike={is_like} url='/product' id={id}/>
                             </div>
                             <div className="flex items-center justify-between mb-3">
                                 <div className="flex items-center">
                                     <h2 className='text-natural_gray-950'>فروشنده : {selected_seller?.title}</h2>
                                 </div>
                                 <div className="flex items-center gap-1">
-                                    <div className="flex items-center [&>svg]:w-4 [&>svg]:h-4">
-                                        <Star className={rate < 5 ? '' : 'fill-[#F3B944]'} />
-                                        <Star className={rate < 4 ? '' : 'fill-[#F3B944]'} />
-                                        <Star className={rate < 3 ? '' : 'fill-[#F3B944]'} />
-                                        <Star className={rate < 2 ? '' : 'fill-[#F3B944]'} />
-                                        <Star className={rate < 1 ? '' : 'fill-[#F3B944]'} />
-                                    </div>
+                                    <Rate rate={rate} id={id} url="/product"/>
                                     <div className="flex items-center gap-1 text-xs">
-                                        <strong>4.8</strong>
-                                        از {80} نفر
+                                        <strong>{rate}</strong>
+                                        از {rate_count} نفر
                                     </div>
                                 </div>
                             </div>
-                            <div className="centerOfParent w-fit"><Flag /></div>
+                            <div className="centerOfParent w-fit">
+                                <Image src={flag} width={24} height={24}
+                                       alt={language}/></div>
                         </div>
                         <div className="w-full absolute -bottom-5 left-0 flex gap-4 items-center px-10">
-                            <div className="centerOfParent h-12 flex-[1_0_0] gap-1 rounded-lg bg-primary-50 [box-shadow:0px_4px_6px_0px_rgba(54,_108,_218,_0.08)]">
+                            <div
+                                className="centerOfParent h-12 flex-[1_0_0] gap-1 rounded-lg bg-primary-50 [box-shadow:0px_4px_6px_0px_rgba(54,_108,_218,_0.08)]">
                                 <p className='text-natural_gray-700 text-xs'>زبان</p>
                                 <h4 className='text-sm font-semibold'>{language}</h4>
                             </div>
-                            <div className="centerOfParent h-12 flex-[1_0_0] gap-1 rounded-lg bg-primary-50 [box-shadow:0px_4px_6px_0px_rgba(54,_108,_218,_0.08)]">
+                            <div
+                                className="centerOfParent h-12 flex-[1_0_0] gap-1 rounded-lg bg-primary-50 [box-shadow:0px_4px_6px_0px_rgba(54,_108,_218,_0.08)]">
                                 <p className='text-natural_gray-700 text-xs'>موضوع کتاب</p>
                                 <h4 className='text-sm font-semibold'>{subject}</h4>
                             </div>
-                            <div className="centerOfParent h-12 flex-[1_0_0] gap-1 rounded-lg bg-primary-50 [box-shadow:0px_4px_6px_0px_rgba(54,_108,_218,_0.08)]">
+                            <div
+                                className="centerOfParent h-12 flex-[1_0_0] gap-1 rounded-lg bg-primary-50 [box-shadow:0px_4px_6px_0px_rgba(54,_108,_218,_0.08)]">
                                 <p className='text-natural_gray-700 text-xs'>نوع کتاب</p>
                                 <h4 className='text-sm font-semibold'>{product_type}</h4>
                             </div>
-                            <div className="centerOfParent h-12 flex-[1_0_0] gap-1 rounded-lg bg-primary-50 [box-shadow:0px_4px_6px_0px_rgba(54,_108,_218,_0.08)]">
+                            <div
+                                className="centerOfParent h-12 flex-[1_0_0] gap-1 rounded-lg bg-primary-50 [box-shadow:0px_4px_6px_0px_rgba(54,_108,_218,_0.08)]">
                                 <p className='text-natural_gray-700 text-xs'>رده کتاب</p>
                                 <h4 className='text-sm font-semibold'>{book_category}</h4>
                             </div>
-                            <div className="centerOfParent h-12 flex-[1_0_0] gap-1 rounded-lg bg-primary-50 [box-shadow:0px_4px_6px_0px_rgba(54,_108,_218,_0.08)]">
+                            <div
+                                className="centerOfParent h-12 flex-[1_0_0] gap-1 rounded-lg bg-primary-50 [box-shadow:0px_4px_6px_0px_rgba(54,_108,_218,_0.08)]">
                                 <p className='text-natural_gray-700 text-xs'>رده سنی</p>
                                 <h4 className='text-sm font-semibold'>{age_group}</h4>
                             </div>
-                            <div className="centerOfParent h-12 flex-[1_0_0] gap-1 rounded-lg bg-primary-50 [box-shadow:0px_4px_6px_0px_rgba(54,_108,_218,_0.08)]">
+                            <div
+                                className="centerOfParent h-12 flex-[1_0_0] gap-1 rounded-lg bg-primary-50 [box-shadow:0px_4px_6px_0px_rgba(54,_108,_218,_0.08)]">
                                 <p className='text-natural_gray-700 text-xs'>تعداد جلد</p>
                                 <h4 className='text-sm font-semibold'>{page_number}</h4>
                             </div>

@@ -1,10 +1,15 @@
-import { BreadcrumbItem, Breadcrumbs } from "@heroui/react";
-import React from "react";
+import {BreadcrumbItem, Breadcrumbs} from "@heroui/react";
+import {useRouter} from 'next/router';
+import React from 'react';
 
-const Header = ({ active, page,steps }) => {
+const Progress = ({title, link, active, page, withBreadcrumb = true, steps = []}) => {
+    const router = useRouter();
+    const {id} = router.query;
+
     return (
         <div>
-            <div className="py-3 px-2">
+            {/* Breadcrumbs */}
+            {withBreadcrumb && <div className="py-3 px-2">
                 <Breadcrumbs
                     separator='/'
                     classNames={{list: 'last:[&>li>span]:text-primary-950 [&>li]:text-natural_gray-600'}}
@@ -13,10 +18,16 @@ const Header = ({ active, page,steps }) => {
                     }}>
                     <BreadcrumbItem className='[&>span]:sm:text-base [&>span]:text-xs [&>a]:sm:text-base [&>a]:text-xs'
                                     href="/">صفحه اصلی</BreadcrumbItem>
-                    <BreadcrumbItem
-                        className='[&>span]:sm:text-base [&>span]:text-xs [&>a]:sm:text-base [&>a]:text-xs'>{page}</BreadcrumbItem>
+                    <BreadcrumbItem className='[&>span]:sm:text-base [&>span]:text-xs [&>a]:sm:text-base [&>a]:text-xs'
+                                    href={link}>{title}</BreadcrumbItem>
+                    <BreadcrumbItem className='[&>span]:sm:text-base [&>span]:text-xs [&>a]:sm:text-base [&>a]:text-xs'
+                                    href={`${link}/${id}`}>{page}</BreadcrumbItem>
+                    <BreadcrumbItem className='[&>span]:sm:text-base [&>span]:text-xs [&>a]:sm:text-base [&>a]:text-xs'>رزرو
+                        کلاس</BreadcrumbItem>
                 </Breadcrumbs>
-            </div>
+            </div>}
+
+            {/* Dynamic Steps */}
             <ol className="flex w-full items-center justify-between px-4">
                 {steps.map((step, index) => {
                     const isActive = active === index + 1;
@@ -50,4 +61,4 @@ const Header = ({ active, page,steps }) => {
     );
 };
 
-export default Header;
+export default Progress;

@@ -66,7 +66,7 @@ const Products = ({ download }) => {
                                             {p.off_price && <del className='text-natural_gray-400 md:text-sm text-xs flex items-center hasToman'>{formatCurrency(p.price)}</del>}
                                         </div>
                                     </div>
-                                    <Link href={`/product/${p.id}`} className="flex items-center gap-2">
+                                    <Link href={`/product/${p.id}`} className="flex items-center gap-2 self-end">
                                         <span className="text-primary-600 text-sm">جزئیات</span>
                                         <div className="centerOfParent"><Left className='md:w-5 w-4 md:h-5 h-4 fill-primary-600'/></div>
                                     </Link>

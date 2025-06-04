@@ -7,7 +7,7 @@ import {Information} from "@/providers/InformationProvider";
 function ProfileImage({justImage}) {
     const {student, setReload} = useContext(Information)
     const {isOpen, onOpen, onOpenChange} = useDisclosure();
-    const [displayImageSrc, setDisplayImageSrc] = useState(student.profile ?? '/images/profile.png');
+    const [displayImageSrc, setDisplayImageSrc] = useState(student?.profile ?? '/images/profile.png');
     const [selectedFile, setSelectedFile] = useState(null);
     const [isDragging, setIsDragging] = useState(false);
     const {sendPostRequest, isLoading, message} = usePostRequest();

@@ -6,13 +6,15 @@ import { useContext } from "react";
 import { CartContext } from "@/providers/CartContextProvider";
 import Link from "next/link";
 
+const steps=['سبد خرید', 'نکمیل سفارش', 'پرداخت']
+
 const Cart = () => {
     const { state, dispatch } = useContext(CartContext)
     return (
         <>
             <main dir="rtl">
                 <div className="container flex flex-col gap-20">
-                    <Header page='سبد خرید' active={1} />
+                    <Header page='سبد خرید' active={1} steps={steps} />
                     <div className="grid lg:grid-cols-8 grid-cols-1 lg:gap-6 gap-y-4">
                         <div className="col-span-6 p-6 border border-natural_gray-100 rounded-lg bg-white flex flex-col gap-10">
                             <div className="flex items-center justify-between">

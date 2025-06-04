@@ -5,6 +5,8 @@ import Address from "@/components/Checkout/Address";
 import SendDownloadLink from "@/components/Checkout/SendDownloadLink";
 import { CartContext } from "@/providers/CartContextProvider";
 import { useContext } from "react";
+const steps=['سبد خرید', 'نکمیل سفارش', 'پرداخت']
+
 
 const Shipping = () => {
     const { state } = useContext(CartContext)
@@ -14,7 +16,7 @@ const Shipping = () => {
         <>
             <main dir="rtl">
                 <div className="container flex flex-col gap-20">
-                    <Header page='سبد خرید' active={2} />
+                    <Header page='اطلاعات ارسال' active={2} steps={steps}/>
                     <div className="grid lg:grid-cols-8 grid-cols-1 lg:gap-6 gap-y-4">
                         <div className="col-span-6 flex flex-col gap-8 p-6 border border-natural_gray-100 rounded-lg bg-white">
                             {ship && <Address />}

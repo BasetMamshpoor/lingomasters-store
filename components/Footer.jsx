@@ -67,7 +67,7 @@ const Footer = () => {
                                     <div className="grow flex sm:flex-row flex-col w-full justify-between sm:items-center gap-2 sm:text-sm text-xs text-natural_gray-900">
                                         <div className="flex flex-col items-center sm:gap-6 gap-2 w-full">
                                             <Link className='effect-3'
-                                                href="/">
+                                                href="/public">
                                                 <span>صفحه اصلی</span>
                                                 <Left /></Link>
                                             <Link className='effect-3'
@@ -120,7 +120,7 @@ const Footer = () => {
                                                 <Left /></Link>
                                         </div>
                                         <div className="flex items-center justify-evenly sm:gap-6 gap-2 sm:mt-0 mt-10 w-full">
-                                            <Link href=""><img src="/images/image 9.png" className='mix-blend-multiply' alt="" /></Link>
+                                            <Link href=""><img src="/images/image%209.png" className='mix-blend-multiply' alt="" /></Link>
                                             <Link href="" className='sm:hidden'><img src="/images/etehadie.png" className='mix-blend-multiply' alt="" /></Link>
                                         </div>
                                     </div>

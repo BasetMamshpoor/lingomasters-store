@@ -27,6 +27,9 @@ const RecordComponent = ({ onRecordingComplete }) => {
         fillParent: true,
     })
     useEffect(() => {
+        if (typeof window === 'undefined' || !navigator.mediaDevices) return;
+
+
         const recordPluginInstance = RecordPlugin.create({
             scrollingWaveform: true,
             renderRecordedAudio: false,
@@ -46,6 +49,11 @@ const RecordComponent = ({ onRecordingComplete }) => {
     }, [wavesurfer, onRecordingComplete]);
 
     const handleRecordClick = useCallback(() => {
+        if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
+            console.error("Microphone access not supported in this environment.");
+            return;
+        }
+
         if (recordPlugin) {
             if (recordPlugin.isRecording()) {
                 recordPlugin.stopRecording();
@@ -53,6 +61,8 @@ const RecordComponent = ({ onRecordingComplete }) => {
             } else {
                 recordPlugin.startRecording().then(() => {
                     setRecording(true);
+                }).catch((err) => {
+                    console.error("Error accessing the microphone:", err);
                 });
             }
         }

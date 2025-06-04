@@ -1,6 +1,6 @@
 import AboutBook from "@/components/Product/AboutBook";
 import Banner from "@/components/Product/Banner";
-import Comments from "@/components/Product/Comments";
+import Comments from "@/components/Comments";
 import Description from "@/components/Product/Description";
 import Examples from "@/components/Product/Examples";
 import Hero from "@/components/Product/Hero";
@@ -32,7 +32,7 @@ const Product = () => {
                         <Description product={product}/>
                         <Examples images={product?.sample_images}/>
                         <Video movie={product?.video} image={product?.image}/>
-                        <Comments id={id}/>
+                        <Comments id={id} url="product"/>
                     </div>
                 </div>
             </main> : <div className="centerOfParent w-full min-h-64"><Spinner color="success" label="در حال بارگزاری"/></div>}
