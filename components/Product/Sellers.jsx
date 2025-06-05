@@ -8,10 +8,15 @@ import Cart from '@icons/cart.svg';
 import {CartContext} from "@/providers/CartContextProvider";
 import {addToast} from "@heroui/react";
 
-const Sellers = ({sellers = [], baseProduct}) => {
+const Sellers = ({baseProduct}) => {
     const {state, dispatch} = useContext(CartContext);
 
-    const getIdp = (sellerId) => `${baseProduct.id}_${sellerId}`;
+    const {id, image, category, sellers, quantity, title, is_download} = baseProduct
+
+
+    const getIdp = (sellerId) => `${id}_${sellerId}`;
+
+    const product = {id, image, category, quantity, title, is_download}
 
     const getQuantity = (idp) => {
         const item = state.items.find(i => i.idp === idp);
@@ -19,7 +24,7 @@ const Sellers = ({sellers = [], baseProduct}) => {
     };
 
     const handleAddToCart = (seller) => {
-        const idp = getIdp(seller.seller_id);
+        const idp = getIdp(seller.id);
         if (state.seller_id && state.seller_id !== seller.seller_id) {
             addToast({
                 title: 'خطا',
@@ -30,7 +35,7 @@ const Sellers = ({sellers = [], baseProduct}) => {
         }
 
         const payload = {
-            ...baseProduct,
+            ...product,
             idp,
             selected_seller: seller
         };
@@ -39,27 +44,27 @@ const Sellers = ({sellers = [], baseProduct}) => {
     };
 
     const handleIncrease = (seller) => {
-        const idp = getIdp(seller.seller_id);
+        const idp = getIdp(seller.id);
         const payload = {
-            ...baseProduct,
+            ...product,
             idp
         };
         dispatch({type: 'INCREASE', payload});
     };
 
     const handleDecrease = (seller) => {
-        const idp = getIdp(seller.seller_id);
+        const idp = getIdp(seller.id);
         const payload = {
-            ...baseProduct,
+            ...product,
             idp
         };
         dispatch({type: 'DECREASE', payload});
     };
 
     const handleRemove = (seller) => {
-        const idp = getIdp(seller.seller_id);
+        const idp = getIdp(seller.id);
         const payload = {
-            ...baseProduct,
+            ...product,
             idp
         };
         dispatch({type: 'REMOVE_ITEM', payload});
@@ -67,7 +72,7 @@ const Sellers = ({sellers = [], baseProduct}) => {
 
     return (
         <>
-            {!!sellers.length &&
+            {!!sellers?.length &&
                 <div
                     className="sm:p-6 px-3 py-4 flex flex-col gap-6 bg-white rounded-lg border-natural_gray-100 border scroll-m-52"
                     id='seller'>
@@ -76,8 +81,8 @@ const Sellers = ({sellers = [], baseProduct}) => {
                         <span className='sm:text-base text-sm text-primary-950'>فروشندگان</span>
                     </div>
                     <ul className="flex flex-col gap-8">
-                        {sellers.map((s) => {
-                            const idp = getIdp(s.seller_id);
+                        {sellers?.map((s) => {
+                            const idp = getIdp(s.id);
                             const quantity = getQuantity(idp);
 
                             return (

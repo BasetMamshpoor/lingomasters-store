@@ -35,7 +35,7 @@ const links = [
     {link: '/contact-us', icon: <Contact/>, text: 'تماس‌با‌ما', underMenu: false},
 ]
 
-const Header = () => {
+const Header = ({setTitle}) => {
     const {state} = useContext(CartContext)
     const {student, logout} = useContext(Information)
     const {categories: category} = useContext(Category)
@@ -99,8 +99,7 @@ const Header = () => {
                                 <div className="centerOfParent">
                                     <Dropdown
                                         placement="bottom-start"
-                                        classNames={{content: 'rounded'}}
-                                        onOpenChange={(isOpen) => handleChangeState(isOpen, 'profile')}>
+                                        classNames={{content: 'rounded'}}>
                                         <DropdownTrigger>
                                             <div className="flex items-center gap-2">
                                                 <Avatar

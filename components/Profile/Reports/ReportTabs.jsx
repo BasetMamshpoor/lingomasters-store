@@ -2,7 +2,6 @@ import React  from 'react';
 import {Tab, Tabs} from "@heroui/react";
 import Withdraw from "@/components/Profile/Reports/Withdraw";
 import Deposit from "@/components/Profile/Reports/Deposit";
-import Penalty from "@/components/Profile/Reports/Penalty";
 import Wallet from "@/components/Profile/Reports/Wallet";
 import Lingomasters from "@/components/Profile/Reports/Lingomasters";
 
@@ -36,9 +35,6 @@ const ReportTabs = () => {
                     </Tab>
                     <Tab key="deposit" title="افزایش موجودی">
                         <Deposit/>
-                    </Tab>
-                    <Tab key="penalty" title="جریمه‌ها">
-                        <Penalty />
                     </Tab>
                 </Tabs>
             </div>

@@ -1,12 +1,27 @@
 const sumItems = (items) => {
-    const itemsCounter = items.reduce((total, product) => total + product.quantity, 0)
+    // تعداد کل آیتم‌ها
+    const itemsCounter = items.reduce(
+        (total, product) => total + product.quantity,
+        0
+    );
 
-    let total = items.reduce((total, product) => total + product.price * product.quantity, 0)
+    // جمع قیمت بدون تخفیف بر اساس selected_seller.price
+    const total = items.reduce(
+        (sum, product) => sum + product.selected_seller.price * product.quantity,
+        0
+    );
 
-    let total_after_off = items.reduce((total, product) => total + (product.discounted_price || product.price) * product.quantity, 0)
+    // جمع قیمت بعد از تخفیف: اگر selected_seller.discounted_price موجود باشد، از آن استفاده می‌کنیم
+    const total_after_off = items.reduce(
+        (sum, product) => {
+            const priceToUse = product.selected_seller.discounted_price ?? product.selected_seller.price;
+            return sum + priceToUse * product.quantity;
+        },
+        0
+    );
 
-    return {itemsCounter, total, total_after_off}
-}
+    return { itemsCounter, total, total_after_off };
+};
 
 const reducer = (state, action) => {
     switch (action.type) {
@@ -23,7 +38,10 @@ const reducer = (state, action) => {
                 return state;
             }
 
-            const updatedItems = [...state.items, {...action.payload, quantity: 1}];
+            const updatedItems = [
+                ...state.items,
+                { ...action.payload, quantity: 1 }
+            ];
             const updatedCart = {
                 ...state,
                 items: updatedItems,
@@ -47,44 +65,66 @@ const reducer = (state, action) => {
         }
 
         case "INCREASE": {
-            const index = state.items.findIndex(i => i.idp === action.payload.idp)
-            if (index === -1) return state
+            const index = state.items.findIndex(i => i.idp === action.payload.idp);
+            if (index === -1) return state;
+
             const product = state.items[index];
+            // اگر موجودی فروشنده کمتر یا مساوی تعداد فعلی باشد
             if (!(product.selected_seller.stock > product.quantity)) {
                 return {
                     ...state,
                     ...sumItems(state.items)
-                }
+                };
             } else {
-                // Create a new items array to avoid mutating state directly
                 const newItems = state.items.map((item, idx) =>
-                    idx === index ? {...item, quantity: item.quantity + 1} : item
-                )
+                    idx === index ? { ...item, quantity: item.quantity + 1 } : item
+                );
                 localStorage.setItem('cart', JSON.stringify({
                     ...state,
                     items: newItems,
                     ...sumItems(newItems)
-                }))
+                }));
                 return {
                     ...state,
                     items: newItems,
                     ...sumItems(newItems)
-                }
+                };
             }
         }
-        case "DECREASE":
-            const Index2 = state.items.findIndex(i => i.idp === action.payload.idp)
-            state.items[Index2].quantity--
-            localStorage.setItem('cart', JSON.stringify({
-                ...state,
-                ...sumItems(state.items)
-            }))
-            return {
-                ...state,
-                ...sumItems(state.items)
+
+        case "DECREASE": {
+            const index = state.items.findIndex(i => i.idp === action.payload.idp);
+            if (index === -1) return state;
+
+            // اگر تعداد به زیر ۱ برسد، به REMOVE_ITEM ارجاع داده می‌شود
+            if (state.items[index].quantity <= 1) {
+                const newitems = state.items.filter(i => i.idp !== action.payload.idp);
+                const updatedCart = {
+                    ...state,
+                    items: newitems,
+                    seller_id: newitems.length ? state.seller_id : null,
+                    ...sumItems(newitems)
+                };
+                localStorage.setItem('cart', JSON.stringify(updatedCart));
+                return updatedCart;
             }
 
-        case "CLEAR":
+            const newItems = state.items.map((item, idx) =>
+                idx === index ? { ...item, quantity: item.quantity - 1 } : item
+            );
+            localStorage.setItem('cart', JSON.stringify({
+                ...state,
+                items: newItems,
+                ...sumItems(newItems)
+            }));
+            return {
+                ...state,
+                items: newItems,
+                ...sumItems(newItems)
+            };
+        }
+
+        case "CLEAR": {
             const clearedCart = {
                 items: [],
                 itemsCounter: 0,
@@ -94,12 +134,14 @@ const reducer = (state, action) => {
             };
             localStorage.setItem('cart', JSON.stringify(clearedCart));
             return clearedCart;
+        }
+
         case "INIT_STORED_CART":
-            return action.payload
+            return action.payload;
 
         default:
-            return state
+            return state;
     }
-}
+};
 
-export default reducer
+export default reducer;

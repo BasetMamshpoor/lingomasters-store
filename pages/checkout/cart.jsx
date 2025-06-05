@@ -37,7 +37,7 @@ const Cart = () => {
                                             <span className="text-xs text-red-500">تخفیف</span>
                                             <span className="text-red-500 text-xs">({Math.ceil(100 - (state.total_after_off / state.total * 100)) + '%'})</span>
                                         </div>
-                                        <span className="hasToman">{formatCurrency(state.total - state.total_after_off)}</span>
+                                        <span className="hasToman">{formatCurrency(state.total_after_off)}</span>
                                     </div>}
                                     <div className="flex items-center rounded h-8 justify-between px-3 bg-natural_gray-50">
                                         <span className="text-xs">قیمت نهایی</span>

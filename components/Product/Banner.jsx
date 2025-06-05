@@ -30,12 +30,14 @@ const Banner = ({product = {}}) => {
         page_number, is_like,
         off_price, language,
         price, flag,
-        discount_percentage, rate,
-        selected_seller
+        is_download, rate,
+        selected_seller, quantity
     } = product
     const {state, dispatch} = useContext(CartContext)
 
     const idp = id + "_" + selected_seller?.id;
+
+    const payload = {id,idp, image, category, selected_seller, quantity, title, is_download}
 
     return (
         <>
@@ -129,18 +131,18 @@ const Banner = ({product = {}}) => {
                                     <span className='sm:text-sm text-xs'>{page_number}</span>
                                 </div>
                                 {selected_seller && <>
-                                    {discount_percentage &&
+                                    {selected_seller?.discount_percentage &&
                                         <div className="h-8 flex items-center justify-between bg-natural_gray-50 px-3">
                                             <span className='text-natural_gray-900 sm:text-xs text-[10px]'>تخفیف</span>
                                             <span
-                                                className='text-red-500 sm:text-sm text-xs'>{discount_percentage} تخفیف</span>
+                                                className='text-red-500 sm:text-sm text-xs'>{selected_seller?.discount_percentage} تخفیف</span>
                                         </div>}
                                     <div
                                         className="sm:h-[60px] h-8 flex items-center justify-between bg-natural_gray-50 px-3">
                                     <span
                                         className='text-natural_gray-900 sm:text-xs text-[10px]'>خرید از {selected_seller?.title}</span>
                                         <span
-                                            className='text-green-500 sm:text-sm text-xs hasToman'>{formatCurrency(off_price || price)}</span>
+                                            className='text-green-500 sm:text-sm text-xs hasToman'>{formatCurrency(selected_seller?.discounted_price || selected_seller?.price)}</span>
                                     </div>
                                 </>}
                             </div>
@@ -153,7 +155,7 @@ const Banner = ({product = {}}) => {
                                 <button type='button' className="centerOfParent bg-none border-0"
                                         onClick={() => dispatch({
                                             type: 'INCREASE',
-                                            payload: {...product, idp}
+                                            payload
                                         })}>
                                     <Plus className="cursor-pointer w-6 h-6 fill-primary-600"/>
                                 </button>
@@ -163,15 +165,12 @@ const Banner = ({product = {}}) => {
                                     {quantityItem(state, idp) < 2 ?
                                         <Trush className="cursor-pointer w-6 h-6 fill-red-500" onClick={() => dispatch({
                                             type: "REMOVE_ITEM",
-                                            payload: {...product, idp}
+                                            payload
                                         })}/> :
                                         <Minus className="cursor-pointer w-6 h-6 fill-primary-600"
                                                onClick={() => dispatch({
                                                    type: "DECREASE",
-                                                   payload: {
-                                                       ...product,
-                                                       idp
-                                                   }
+                                                   payload
                                                })}/>
                                     }
                                 </button>
@@ -188,7 +187,7 @@ const Banner = ({product = {}}) => {
 
                                 dispatch({
                                     type: "ADD_ITEM",
-                                    payload: {...product, idp}
+                                    payload
                                 });
                             }} disabled={false}
                                       className="effect-2 disabled:opacity-50 bg-primary-600 p-2 text-sm text-white rounded centerOfParent gap-2 ">

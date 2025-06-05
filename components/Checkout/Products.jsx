@@ -17,15 +17,16 @@ const Products = ({download}) => {
     return (
         <>
             {state.itemsCounter ? state.items.map((p, i) => {
+                    const {discounted_price, price, title} = p.selected_seller;
                     return (
                         <>
                             <div className='flex flex-col items-stretch overflow-hidden relative' key={p.idp} id='product'>
                                 <div className='flex gap-6 grow'>
                                     <div className="flex flex-col gap-6 justify-between">
-                                        <Link href={`/product/${p.id}`} className='h-[90px] w-[90px] flex-shrink-0'>
-                                            <Image placeholder='blur' blurDataURL='/images/product.png' width={100}
+                                        <Link href={`/product/${p.id}`} className='h-[90px] w-[90px] flex-shrink-0 overflow-hidden'>
+                                            <Image placeholder='blur' blurDataURL='/images/product.png' width={100} className="w-full h-full object-cover"
                                                    height={100} unoptimized={true} src={p.image || '/images/product.png'}
-                                                   alt=""/>
+                                                   alt={p.title}/>
                                         </Link>
                                         <div
                                             className='flex items-center gap-2 p-2 border border-natural_gray-300 rounded justify-between w-fit'>
@@ -58,7 +59,7 @@ const Products = ({download}) => {
                                                 <div className='centerOfParent'>
                                                     <Store className='sm:w-6 sm:h-6 w-4 h-4'/>
                                                 </div>
-                                                <p className="sm:text-sm text-xs">{p.selected_seller.name}</p>
+                                                <p className="sm:text-sm text-xs">{title}</p>
                                             </div>
                                             {!!p.is_download && <div className='centerOfParent gap-2'>
                                                 <div className='centerOfParent'>
@@ -69,9 +70,9 @@ const Products = ({download}) => {
                                         </div>
                                         <div className={`flex items-center justify-between w-full`}>
                                             <div className='flex items-center gap-1 flex-wrap md:flex-row flex-col-reverse'>
-                                                <p className='md:text-xl text-sm text-green-500 flex items-center hasToman'>{formatCurrency(p.discount_price || p.price)}</p>
-                                                {p.discount_price && <del
-                                                    className='text-natural_gray-400 md:text-sm text-xs flex items-center hasToman'>{formatCurrency(p.price)}</del>}
+                                                <p className='md:text-xl text-sm text-green-500 flex items-center hasToman'>{formatCurrency(discounted_price || price)}</p>
+                                                {discounted_price !== price && <del
+                                                    className='text-natural_gray-400 md:text-sm text-xs flex items-center hasToman'>{formatCurrency(price)}</del>}
                                             </div>
                                         </div>
                                         <Link href={`/product/${p.id}`} className="flex items-center gap-2 self-end">

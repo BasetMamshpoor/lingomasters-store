@@ -26,7 +26,9 @@ const Card = ({
               }) => {
     const {push} = useRouter()
     const {dispatch, state} = useContext(CartContext)
-    const timeDiscount = data.off_price ? ((new Date(data?.discount_expiration).getTime() - new Date().getTime()) / 1000).toFixed() : null
+
+    const {discounted_price, price, discount_expire_at, discount_percentage, title} = data.selected_seller;
+    const timeDiscount = discounted_price ? ((new Date(discount_expire_at).getTime() - new Date().getTime()) / 1000).toFixed() : null
 
     const handleClick = () => {
         const newSellerId = data?.selected_seller?.id;
@@ -54,10 +56,10 @@ const Card = ({
         }
 
         const idp = `${data.id}_${newSellerId}`;
-
+        const {id, image, category, selected_seller, quantity, title, is_download} = data
         dispatch({
             type: 'ADD_ITEM',
-            payload: {...data, idp}
+            payload: {id, image, category, selected_seller, quantity, title, is_download, idp}
         });
 
         push('/checkout/cart');
@@ -87,15 +89,15 @@ const Card = ({
                             className="sm:px-3 px-2.5 sm:py-1 py-0 sm:text-sm text-[10px] centerOfParent h-8 rounded-[20px] bg-primary-100 text-primary-950 font-semibold">{data.category}</span>
                     </div>}
                     {data.selected_seller ? <div className="w-full flex flex-col items-end grow" dir='rtl'>
-                        {data.selected_seller?.discounted_price && <div className="flex items-center gap-4">
+                        {discounted_price && <div className="flex items-center gap-4">
                             <span
-                                className='py-[2px] px-3 rounded-lg bg-red-50 text-red-600 sm:text-lg text-xs inline-block'>{data.selected_seller?.discount_percentage}%</span>
+                                className='py-[2px] px-3 rounded-lg bg-red-50 text-red-600 sm:text-lg text-xs inline-block'>{discount_percentage}%</span>
                             <del
-                                className={`${offRed ? 'text-red-300' : 'text-natural_gray-400 '} sm:text-base text-xs hasToman`}>{formatCurrency(data.selected_seller?.price)}</del>
+                                className={`${offRed ? 'text-red-300' : 'text-natural_gray-400 '} sm:text-base text-xs hasToman`}>{formatCurrency(price)}</del>
                         </div>}
-                        <p className='text-primary-700 sm:text-2xl text-xs hasToman'>{formatCurrency(data.selected_seller?.discounted_price || data.selected_seller?.price)}</p>
+                        <p className='text-primary-700 sm:text-2xl text-xs hasToman'>{formatCurrency(discounted_price || price)}</p>
                     </div> : <div className="grow"></div>}
-                    {!!data.discounted_price && (timeDiscount < 86400) && <>
+                    {!!discounted_price && (timeDiscount < 86400) && <>
                         <Timer message='اتمام تخفیف' time={timeDiscount}/>
                     </>}
                     <div className="flex items-center sm:gap-6 gap-4 sm:max-w-64 max-w-52 w-full">
@@ -106,8 +108,8 @@ const Card = ({
                               className='effect-1 sm:text-base text-xs sm:h-12 h-8 flex-[1_0_0] sm:px-6 px-4 sm:py-4 py-2 rounded border-secondary-500 sm:border-[1.5px] border text-secondary-500 centerOfParent'>مشاهده</Link>
                     </div>
                 </div>
-                {(New || (withLabel && data.discount_percentage)) && <div
-                    className={`absolute centerOfParent w-[136px] -rotate-45 px-[11px] py-[7px] ${New ? 'bg-secondary-300' : 'bg-red-200'} -left-9 top-3 sm:text-lg text-xs ${New ? 'text-[#441A04]' : 'text-red-950'}`}>{New ? 'جدید' : `${data.discount_percentage}%`}</div>}
+                {(New || (withLabel && discount_percentage)) && <div
+                    className={`absolute centerOfParent w-[136px] -rotate-45 px-[11px] py-[7px] ${New ? 'bg-secondary-300' : 'bg-red-200'} -left-9 top-3 sm:text-lg text-xs ${New ? 'text-[#441A04]' : 'text-red-950'}`}>{New ? 'جدید' : `${discount_percentage}%`}</div>}
                 <div className="absolute right-1 top-1 centerOfParent w-10 h-10 p-1"><English/></div>
             </div>
         </>

@@ -27,7 +27,7 @@ const Product = () => {
                     </div>
                     <div className="flex flex-col gap-10 lg:col-span-4">
                         <Tabs/>
-                        <Sellers sellers={product.sellers} baseProduct={product}/>
+                        <Sellers baseProduct={product}/>
                         <AboutBook product={product}/>
                         <Description product={product}/>
                         <Examples images={product?.sample_images}/>

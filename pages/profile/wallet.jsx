@@ -39,24 +39,6 @@ const Wallet = () => {
                         <img src='/images/wallet.png'
                              className='absolute  top-0 bottom-0 left-0 right-0 w-full h-full object-cover'/>
                         <div className="relative z-[1] flex flex-col gap-6 text-white text-sm">
-                            <div className="flex flex-col gap-6">
-                                <div className="flex items-center gap-2 justify-between">
-                                    <p>موجودی من</p>
-                                    <p className='hasToman'>{wallet ? wallet?.balance.toLocaleString() :
-                                        <Spinner variant="dots" color="white" size="sm"/>}</p>
-                                </div>
-                                <div className="flex items-center gap-2 justify-between">
-                                    <p>درآمدهای غیرفعال من</p>
-                                    <p className='hasToman'>{wallet ? wallet?.Inactive_balance.toLocaleString() :
-                                        <Spinner variant="dots" color="white" size="sm"/>}</p>
-                                </div>
-                                <div className="flex items-center gap-2 justify-between">
-                                    <p>جریمه‌ها</p>
-                                    <p className='hasToman'>{wallet ? wallet?.Fine.toLocaleString() :
-                                        <Spinner variant="dots" color="white" size="sm"/>}</p>
-                                </div>
-                            </div>
-                            <hr className='border-1.5 border-white'/>
                             <div className="flex items-center gap-2 justify-between text-base">
                                 <p>موجودی کل</p>
                                 <p className='hasToman'>{wallet ? wallet?.all.toLocaleString() :

@@ -24,7 +24,7 @@ const CheckCoupon = ({model, id, setCoupon}) => {
                 color: 'danger',
             });
         } else {
-            setCoupon({...Data.response.data, code: coupon})
+            setCoupon({...Data.response?.data, code: coupon})
         }
     }
 
