@@ -109,6 +109,10 @@ input:focus-within {
   font-size: 10px;
   font-weight: 700;
 }
+.leaflet-bottom.leaflet-right
+.leaflet-control-attribution.leaflet-control {
+  display: none;
+}
 .effect-1 {
   position: relative;
 }

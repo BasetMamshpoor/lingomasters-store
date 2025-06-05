@@ -10,7 +10,7 @@ export const Information = createContext({})
 const InformationProvider = ({children}) => {
         const {isOpen, onOpen, onOpenChange} = useDisclosure();
         const {push} = useRouter()
-        const [student, setStudent, setReload, paginations, setPaginations, loading] = useGetRequest(`/student-panel/show`)
+        const [student, setStudent, setReload, paginations, setPaginations, loading] = useGetRequest(`/buyer/profile`)
         const [wallet, , reloadWallet] = useGetRequest(true, `/wallet`)
         const {sendPostRequest, isLoading} = usePostRequest()
 

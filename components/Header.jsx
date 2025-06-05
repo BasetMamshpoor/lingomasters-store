@@ -18,6 +18,8 @@ import Iran from '@icons/Flags/Country=Iran, Style=Flag, Radius=On.svg'
 import {CartContext} from "@/providers/CartContextProvider";
 import {Category} from "@/providers/CategoriesProviders";
 import {Information} from "@/providers/InformationProvider";
+import User from "@icons/user-tick.svg";
+import Logout from "@icons/logout.svg";
 
 const Item = ({i, isSubmenuOpen}) => <div className="flex items-center justify-between gap-3">
     {i.icon}{i.text}<Down className={`w-4 h-4 transform transition-transform ${isSubmenuOpen ? 'rotate-180' : ''}`}/>
@@ -72,7 +74,7 @@ const Header = () => {
                                     <Menu className='border-[1.5px] rounded border-primary-600 fill-primary-700'/>}
                             </div>
                         </div>
-                        <Link href='/public' className="centerOfParent"><h1
+                        <Link href='/' className="centerOfParent"><h1
                             className="font-Metal text-3xl">{process.env.NEXT_PUBLIC_LOGO}</h1></Link>
                         <div className="centerOfParent gap-4">
                             {/* <div className="lg:hidden centerOfParent">
@@ -155,7 +157,7 @@ const Header = () => {
                                                 className="max-h-64 overflow-y-auto scrollbar-hide scrollbar scrollbar-w-8 scrollbar-thumb-natural_gray-800 scrollbar-track-white">
                                                 {category.map(c => <DropdownItem key={c.slug}><Link
                                                     className="w-full block"
-                                                    href={`/category/${c.slug}`}>{c.title}</Link></DropdownItem>)}
+                                                    href={`/product?category=${c.slug}`}>{c.title}</Link></DropdownItem>)}
                                             </DropdownMenu>
                                         </Dropdown>
                                         : <Link href={i.link}>{i.icon}{i.text}</Link>}</li>
@@ -194,7 +196,7 @@ const Header = () => {
                                                             return <li key={c.id}
                                                                        className="group duration-300 hover:bg-gray-50 rounded-lg"
                                                                        onClick={() => setSidebarOpen(false)}>
-                                                                <Link href={`/category/${c.slug}`}
+                                                                <Link href={`/product?category=${c.slug}`}
                                                                       className="flex items-center p-2 text-gray-900">
                                                                     {c.title}
                                                                 </Link>

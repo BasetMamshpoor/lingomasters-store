@@ -8,6 +8,7 @@ const initState = {
     itemsCounter: 0,
     total: 0,
     total_after_off: 0,
+    seller_id: null,
 }
 
 export const CartContext = createContext()
@@ -25,7 +26,7 @@ const CartContextProvider = ({ children }) => {
                 payload: storage
             });
         }
-    }, [router]);
+    }, []);
 
     return (
         <>

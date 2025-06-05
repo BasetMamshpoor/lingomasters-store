@@ -19,7 +19,7 @@ const Hero = ({product = {}}) => {
         subject,
         age_group,
         page_number, flag,
-        product_type,
+        product_type, average_rate,
         book_category
     } = product
 
@@ -81,12 +81,13 @@ const Hero = ({product = {}}) => {
                             </div>
                             <div className="flex items-center justify-between mb-3">
                                 <div className="flex items-center">
-                                    <h2 className='text-natural_gray-950'>فروشنده : {selected_seller?.title}</h2>
+                                    {selected_seller &&
+                                        <h2 className='text-natural_gray-950'>فروشنده : {selected_seller?.title}</h2>}
                                 </div>
                                 <div className="flex items-center gap-1">
                                     <Rate rate={rate} id={id} url="/product"/>
                                     <div className="flex items-center gap-1 text-xs">
-                                        <strong>{rate}</strong>
+                                        <strong>{average_rate}</strong>
                                         از {rate_count} نفر
                                     </div>
                                 </div>

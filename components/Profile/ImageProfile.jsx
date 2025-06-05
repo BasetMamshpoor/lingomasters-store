@@ -55,7 +55,7 @@ function ProfileImage({justImage}) {
                 success,
                 successMessage,
                 errorMessage
-            } = await sendPostRequest('POST', '/student-panel/uploadProfileImage', {profile: selectedFile}, true, true)
+            } = await sendPostRequest('POST', '/buyer/profile/uploadProfileImage', {profile: selectedFile}, true)
             if (success) {
                 addToast({
                     title: successMessage,

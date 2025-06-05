@@ -5,7 +5,6 @@ import Minus from '@icons/minus.svg';
 import Plus from '@icons/plus.svg';
 import Share from '@icons/share.svg'
 import Right from '@icons/chevron-right.svg'
-import Flag from '@icons/Flags/Country=United States of America, Style=Flag, Radius=On.svg'
 import Trush from "@icons/bin.svg";
 
 import Image from 'next/image';
@@ -24,10 +23,10 @@ const Banner = ({product = {}}) => {
     const {
         title,
         id, rate_count,
-        sellers,
+        sellers, average_rate,
         category,
         category_slug,
-        image,
+        image, min_price, max_price,
         page_number, is_like,
         off_price, language,
         price, flag,
@@ -35,7 +34,9 @@ const Banner = ({product = {}}) => {
         selected_seller
     } = product
     const {state, dispatch} = useContext(CartContext)
-    const idp = id + "_" + selected_seller.id
+
+    const idp = id + "_" + selected_seller?.id;
+
     return (
         <>
             <div className="lg:hidden flex flex-col">
@@ -92,11 +93,12 @@ const Banner = ({product = {}}) => {
                                     <Share/>
                                 </button>
                             </div>
-                            <Link href='' className="flex items-center gap-1 self-end">
+                            {!!sellers.length &&
+                                <Link href='#sellers' className="lg:hidden flex items-center gap-1 self-end">
                                 <span
                                     className='sm:text-base text-sm text-primary-700'>{sellers?.length} فروشنده دیگر</span>
-                                <div className="centerOfParent"><Left className='w-4 h-4 fill-primary-700'/></div>
-                            </Link>
+                                    <div className="centerOfParent"><Left className='w-4 h-4 fill-primary-700'/></div>
+                                </Link>}
                         </div>
                         <div className="flex flex-col gap-4">
                             <div className="centerOfParent max-w-[148px] mx-auto w-full h-auto flex-shrink-0">
@@ -116,7 +118,7 @@ const Banner = ({product = {}}) => {
                                 <div className="lg:hidden flex items-center gap-1">
                                     <Rate rate={rate} id={id} url="/product"/>
                                     <div className="flex items-center gap-2">
-                                        <span className='text-natural_gray-950 text-xs'>{rate}</span>
+                                        <span className='text-natural_gray-950 text-xs'>{average_rate}</span>
                                         <span className='text-neutral-700 text-[10px]'>از {rate_count} نفر</span>
                                     </div>
                                 </div>
@@ -126,23 +128,25 @@ const Banner = ({product = {}}) => {
                                     <span className='text-natural_gray-900 sm:text-xs text-[10px]'>تعداد جلد</span>
                                     <span className='sm:text-sm text-xs'>{page_number}</span>
                                 </div>
-                                {discount_percentage &&
-                                    <div className="h-8 flex items-center justify-between bg-natural_gray-50 px-3">
-                                        <span className='text-natural_gray-900 sm:text-xs text-[10px]'>تخفیف</span>
-                                        <span
-                                            className='text-red-500 sm:text-sm text-xs'>{discount_percentage} تخفیف</span>
-                                    </div>}
-                                <div
-                                    className="sm:h-[60px] h-8 flex items-center justify-between bg-natural_gray-50 px-3">
+                                {selected_seller && <>
+                                    {discount_percentage &&
+                                        <div className="h-8 flex items-center justify-between bg-natural_gray-50 px-3">
+                                            <span className='text-natural_gray-900 sm:text-xs text-[10px]'>تخفیف</span>
+                                            <span
+                                                className='text-red-500 sm:text-sm text-xs'>{discount_percentage} تخفیف</span>
+                                        </div>}
+                                    <div
+                                        className="sm:h-[60px] h-8 flex items-center justify-between bg-natural_gray-50 px-3">
                                     <span
                                         className='text-natural_gray-900 sm:text-xs text-[10px]'>خرید از {selected_seller?.title}</span>
-                                    <span
-                                        className='text-green-500 sm:text-sm text-xs hasToman'>{formatCurrency(off_price || price)}</span>
-                                </div>
+                                        <span
+                                            className='text-green-500 sm:text-sm text-xs hasToman'>{formatCurrency(off_price || price)}</span>
+                                    </div>
+                                </>}
                             </div>
                         </div>
                     </div>
-                    <div className="centerOfParent">
+                    {selected_seller && <div className="centerOfParent">
                         {(IsInCart(state, idp) ?
                             <div
                                 className='flex items-center gap-2 h-10 mx-auto py-1 px-2 border border-natural_gray-300 rounded justify-between w-fit'>
@@ -172,25 +176,36 @@ const Banner = ({product = {}}) => {
                                     }
                                 </button>
                             </div>
-                            : <button type='button' onClick={() => dispatch({
-                                type: "ADD_ITEM",
-                                payload: {...product, idp}
-                            })} disabled={false}
+                            : <button type='button' onClick={() => {
+                                if (state.seller_id && state.seller_id !== selected_seller.id) {
+                                    addToast({
+                                        title: 'خطا',
+                                        description: "شما فقط می‌توانید از یک فروشنده در هر سبد خرید استفاده کنید.",
+                                        color: 'danger'
+                                    })
+                                    return;
+                                }
+
+                                dispatch({
+                                    type: "ADD_ITEM",
+                                    payload: {...product, idp}
+                                });
+                            }} disabled={false}
                                       className="effect-2 disabled:opacity-50 bg-primary-600 p-2 text-sm text-white rounded centerOfParent gap-2 ">
                                 <Cart className='sm:w-6 sm:h-6 w-4 h-4 fill-white'/>
                                 <span className='sm:text-base text-xs'>افزودن به سبد خرید</span>
                             </button>)
                         }
-                    </div>
+                    </div>}
                 </div>
                 <div className="centerOfParent gap-20 p-4 bg-white border border-neutral-100 rounded-lg">
                     <div className="flex flex-col gap-4">
                         <span className="text-natural_gray-950 sm:text-sm text-xs">ارزان‌ترین قیمت</span>
-                        <span className="text-green-600 sm:text-sm text-xs hasToman">{formatCurrency(23054032)}</span>
+                        <span className="text-green-600 sm:text-sm text-xs hasToman">{formatCurrency(min_price)}</span>
                     </div>
                     <div className="flex flex-col gap-4">
                         <span className="text-natural_gray-950 sm:text-sm text-xs">گران‌ترین قیمت</span>
-                        <span className="text-red-600 sm:text-sm text-xs hasToman">{formatCurrency(23054032)}</span>
+                        <span className="text-red-600 sm:text-sm text-xs hasToman">{formatCurrency(max_price)}</span>
                     </div>
                 </div>
             </div>
