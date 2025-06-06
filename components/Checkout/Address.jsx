@@ -15,27 +15,20 @@ import Plus from "@icons/plus.svg";
 import React from "react";
 import NewAddress from "@/components/Profile/NewAddress";
 
-const Address = ({setAddress}) => {
+const Address = ({setAddress, address_id}) => {
     const {isOpen, onOpen, onOpenChange} = useDisclosure();
     const [address, , reload, , , loading] = useGetRequest('/buyer/profile/addresses')
 
     return (
-        <form className="flex flex-col gap-10">
-            <div className="flex flex-col gap-4">
-                <div className="flex items-center justify-between">
-                    <p className="font-semibold">نشانی</p>
-                </div>
-            </div>
+        <>
             <div className="flex flex-col gap-6">
                 {loading ? <div className="centerOfParent w-full"><Spinner color="success"/></div>
                     : <RadioGroup
                         color='success'
-                        onValueChange={setAddress}
+                        value={address_id}
+                        onValueChange={e => setAddress(p => ({...p, address_id: e}))}
                         style={{
                             "--heroui-success": "196 94% 25%",
-                        }}
-                        classNames={{
-                            label: "text-natural_gray-950 text-sm"
                         }}
                         label="انتخاب آدرس">
                         {address?.map(e =>
@@ -66,20 +59,21 @@ const Address = ({setAddress}) => {
                     و مقررات</Link> را میپذیرم.</label>
                 <input className="w-5 h-5 bg-primary-600 cursor-pointer" type="checkbox" name="rules" id="rules"/>
             </div>
-            <Modal dir="rtl" size="3xl" scrollBehavior="inside" placement="top-center" isOpen={isOpen} onOpenChange={onOpenChange}>
+            <Modal dir="rtl" size="3xl" scrollBehavior="inside" placement="top-center" isOpen={isOpen}
+                   onOpenChange={onOpenChange}>
                 <ModalContent>
                     {(onClose) => (
                         <>
                             <ModalHeader className="">ثبت آدرس جدید</ModalHeader>
                             <ModalBody>
-                                <NewAddress reload={reload}onClose={onClose}/>
+                                <NewAddress reload={reload} onClose={onClose}/>
                             </ModalBody>
                             <ModalFooter/>
                         </>
                     )}
                 </ModalContent>
             </Modal>
-        </form>
+        </>
     );
 };
 

@@ -11,7 +11,7 @@ const sidebarItems = [
         id: 1,
         title: 'داشبورد',
         icon: Dashboard,
-        href: '/profile/'
+        href: '/profile/dashboard'
     },
     {
         id: 5,
@@ -35,7 +35,7 @@ const sidebarItems = [
         id: 10,
         title: 'علاقه‌مندی‌های من',
         icon: Heart,
-        href: '/profile/guide'
+        href: '/profile/favorites'
     },
     {
         id: 8,

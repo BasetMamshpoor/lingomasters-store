@@ -117,10 +117,10 @@ const Header = ({setTitle}) => {
                                         <DropdownMenu
                                             aria-label="Profile Actions"
                                             variant="bordered">
-                                            <DropdownItem key="profile" href='/profile/user-information'
+                                            <DropdownItem key="profile" href='/profile'
                                                           onPress={() => setTitle('ویرایش اطلاعات')}>
                                                 <div className='flex items-center gap-4 justify-end'>
-                                                    <span>ویرایش اطلاعات</span>
+                                                    <span>پنل کاربری</span>
                                                     <div className="centerOfParent"><User
                                                         className={'fill-primary-700'}/></div>
                                                 </div>

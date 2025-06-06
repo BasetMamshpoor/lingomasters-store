@@ -1,6 +1,5 @@
 import React, {useContext} from 'react';
 import SidebarItem from './SidebarItem';
-import ClassSubMenu from './ClassSubMenu';
 import process from "next/dist/build/webpack/loaders/resolve-url-loader/lib/postcss";
 import {useRouter} from "next/router";
 import Link from "next/link";
@@ -21,14 +20,14 @@ const Sidebar = ({mobileOpen, setSidebarOpen, setTitle}) => {
                     className="flex flex-col items-center gap-6 bg-white border border-natural_gray-200 rounded-2xl px-4 py-10">
                     <Link href='/'
                           className={`text-3xl duration-300 font-Metal`}>{process.env.NEXT_PUBLIC_LOGO}</Link>
-                    <div className="rounded-xl bg-primary-50 w-full py-4 centerOfParent flex-col">
+                    <div className="rounded-xl bg-primary-50 w-full py-4 centerOfParent flex-col gap-2">
                         <ProfileImage justImage/>
                         <p className='text-sm'>{student?.name}</p>
                         <p className="text-natural_gray_950 text-xs">{student?.mobile}</p>
                     </div>
                     <div className="flex flex-col w-full gap-4">
                         {sidebarItems.map((item) => {
-                            const isActive = pathname.includes(item.key)
+                            const isActive = pathname === item.href;
                             return (
                                 <div className='group' key={item.id}>
                                     <SidebarItem
@@ -57,7 +56,7 @@ const Sidebar = ({mobileOpen, setSidebarOpen, setTitle}) => {
                 </div>
                 <div className="flex flex-col w-full gap-4 pb-4">
                     {sidebarItems.map((item) => {
-                        const isActive = pathname.includes(item.key)
+                        const isActive = pathname === item.href
                         return <div className='group' key={item.id}>
                             <SidebarItem
                                 title={item.title}

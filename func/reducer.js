@@ -25,6 +25,18 @@ const sumItems = (items) => {
 
 const reducer = (state, action) => {
     switch (action.type) {
+        case "UPDATE_CART_FROM_API": {
+            const updatedItems = action.payload;
+            const updatedCart = {
+                ...state,
+                ...updatedItems,
+                ...sumItems(updatedItems.items)
+            };
+            localStorage.setItem('cart', JSON.stringify(updatedCart));
+            return updatedCart;
+        }
+
+
         case "ADD_ITEM": {
             const newSellerId = action.payload.selected_seller.id;
 

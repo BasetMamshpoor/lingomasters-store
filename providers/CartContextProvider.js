@@ -1,6 +1,8 @@
-import { createContext, useEffect, useReducer } from 'react';
-import { useRouter } from 'next/router';
+import {createContext, useEffect, useReducer} from 'react';
+import {useRouter} from 'next/router';
 import reducer from '@/func/reducer';
+import usePostRequest from "@/hooks/usePostRequest";
+import {addToast} from "@heroui/react";
 
 
 const initState = {
@@ -13,8 +15,9 @@ const initState = {
 
 export const CartContext = createContext()
 
-const CartContextProvider = ({ children }) => {
-    const router = useRouter()
+const CartContextProvider = ({children}) => {
+    const {asPath} = useRouter()
+    const {sendPostRequest, isLoading} = usePostRequest()
 
     const [state, dispatch] = useReducer(reducer, initState)
 
@@ -28,9 +31,35 @@ const CartContextProvider = ({ children }) => {
         }
     }, []);
 
+    const checkCart = async (items) => {
+        const {
+            success,
+            errorMessage,
+            data
+        } = await sendPostRequest("POST", "/order/checkCart", {items, seller_id: state.seller_id});
+
+        if (success) {
+            dispatch({type: "UPDATE_CART_FROM_API", payload: data.response.data});
+        } else {
+            addToast({
+                title: "خطا در بررسی سبد خرید",
+                description: errorMessage || "مشکلی در بررسی سبد خرید شما پیش آمده است.",
+                color: "danger",
+            })
+        }
+    };
+
+    useEffect(() => {
+        if (asPath === '/checkout/cart' || asPath === '/checkout/shipping')
+            if (state.items.length > 0 && !isLoading) {
+                checkCart(state.items);
+            }
+    }, [asPath]);
+
+
     return (
         <>
-            <CartContext.Provider value={{ state, dispatch }}>
+            <CartContext.Provider value={{state, dispatch}}>
                 {children}
             </CartContext.Provider>
         </>
