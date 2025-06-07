@@ -1,19 +1,19 @@
 import React, {useState} from 'react';
 import {Tab, Tabs, Alert, Spinner} from "@heroui/react";
-import Current_orders from "@/components/profile/Orders/Current-orders"
-import OrderDetails from "@/components/profile/Orders/Order-details"
+import CurrentOrders from "@/components/Profile/Orders/CurrentOrders"
+import OrderDetails from "@/components/Profile/Orders/OrderDetails"
 import Delivered from "@/components/Profile/Orders/Delivered";
-import DeliveryDetails from "@/components/profile/Orders/Delivery-details";
+import DeliveryDetails from "@/components/Profile/Orders/DeliveryDetails";
 import Returned from "@/components/Profile/Orders/Returned"
-import ReturnDescription from "@/components/profile/Orders/ReturnDescription"
-import Canceled from "@/components/profile/Orders/Canceled"
-import CancellationDetails from "@/components/profile/Orders/CancellationDetails"
+import ReturnDescription from "@/components/Profile/Orders/ReturnDescription"
+import Cancelled from "@/components/Profile/Orders/Canceled"
+import CancellationDetails from "@/components/Profile/Orders/CancellationDetails"
 import {useRouter} from "next/router";
 import useGetRequest from "@/hooks/useGetRequest";
 import Pagination from "@/components/Pagination/Pagination";
 import Right from "@icons/chevron-right.svg";
 
-const Index = () => {
+const Orders = () => {
     const router = useRouter();
     const {id} = router.query;
 
@@ -78,7 +78,7 @@ const Index = () => {
                         {isLoading ?
                             <div className="w-full centerOfParent"><Spinner color="success" label="درحال بارگزاری"/>
                             </div> : orders?.length > 0 ? orders.map(e => (
-                                <Current_orders
+                                <CurrentOrders
                                     key={e.id}
                                     {...e}
                                     onSelectItem={(orderId) =>
@@ -137,7 +137,7 @@ const Index = () => {
                         {isLoading ?
                             <div className="w-full centerOfParent"><Spinner color="success" label="درحال بارگزاری"/>
                             </div> : orders?.length > 0 ? orders.map(e => (
-                                <Canceled
+                                <Cancelled
                                     key={e.id}
                                     {...e}
                                     onSelectItem={(orderId) =>
@@ -160,4 +160,4 @@ const Index = () => {
     );
 };
 
-export default Index;
+export default Orders;

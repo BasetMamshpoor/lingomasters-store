@@ -3,6 +3,7 @@ import Link from "next/link";
 import Chevron from "@icons/arrow-left.svg";
 import Image from "next/image";
 import Elements from "@icons/elements.svg";
+import OrderItem from "@/components/Profile/Orders/OrderItem";
 
 const Delivered = ({created_at, tracking_code, total_price, delivery_date, items, id, onSelectItem}) => {
     return (
@@ -48,20 +49,7 @@ const Delivered = ({created_at, tracking_code, total_price, delivery_date, items
                     </div>
                 </div>
                 <div className="flex flex-col gap-6">
-                    {items.map((item, index) => (
-                        <div key={item.key} className="flex items-center gap-4">
-                            <Image src={item.image || "/images/product.png"} alt={item.title} width={100} height={100}/>
-                            <div className="flex flex-col gap-2">
-                                <p className="text-base font-bold">{item.title} <span
-                                    className="font-medium">( پکیج {item.Volume_number} تایی)</span>
-                                </p>
-                                <div className="flex items-center gap-4">
-                                    <Elements/>
-                                    <p className="text-md">{item.category}</p>
-                                </div>
-                            </div>
-                        </div>
-                    ))}
+                    {items.map(item => <OrderItem key={item.id} {...item} />)}
                 </div>
             </div>
         </>

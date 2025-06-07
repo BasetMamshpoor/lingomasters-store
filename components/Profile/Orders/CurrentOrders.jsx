@@ -4,6 +4,7 @@ import Chevron from "@icons/arrow-left.svg"
 import Image from "next/image";
 import Elements from "@icons/elements.svg"
 import useGetRequest from "@/hooks/useGetRequest";
+import OrderItem from "@/components/Profile/Orders/OrderItem";
 
 const CurrentOrders = ({created_at, tracking_code, total_price, status, items, id, onSelectItem}) => {
     return (
@@ -58,20 +59,7 @@ const CurrentOrders = ({created_at, tracking_code, total_price, status, items, i
                     </div>
                 </div>
                 <div className="flex flex-col gap-6">
-                    {items?.map(f => (
-                        <div key={f.id} className="flex items-center gap-4">
-                            <Image src={f.image || "/images/product.png"} alt={f.title} width={100} height={100}/>
-                            <div className="flex flex-col gap-2">
-                                <p className="text-base font-bold">{f.title}<span
-                                    className="font-medium mr-2">(پکیج {f.Volume_number} تایی)</span>
-                                </p>
-                                <div className="flex items-center gap-4">
-                                    <Elements className="w-4 h-4 md:w-6 md:h-6"/>
-                                    <p className="text-md">{f.category}</p>
-                                </div>
-                            </div>
-                        </div>
-                    ))}
+                    {items?.map(f => <OrderItem key={f.id} {...f} />)}
                 </div>
             </div>
         </>
