@@ -5,7 +5,7 @@ import Image from "next/image";
 import Elements from "@icons/elements.svg";
 import {Button} from "@heroui/react";
 import Download from "@icons/download.svg"
-const Returned = () => {
+const Returned = ({created_at, tracking_code, total_price, delivery_date, items, id, onSelectItem}) => {
     return (
         <>
             <div dir="rtl" className="flex flex-col p-6 gap-6 bg-white border border-natural_gray-200 rounded-xl">
@@ -21,7 +21,7 @@ const Returned = () => {
                             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 items-center justify-between flex-wrap gap-4">
                                 <div className="flex items-center gap-2">
                                     <p className="text-xs">تاریخ ثبت سفارش:</p>
-                                    <p className="text-xs lg:text-sm">{new Date().toLocaleString('fa-Ir', {
+                                    <p className="text-xs lg:text-sm">{new Date(created_at).toLocaleString('fa-Ir', {
                                         year: 'numeric',
                                         month: 'long',
                                         day: 'numeric',
@@ -29,11 +29,11 @@ const Returned = () => {
                                 </div>
                                 <div className="flex items-center gap-2 ">
                                     <p className="text-xs">کد سفارش :</p>
-                                    <p className="text-xs lg:text-sm">124879653</p>
+                                    <p className="text-xs lg:text-sm">{tracking_code}</p>
                                 </div>
                                 <div className="flex items-center gap-2">
                                     <p className="text-xs">قیمت :</p>
-                                    <p className="text-xs lg:text-sm text-success-700 hasToman">{(260000)?.toLocaleString()}</p>
+                                    <p className="text-xs lg:text-sm text-success-700 hasToman">{(total_price)?.toLocaleString()}</p>
                                 </div>
                                 <div className="flex items-center gap-2 ">
                                     <p className="text-xs">تاریخ مرجوعی:</p>
@@ -45,7 +45,7 @@ const Returned = () => {
                                 </div>
                                 <div className="flex items-center gap-2 ">
                                     <p className="text-xs"> کد پیگیری مرجوعی:</p>
-                                    <p className="text-xs lg:text-sm">-</p>
+                                    <p className="text-xs lg:text-sm"></p>
                                 </div>
                                 <div className="flex items-center gap-2 ">
                                     <p className="text-xs">مبلغ مرجوعی:</p>
