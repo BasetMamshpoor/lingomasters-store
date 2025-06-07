@@ -34,6 +34,8 @@ function translateType(type) {
             return "کتابخانه";
         case "Exam":
             return "آزمون";
+        case "Story":
+            return "استوری";
         default:
             return type;
     }

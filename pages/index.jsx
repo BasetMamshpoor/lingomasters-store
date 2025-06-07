@@ -9,7 +9,7 @@ import New from '@icons/new.svg';
 import MostSell from '@icons/best-seller.svg';
 import Banner from "@/components/Banner";
 import useGetRequest from "@/hooks/useGetRequest";
-import {useContext, useEffect, useState} from "react";
+import {useContext } from "react";
 import Stories from "@/components/Stories/Stories";
 import HeaderBanner from "@/components/HeaderBanner";
 import {Category} from "@/providers/CategoriesProviders";

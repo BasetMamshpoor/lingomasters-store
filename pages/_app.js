@@ -47,11 +47,11 @@ export default function App({Component, pageProps}) {
                         <CartContextProvider>
                             {isProfileRoute ?
                                 <div
-                                    className='max-w-[1440px] mx-auto py-6 sm:px-6 px-2 gap-6 overflow-x-hidden flex min-h-screen relative'
+                                    className='max-w-[1440px] w-full mx-auto py-6 sm:px-6 px-2 gap-6 overflow-x-hidden flex min-h-screen relative'
                                     dir='rtl'>
                                     <Sidebar mobileOpen={isSidebarOpen} setSidebarOpen={setSidebarOpen}
                                              setTitle={setTitle}/>
-                                    <div className="flex-grow flex flex-col gap-12 w-full">
+                                    <div className=" flex flex-col gap-12 w-full">
                                         <HeaderProfile
                                             setSidebarOpen={setSidebarOpen}
                                             isSidebarOpen={isSidebarOpen}

@@ -1,8 +1,9 @@
-import React, {useState} from 'react';
+import React, {useContext, useState} from 'react';
 import {Tabs, Tab, Spinner, Alert} from "@heroui/react";
 import useGetRequest from "@/hooks/useGetRequest";
-import BookCard from "@/components/Profile/Favorites/BookCard";
 import PaginationApp from "@/components/Pagination";
+import {Category} from "@/providers/CategoriesProviders";
+import Card from "@/components/Card";
 
 const layout = (isLoading, data) => {
     if (isLoading) {
@@ -20,8 +21,9 @@ const layout = (isLoading, data) => {
 }
 const Favorites = () => {
     const [currentPage, setCurrentPage] = useState(1)
-    const [selected, setSelected] = useState("private")
-    const [data, , , pagination, , isLoading] = useGetRequest(true, `/buyer/favorite?type=${selected}`, currentPage)
+    const {categories} = useContext(Category)
+    const [selected, setSelected] = useState(categories[0]?.slug)
+    const [data, , , pagination, , isLoading] = useGetRequest(`/student/favorite?type=${selected}`, currentPage)
     const content = layout(isLoading, data);
     return (
         <div className="container flex w-full flex-col gap-6">
@@ -42,83 +44,19 @@ const Favorites = () => {
                 color="primary"
                 variant="underlined"
             >
-                <Tab
-                    key="private"
-                    title="کلاس‌های خصوصی"
-                >
-                    {content ? content :
-                        <div className='grid lg:grid-cols-3 sm:grid-cols-2 grid-cols-1 lg:gap-6 sm:gap-5 gap-4'>
-                            {data?.map(p => (
-                                <BookCard key={p.id} {...p} />
-                            ))}
-                        </div>}
-                </Tab>
-                <Tab
-                    key="group"
-                    title="کلاس‌های گروهی"
-                >
-                    {content ? content :
-                        <div className='grid lg:grid-cols-3 sm:grid-cols-2 grid-cols-1 lg:gap-6 sm:gap-5 gap-4'>
-                            {data?.map(p => (
-                                <></>
-                            ))}
-                        </div>}
-                </Tab>
-                <Tab
-                    key="webinar"
-                    title="وبینارها"
-                >
-                    {content ? content :
-                        <div className='grid lg:grid-cols-3 sm:grid-cols-2 grid-cols-1 lg:gap-6 sm:gap-5 gap-4'>
-                            {data?.map(p => (
-                                <></>
-                            ))}
-                        </div>}
-                </Tab>
-                <Tab
-                    key="workshop"
-                    title="ورکشاپ‌ها"
-                >
-                    {content ? content :
-                        <div className='grid lg:grid-cols-3 sm:grid-cols-2 grid-cols-1 lg:gap-6 sm:gap-5 gap-4'>
-                            {data?.map(p => (
-                                <></>
-                            ))}
-                        </div>}
-                </Tab>
-                <Tab
-                    key="book"
-                    title="کتاب‌ها"
-                >
-                    {content ? content :
-                        <div className='grid lg:grid-cols-3 sm:grid-cols-2 grid-cols-1 lg:gap-6 sm:gap-5 gap-4'>
-                            {data?.map(p => {
-                                <></>
-                            })}
-                        </div>}
-                </Tab>
-                <Tab
-                    key="blog"
-                    title="وبلاگ‌ها"
-                >
-                    {content ? content :
-                        <div className='grid lg:grid-cols-3 sm:grid-cols-2 grid-cols-1 lg:gap-6 sm:gap-5 gap-4'>
-                            {data?.map(p => (
-                                <></>
-                            ))}
-                        </div>}
-                </Tab>
-                <Tab
-                    key="exam"
-                    title="آزمون پلاس"
-                >
-                    {content ? content :
-                        <div className='grid lg:grid-cols-3 sm:grid-cols-2 grid-cols-1 lg:gap-6 sm:gap-5 gap-4'>
-                            {data?.map(p => (
-                                <></>
-                            ))}
-                        </div>}
-                </Tab>
+                {categories.map(r => (
+                    <Tab
+                        key={r.slug}
+                        title={r.title}
+                    >
+                        {content ? content :
+                            <div className='grid lg:grid-cols-3 sm:grid-cols-2 grid-cols-1 lg:gap-6 sm:gap-5 gap-4'>
+                                {data?.map(p => (
+                                    <Card key={p.id} data={p} edu={r.slug} />
+                                ))}
+                            </div>}
+                    </Tab>)
+                )}
             </Tabs>
             {pagination && <div className="flex items-center justify-center">
                 <PaginationApp total={pagination.total} per_page={pagination.per_page}

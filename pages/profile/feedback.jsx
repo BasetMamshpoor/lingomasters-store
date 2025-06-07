@@ -25,7 +25,7 @@ const layout = (isLoading, data) => {
 export default function App() {
     const [currentPage, setCurrentPage] = useState(1)
     const [selected, setSelected] = useState("text")
-    const [data, setData, setReload, pagination, , isLoading] = useGetRequest(true, `/student/comments?type=${selected}`, currentPage)
+    const [data, setData, setReload, pagination, , isLoading] = useGetRequest(`/student/comments?type=${selected}`, currentPage)
     const content = layout(isLoading, data);
 
     return (
