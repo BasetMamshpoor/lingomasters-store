@@ -1,4 +1,3 @@
-import Spin from "@icons/loader.svg";
 import Header from "@/components/Checkout/Header";
 import formatCurrency from "@/helpers/formatCurrency";
 import Address from "@/components/Checkout/Address";
@@ -7,7 +6,7 @@ import {CartContext} from "@/providers/CartContextProvider";
 import React, {useContext, useState} from "react";
 import Payment from "@/components/Payment";
 import Link from "next/link";
-import {addToast, Button, Radio, RadioGroup, Spinner} from "@heroui/react";
+import {addToast, Alert, Button, Radio, RadioGroup, Spinner} from "@heroui/react";
 import {useRouter} from "next/router";
 import usePostRequest from "@/hooks/usePostRequest";
 import {Information} from "@/providers/InformationProvider";
@@ -17,7 +16,7 @@ const steps = ['سبد خرید', 'نکمیل سفارش', 'پرداخت']
 
 const Shipping = () => {
     const {push, asPath} = useRouter()
-    const {state} = useContext(CartContext)
+    const {state, isLoading: loading, dispatch} = useContext(CartContext)
     const {wallet} = useContext(Information)
     const has_download = state.items.find(i => i.is_download === 1)
     const ship = state.items.find(i => i.is_download === 0)
@@ -29,10 +28,10 @@ const Shipping = () => {
 
 
     const handlePay = async () => {
-        if (!selectedAddress) {
+        if (!selectedAddress.address_id || !selectedAddress.payment_method) {
             addToast({
                 title: 'خطا',
-                description: 'لطفا آدرس ارسال را انتخاب کنید',
+                description: 'لطفا آدرس  و نحوه ارسال را انتخاب کنید',
                 color: 'danger'
             })
             return
@@ -44,13 +43,13 @@ const Shipping = () => {
             successMessage,
             errorMessage
         } = await sendPostRequest("POST", `/order${selected === '2' ? "/wallet" : ""}`, {
-            discount: coupon?.code || null, ...state,
-            address_id: selectedAddress
+            code: coupon?.code || null, ...state,
+            ...selectedAddress,
         }, false, true)
         if (success) {
-            if (selected === '1')
+            if (selected === '1') {
                 push(Data.url)
-            else {
+            } else {
                 addToast({
                     title: 'پرداخت با موفقیت انجام شد',
                     description: successMessage,
@@ -58,6 +57,7 @@ const Shipping = () => {
                 })
                 push('/profile/wallet')
             }
+            dispatch({type: "CLEAR"})
         } else
             addToast({
                 title: 'خطا',
@@ -68,11 +68,13 @@ const Shipping = () => {
                     موجودی</Link> : undefined
             })
     }
+
     const isPost = selectedAddress.payment_method === "post";
-    const final_price = state.total_after_off + (isPost ? state.shipping_cost : 0);
+    const final_price = (coupon ? coupon.total_after_off : state.total_after_off) + (isPost ? parseInt(state.shipping_cost) : 0);
+
     return (
         <>
-            <main dir="rtl">
+            {!!state.itemsCounter && <main dir="rtl">
                 <div className="container flex flex-col gap-20">
                     <Header page='اطلاعات ارسال' active={2} steps={steps}/>
                     <div className="grid lg:grid-cols-8 grid-cols-1 lg:gap-6 gap-y-4">
@@ -86,11 +88,13 @@ const Shipping = () => {
                                 style={{
                                     "--heroui-success": "196 94% 25%",
                                 }}
-                                value={selectedAddress.payment_method || "tipax"}
+                                value={selectedAddress.payment_method}
                                 onValueChange={e => setSelectedAddress(p => ({...p, payment_method: e}))}>
                                 <Radio value="tipax" classNames={{label: 'text-xs'}}>تیپاکس</Radio>
                                 <Radio value="post" classNames={{label: 'text-xs'}}>پست پیشتاز</Radio>
                             </RadioGroup>
+                            {!isPost && <Alert title="ارسال با تیپاکس" color="warning"
+                                               description="هزینه ارسال با توجه به وزن سبد خرید و مسافت  تعیین میشود و هزینه آن در محل تحویل دریافت می گردد."/>}
                             {ship && <Address address_id={selectedAddress.address_id} setAddress={setSelectedAddress}/>}
                             {has_download && <SendDownloadLink/>}
                         </div>
@@ -101,32 +105,52 @@ const Shipping = () => {
                                     <div
                                         className="flex items-center rounded h-8 justify-between px-3 bg-natural_gray-50">
                                         <span className="text-xs">قیمت کالاها</span>
-                                        <span className="hasToman text-sm">{formatCurrency(state.total)}</span>
+                                        <span className="hasToman text-sm">{loading ?
+                                            <Spinner variant="dots" size="sm"
+                                                     color="success"/> : formatCurrency(state.total)}</span>
                                     </div>
                                     {state.total !== state.total_after_off && <div
                                         className="flex items-center rounded h-8 justify-between px-3 bg-natural_gray-50">
                                         <div className="flex items-center gap-1">
                                             <span className="text-xs text-red-500">تخفیف</span>
                                             <span
-                                                className="text-red-500 text-xs">({Math.ceil(100 - (state.total_after_off / state.total * 100)) + '%'})</span>
+                                                className="text-red-500 text-xs">{loading ?
+                                                <Spinner variant="dots" size="sm"
+                                                         color="success"/> : "(" + Math.ceil(100 - (state.total_after_off / state.total * 100)) + '%)'}</span>
                                         </div>
                                         <span
-                                            className="hasToman">{formatCurrency(state.total - state.total_after_off)}</span>
+                                            className="hasToman  text-sm">{loading ?
+                                            <Spinner variant="dots" size="sm"
+                                                     color="success"/> : formatCurrency(state.total - state.total_after_off)}</span>
                                     </div>}
                                     {isPost && <div
                                         className="flex items-center rounded h-8 justify-between px-3 bg-natural_gray-50">
                                         <span className="text-xs">هزینه ارسال</span>
-                                        <span className="hasToman text-sm">{formatCurrency(state.shipping_cost)}</span>
+                                        <span className="hasToman text-sm">{loading ?
+                                            <Spinner variant="dots" size="sm"
+                                                     color="success"/> : formatCurrency(state.shipping_cost)}</span>
+                                    </div>}
+                                    {coupon && <div
+                                        className="flex items-center rounded h-8 justify-between px-3 bg-natural_gray-50">
+                                        <div className="flex items-center gap-1">
+                                            <span className="text-xs text-red-500">کد تخفیف</span>
+                                            <span
+                                                className="text-red-500 text-xs">({coupon.discount_percentage + '%'})</span>
+                                        </div>
+                                        <span
+                                            className="hasToman  text-sm">{formatCurrency(coupon.discount_amount)}</span>
                                     </div>}
                                     <div
                                         className="flex items-center rounded h-8 justify-between px-3 bg-natural_gray-50">
                                         <span className="text-xs">قیمت نهایی</span>
                                         <span
-                                            className="hasToman text-sm text-green-600">{formatCurrency(final_price)}</span>
+                                            className="hasToman text-sm text-green-600">{loading ?
+                                            <Spinner variant="dots" size="sm"
+                                                     color="success"/> : formatCurrency(final_price)}</span>
                                     </div>
-                                    <CheckCoupon setCoupon={setCoupon} model="product"/>
-                                    <Payment price={final_price} isLoading={isLoading} handlePay={handlePay}
-                                             selected={selected} setSelected={setSelected} final_price={coupon?.price}/>
+                                    <CheckCoupon state={state} setCoupon={setCoupon}/>
+                                    <Payment price={coupon?.price} isLoading={isLoading || loading} handlePay={handlePay}
+                                             selected={selected} setSelected={setSelected} final_price={final_price}/>
                                 </div>
                             </div>
                         </div>
@@ -143,13 +167,15 @@ const Shipping = () => {
                                 radius='sm'>پرداخت {selected === "1" ? "آنلاین" : "با کیف پول"}</Button>
                             <div className="flex flex-col items-end gap-2 sm:text-sm text-xs">
                                 <span>قیمت نهایی</span>
-                                <span className="hasToman text-green-600">{formatCurrency(final_price)}</span>
+                                <span className="hasToman text-green-600">{loading ?
+                                    <Spinner variant="dots" size="sm"
+                                             color="success"/> : formatCurrency(final_price)}</span>
                             </div>
                         </div>
                     </div>
                     <div className=""></div>
                 </div>
-            </main>
+            </main>}
         </>
     );
 };

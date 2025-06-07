@@ -20,22 +20,32 @@ const sumItems = (items) => {
         0
     );
 
-    return { itemsCounter, total, total_after_off };
+    return {itemsCounter, total, total_after_off};
 };
 
 const reducer = (state, action) => {
     switch (action.type) {
         case "UPDATE_CART_FROM_API": {
-            const updatedItems = action.payload;
+            const {items, ...other} = action.payload;
+
+            const clearUnexist = items.filter(pr => {
+                const deletedProduct = pr.errors.find(m => m.type === 'deleted')
+                return !deletedProduct;
+            });
             const updatedCart = {
                 ...state,
-                ...updatedItems,
-                ...sumItems(updatedItems.items)
+                ...other,
+                items: clearUnexist,
+                ...sumItems(clearUnexist)
             };
             localStorage.setItem('cart', JSON.stringify(updatedCart));
-            return updatedCart;
+            return {
+                ...state,
+                ...other,
+                items,
+                ...sumItems(clearUnexist)
+            };
         }
-
 
         case "ADD_ITEM": {
             const newSellerId = action.payload.selected_seller.id;
@@ -52,7 +62,7 @@ const reducer = (state, action) => {
 
             const updatedItems = [
                 ...state.items,
-                { ...action.payload, quantity: 1 }
+                {...action.payload, quantity: 1}
             ];
             const updatedCart = {
                 ...state,
@@ -89,7 +99,7 @@ const reducer = (state, action) => {
                 };
             } else {
                 const newItems = state.items.map((item, idx) =>
-                    idx === index ? { ...item, quantity: item.quantity + 1 } : item
+                    idx === index ? {...item, quantity: item.quantity + 1} : item
                 );
                 localStorage.setItem('cart', JSON.stringify({
                     ...state,
@@ -122,7 +132,7 @@ const reducer = (state, action) => {
             }
 
             const newItems = state.items.map((item, idx) =>
-                idx === index ? { ...item, quantity: item.quantity - 1 } : item
+                idx === index ? {...item, quantity: item.quantity - 1} : item
             );
             localStorage.setItem('cart', JSON.stringify({
                 ...state,

@@ -1,10 +1,10 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import usePostRequest from "@/hooks/usePostRequest";
 import {addToast, Button, Form, Input} from "@heroui/react";
+import {CartContext} from "@/providers/CartContextProvider";
 
-const CheckCoupon = ({model, id, setCoupon}) => {
+const CheckCoupon = ({state, setCoupon}) => {
     const {sendPostRequest, isLoading} = usePostRequest()
-
     const handleCheckCoupon = async (e) => {
         e.preventDefault();
         const coupon = e.target[0].value;
@@ -12,10 +12,9 @@ const CheckCoupon = ({model, id, setCoupon}) => {
             success,
             data: Data,
             errorMessage,
-        } = await sendPostRequest('POST', `/student/discount/store`, {
+        } = await sendPostRequest('POST', `/order/checkDiscount`, {
             code: coupon,
-            id,
-            model
+            ...state,
         }, false, true);
         if (!success) {
             addToast({
@@ -36,7 +35,7 @@ const CheckCoupon = ({model, id, setCoupon}) => {
                     isClearable={true}
                     isRequired
                     errorMessage=" "
-                    label="کد تخفیف خود را وارد کنید" type="number"
+                    label="کد تخفیف خود را وارد کنید"
                     radius='sm' labelPlacement='outside' variant='bordered'
                     className='max-w-1/2'/>
                 <Button

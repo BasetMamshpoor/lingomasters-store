@@ -18,17 +18,22 @@ const Products = ({download}) => {
         <>
             {state.itemsCounter ? state.items.map((p, i) => {
                     const {discounted_price, price, title} = p.selected_seller;
+                    const isDeleted = p.errors?.find(m => m.type === 'deleted')
                     return (
                         <>
-                            <div className='flex flex-col items-stretch overflow-hidden relative' key={p.idp} id='product'>
+                            <div
+                                className={`flex flex-col items-stretch overflow-hidden rounded relative ${isDeleted ? 'after:content-[""] after:absolute after:inset-0 after:bg-[#00000016]' : ''}`}
+                                key={p.idp} id='product'>
                                 <div className='flex gap-6 grow'>
                                     <div className="flex flex-col gap-6 justify-between">
-                                        <Link href={`/product/${p.id}`} className='h-[90px] w-[90px] flex-shrink-0 overflow-hidden'>
-                                            <Image placeholder='blur' blurDataURL='/images/product.png' width={100} className="w-full h-full object-cover"
+                                        <Link href={`/product/${p.id}`}
+                                              className='h-[90px] w-[90px] flex-shrink-0 overflow-hidden'>
+                                            <Image placeholder='blur' blurDataURL='/images/product.png' width={100}
+                                                   className="w-full h-full object-cover"
                                                    height={100} unoptimized={true} src={p.image || '/images/product.png'}
                                                    alt={p.title}/>
                                         </Link>
-                                        <div
+                                        {!isDeleted && <div
                                             className='flex items-center gap-2 p-2 border border-natural_gray-300 rounded justify-between w-fit'>
                                             <button type='button' className="centerOfParent"
                                                     onClick={() => dispatch({type: 'INCREASE', payload: p})}>
@@ -39,12 +44,15 @@ const Products = ({download}) => {
                                             <button type='button' className='centerOfParent'>
                                                 {p.quantity < 2 ?
                                                     <Trush className="fill-red-700 cursor-pointer w-5 h-5"
-                                                           onClick={() => dispatch({type: "REMOVE_ITEM", payload: p})}/> :
+                                                           onClick={() => dispatch({
+                                                               type: "REMOVE_ITEM",
+                                                               payload: p
+                                                           })}/> :
                                                     <Minus className="fill-primary-700 cursor-pointer w-4 h-4"
                                                            onClick={() => dispatch({type: "DECREASE", payload: p})}/>
                                                 }
                                             </button>
-                                        </div>
+                                        </div>}
                                     </div>
                                     <div className='grow flex flex-col gap-2'>
                                         <h3 className='font-semibold sm:text-base text-sm'>{p.title}</h3>
@@ -67,6 +75,14 @@ const Products = ({download}) => {
                                                 </div>
                                                 <p className="sm:text-sm text-xs">دانلودی</p>
                                             </div>}
+                                            <ul className="flex flex-col gap-3">
+                                                {p.errors?.map((err, idx) => (
+                                                    <li key={idx}
+                                                        className={`text-sm py-1 px-2 rounded ${err.type === 'deleted' ? 'text-red-500 bg-red-100 border-r-4 border-red-500' : ''} ${err.type === 'price' ? 'text-yellow-500 bg-yellow-100 border-r-4 border-yellow-500' : ''} ${err.type === 'discounted_price' ? 'text-blue-500 bg-blue-100 border-r-4 border-blue-500' : ''} ${err.type === 'quantity' ? 'text-green-500 bg-green-100 border-r-4 border-green-500' : ''} ${err.type === 'expired' ? 'text-gray-500 bg-gray-100 border-r-4 border-gray-500' : ''}`}>
+                                                        {err.massage}
+                                                    </li>
+                                                ))}
+                                            </ul>
                                         </div>
                                         <div className={`flex items-center justify-between w-full`}>
                                             <div className='flex items-center gap-1 flex-wrap md:flex-row flex-col-reverse'>

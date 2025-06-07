@@ -71,7 +71,7 @@ const Banner = ({ withTag = true, data }) => {
                             <p className='text-green-600 lg:text-2xl text-xs hasToman'>{formatCurrency(price)}</p>
                         </div>
                         <button onClick={handleClick} className='effect-2 lg:h-12 h-8 w-full bg-primary-600 rounded lg:text-base text-xs centerOfParent gap-1 text-white lg:p-4 p-2 pr-3'>
-                            <Cart className='fill-white' /> افزودن به سبد خرید</button>
+                            <Cart className='fill-white' /> نمایش محصول</button>
                     </div>
                     <div className="centerOfParent sm:grow flex-shrink-0 lg:w-[302px] lg:h-[300px] sm:w-[165px] w-[156] h-[168px]">
                         <Image alt={data.title} src={data?.images} width={100} height={100} className='flex-shrink-0 w-full h-full object-contain' />

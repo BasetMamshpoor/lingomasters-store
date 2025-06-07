@@ -31,7 +31,7 @@ const Address = ({setAddress, address_id}) => {
                             "--heroui-success": "196 94% 25%",
                         }}
                         label="انتخاب آدرس">
-                        {address?.map(e =>
+                        {address?.length ? address?.map(e =>
                             <Radio
                                 key={e.id}
                                 classNames={{
@@ -43,7 +43,7 @@ const Address = ({setAddress, address_id}) => {
                                     <span>{e.title}</span>
                                     <span>{e.address}</span>
                                 </div>
-                            </Radio>)}
+                            </Radio>) : "آدرسی وجود ندارد"}
                     </RadioGroup>}
                 <div className="flex justify-end w-full my-5">
                     <button type='button' onClick={onOpen}
@@ -52,12 +52,6 @@ const Address = ({setAddress, address_id}) => {
                         <p className="text-secondary-500 text-base">ثبت آدرس جدید</p>
                     </button>
                 </div>
-            </div>
-            <div className="flex justify-end gap-3 items-center flex-row-reverse">
-                <label className="sm:text-base text-sm" htmlFor="rules">تمامی <Link href='/rules'
-                                                                                    className="text-primary-600">قوانین
-                    و مقررات</Link> را میپذیرم.</label>
-                <input className="w-5 h-5 bg-primary-600 cursor-pointer" type="checkbox" name="rules" id="rules"/>
             </div>
             <Modal dir="rtl" size="3xl" scrollBehavior="inside" placement="top-center" isOpen={isOpen}
                    onOpenChange={onOpenChange}>
