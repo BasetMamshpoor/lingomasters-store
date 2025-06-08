@@ -9,15 +9,11 @@ import New from '@icons/new.svg';
 import MostSell from '@icons/best-seller.svg';
 import Banner from "@/components/Banner";
 import useGetRequest from "@/hooks/useGetRequest";
-import {useContext } from "react";
 import Stories from "@/components/Stories/Stories";
 import HeaderBanner from "@/components/HeaderBanner";
-import {Category} from "@/providers/CategoriesProviders";
 
 export default function Page() {
-    const {categories} = useContext(Category)
-    const category = categories[0]?.slug
-    const [data] = useGetRequest( '/main-page')
+    const [data] = useGetRequest('/main-page')
     return (
         <>
             <div>
@@ -25,21 +21,21 @@ export default function Page() {
                 <Stories data={data?.stories}/>
                 <Carousel data={data?.sliders}/>
                 <Categories data={data?.categories}/>
-                <OfferSlider to={`/products?category=${category}&discount=true`} data={data?.discounted_products}/>
-                <Slider to={`/products?category=${category}`} data={data?.random_products} title='پکیج های آموزشی'
+                <OfferSlider to={`/products?discount=true`} data={data?.discounted_products}/>
+                <Slider to={`/products`} data={data?.random_products} title='پکیج های آموزشی'
                         icon={<Book className='sm:w-10 sm:h-10'/>}/>
                 <div className="container grid sm:grid-cols-2 gap-6 lg:mb-[140px] sm:mb-20 mb-[60px] [&>div]:mx-auto">
                     <Card movie={data?.video_banners[0].path} bgSrc={data?.video_banners[0].cover}/>
                     <Card movie={data?.video_banners[1].path} bgSrc={data?.video_banners[1].cover}/>
                 </div>
-                <Slider to={`/products?category=${category}&sort=newest`} data={data?.latest_products} title="جدید ترین ها"
+                <Slider to={`/products?sort=newest`} data={data?.latest_products} title="جدید ترین ها"
                         icon={<New className='sm:w-10 sm:h-10'/>} New/>
                 <div
                     className="max-w-[1280px] w-full mx-auto grid sm:grid-cols-2 items-center gap-6 lg:mb-[140px] sm:mb-20 mb-[60px]">
                     <Banner withTag data={data?.baners.order1[0]}/>
                     <Banner withTag data={data?.baners.order1[1]}/>
                 </div>
-                <Slider to={`/products?category=${category}&sort=bestselling`} data={data?.best_selling_products}
+                <Slider to={`/products?sort=bestselling`} data={data?.best_selling_products}
                         title="پرفروش ترین ها" icon={<MostSell className='sm:w-10 sm:h-10'/>}/>
                 <div
                     className="max-w-[1280px] w-full mx-auto grid sm:grid-cols-2 items-center gap-6 lg:mb-[140px] sm:mb-20 mb-[60px]">

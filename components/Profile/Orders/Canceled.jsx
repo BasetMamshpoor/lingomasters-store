@@ -10,12 +10,11 @@ const Cancelled = ({
                        created_at,
                        tracking_code,
                        total_price,
-                       delivery_date,
+                       rejected_date,
                        items,
                        id,
-                       laq_data,
                        onSelectItem,
-                       reason
+                       rejected_reason
                    }) => {
     return (
         <>
@@ -50,7 +49,7 @@ const Cancelled = ({
                                 </div>
                                 <div className="flex items-center gap-2 ">
                                     <p className="text-xs">تاریخ لغو:</p>
-                                    <p className="text-xs lg:text-sm">{new Date(laq_data).toLocaleString(`fa-Ir`, {
+                                    <p className="text-xs lg:text-sm">{new Date(rejected_date).toLocaleString(`fa-Ir`, {
                                         year: 'numeric',
                                         month: 'long',
                                         day: 'numeric',
@@ -58,7 +57,7 @@ const Cancelled = ({
                                 </div>
                                 <div className="flex items-center gap-2 ">
                                     <p className="text-xs">دلیل لغو:</p>
-                                    <p className="text-xs lg:text-sm">{reason}</p>
+                                    <p className="text-xs lg:text-sm">{rejected_reason}</p>
                                 </div>
                             </div>
                         </div>

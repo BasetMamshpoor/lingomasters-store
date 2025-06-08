@@ -51,7 +51,7 @@ export default function App({Component, pageProps}) {
                                     dir='rtl'>
                                     <Sidebar mobileOpen={isSidebarOpen} setSidebarOpen={setSidebarOpen}
                                              setTitle={setTitle}/>
-                                    <div className=" flex flex-col gap-12 w-full">
+                                    <div className=" flex flex-col gap-12 w-full flex-1 min-w-0">
                                         <HeaderProfile
                                             setSidebarOpen={setSidebarOpen}
                                             isSidebarOpen={isSidebarOpen}

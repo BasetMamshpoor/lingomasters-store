@@ -12,8 +12,8 @@ import {useContext} from "react";
 import {Information} from "@/providers/InformationProvider";
 import {useRouter} from "next/router";
 
-const Comments = ({id, url}) => {
-    const {asPath}=useRouter()
+const Comments = ({id, url, showOtherComments = true}) => {
+    const {asPath} = useRouter()
     const {student} = useContext(Information)
     return (
         <>
@@ -40,7 +40,8 @@ const Comments = ({id, url}) => {
                                      <span className='sm:text-base text-sm text-natural_gray-900'>متنی</span>
                                  </div>
                              }>
-                            <Text id={id} url={url} logged={student} asPath={asPath}/>
+                            <Text id={id} url={url} logged={student} asPath={asPath}
+                                  showOtherComments={showOtherComments}/>
                         </Tab>
                         <Tab key="audio"
                              title={
@@ -49,7 +50,8 @@ const Comments = ({id, url}) => {
                                      <span className='sm:text-base text-sm text-natural_gray-900'>صوتی</span>
                                  </div>
                              }>
-                            <Audio id={id} url={url} logged={student} asPath={asPath}/>
+                            <Audio id={id} url={url} logged={student} asPath={asPath}
+                                   showOtherComments={showOtherComments}/>
                         < /Tab>
                         <Tab key="video"
                              title={
@@ -58,7 +60,8 @@ const Comments = ({id, url}) => {
                                      <span className='sm:text-base text-sm text-natural_gray-900'>ویدیویی</span>
                                  </div>
                              }>
-                            <Videos id={id} url={url} logged={student} asPath={asPath}/>
+                            <Videos id={id} url={url} logged={student} asPath={asPath}
+                                    showOtherComments={showOtherComments}/>
                         </Tab>
                     </Tabs>
                 </div>

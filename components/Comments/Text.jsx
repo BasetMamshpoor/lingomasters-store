@@ -20,15 +20,15 @@ let staticComments = [
     'بد بود',
     'بسیار بد بود',
 ];
-const Text = ({id, url, logged, asPath}) => {
+const Text = ({id, url, logged, asPath, showOtherComments}) => {
     const [currentPage, setCurrentPage] = useState(1)
     const [data, setData] = useState("")
     const [xComment, setXComment] = useState(true)
     const [showMore, setShowMore] = useState(false)
-    const [comments, setComments, setReload, pagination, , loading] = useGetRequest(`/${url}/comment/${id}?type=text`, currentPage)
+    const [comments, setComments, setReload, pagination, , loading] = useGetRequest(showOtherComments && `/${url}/comment/${id}?type=text`, currentPage)
     const {isLoading, sendPostRequest} = usePostRequest()
     const {isLoading: isLikeLoading, sendPostRequest: sendLikeRequest} = usePostRequest()
-    const ref =  useSwipeScroll()
+    const ref = useSwipeScroll()
 
     const handleClick = (value) => {
         setData(value)
@@ -67,12 +67,14 @@ const Text = ({id, url, logged, asPath}) => {
                     {logged ? <form className="flex flex-col gap-8" onSubmit={handleSubmit}>
                         <div className="flex flex-col items-start gap-2">
                             <div className="relative w-full">
-                                <Textarea isRequired errorMessage=' ' labelPlacement='outside' label='توضیحات'
-                                          onValueChange={setData}
-                                          value={data}
-                                          minRows={5} radius="sm" maxRows={10}
-                                          variant="bordered" className="self-stretch"
-                                          placeholder="توضیحات">توضیحات</Textarea>
+                                <Textarea
+                                    isRequired errorMessage=' '
+                                    labelPlacement='outside' label='توضیحات'
+                                    onValueChange={setData}
+                                    value={data}
+                                    minRows={5} radius="sm" maxRows={10}
+                                    variant="bordered" className="self-stretch"
+                                    placeholder="توضیحات">توضیحات</Textarea>
                                 <div
                                     className="absolute left-0 bottom-2 px-3 py-1 text-sm flex items-center gap-2 w-full">
                                     <div ref={ref}
@@ -92,7 +94,7 @@ const Text = ({id, url, logged, asPath}) => {
                         </button>
                     </form> : <Link href={`/auth/login?backUrl=${asPath}`}>ورود</Link>}
                 </div>
-                <div className="flex flex-col gap-6">
+                {showOtherComments && <div className="flex flex-col gap-6">
                     <p className="text-primary-950 font-semibold sm:text-sm text-xs self-start">نظرات کاربران</p>
                     {!loading ? <div className="flex flex-col gap-6">
                         <ul className="flex flex-col gap-4 items-stretch">
@@ -124,7 +126,7 @@ const Text = ({id, url, logged, asPath}) => {
                                 </div>}
                         </div>}
                     </div> : <div className="centerOfParent w-full"><Spinner variant="dots" color="success"/></div>}
-                </div>
+                </div>}
             </div>
         </>
     );

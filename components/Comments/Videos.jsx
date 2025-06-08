@@ -24,9 +24,9 @@ const generateUniqueFilename = (blob) => {
     return uniqueName;
 };
 
-const Videos = ({id, url, asPath, logged}) => {
+const Videos = ({id, url, asPath, logged, showOtherComments}) => {
     const [showMore, setShowMore] = useState(false)
-    const [comments, setComments, setReload, pagination] = useGetRequest(`/${url}/comment/${id}?type=video`)
+    const [comments, setComments, setReload, pagination] = useGetRequest(showOtherComments && `/${url}/comment/${id}?type=video`)
     const [recordedBlob, setRecordedBlob] = useState(null);
     const {isLoading, sendPostRequest} = usePostRequest()
 
@@ -85,9 +85,9 @@ const Videos = ({id, url, asPath, logged}) => {
                                 className="effect-2 disabled:bg-natural_gray-600 sm:py-4 py-2 sm:px-6 px-4 sm:text-base text-xs rounded text-white bg-primary-600 sm:w-1/4 sm:h-fit h-9 w-full self-end">
                             {isLoading ? "منتظر بمانید..." : 'ارسال'}
                         </button>
-                    </form>:<Link href={`/auth/login?backUrl=${asPath}`}>ورود</Link>}
+                    </form> : <Link href={`/auth/login?backUrl=${asPath}`}>ورود</Link>}
                 </div>
-                <div className="flex flex-col gap-6">
+                {showOtherComments && <div className="flex flex-col gap-6">
                     <p className="text-primary-950 font-semibold text-sm self-start">نظرات کاربران</p>
                     {!!comments ? <div className="flex flex-col gap-6">
                         <ul className="flex flex-col gap-4 items-stretch">
@@ -115,7 +115,7 @@ const Videos = ({id, url, asPath, logged}) => {
                                 </div>}
                         </div>}
                     </div> : <div className="centerOfParent w-full">درحال بارگزاری...</div>}
-                </div>
+                </div>}
             </div>
         </>
     );

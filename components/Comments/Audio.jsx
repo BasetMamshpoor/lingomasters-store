@@ -20,10 +20,10 @@ const generateUniqueFileName = (blob) => {
     return `recording_${timestamp}_${blobSize}_${randomValue}.wav`;
 };
 
-const Audio = ({id, url,asPath,logged}) => {
+const Audio = ({id, url, asPath, logged, showOtherComments}) => {
         const [showMore, setShowMore] = useState(false)
 
-        const [comments, setComments, setReload, pagination] = useGetRequest(`/${url}/comment/${id}?type=voice`)
+        const [comments, setComments, setReload, pagination] = useGetRequest(showOtherComments && `/${url}/comment/${id}?type=voice`)
 
         const [audioBlob, setAudioBlob] = useState(null);
 
@@ -74,7 +74,7 @@ const Audio = ({id, url,asPath,logged}) => {
                     <div className="flex flex-col gap-6">
                         <p className="text-primary-950 font-semibold sm:text-sm text-xs self-start">صدا خود را آپلود
                             کنید.</p>
-                        {logged?<form className="flex flex-col gap-8" onSubmit={handleSubmit}>
+                        {logged ? <form className="flex flex-col gap-8" onSubmit={handleSubmit}>
                             <div className="flex items-center gap-6">
                                 <AudioRecorder onRecordingComplete={setAudioBlob}/>
                             </div>
@@ -82,9 +82,9 @@ const Audio = ({id, url,asPath,logged}) => {
                                     className="effect-2 disabled:bg-natural_gray-600 sm:py-4 py-2 sm:px-6 px-4 sm:text-base text-xs rounded text-white bg-primary-600 sm:w-1/4 sm:h-fit h-9 w-full self-end">
                                 {isLoading ? "منتظر بمانید..." : 'ارسال'}
                             </button>
-                        </form>:<Link  href={`/auth/login?backUrl=${asPath}`}>ورود</Link>}
+                        </form> : <Link href={`/auth/login?backUrl=${asPath}`}>ورود</Link>}
                     </div>
-                    <div className="flex flex-col gap-6">
+                    {showOtherComments && <div className="flex flex-col gap-6">
                         <p className="text-primary-950 font-semibold text-sm self-start">نظرات کاربران</p>
                         {!!comments ? <div className="flex flex-col gap-6">
                             <ul className="flex flex-col gap-4 items-stretch">
@@ -111,11 +111,12 @@ const Audio = ({id, url,asPath,logged}) => {
                                     : <div className="flex items-center gap-2 cursor-pointer"
                                            onClick={() => setShowMore(true)}>
                                         <span className="text-xs text-primary-500">مشاهده بیشتر</span>
-                                        <div className="centerofParent"><Down className='w-5 h-5 fill-primary-600'/></div>
+                                        <div className="centerofParent"><Down className='w-5 h-5 fill-primary-600'/>
+                                        </div>
                                     </div>)}
                             </div>
                         </div> : <div className="centerOfParent w-full">درحال بارگزاری...</div>}
-                    </div>
+                    </div>}
                 </div>
             </>
         );
