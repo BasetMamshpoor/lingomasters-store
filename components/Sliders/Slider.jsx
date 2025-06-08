@@ -1,13 +1,13 @@
-import { Swiper, SwiperSlide } from 'swiper/react';
+import {Swiper, SwiperSlide} from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/navigation';
-import { Navigation } from 'swiper/modules';
+import {Navigation} from 'swiper/modules';
 import Card from '../Card';
 import Link from 'next/link';
-import { Skeleton } from "@heroui/react";
+import {Skeleton} from "@heroui/react";
 import Left from '@icons/arrow-left.svg'
 
-const Slider = ({ title, icon, loop, to, edu, New, data }) => {
+const Slider = ({title, icon, loop, to, edu, New, data}) => {
 
     return (
         <>
@@ -15,11 +15,13 @@ const Slider = ({ title, icon, loop, to, edu, New, data }) => {
                 <div className="max-w-[1280px] w-full mx-auto flex flex-col gap-4">
                     <div className="flex items-center justify-between px-4">
                         <div className="centerOfParent gap-4">
-                            <div className="centerOfParent">{icon}</div>
+                            {icon && <div className="centerOfParent">{icon}</div>}
                             <p className='sm:text-xl font-semibold'>{title}</p>
                         </div>
-                        <Link href={to} className='centerOfParent sm:text-base text-xs gap-2 text-primary-600 whitespace-nowrap'>مشاهده همه <Left className='w-5 h-5 fill-primary-600' /></Link>
-                    </div>
+                        {to && <Link href={to}
+                                     className='centerOfParent sm:text-base text-xs gap-2 text-primary-600 whitespace-nowrap'>مشاهده
+                            همه <Left className='w-5 h-5 fill-primary-600'/></Link>
+                        }                    </div>
                     <div className="w-full relative slider px-1">
                         <Swiper
                             modules={[Navigation]}
@@ -74,22 +76,28 @@ const Slider = ({ title, icon, loop, to, edu, New, data }) => {
                             }}
                         >
                             {!data ? [...Array(5)].map((_, i) => {
-                                return (
-                                    <SwiperSlide key={i} dir='ltr' className={`relative select-none overflow-hidden flex flex-col items-stretch sm:gap-3 gap-4 sm:max-w-[302px] w-full h-[405px] sm:h-[528px] flex-shrink-0 rounded-lg md:p-6 p-4 bg-white`}>
-                                        <Skeleton className="sm:max-w-[254px] max-w-[210px] w-full sm:h-[250px] h-[200px] flex-shrink-0 rounded-lg mix-blend-darken" />
-                                        <div className="grow flex flex-col gap-4 mt-4">
-                                            <Skeleton className='rounded w-1/2 h-6 self-end' />
-                                            <Skeleton className='rounded w-1/4 h-6' />
-                                            <div className="flex items-center sm:gap-6 gap-4 sm:max-w-64 max-w-52 w-full">
-                                                <Skeleton className="p-4 sm:w-[60px] w-11 sm:h-12 h-8 rounded-md" />
-                                                <Skeleton className='sm:text-base text-xs sm:h-12 h-8 flex-[1_0_0] sm:px-6 px-4 sm:py-4 py-2 rounded ' />
+                                    return (
+                                        <SwiperSlide key={i} dir='ltr'
+                                                     className={`relative select-none overflow-hidden flex flex-col items-stretch sm:gap-3 gap-4 sm:max-w-[302px] w-full h-[405px] sm:h-[528px] flex-shrink-0 rounded-lg md:p-6 p-4 bg-white`}>
+                                            <Skeleton
+                                                className="sm:max-w-[254px] max-w-[210px] w-full sm:h-[250px] h-[200px] flex-shrink-0 rounded-lg mix-blend-darken"/>
+                                            <div className="grow flex flex-col gap-4 mt-4">
+                                                <Skeleton className='rounded w-1/2 h-6 self-end'/>
+                                                <Skeleton className='rounded w-1/4 h-6'/>
+                                                <div
+                                                    className="flex items-center sm:gap-6 gap-4 sm:max-w-64 max-w-52 w-full">
+                                                    <Skeleton className="p-4 sm:w-[60px] w-11 sm:h-12 h-8 rounded-md"/>
+                                                    <Skeleton
+                                                        className='sm:text-base text-xs sm:h-12 h-8 flex-[1_0_0] sm:px-6 px-4 sm:py-4 py-2 rounded '/>
+                                                </div>
                                             </div>
-                                        </div>
-                                    </SwiperSlide>
-                                )
-                            })
+                                        </SwiperSlide>
+                                    )
+                                })
                                 : data?.map(p => <SwiperSlide key={p.id}>
-                                    <Card data={p} withTag={edu ? false : true} solid={edu ? true : false} offRed={edu ? true : false} edu={edu} withLabel={edu ? false : true} New={New} />
+                                    <Card data={p} withTag={edu ? false : true} solid={edu ? true : false}
+                                          offRed={edu ? true : false} edu={edu} withLabel={edu ? false : true}
+                                          New={New}/>
                                 </SwiperSlide>)}
                         </Swiper>
                     </div>

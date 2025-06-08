@@ -5,12 +5,12 @@ import useGetRequest from '@/hooks/useGetRequest';
 import {useMemo} from 'react';
 import {Skeleton} from "@heroui/react";
 
-const Products = ({edu, currentPage, setCurrentPage, isSeller}) => {
+const Products = ({ currentPage, setCurrentPage}) => {
     const router = useRouter()
-    const query = router.query
+    const {id, ...query} = router.query
     const stableQuery = useMemo(() => ({...query}), [JSON.stringify(query)]);
 
-    const [data, setData, setReload, pagination] = useGetRequest(edu ? '/educational-product' : isSeller ? `/product/seller/${query.id}` : `/product`, currentPage, stableQuery);
+    const [data, setData, setReload, pagination] = useGetRequest(`/product/seller/${id}`, currentPage, stableQuery);
 
     return (
         <>
@@ -19,9 +19,9 @@ const Products = ({edu, currentPage, setCurrentPage, isSeller}) => {
                     {!!data.length
                         ? <div className="grid md:grid-cols-3 grid-cols-2 lg:gap-6 gap-4">
                             {data.map((d, i) => <CardC
-                                key={i} data={d} withTag={!edu}
-                                solid={!!edu} offRed={!!edu} edu={edu}
-                                withLabel={!edu}/>)}
+                                key={i} data={d} withTag={!d.is_herper}
+                                solid={!!d.is_herper} offRed={!!d.is_herper} edu={d.is_herper}
+                                withLabel={!d.is_herper}/>)}
                         </div>
                         : <p className='w-full'>محصولی پیدا نشد لطفا فیلتر ها را تغییر دهید</p>}
                     <div className="centerOfParent">

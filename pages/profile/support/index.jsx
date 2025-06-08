@@ -9,7 +9,7 @@ import Link from "next/link";
 
 const Support = () => {
     const [currentPage, setCurrentPage] = useState(1)
-    const [data, , , paginations, , loading] = useGetRequest(true, '/user/tickets', currentPage)
+    const [data, , , paginations, , loading] = useGetRequest( '/user/tickets', currentPage)
     return (
         <>
             <div className="flex flex-col gap-10">

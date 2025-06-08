@@ -7,6 +7,7 @@ import Plus from '@icons/plus.svg';
 import Cart from '@icons/cart.svg';
 import {CartContext} from "@/providers/CartContextProvider";
 import {addToast} from "@heroui/react";
+import Link from "next/link";
 
 const Sellers = ({baseProduct}) => {
     const {state, dispatch} = useContext(CartContext);
@@ -87,9 +88,8 @@ const Sellers = ({baseProduct}) => {
 
                             return (
                                 <li className='flex items-center justify-between gap-1' key={s.id0}>
-                                    <span
-                                        className='sm:text-base text-[10px] text-primary-950 line-clamp-1 w-28'>{s.name}</span>
-
+                                    <Link href={`/sellers/${s.id}`}
+                                        className='sm:text-base text-[10px] text-primary-950 line-clamp-1 w-28'>{s.name}</Link>
                                     <div className="w-20">
                                         {s.discounted_price !== s.price ?
                                             <div className="flex gap-2">

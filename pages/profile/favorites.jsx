@@ -22,8 +22,8 @@ const layout = (isLoading, data) => {
 const Favorites = () => {
     const [currentPage, setCurrentPage] = useState(1)
     const {categories} = useContext(Category)
-    const [selected, setSelected] = useState(categories[0]?.slug)
-    const [data, , , pagination, , isLoading] = useGetRequest(`/student/favorite?type=${selected}`, currentPage)
+    const [selected, setSelected] = useState(categories[0]?.id.toString())
+    const [data, , , pagination, , isLoading] = useGetRequest(`/buyer/favorite?category_id=${selected}`, currentPage)
     const content = layout(isLoading, data);
     return (
         <div className="container flex w-full flex-col gap-6">
@@ -46,18 +46,17 @@ const Favorites = () => {
             >
                 {categories.map(r => (
                     <Tab
-                        key={r.slug}
+                        key={r.id}
                         title={r.title}
-                    >
-                        {content ? content :
-                            <div className='grid lg:grid-cols-3 sm:grid-cols-2 grid-cols-1 lg:gap-6 sm:gap-5 gap-4'>
-                                {data?.map(p => (
-                                    <Card key={p.id} data={p} edu={r.slug} />
-                                ))}
-                            </div>}
-                    </Tab>)
-                )}
+                    />
+                ))}
             </Tabs>
+            {content ? content :
+                <div className='grid lg:grid-cols-3 sm:grid-cols-2 grid-cols-1 lg:gap-6 sm:gap-5 gap-4'>
+                    {data?.map(p => (
+                        <Card key={p.id} data={p} edu={p.slug === "education"}/>
+                    ))}
+                </div>}
             {pagination && <div className="flex items-center justify-center">
                 <PaginationApp total={pagination.total} per_page={pagination.per_page}
                                onChange={setCurrentPage}/>

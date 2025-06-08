@@ -130,8 +130,8 @@ const Banner = ({product = {}}) => {
                                     <span className='text-natural_gray-900 sm:text-xs text-[10px]'>تعداد جلد</span>
                                     <span className='sm:text-sm text-xs'>{page_number}</span>
                                 </div>
-                                {selected_seller && <>
-                                    {selected_seller?.discount_percentage &&
+                                {!!selected_seller && <>
+                                    {!!selected_seller?.discount_percentage &&
                                         <div className="h-8 flex items-center justify-between bg-natural_gray-50 px-3">
                                             <span className='text-natural_gray-900 sm:text-xs text-[10px]'>تخفیف</span>
                                             <span

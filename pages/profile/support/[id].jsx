@@ -10,7 +10,7 @@ import usePostRequest from "@/hooks/usePostRequest";
 
 const Ticket = () => {
     const {back, query} = useRouter()
-    const [data, setData, setReload, pa, setp, isLoading] = useGetRequest(true, query.id && `/tickets/${query.id}`,)
+    const [data, setData, setReload, pa, setp, isLoading] = useGetRequest(query.id && `/tickets/${query.id}`,)
 
     const ref = useRef();
     const inputRef = useRef();
