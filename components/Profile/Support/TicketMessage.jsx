@@ -1,4 +1,4 @@
-import Downloading from "@/components/Profile/Messages/Downloading";
+import Downloading from "@/components/Profile/Support/Downloading";
 import React, {useState} from "react";
 import axios from "axios";
 import {addToast} from "@heroui/react";

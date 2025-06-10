@@ -17,6 +17,7 @@ import LikeDislike from "@/components/Profile/FeedBack/Like&Dislike";
 import useDeleteRequest from "@/hooks/useDeleteRequest";
 import usePostRequest from "@/hooks/usePostRequest";
 import Card from "@/components/Video/Card";
+import AudioPlayer from "@/components/Profile/FeedBack/AudioPlayer";
 
 function translateType(type) {
     switch (type) {
@@ -146,7 +147,7 @@ const Comment =
                             <p className="text-[10px] md:text-sm text-secondary-500 md:font-bold lg:font-medium whitespace-nowrap">نظر
                                 من:</p>
                             {type === 'text' && <p className="text-xs md:text-sm text-natural_gray-950">{content}</p>}
-                            {type === 'voice' &&<div dir='ltr'><SoundPlayer audio_url={content}/></div>}
+                            {type === 'voice' &&<div dir='ltr'><AudioPlayer audio_url={content}/></div>}
                             {type === 'video' && (
                                 <div className="centerOfParent rounded-full w-40 h-auto">
                                     <Card

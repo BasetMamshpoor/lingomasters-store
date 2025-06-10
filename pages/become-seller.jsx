@@ -5,18 +5,17 @@ import Image from "next/image";
 import Seller from "@icons/seller.svg";
 import Chevron from "@icons/chevron-right.svg";
 import Verified from "@icons/verified.svg";
-import User from "@icons/user-circle.svg";
+import User from "@icons/user-tick.svg";
 import Loudspeaker from "@icons/loudspeaker.svg"
-import Division from "@icons/division-.svg"
+import Division from "@icons/division-seller.svg"
 import Globe from "@icons/globe-alt.svg"
 import Route from "@icons/route.svg"
 import Corner from "@icons/corner-left-down.svg"
-import Users from "@icons/user-circle-seller.svg"
-import VerifiedSeller from "@icons/verified-seller.svg"
-import Cart from "@icons/cart-check.svg"
+import Users from "@icons/user-tick.svg"
+import VerifiedSeller from "@icons/verified.svg"
+import Cart from "@icons/cart.svg"
 import Target from "@icons/target.svg"
-import Chat from "@icons/chat-seller.svg"
-import FaqSellers from "@/components/FaqSellers";
+import Chat from "@icons/chat-alt.svg"
 
 const Index = () => {
     return (
@@ -211,7 +210,6 @@ const Index = () => {
                             لینگومسترز</p>
                     </div>
                 </div>
-                <FaqSellers/>
             </div>
         </>
     );
