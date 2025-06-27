@@ -3,12 +3,7 @@
 const nextConfig = {
     reactStrictMode: false,
     images: {
-        remotePatterns: [
-            {
-                protocol: 'https',
-                hostname: 'api.lingomasters.ir',
-            },
-        ],
+        domains: ['api.lingomasters.ir'], // Add your hostname here
     },
     webpack(config) {
         config.module.rules.push({
