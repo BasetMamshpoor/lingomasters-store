@@ -3,8 +3,8 @@ import {useRouter} from "next/router";
 import Right from '@icons/chevron-right.svg'
 import useGetRequest from "@/hooks/useGetRequest";
 import {addToast, Button, Popover, PopoverContent, PopoverTrigger, Spinner} from "@heroui/react";
-import TicketMessage from "@/Components/Profile/Support/TicketMessage";
-import ChatInput from "@/Components/Profile/Support/ChatInput";
+import TicketMessage from "@/components/Profile/Support/TicketMessage";
+import ChatInput from "@/components/Profile/Support/ChatInput";
 import timeAgo from "@/helpers/timeago";
 import usePostRequest from "@/hooks/usePostRequest";
 
