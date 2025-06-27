@@ -9,8 +9,8 @@ import Head from "next/head";
 import CategoriesProviders from "@/providers/CategoriesProviders";
 import {useRouter} from "next/router";
 import {useState} from "react";
-import Sidebar from "@/Components/Profile/Sidebar/Sidebar";
-import HeaderProfile from "@/Components/Profile/HeaderProfile";
+import Sidebar from "@/components/Profile/Sidebar/Sidebar";
+import HeaderProfile from "@/components/Profile/HeaderProfile";
 import InformationProvider from "@/providers/InformationProvider";
 
 axios.defaults.baseURL = `${process.env.NEXT_PUBLIC_BASE_URL}/api`

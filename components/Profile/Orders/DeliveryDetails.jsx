@@ -7,7 +7,7 @@ import {
     Spinner, useDisclosure
 } from "@heroui/react";
 import Dats from "@icons/threedots.svg";
-import ModalMar from "@/components/profile/Orders/ModalMar";
+import ModalMar from "@/components/Profile/Orders/ModalMar";
 import useGetRequest from "@/hooks/useGetRequest";
 import InformationOrder from "@/components/Profile/Orders/InformationOrder";
 import OrderItem from "@/components/Profile/Orders/OrderItem";

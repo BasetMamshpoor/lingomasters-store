@@ -1,16 +1,11 @@
 import React, {useState} from 'react';
 import Dats from "@icons/threedots.svg"
-import Image from "next/image";
-import Elements from "@icons/elements.svg";
-import Multiply from "@icons/check-circle.svg";
 import {
-    Dropdown, DropdownTrigger, DropdownMenu, DropdownItem, Modal,
-    ModalContent, ModalBody, ModalFooter, Button, useDisclosure, Alert, Spinner, addToast,
+    Dropdown, DropdownTrigger, DropdownMenu, DropdownItem, Button, useDisclosure, Spinner, addToast,
 } from "@heroui/react";
 import Link from "next/link";
-import ModalOrders from "@/components/profile/Orders/ModalOrders";
+import ModalOrders from "@/components/Profile/Orders/ModalOrders";
 import useGetRequest from "@/hooks/useGetRequest";
-import formatCurrency from "@/helpers/formatCurrency";
 import OrderProgress from "@/components/OrderProgress";
 import InformationOrder from "@/components/Profile/Orders/InformationOrder";
 import OrderItem from "@/components/Profile/Orders/OrderItem";
