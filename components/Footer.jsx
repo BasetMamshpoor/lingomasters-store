@@ -126,15 +126,15 @@ const Footer = () => {
                                     </div>
                                 </div>
                                 <div className="centerOfParent sm:gap-4 gap-2">
-                                    <a href="" ><X /></a>
-                                    <a href="" ><Telegram /></a>
-                                    <a href="" ><Instagram /></a>
-                                    <a href="" ><Youtube /></a>
-                                    <a href="" ><Aparat /></a>
-                                    <a href="" ><Tiktok /></a>
-                                    <a href="" ><Whatsapp /></a>
-                                    <a href="" ><Pinterest /></a>
-                                    <a href="" ><Facebook /></a>
+                                    <a href=""><X/></a>
+                                    <a href=""><Telegram/></a>
+                                    <a href=""><Instagram/></a>
+                                    <a href=""><Youtube/></a>
+                                    <a href=""><Aparat/></a>
+                                    <a href=""><Tiktok/></a>
+                                    <a href=""><Whatsapp/></a>
+                                    <a href=""><Pinterest/></a>
+                                    <a href=""><Facebook/></a>
                                 </div>
                             </div>
                         </div>
