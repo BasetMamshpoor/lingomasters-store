@@ -17,7 +17,7 @@ export default function Page() {
     return (
         <>
             <div>
-                <HeaderBanner data={data?.header_banner}/>
+                <HeaderBanner/>
                 <Stories data={data?.stories}/>
                 <Carousel data={data?.sliders}/>
                 <Categories data={data?.categories}/>

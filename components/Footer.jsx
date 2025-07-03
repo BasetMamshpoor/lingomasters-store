@@ -3,14 +3,14 @@ import Protection from '@icons/protection.svg'
 import OnlineShopping from '@icons/online-shopping.svg'
 import Delivery from '@icons/delivery.svg'
 import X from '@icons/x.svg'
-import Telegram from '@icons/telegram.svg'
-import Instagram from '@icons/instagram.svg'
 import Youtube from '@icons/youtube.svg'
-import Aparat from '@icons/aparat.svg'
-import Tiktok from '@icons/tik_tok.svg'
-import Whatsapp from '@icons/whatsapp.svg'
-import Pinterest from '@icons/pinterest.svg'
-import Facebook from '@icons/facebook.svg'
+import Insta from "@icons/instagram.svg";
+import Whats from "@icons/whatsapp.svg";
+import Tel from "@icons/telegram.svg";
+import Apa from "@icons/aparat.svg";
+import Tik from "@icons/tik_tok.svg";
+import Pi from "@icons/pinterest.svg";
+import Fac from "@icons/facebook.svg";
 import Left from '@icons/arrow-left.svg'
 import Link from 'next/link'
 
@@ -57,90 +57,134 @@ const Footer = () => {
                     <div className="flex flex-col items-center gap-20 lg:pt-[120px] sm:pt-[140px] pt-[120px] pb-10 bg-[linear-gradient(90deg,_#B5C7DF_0%,_#E8EFF8_100%)]">
                         <div className="container px-3">
                             <div className="flex flex-col items-center sm:gap-20 gap-4">
-                                <div className="flex lg:flex-row flex-col items-center sm:gap-10 gap-4 w-full">
+                                <div className="flex lg:flex-row flex-col items-center  gap-x-4 sm:gap-y-10 gap-y-4 w-full">
                                     <div className="flex flex-col gap-6 lg:max-w-[411px] w-full">
                                         <p className="font-Metal sm:text-3xl">{process.env.NEXT_PUBLIC_LOGO}</p>
                                         <p className="text-natural_gray-950 sm:text-sm text-xs leading-6">
-                                            در قسمت فروشگاهی لینگومسترز ما کتاب های زبان می فروشیم و به یادگیری شما در زبان های مختلف کمک می کنیم .<br />
+                                            در قسمت فروشگاهی لینگومسترز ما کتاب های زبان می فروشیم و به یادگیری شما در
+                                            زبان های مختلف کمک می کنیم .<br/>
                                             همچنین شما می توانید در این قسمت کتاب های زبان خود را بفروش برسانید</p>
                                     </div>
-                                    <div className="grow flex sm:flex-row flex-col w-full justify-between sm:items-center gap-2 sm:text-sm text-xs text-natural_gray-900">
-                                        <div className="flex flex-col items-center sm:gap-6 gap-2 w-full">
+                                    <div
+                                        className="grow grid sm:grid-cols-4 grid-cols-1 w-full gap-2 sm:text-sm text-xs text-natural_gray-900">
+                                        <div className="flex flex-col gap-4 justify-between">
                                             <Link className='effect-3'
-                                                href="/public">
+                                                  href="/">
                                                 <span>صفحه اصلی</span>
-                                                <Left /></Link>
+                                                <Left/></Link>
                                             <Link className='effect-3'
-                                                href="">
+                                                  href="/contact-us">
                                                 <span>پشتیبانی</span>
-                                                <Left /></Link>
+                                                <Left/></Link>
                                             <Link className='effect-3'
-                                                href="">
+                                                  href="/about-us">
                                                 <span>درباره ما</span>
-                                                <Left /></Link>
+                                                <Left/></Link>
                                             <Link className='effect-3'
-                                                href="">
+                                                  href="/contact-us">
                                                 <span>تماس با ما</span>
-                                                <Left /></Link>
+                                                <Left/></Link>
                                         </div>
-                                        <div className="flex flex-col items-center sm:gap-6 gap-2 w-full">
+                                        <div className="flex flex-col gap-4 justify-between">
                                             <Link className='effect-3'
-                                                href="/rules">
+                                                  href="/rules">
                                                 <span>قوانین و مقررات</span>
-                                                <Left /></Link>
+                                                <Left/></Link>
                                             <Link className='effect-3'
-                                                href="">
+                                                  href="https://lingomasters.ir/news">
                                                 <span>اخبار و اطلاعیه ها</span>
-                                                <Left /></Link>
+                                                <Left/></Link>
                                             <Link className='effect-3'
-                                                href="/faq">
+                                                  href="/faq?ru=buyer">
                                                 <span>سوالات متداول خریداران</span>
-                                                <Left /></Link>
+                                                <Left/></Link>
                                             <Link className='effect-3'
-                                                href="/faq">
+                                                  href="/faq?ru=seller">
                                                 <span>سوالات متداول فروشندگان</span>
-                                                <Left /></Link>
+                                                <Left/></Link>
                                         </div>
-                                        <div className="flex flex-col items-center sm:gap-6 gap-2 w-full">
+                                        <div className="flex flex-col gap-4 justify-between">
                                             <Link className='effect-3'
-                                                href="/checkout/cart">
+                                                  href="/checkout/cart">
                                                 <span>سبد خرید</span>
-                                                <Left /></Link>
+                                                <Left/></Link>
                                             <Link className='effect-3'
-                                                href="/ordertracking">
+                                                  href="/ordertracking">
                                                 <span>پیگیری سفارش</span>
-                                                <Left /></Link>
+                                                <Left/></Link>
                                             <Link className='effect-3'
-                                                href="">
+                                                  href="/become-seller">
                                                 <span>فروشنده شوید</span>
-                                                <Left /></Link>
+                                                <Left/></Link>
                                             <Link className='effect-3'
-                                                href="">
+                                                  href="/auth/login">
                                                 <span>ورود و ثبت نام</span>
-                                                <Left /></Link>
+                                                <Left/></Link>
                                         </div>
-                                        <div className="flex items-center justify-evenly sm:gap-6 gap-2 sm:mt-0 mt-10 w-full">
-                                            <Link href=""><img src="/images/image%209.png" className='mix-blend-multiply' alt="" /></Link>
-                                            <Link href="" className='sm:hidden'><img src="/images/etehadie.png" className='mix-blend-multiply' alt="" /></Link>
+                                        <div
+                                            className="flex sm:flex-col self-end gap-2 items-center sm:justify-start justify-center sm:w-fit w-full h-fit">
+                                            <div className="">
+                                                <img src={'/images/etehadie.png'} alt={'etehadie'}
+                                                     className="w-full max-h-24 object-contain"
+                                                />
+                                            </div>
+                                            <a referrerPolicy='origin' target='_blank'
+                                               className=""
+                                               href='https://trustseal.enamad.ir/?id=511544&Code=b5B03h3L84P1noEJN4Gvb8Ma1dJOBQub'>
+                                                <img
+                                                    className="w-full max-h-24 object-contain mix-blend-multiply"
+                                                    referrerPolicy='origin'
+                                                    src="/images/enamad_1024.png"
+                                                    alt='' code='b5B03h3L84P1noEJN4Gvb8Ma1dJOBQub'/>
+                                            </a>
                                         </div>
                                     </div>
                                 </div>
-                                <div className="centerOfParent sm:gap-4 gap-2">
-                                    <a href=""><X/></a>
-                                    <a href=""><Telegram/></a>
-                                    <a href=""><Instagram/></a>
-                                    <a href=""><Youtube/></a>
-                                    <a href=""><Aparat/></a>
-                                    <a href=""><Tiktok/></a>
-                                    <a href=""><Whatsapp/></a>
-                                    <a href=""><Pinterest/></a>
-                                    <a href=""><Facebook/></a>
+                                <div className="centerOfParent gap-2">
+                                    <Link href={process.env.NEXT_PUBLIC_SOCIAL_YOUTUBE} target="_blank"
+                                          rel="noopener noreferrer">
+                                        <Youtube/>
+                                    </Link>
+                                    <Link href={process.env.NEXT_PUBLIC_SOCIAL_INSTAGRAM} target="_blank"
+                                          rel="noopener noreferrer">
+                                        <Insta/>
+                                    </Link>
+                                    <Link href={process.env.NEXT_PUBLIC_SOCIAL_WHATSAPP} target="_blank"
+                                          rel="noopener noreferrer">
+                                        <Whats/>
+                                    </Link>
+                                    <Link href={process.env.NEXT_PUBLIC_SOCIAL_TELEGRAM} target="_blank"
+                                          rel="noopener noreferrer">
+                                        <Tel/>
+                                    </Link>
+                                    <Link href={process.env.NEXT_PUBLIC_SOCIAL_APARAT} target="_blank"
+                                          rel="noopener noreferrer">
+                                        <Apa/>
+                                    </Link>
+                                    <Link href={process.env.NEXT_PUBLIC_SOCIAL_TIKTOK} target="_blank"
+                                          rel="noopener noreferrer">
+                                        <Tik/>
+                                    </Link>
+                                    <Link href={process.env.NEXT_PUBLIC_SOCIAL_PINTEREST} target="_blank"
+                                          rel="noopener noreferrer">
+                                        <Pi/>
+                                    </Link>
+                                    <Link href={process.env.NEXT_PUBLIC_SOCIAL_FACEBOOK} target="_blank"
+                                          rel="noopener noreferrer">
+                                        <Fac/>
+                                    </Link>
+                                    <Link href={process.env.NEXT_PUBLIC_SOCIAL_X} target="_blank"
+                                          rel="noopener noreferrer">
+                                        <X/>
+                                    </Link>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div className="flex items-center justify-center py-5 bg-[linear-gradient(90deg,_#366CDA_0%,_rgba(106,_135,_193,_0.80)_100%)]">
-                        <p className='text-white sm:text-base text-xs'>تمامی حقوق این وبسایت متعلق به لینگومسترز می باشد.</p>
+                    <div
+                        className="flex items-center justify-center py-5 bg-[linear-gradient(90deg,_#366CDA_0%,_rgba(106,_135,_193,_0.80)_100%)]">
+                        <p className='text-white sm:text-base text-xs'>تمامی حقوق این وبسایت متعلق به لینگومسترز می
+                            باشد.</p>
                     </div>
                 </div>
             </div>

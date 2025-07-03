@@ -158,12 +158,15 @@ input:focus-within {
   display: flex;
   align-items: center;
   flex-direction: row-reverse;
-  margin-right: -28px;
+  /*margin-right: -28px;*/
   justify-content: start;
 }
+
 .effect-3 span {
   transition: all 250ms ease;
+  color: #50545F;
 }
+
 .effect-3 svg {
   transition: all 250ms ease;
   width: 20px;
@@ -172,18 +175,26 @@ input:focus-within {
   opacity: 0;
   fill: rgb(1, 1, 71) !important;
 }
+
 .effect-3:hover span {
   margin-right: 4px;
   color: rgb(1, 1, 71);
 }
+
 .effect-3:hover svg {
   margin-right: 0;
   opacity: 1;
 }
+
 @media (max-width: 640px) {
   .effect-3 {
     padding-right: 10px;
   }
+
+  .effect-3 span {
+    font-size: 12px;
+  }
+
   .effect-3 svg {
     display: none;
   }
