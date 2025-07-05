@@ -44,7 +44,7 @@ const Favorites = () => {
                 color="primary"
                 variant="underlined"
             >
-                {categories.map(r => (
+                {categories?.map(r => (
                     <Tab
                         key={r.id}
                         title={r.title}

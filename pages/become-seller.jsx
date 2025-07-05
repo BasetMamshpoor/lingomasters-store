@@ -11,16 +11,15 @@ import Division from "@icons/division-seller.svg"
 import Globe from "@icons/globe-alt.svg"
 import Route from "@icons/route.svg"
 import Corner from "@icons/corner-left-down.svg"
-import Users from "@icons/user-tick.svg"
+import Users from "@icons/users.svg"
 import VerifiedSeller from "@icons/verified.svg"
 import Cart from "@icons/cart.svg"
 import Target from "@icons/target.svg"
-import Chat from "@icons/chat-alt.svg"
 
 const Index = () => {
     return (
         <>
-            <div dir="rtl" className="container flex flex-col gap-20 ">
+            <div dir="rtl" className="container flex flex-col gap-20 mt-16">
                 <Breadcrumbs
                     separator='/'
                     classNames={{list: 'last:[&>li>span]:text-primary-950 [&>li]:text-natural_gray-600'}}
@@ -28,18 +27,18 @@ const Index = () => {
                         separator: "px-2 text-natural_gray-600"
                     }}>
                     <BreadcrumbItem href="/">صفحه اصلی</BreadcrumbItem>
-                    <BreadcrumbItem href="/news">استخدام اساتید</BreadcrumbItem>
+                    <BreadcrumbItem>استخدام اساتید</BreadcrumbItem>
                 </Breadcrumbs>
                 <div className="flex flex-col">
                     <div className="hidden lg:flex items-center justify-center gap-6">
                         <Seller className="fill-primary-600 w-10 h-10"/>
                         <p className="text-3xl">فروشنده شوید</p>
                     </div>
-                    <Link href="/" className="lg:hidden flex gap-1 ">
+                    <Link href="https://seller.lingomasters.ir/auth/login" className="lg:hidden flex gap-1 ">
                         <Chevron className=" w-6 h-6"/>
                         <p className="text-sm md:text-base">فروشنده شوید</p>
                     </Link>
-                    <div className="flex flex-col lg:flex-row items-center lg:justify-between">
+                    <div className="flex flex-col lg:flex-row items-center lg:justify-between gap-6">
                         <div className="flex flex-col gap-6 md:gap-10 lg:gap-40 order-2 lg:order-1">
                             <div className="flex flex-col gap-2 md:gap-4 lg:gap-10">
                                 <p className="text-base font-bold md:font-black md:text-xl lg:font-medium lg:text-3xl">در
@@ -49,14 +48,14 @@ const Index = () => {
                             </div>
                             <div className="flex items-center justify-between">
                                 <p className="text-[10px] md:text-sm lg:text-lg">اگر میخوای فروشنده بشی وارد شو!!!</p>
-                                <Link href=""
+                                <Link href="https://seller.lingomasters.ir/auth/login"
                                       className="px-4 py-2 lg:px-6 lg:py-3 flex items-center justify-center rounded-md bg-primary-600 text-sm lg:text-base text-white">
                                     وررود فروشندگان
                                 </Link>
                             </div>
                         </div>
                         <div className="order-1 lg:order-2">
-                            <Image src="/images/intersect.png" alt="" width={100} height={100}
+                            <Image unoptimized src="/images/intersect.png" alt="" width={100} height={100}
                                    className="w-full h-full"/>
                         </div>
                     </div>
@@ -142,7 +141,7 @@ const Index = () => {
                             <p className="text-xs md:text-base lg:text-xl">پس از ورود، تمام اطلاعات خواسته شده را به صورت کامل پر میکنید و دکمه ثبت رو میزنید. این اطلاعات برای ادمین ارسال میشوند تا بررسی شوند و شما وارد پنل کاربریتان میشوید. تا زمانی که ادمین اطلاعات شما رو تایید کنه شما فرصت دارید پروفایلتان را تکمیل کنید.</p>
                         </div>
                         <div className="relative rounded-[57px] order-1 lg:order-2 w-1/2 lg:w-1/3">
-                            <Image src="/images/image.png" alt="" width={100} height={100} className="w-full" />
+                            <Image unoptimized src="/images/image.png" alt="" width={100} height={100} className="w-full" />
                             <div className="bg-primary-600 rounded-full p-2 sm:p-3 lg:p-4 flex items-center justify-center absolute bottom-5 -right-4 sm:bottom-7 sm:-right-6 md:bottom-8 md:-right-7 lg:bottom-10 lg:-right-10">
                                 <Users className="fill-white w-5 h-5 sm:w-7 sm:h-7 md:w-9 md:h-9 lg:w-12 lg:h-12"/>
                             </div>
@@ -150,7 +149,7 @@ const Index = () => {
                     </div>
                     <div className="flex items-center flex-col lg:flex-row justify-between px-8 lg:px-20 py-6 gap-20 bg-[#F4F5F6]">
                         <div className="relative rounded-[57px] w-1/2 lg:w-1/3">
-                            <Image src="/images/image.png" alt="" width={100} height={100} className="w-full" />
+                            <Image unoptimized src="/images/image.png" alt="" width={100} height={100} className="w-full" />
                             <div className="bg-primary-600 rounded-full p-2 sm:p-3 lg:p-4 flex items-center justify-center absolute bottom-5 -left-4 sm:bottom-7 sm:-left-6 md:bottom-8 md:-left-7 lg:bottom-10 lg:-left-10">
                                 <VerifiedSeller className="fill-white w-5 h-5 sm:w-7 sm:h-7 md:w-9 md:h-9 lg:w-12 lg:h-12"/>
                             </div>
@@ -172,7 +171,7 @@ const Index = () => {
                             <p className="text-xs md:text-base lg:text-xl">پس از ورود، تمام اطلاعات خواسته شده را به صورت کامل پر میکنید و دکمه ثبت رو میزنید. این اطلاعات برای ادمین ارسال میشوند تا بررسی شوند و شما وارد پنل کاربریتان میشوید. تا زمانی که ادمین اطلاعات شما رو تایید کنه شما فرصت دارید پروفایلتان را تکمیل کنید.</p>
                         </div>
                         <div className="relative rounded-[57px] order-1 lg:order-2 w-1/2 lg:w-1/3">
-                            <Image src="/images/image.png" alt="" width={100} height={100} className="w-full" />
+                            <Image unoptimized src="/images/image.png" alt="" width={100} height={100} className="w-full" />
                             <div className="bg-primary-600 rounded-full p-2 sm:p-3 lg:p-4 flex items-center justify-center absolute bottom-5 -right-4 sm:bottom-7 sm:-right-6 md:bottom-8 md:-right-7 lg:bottom-10 lg:-right-10">
                                 <Cart className="fill-white w-5 h-5 sm:w-7 sm:h-7 md:w-9 md:h-9 lg:w-12 lg:h-12"/>
                             </div>
@@ -180,7 +179,7 @@ const Index = () => {
                     </div>
                     <div className="flex items-center flex-col lg:flex-row justify-between px-8 lg:px-20 py-6 gap-20 bg-[#F4F5F6]">
                         <div className="relative rounded-[57px] w-1/2 lg:w-1/3">
-                            <Image src="/images/image.png" alt="" width={100} height={100} className="w-full" />
+                            <Image unoptimized src="/images/image.png" alt="" width={100} height={100} className="w-full" />
                             <div className="bg-primary-600 rounded-full p-2 sm:p-3 lg:p-4 flex items-center justify-center absolute bottom-5 -left-4 sm:bottom-7 sm:-left-6 md:bottom-8 md:-left-7 lg:bottom-10 lg:-left-10">
                                 <Target className="fill-white w-5 h-5 sm:w-7 sm:h-7 md:w-9 md:h-9 lg:w-12 lg:h-12"/>
                             </div>
@@ -197,19 +196,19 @@ const Index = () => {
                 <div className="flex flex-col justify-center items-center gap-10">
                     <p className="flex items-center justify-center text-sm font-bold md:text-base lg:font-medium lg:text-3xl">اگر میخوای فروشنده بشی وارد شو!!!</p>
                     <div className="flex items-center justify-center">
-                        <Link href=""
+                        <Link href="https://seller.lingomasters.ir/auth/login"
                               className="px-4 py-2 lg:px-6 lg:py-3 flex items-center justify-center rounded-md bg-primary-600 text-sm lg:text-base text-white">
                             وررود فروشندگان
                         </Link>
                     </div>
                 </div>
-                <div className="flex flex-col gap-10 items-center justify-center">
-                    <div className="flex items-center gap-1 lg:gap-6">
-                        <Chat className="fill-primary-700 w-5 h-5 md:w-6 md:h-6 lg:w-10 lg:h-10"/>
-                        <p className="text-sm font-bold md:text-lg lg:font-medium lg:text-3xl">رضایت‌مندی فروشندگان
-                            لینگومسترز</p>
-                    </div>
-                </div>
+                {/*<div className="flex flex-col gap-10 items-center justify-center">*/}
+                {/*    <div className="flex items-center gap-1 lg:gap-6">*/}
+                {/*        <Chat className="fill-primary-700 w-5 h-5 md:w-6 md:h-6 lg:w-10 lg:h-10"/>*/}
+                {/*        <p className="text-sm font-bold md:text-lg lg:font-medium lg:text-3xl">رضایت‌مندی فروشندگان*/}
+                {/*            لینگومسترز</p>*/}
+                {/*    </div>*/}
+                {/*</div>*/}
             </div>
         </>
     );

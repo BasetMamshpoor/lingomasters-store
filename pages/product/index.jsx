@@ -12,7 +12,7 @@ const ProductsList = () => {
     const router = useRouter()
     const {category} = router.query;
     const {categories} = useContext(Category)
-    const [selectedCategory, setSelectedCategory] = useState(categories.find(c => c.slug === category))
+    const [selectedCategory, setSelectedCategory] = useState(categories?.find(c => c.slug === category))
     const [currentPage, setCurrentPage] = useState(1)
 
     useEffect(() => {

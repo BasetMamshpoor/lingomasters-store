@@ -40,7 +40,7 @@ const Slider = ({title, loop, to, edu, New, data: Data, off}) => {
                         color="primary"
                         variant="underlined"
                     >
-                        {categories.map(r => (
+                        {categories?.map(r => (
                             <Tab
                                 key={r.id}
                                 title={r.title}

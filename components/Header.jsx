@@ -154,7 +154,7 @@ const Header = ({setTitle}) => {
                                             </DropdownTrigger>
                                             <DropdownMenu
                                                 className="max-h-64 overflow-y-auto scrollbar-hide scrollbar scrollbar-w-8 scrollbar-thumb-natural_gray-800 scrollbar-track-white">
-                                                {category.map(c => <DropdownItem key={c.slug}><Link
+                                                {category?.map(c => <DropdownItem key={c.slug}><Link
                                                     className="w-full block"
                                                     href={`/product?category=${c.slug}`}>{c.title}</Link></DropdownItem>)}
                                             </DropdownMenu>
@@ -191,7 +191,7 @@ const Header = ({setTitle}) => {
                                                 </button>
                                                 {isSubmenuOpen && (
                                                     <ul className="pr-8 flex flex-col gap-1">
-                                                        {category.map(c => {
+                                                        {category?.map(c => {
                                                             return <li key={c.id}
                                                                        className="group duration-300 hover:bg-gray-50 rounded-lg"
                                                                        onClick={() => setSidebarOpen(false)}>

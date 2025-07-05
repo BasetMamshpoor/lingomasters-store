@@ -2,6 +2,16 @@ import React from 'react';
 import Icon from "@icons/about.svg"
 import Image from "next/image";
 import Call from "@icons/call.svg"
+import Link from "next/link";
+import Youtube from "@icons/youtube.svg";
+import Insta from "@icons/instagram.svg";
+import Whats from "@icons/whatsapp.svg";
+import Tel from "@icons/telegram.svg";
+import Apa from "@icons/aparat.svg";
+import Tik from "@icons/tik_tok.svg";
+import Pi from "@icons/pinterest.svg";
+import Fac from "@icons/facebook.svg";
+import X from "@icons/x.svg";
 
 const AboutUs = () => {
     return (
@@ -10,7 +20,8 @@ const AboutUs = () => {
                 <div className="flex flex-col items-center justify-between bg-primary-50 lg:grid lg:grid-cols-2">
                     <div className="flex flex-col gap-10 p-5 sm:p-20">
                         <div className="flex items-center gap-2 ml-auto relative">
-                            <Image width={100} height={100} className="absolute right-60 bottom-0" src="/images/Group-44.png" alt=""/>
+                            <Image unoptimized width={100} height={100} className="absolute right-60 bottom-0"
+                                   src="/images/Group-44.png" alt=""/>
                             <p className="text-2xl">درباره لینگومسترز</p>
                             <Icon className="w-8 h-8 fill-primary-700"/>
                         </div>
@@ -24,7 +35,8 @@ const AboutUs = () => {
 
                     </div>
                     <div className="p-10 ">
-                        <Image width={100} height={100} className="w-full h-full" src="/images/about-us.png" alt=""/>
+                        <Image unoptimized width={100} height={100} className="w-full h-full" src="/images/about-us.png"
+                               alt=""/>
                     </div>
                 </div>
                 <div className="flex flex-col gap-10">
@@ -99,17 +111,46 @@ const AboutUs = () => {
                             <p className="text-2xl ">راه های ارتباط با ما</p>
                             <Call className="w-8 h-8 fill-primary-700"/>
                         </div>
-                        <p className="text-sm sm:text-lg">با مشارکت در شبکه های اجتماعی در قرعه کشی میلیونی لینگومسترز شرکت داده می شوید.</p>
+                        <p className="text-sm sm:text-lg">با مشارکت در شبکه های اجتماعی در قرعه کشی میلیونی لینگومسترز
+                            شرکت داده می شوید.</p>
                     </div>
                     <div className="flex items-center justify-center gap-2 sm:gap-5"
                     >
-                        <Image width={100} height={100} className="w-6 h-7 sm:w-16 sm:h-16 md:w-20 md:h-20" alt="" src="/images/x.png"/>
-                        <Image width={100} height={100} className="w-6 h-7 sm:w-16 sm:h-16 md:w-20 md:h-20" alt="" src="/images/facebook.png"/>
-                        <Image width={100} height={100} className="w-6 h-7 sm:w-16 sm:h-16 md:w-20 md:h-20" alt="" src="/images/pinterest.png"/>
-                        <Image width={100} height={100} className="w-6 h-7 sm:w-16 sm:h-16 md:w-20 md:h-20" alt="" src="/images/tik_tok.png"/>
-                        <Image width={100} height={100} className="w-6 h-7 sm:w-16 sm:h-16 md:w-20 md:h-20" alt="" src="/images/image 236.png"/>
-                        <Image width={100} height={100} className="w-6 h-7 sm:w-16 sm:h-16 md:w-20 md:h-20" alt="" src="/images/telegram.png"/>
-                        <Image width={100} height={100} className="w-6 h-7 sm:w-16 sm:h-16 md:w-20 md:h-20" alt="" src="/images/instagram.png"/>
+                        <Link href={process.env.NEXT_PUBLIC_SOCIAL_YOUTUBE} target="_blank"
+                              rel="noopener noreferrer">
+                            <Youtube className="w-6 h-7 sm:w-16 sm:h-16 md:w-20 md:h-20"/>
+                        </Link>
+                        <Link href={process.env.NEXT_PUBLIC_SOCIAL_INSTAGRAM} target="_blank"
+                              rel="noopener noreferrer">
+                            <Insta className="w-6 h-7 sm:w-16 sm:h-16 md:w-20 md:h-20"/>
+                        </Link>
+                        <Link href={process.env.NEXT_PUBLIC_SOCIAL_WHATSAPP} target="_blank"
+                              rel="noopener noreferrer">
+                            <Whats className="w-6 h-7 sm:w-16 sm:h-16 md:w-20 md:h-20"/>
+                        </Link>
+                        <Link href={process.env.NEXT_PUBLIC_SOCIAL_TELEGRAM} target="_blank"
+                              rel="noopener noreferrer">
+                            <Tel className="w-6 h-7 sm:w-16 sm:h-16 md:w-20 md:h-20"/>
+                        </Link>
+                        <Link href={process.env.NEXT_PUBLIC_SOCIAL_APARAT} target="_blank"
+                              rel="noopener noreferrer">
+                            <Apa className="w-6 h-7 sm:w-16 sm:h-16 md:w-20 md:h-20"/>
+                        </Link>
+                        <Link href={process.env.NEXT_PUBLIC_SOCIAL_TIKTOK} target="_blank"
+                              rel="noopener noreferrer">
+                            <Tik className="w-6 h-7 sm:w-16 sm:h-16 md:w-20 md:h-20"/>
+                        </Link>
+                        <Link href={process.env.NEXT_PUBLIC_SOCIAL_PINTEREST} target="_blank"
+                              rel="noopener noreferrer">
+                            <Pi className="w-6 h-7 sm:w-16 sm:h-16 md:w-20 md:h-20"/>
+                        </Link>
+                        <Link href={process.env.NEXT_PUBLIC_SOCIAL_FACEBOOK} target="_blank"
+                              rel="noopener noreferrer">
+                            <Fac className="w-6 h-7 sm:w-16 sm:h-16 md:w-20 md:h-20"/>
+                        </Link>
+                        <Link href={process.env.NEXT_PUBLIC_SOCIAL_X} target="_blank" rel="noopener noreferrer">
+                            <X className="w-6 h-7 sm:w-16 sm:h-16 md:w-20 md:h-20"/>
+                        </Link>
                     </div>
                 </div>
             </div>

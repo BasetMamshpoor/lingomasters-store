@@ -11,7 +11,8 @@ const CategoriesProviders = ({children}) => {
     return (
         <>
             <Category.Provider value={{categories}}>
-                {isLoading ? <Loading/> : children}
+                {/*{isLoading ? <Loading/> : children}*/}
+                {children}
             </Category.Provider>
         </>
     );
