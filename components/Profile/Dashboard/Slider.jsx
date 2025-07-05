@@ -35,7 +35,7 @@ const Slider = ({title, loop, to, edu, New, data: Data, off}) => {
                             tab: " px-0 h-12 w-full ",
                             tabContent: "group-data-[selected=true]:text-primary-600",
                         }}
-                        selectedKey={(selected).toString()}
+                        selectedKey={(selected)?.toString()}
                         onSelectionChange={setSelected}
                         color="primary"
                         variant="underlined"
